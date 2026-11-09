@@ -1,40 +1,41 @@
 .overview { background: transparent; color: var(--site-text); }
-.overview [data-category="blue"] { --category: #1b6fd6; }
-.overview [data-category="orange"] { --category: #f2871d; }
-.overview [data-category="green"] { --category: #3ca952; }
+.overview [data-category="blue"] { --category: #ff6b00; }
+.overview [data-category="orange"] { --category: #ffa048; }
+.overview [data-category="green"] { --category: #ff8533; }
 .shell { width: min(100% - 2.5rem, 78rem); margin-inline: auto; padding-block: clamp(3rem, 6vw, 5rem); }
 .intro { max-width: 56rem; margin-bottom: 2.5rem; }
-.eyebrow { margin-bottom: 0.75rem; color: var(--site-muted); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; }
-.intro h1, .intro h2 { font-size: clamp(2.5rem, 6vw, 4.75rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.05em; }
-.subhead { margin-top: 1rem; color: #a7d8ff; font-size: 1.05rem; font-weight: 700; }
+.eyebrow { margin-bottom: 0.75rem; color: #ffa048; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; }
+.intro h1, .intro h2 { font-size: clamp(2.5rem, 6vw, 4.75rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.05em; color: #ffffff; }
+.subhead { margin-top: 1rem; color: #ff8a3d; font-size: 1.05rem; font-weight: 700; }
 .body { margin-top: 1.5rem; color: var(--site-muted); font-size: 1.1rem; line-height: 1.8; }
 .threeColumns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
 .card { border: 1px solid var(--site-line); border-top: 4px solid var(--category); border-radius: 0.65rem; padding: 1.65rem; background: var(--site-card); }
-.card h2, .card h3 { font-size: 0.95rem; font-weight: 800; line-height: 1.5; }
+.card h2, .card h3 { font-size: 0.95rem; font-weight: 800; line-height: 1.5; color: #ffffff; }
 .card p { margin-top: 1rem; color: var(--site-muted); font-size: 0.98rem; line-height: 1.75; }
 .values { margin-top: 2.5rem; }
-.values h2, .values h3 { font-size: 1.2rem; font-weight: 800; }
+.values h2, .values h3 { font-size: 1.2rem; font-weight: 800; color: #ffffff; }
 .values ul { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; margin-top: 1.1rem; }
-.values li { display: flex; align-items: center; gap: 0.7rem; border: 1px solid var(--site-line); border-radius: 0.65rem; padding: 1.2rem; background: var(--site-card); font-size: 0.9rem; font-weight: 700; }
+.values li { display: flex; align-items: center; gap: 0.7rem; border: 1px solid var(--site-line); border-radius: 0.65rem; padding: 1.2rem; background: var(--site-card); font-size: 0.9rem; font-weight: 700; color: #ffffff; }
 .values li span { flex: none; width: 0.85rem; height: 0.85rem; border-radius: 50%; background: var(--category); }
 .services { background: transparent; border-block: 1px solid var(--site-line); }
 .sectionHeading { display: flex; align-items: end; flex-wrap: wrap; justify-content: space-between; gap: 1rem; margin-bottom: 1.75rem; }
-.sectionHeading h2, .sectionHeading h3 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.04em; }
-.sectionHeading a { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 2.75rem; font-size: 0.9rem; font-weight: 700; text-decoration: underline; text-underline-offset: 0.2em; }
+.sectionHeading h2, .sectionHeading h3 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.04em; color: #ffffff; }
+.sectionHeading a { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 2.75rem; font-size: 0.9rem; font-weight: 700; color: #ff8a3d; text-decoration: underline; text-underline-offset: 0.2em; transition: color 0.15s ease; }
+.sectionHeading a:hover { color: #ffffff; }
 .summaryGrid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1rem; }
-.summaryCard { position: relative; display: flex; height: 100%; flex-direction: column; border: 1px solid var(--site-line); border-top: 3px solid var(--category); border-radius: 0.6rem; padding: 1.2rem; background: var(--site-card); }
+.summaryCard { position: relative; display: flex; height: 100%; flex-direction: column; border: 1px solid var(--site-line); border-top: 3px solid var(--category); border-radius: 0.6rem; padding: 1.2rem; background: var(--site-card); transition: outline 0.15s ease; }
 .summaryCard:hover { outline: 1px solid var(--category); }
-.number { align-self: start; border-radius: 0.35rem; padding: 0.3rem 0.5rem; background: var(--category); color: #101e38; font-size: 0.78rem; font-weight: 800; }
-.summaryCard[data-category="blue"] .number { color: #fff; }
-.summaryCard h3 { margin-top: 1.5rem; font-size: 1.1rem; font-weight: 800; }
+.number { align-self: start; border-radius: 0.35rem; padding: 0.3rem 0.5rem; background: var(--category); color: #ffffff; font-size: 0.78rem; font-weight: 800; }
+.summaryCard[data-category="blue"] .number { color: #ffffff; }
+.summaryCard h3 { margin-top: 1.5rem; font-size: 1.1rem; font-weight: 800; color: #ffffff; }
 .summaryCard p { margin-top: 0.45rem; color: var(--site-muted); font-size: 0.85rem; line-height: 1.5; }
-.arrow { position: absolute; top: 1.4rem; right: 1.2rem; }
+.arrow { position: absolute; top: 1.4rem; right: 1.2rem; color: #ff8a3d; }
 .footprint { background: var(--site-panel); color: var(--site-text); }
 .footprint .shell { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; padding-block: 2.5rem; }
-.footprint h2, .footprint h3 { margin-bottom: 0.6rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
-.footprint div > p { font-size: clamp(1.05rem, 2.2vw, 1.7rem); font-weight: 700; }
-.footprint .shell > p { max-width: 31rem; font-size: 1.2rem; line-height: 1.6; }
-.closing { margin-top: 2rem; text-align: center; font-size: clamp(1rem, 2vw, 1.4rem); font-weight: 800; }
+.footprint h2, .footprint h3 { margin-bottom: 0.6rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #ffa048; }
+.footprint div > p { font-size: clamp(1.05rem, 2.2vw, 1.7rem); font-weight: 700; color: #ffffff; }
+.footprint .shell > p { max-width: 31rem; font-size: 1.2rem; line-height: 1.6; color: var(--site-muted); }
+.closing { margin-top: 2rem; text-align: center; font-size: clamp(1rem, 2vw, 1.4rem); font-weight: 800; color: #ffffff; }
 @media (max-width: 62rem) {
   .summaryGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }

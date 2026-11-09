@@ -5,12 +5,29 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: { DEFAULT: "#2E4FD9", cyan: "#00B8E6" },
-        accent: { DEFAULT: "#F7941D", gold: "#FFC107" },
-        navy: "#101E38",
+        primary: {
+          DEFAULT: "#FF6B00",
+          hover: "#E65A00",
+          light: "#FF8A3D",
+        },
+        navy: {
+          DEFAULT: "#0F1B3D",
+          light: "#182A59",
+          dark: "#080F24",
+        },
+        orange: {
+          DEFAULT: "#FF6B00",
+          hover: "#E65A00",
+          light: "#FF8A3D",
+          accent: "#FFA048",
+        },
+        accent: {
+          DEFAULT: "#FF6B00",
+          orange: "#FF6B00",
+        },
+        surface: "#0F1B3D",
+        line: "rgb(255 255 255 / 15%)",
         slate: "#485873",
-        surface: "#F4F7FB",
-        line: "#DDE5F0",
         white: "#FFFFFF",
       },
     },

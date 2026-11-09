@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
 import { SiteFooter } from "@/components/site-footer";
+import { SiteNavbar } from "@/components/site-navbar";
 
 const siteTitle = "BizLink Trading and Contracting Services WLL";
 
@@ -16,7 +17,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en">
-      <body>{children}<SiteFooter /></body>
+      <body>
+        <SiteNavbar />
+        {children}
+        <SiteFooter />
+      </body>
     </html>
   );
 }

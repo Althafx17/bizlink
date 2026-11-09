@@ -4,7 +4,7 @@
   inset: 0;
   overflow: hidden;
   pointer-events: none;
-  background: #0a1a2e;
+  background: #0f1b3d;
 }
 .poster,
 .video {
@@ -21,8 +21,8 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgb(10 26 46 / 20%) 65%, #0a1a2e),
-    linear-gradient(100deg, rgb(10 26 46 / 88%), rgb(15 36 64 / 58%));
+    linear-gradient(180deg, rgb(15 27 61 / 25%) 65%, #0f1b3d),
+    linear-gradient(100deg, rgb(15 27 61 / 90%), rgb(15 27 61 / 65%));
   content: "";
 }
 .control {
@@ -34,16 +34,17 @@
   min-height: 2.75rem;
   align-items: center;
   gap: 0.4rem;
-  border: 1px solid rgb(255 255 255 / 40%);
+  border: 1px solid rgb(255 255 255 / 30%);
   border-radius: 0.4rem;
   padding: 0.55rem 0.75rem;
-  background: rgb(10 26 46 / 75%);
+  background: rgb(15 27 61 / 80%);
   color: #fff;
   font: 700 0.75rem Arial, Helvetica, sans-serif;
   cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
 }
-.control:hover { background: #0a1a2e; }
-.control:focus-visible { outline-color: #fff; }
+.control:hover { background: #0f1b3d; border-color: #ff6b00; }
+.control:focus-visible { outline-color: #ff6b00; }
 @media (max-width: 48rem) {
   .control { bottom: 7rem; }
 }

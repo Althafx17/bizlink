@@ -3,11 +3,11 @@
 
 @layer base {
   :root {
-    --site-text: #f5f8fc;
-    --site-muted: #d2deec;
-    --site-line: rgb(210 225 244 / 22%);
+    --site-text: #ffffff;
+    --site-muted: #d1d9e6;
+    --site-line: rgb(255 255 255 / 16%);
     --site-card: rgb(255 255 255 / 6%);
-    --site-panel: rgb(10 26 46 / 38%);
+    --site-panel: rgb(15 27 61 / 75%);
   }
 
   body::before {
@@ -16,7 +16,7 @@
     inset: -35px;
     pointer-events: none;
     background:
-      linear-gradient(110deg, rgb(10 26 46 / 94%), rgb(15 36 64 / 78%)),
+      linear-gradient(110deg, rgb(15 27 61 / 95%), rgb(15 27 61 / 82%)),
       url("/images/doha-skyline.webp") center / cover no-repeat;
     filter: blur(18px);
     content: "";
@@ -25,13 +25,13 @@
     position: relative;
     isolation: isolate;
     min-height: 100vh;
-    background: #0a1a2e;
+    background: #0f1b3d;
     color: var(--site-text);
     font-family: Arial, Helvetica, sans-serif;
   }
 
   :focus-visible {
-    outline: 3px solid theme('colors.primary.DEFAULT');
+    outline: 3px solid #ff6b00;
     outline-offset: 4px;
   }
 }
@@ -48,8 +48,10 @@
     top: 0.75rem;
     left: 0.75rem;
     transform: translateY(-180%);
-    background: #fff;
+    background: #ff6b00;
+    color: #ffffff;
     padding: 0.65rem 1rem;
+    font-weight: 700;
   }
 
   .skip-link:focus {
@@ -73,7 +75,7 @@
   }
 
   .header-brand {
-    border-inline-start: 3px solid theme('colors.primary.DEFAULT');
+    border-inline-start: 3px solid #ff6b00;
     padding-inline-start: 0.7rem;
     font-size: 0.78rem;
     font-weight: 700;
@@ -94,10 +96,11 @@
   .header-links a {
     display: inline-block;
     padding-block: 0.6rem;
+    transition: color 0.15s ease;
   }
 
   .header-links a:hover {
-    color: #a7d8ff;
+    color: #ff8a3d;
   }
 
   .home-header {
@@ -105,29 +108,29 @@
     z-index: 2;
     inset: 0 0 auto;
     border: 0;
-    color: #ecf5ff;
+    color: #ffffff;
   }
 
   .home-header .header-inner {
     min-height: 5rem;
-    border-bottom: 1px solid rgb(194 224 255 / 22%);
+    border-bottom: 1px solid rgb(255 255 255 / 18%);
   }
 
   .home-header .header-brand {
-    border-color: #75c7ff;
+    border-color: #ff6b00;
   }
 
   .home-header .header-links {
-    color: #e1efff;
+    color: #e5edf7;
   }
 
   .home-header .header-links a:hover {
-    color: #91d6ff;
+    color: #ff8a3d;
   }
 
   .home-header a:focus-visible,
   .hero-stage a:focus-visible {
-    outline-color: #a7dcff;
+    outline-color: #ff6b00;
   }
 
   .hero-stage {
@@ -140,7 +143,7 @@
     min-height: 100svh;
     padding-block: clamp(8rem, 17vh, 10rem) 2rem;
     background: transparent;
-    color: #f5faff;
+    color: #ffffff;
   }
 
   .hero-inner,
@@ -159,7 +162,7 @@
 
   .hero-kicker {
     margin-bottom: 1.2rem;
-    color: #b4dcff;
+    color: #ffa048;
     font-size: clamp(0.75rem, 1.1vw, 0.95rem);
     font-weight: 700;
     letter-spacing: 0.28em;
@@ -170,7 +173,7 @@
     justify-self: center;
     width: min(100%, 26rem);
     height: auto;
-    filter: drop-shadow(0 0 1.15rem rgb(99 194 255 / 24%));
+    filter: drop-shadow(0 0 1.25rem rgb(255 107 0 / 22%));
   }
 
   .hero-title {
@@ -181,7 +184,7 @@
   }
 
   .hero-title span {
-    color: #a7d8ff;
+    color: #ff6b00;
   }
 
   .quote-button {
@@ -192,14 +195,17 @@
     margin-top: 2rem;
     padding: 0.8rem 1.1rem;
     border-radius: 0.35rem;
-    background: #a7d8ff;
-    color: #0a2441;
+    background: #ff6b00;
+    color: #ffffff;
     font-size: 0.9rem;
     font-weight: 700;
+    box-shadow: 0 4px 18px rgb(255 107 0 / 35%);
+    transition: background 0.2s ease, transform 0.2s ease;
   }
 
   .quote-button:hover {
-    background: #d3ecff;
+    background: #e65a00;
+    color: #ffffff;
   }
 
   .hero-caption {
@@ -208,9 +214,9 @@
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 0.6rem 1rem;
-    border-top: 1px solid rgb(194 224 255 / 27%);
+    border-top: 1px solid rgb(255 255 255 / 20%);
     padding-top: 1.15rem;
-    color: #d3eaff;
+    color: #d1d9e6;
     font-size: 0.73rem;
     font-weight: 700;
     letter-spacing: 0.14em;
@@ -223,22 +229,22 @@
     height: 0.48rem;
     margin-right: 0.6rem;
     border-radius: 50%;
-    background: #91d6ff;
+    background: #ff6b00;
   }
 
   .hero-scroll-note:hover {
-    color: #fff;
+    color: #ffffff;
   }
 
   .hero-scroll-note span {
     margin-left: 0.25rem;
-    color: #91d6ff;
+    color: #ff6b00;
   }
 
   .trust-strip {
     position: relative;
-    border-block: 1px solid theme('colors.line');
-    background: theme('colors.surface');
+    border-block: 1px solid rgb(255 255 255 / 15%);
+    background: #0f1b3d;
   }
 
   .trust-inner {
@@ -257,7 +263,7 @@
   }
 
   .eyebrow {
-    color: #a7d8ff;
+    color: #ffa048;
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.13em;
@@ -288,23 +294,24 @@
     height: 100%;
     min-height: 12rem;
     flex-direction: column;
-    border: 1px solid theme('colors.line');
+    border: 1px solid rgb(255 255 255 / 15%);
     border-radius: 0.5rem;
     padding: 1.2rem;
-    background: theme('colors.surface');
+    background: rgb(255 255 255 / 6%);
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
   }
 
   .service-card:hover,
   .service-card:focus-visible {
-    border-color: #a7d8ff;
-    background: #fff;
+    border-color: #ff6b00;
+    background: rgb(255 255 255 / 10%);
   }
 
   .service-card-top {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1.5rem;
-    color: #a7d8ff;
+    color: #ff8a3d;
     font-size: 0.8rem;
     font-weight: 700;
   }
@@ -325,9 +332,9 @@
   .contact-strip {
     border-top: 0.25rem solid transparent;
     background:
-      linear-gradient(theme('colors.navy'), theme('colors.navy')) padding-box,
-      linear-gradient(90deg, theme('colors.primary.DEFAULT'), theme('colors.primary.cyan')) border-box;
-    color: theme('colors.white');
+      linear-gradient(#0f1b3d, #0f1b3d) padding-box,
+      linear-gradient(90deg, #ff6b00, #ffa048) border-box;
+    color: #ffffff;
   }
 
   .contact-inner {
@@ -339,7 +346,7 @@
   }
 
   .contact-inner .eyebrow {
-    color: theme('colors.primary.cyan');
+    color: #ffa048;
   }
 
   .contact-channels,
@@ -354,8 +361,12 @@
     text-underline-offset: 0.2em;
   }
 
+  .contact-channels a:hover {
+    color: #ffa048;
+  }
+
   .contact-channels a:focus-visible {
-    outline-color: theme('colors.primary.cyan');
+    outline-color: #ff6b00;
   }
 }
 
@@ -414,7 +425,6 @@
   .hero-inner {
     gap: 2.25rem;
   }
-
 
   .service-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));

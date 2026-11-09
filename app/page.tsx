@@ -2,12 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Camera, Mail, MessageCircle, Phone } from "lucide-react";
 import { HeroMedia } from "@/components/hero-media";
-import { CompanyOverview } from "@/components/company-overview";
+import { AboutSection } from "@/components/about-section";
 import { ServicesShowcase } from "@/components/services-showcase";
 
 export default function HomePage() {
   return (
     <main id="main-content">
+      {/* 1. Monumental Hero Section */}
       <section
         className="relative min-h-screen flex flex-col justify-between py-20 sm:py-28 lg:py-32 px-4 sm:px-8 lg:px-14 overflow-hidden text-white"
         aria-labelledby="home-title"
@@ -33,7 +34,7 @@ export default function HomePage() {
               B I Z L I N K
             </p>
 
-            {/* Monumental Headline with accessible contrast and line-height */}
+            {/* Monumental Headline */}
             <h1
               id="home-title"
               className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] text-white"
@@ -158,10 +159,10 @@ export default function HomePage() {
         {/* Bottom Bar: Explore Link + Arabic Copyright */}
         <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 text-xs text-white/60 border-t border-white/10 pt-3.5">
           <a
-            href="#services-showcase"
+            href="#about"
             className="flex items-center gap-1.5 font-bold tracking-wider uppercase text-white/80 hover:text-[#FFA048] transition-colors min-h-[36px]"
           >
-            <span>Explore Our Services</span>
+            <span>Explore About Us</span>
             <span aria-hidden="true" className="text-[#D35400]">↓</span>
           </a>
           <span dir="rtl" className="font-medium tracking-wide text-white/70">
@@ -170,11 +171,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Interactive Cinematic Services Showcase (Matching Reference Video, 3s Cycle) */}
-      <ServicesShowcase autoPlayInterval={3000} />
+      {/* 2. About Section: Comes BEFORE Services section (Matching Reference Image) */}
+      <AboutSection />
 
-      {/* Company Overview (About, Principles, Values, Footprint, Why BizLink) */}
-      <CompanyOverview includeWhy includeServices={false} />
+      {/* 3. Services Showcase: Follows About Section (Matching Reference Video, 3s Cycle) */}
+      <ServicesShowcase autoPlayInterval={3000} />
     </main>
   );
 }

@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
-import { CompanyOverview } from "@/components/company-overview";
+import { AboutSection } from "@/components/about-section";
 
 export const metadata: Metadata = {
-  title: "About",
-  description: "Learn about Biz Link Trading and Contracting Services WLL, its business purpose, mission, vision and values.",
+  title: "About Us | BizLink Qatar",
+  description:
+    "Learn about Biz Link Trading and Contracting Services WLL under Pathas Group of Companies, our founding principles, philosophy, mission, vision, and corporate footprint across Qatar.",
 };
 
 export default function AboutPage() {
   return (
-    <main id="main-content" className="bg-transparent pt-20 sm:pt-24">
-      <CompanyOverview standalone />
+    <main id="main-content" className="bg-[#FAF9F6] min-h-screen">
+      <AboutSection isStandalonePage />
     </main>
   );
 }

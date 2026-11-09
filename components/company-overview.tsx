@@ -25,9 +25,11 @@ const reasons = [
 export function CompanyOverview({
   standalone = false,
   includeWhy = standalone,
+  includeServices = true,
 }: {
   standalone?: boolean;
   includeWhy?: boolean;
+  includeServices?: boolean;
 }) {
   const Title = standalone ? "h1" : "h2";
   const Heading = standalone ? "h2" : "h3";
@@ -60,25 +62,27 @@ export function CompanyOverview({
         </section>
       </section>
 
-      <section id="services" className={styles.services} aria-labelledby="about-services">
-        <div className={styles.shell}>
-          <div className={styles.sectionHeading}>
-            <div><p className={styles.eyebrow}>One roof. Multiple solutions.</p><Heading id="about-services">Our services</Heading></div>
-            <Link href="/services">View all services <ArrowUpRight size={17} aria-hidden="true" /></Link>
+      {includeServices && (
+        <section id="services" className={styles.services} aria-labelledby="about-services">
+          <div className={styles.shell}>
+            <div className={styles.sectionHeading}>
+              <div><p className={styles.eyebrow}>One roof. Multiple solutions.</p><Heading id="about-services">Our services</Heading></div>
+              <Link href="/services">View all services <ArrowUpRight size={17} aria-hidden="true" /></Link>
+            </div>
+            <ul className={styles.summaryGrid}>
+              {serviceSummaries.map(({ id, name, summary, color }, index) => (
+                <li key={id}>
+                  <Link href={'/services#' + id} className={styles.summaryCard} data-category={color}>
+                    <span className={styles.number}>{String(index + 1).padStart(2, "0")}</span>
+                    <h3>{name}</h3><p>{summary}</p>
+                    <ArrowUpRight size={18} aria-hidden="true" className={styles.arrow} />
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
-          <ul className={styles.summaryGrid}>
-            {serviceSummaries.map(({ id, name, summary, color }, index) => (
-              <li key={id}>
-                <Link href={'/services#' + id} className={styles.summaryCard} data-category={color}>
-                  <span className={styles.number}>{String(index + 1).padStart(2, "0")}</span>
-                  <h3>{name}</h3><p>{summary}</p>
-                  <ArrowUpRight size={18} aria-hidden="true" className={styles.arrow} />
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+        </section>
+      )}
 
       <section className={styles.footprint} aria-labelledby="footprint-title">
         <div className={styles.shell}>
@@ -100,7 +104,6 @@ export function CompanyOverview({
               </div>
             ))}
           </div>
-          <p className={styles.closing}>ALL BUSINESS SOLUTIONS UNDER ONE ROOF</p>
         </section>
       )}
     </div>

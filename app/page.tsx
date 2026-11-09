@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowUpRight, Camera, Mail, MessageCircle, Phone } from "lucide-react";
 import { HeroMedia } from "@/components/hero-media";
 import { CompanyOverview } from "@/components/company-overview";
+import { ServicesShowcase } from "@/components/services-showcase";
 
 export default function HomePage() {
   return (
@@ -78,7 +79,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            {/* Call to Action Button (Accessible 4.62:1 contrast against white) */}
+            {/* Call to Action Button */}
             <div className="pt-1">
               <Link
                 href="/contact"
@@ -154,13 +155,13 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Bottom Bar: Explore Link + Arabic Copyright (from reference image) */}
+        {/* Bottom Bar: Explore Link + Arabic Copyright */}
         <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 text-xs text-white/60 border-t border-white/10 pt-3.5">
           <a
-            href="#company-overview-title"
+            href="#services-showcase"
             className="flex items-center gap-1.5 font-bold tracking-wider uppercase text-white/80 hover:text-[#FFA048] transition-colors min-h-[36px]"
           >
-            <span>Explore BizLink</span>
+            <span>Explore Our Services</span>
             <span aria-hidden="true" className="text-[#D35400]">↓</span>
           </a>
           <span dir="rtl" className="font-medium tracking-wide text-white/70">
@@ -169,7 +170,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      <CompanyOverview includeWhy />
+      {/* Interactive Cinematic Services Showcase (Matching Reference Video) */}
+      <ServicesShowcase />
+
+      {/* Company Overview (About, Principles, Values, Footprint, Why BizLink) */}
+      <CompanyOverview includeWhy includeServices={false} />
     </main>
   );
 }

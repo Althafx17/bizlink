@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { Pause, Play } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import styles from "./hero-media.module.css";
 
@@ -9,7 +8,6 @@ import styles from "./hero-media.module.css";
 export function HeroMedia() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [ready, setReady] = useState(false);
-  const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -26,9 +24,17 @@ export function HeroMedia() {
       } else {
         video.src = "/videos/doha-hero.mp4";
         video.load();
-        void video.play().catch(() => setPlaying(false));
+        void video.play().catch(() => undefined);
       }
     };
+
+    const keepPlaying = () => {
+      if (!preference.matches && video.src && video.paused) {
+        void video.play().catch(() => undefined);
+      }
+    };
+
+    video.addEventListener("pause", keepPlaying);
 
     // Defer video initialization to idle so LCP and TTI are fast and unblocked
     let idleId: number | undefined;
@@ -52,21 +58,12 @@ export function HeroMedia() {
       }
       if (timerId) clearTimeout(timerId);
       preference.removeEventListener("change", onMotionChange);
+      video.removeEventListener("pause", keepPlaying);
       video.pause();
       video.removeAttribute("src");
       video.load();
     };
   }, []);
-
-  const togglePlayback = () => {
-    const video = videoRef.current;
-    if (!video) return;
-    if (video.paused) {
-      void video.play().catch(() => setPlaying(false));
-    } else {
-      video.pause();
-    }
-  };
 
   return (
     <>
@@ -86,27 +83,15 @@ export function HeroMedia() {
           data-ready={ready}
           muted
           playsInline
+          autoPlay
           loop
           preload="none"
           onLoadedData={() => setReady(true)}
-          onPlay={() => setPlaying(true)}
-          onPause={() => setPlaying(false)}
-          onError={() => { setReady(false); setPlaying(false); }}
+          onError={() => setReady(false)}
           tabIndex={-1}
           disablePictureInPicture
         />
       </div>
-      {ready && (
-        <button
-          type="button"
-          className={styles.control}
-          onClick={togglePlayback}
-          aria-label={playing ? "Pause background video" : "Play background video"}
-        >
-          {playing ? <Pause size={14} aria-hidden="true" /> : <Play size={14} aria-hidden="true" />}
-          <span>{playing ? "Pause" : "Play"}</span>
-        </button>
-      )}
     </>
   );
 }

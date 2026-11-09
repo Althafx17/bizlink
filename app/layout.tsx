@@ -39,7 +39,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         <link
           rel="preload"
           as="image"
-          href="/images/doha-hero-poster.webp"
+          href="/images/hero-poster.webp"
           type="image/webp"
           fetchPriority="high"
         />

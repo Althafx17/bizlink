@@ -4,8 +4,9 @@
   inset: 0;
   overflow: hidden;
   pointer-events: none;
-  background: #0f1b3d;
+  background: #030712;
 }
+
 .poster,
 .video {
   position: absolute;
@@ -13,15 +14,23 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 60% center;
+  object-position: center center;
 }
-.video { opacity: 0; }
-.video[data-ready="true"] { opacity: 1; }
+
+.video {
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.video[data-ready="true"] {
+  opacity: 1;
+}
+
 .media::after {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgb(15 27 61 / 30%) 60%, #0f1b3d),
-    linear-gradient(105deg, rgb(15 27 61 / 94%) 0%, rgb(15 27 61 / 85%) 55%, rgb(15 27 61 / 72%) 100%);
+    radial-gradient(circle at 65% 45%, transparent 20%, rgba(3, 7, 18, 0.45) 85%),
+    linear-gradient(180deg, rgba(3, 7, 18, 0.2) 0%, rgba(3, 7, 18, 0.6) 100%);
   content: "";
 }

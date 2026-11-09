@@ -28,7 +28,7 @@ export default function HomePage() {
         {/* Center Stage: Two Column Presentation (Left Typography & Lockups + Right Towering Emblem) */}
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center my-auto py-8 lg:py-12">
           {/* Left Column */}
-          <div className="lg:col-span-7 flex flex-col gap-6 max-w-2xl">
+          <div className="lg:col-span-7 flex flex-col gap-6 max-w-2xl min-w-0">
             {/* Super-spaced Brand Kicker */}
             <p className="text-xs sm:text-sm font-extrabold tracking-[0.45em] text-[#FFA048] uppercase">
               B I Z L I N K
@@ -136,20 +136,20 @@ export default function HomePage() {
           </div>
 
           {/* Right Column: Towering Architectural Emblem */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end items-center relative py-6 lg:py-0">
+          <div className="lg:col-span-5 flex justify-center lg:justify-end items-center relative py-6 lg:py-0 w-full min-w-0">
             {/* Ambient Radial Backlight Glow */}
             <div
               className="absolute size-72 sm:size-96 rounded-full bg-[#D35400]/20 blur-3xl pointer-events-none -z-10"
               aria-hidden="true"
             />
-            <div className="relative">
+            <div className="relative w-full flex justify-center lg:justify-end">
               <Image
                 src="/images/bizlink-logo-transparent-1.png"
                 alt="BizLink Monumental Emblem"
                 width={1120}
                 height={910}
-                sizes="(max-width: 48rem) 280px, (max-width: 80rem) 440px, 540px"
-                className="w-64 sm:w-80 md:w-96 lg:w-[460px] xl:w-[520px] h-auto object-contain filter drop-shadow-[0_0_35px_rgba(211,84,0,0.35)] drop-shadow-[0_25px_50px_rgba(0,0,0,0.75)] transition-transform duration-500 hover:scale-[1.02]"
+                sizes="(max-width: 48rem) 280px, (max-width: 80rem) 440px, 520px"
+                className="w-full max-w-[280px] sm:max-w-[340px] md:max-w-[380px] lg:max-w-[460px] xl:max-w-[520px] max-w-full h-auto object-contain filter drop-shadow-[0_0_35px_rgba(211,84,0,0.35)] drop-shadow-[0_25px_50px_rgba(0,0,0,0.75)] transition-transform duration-500 hover:scale-[1.02]"
                 priority
               />
             </div>

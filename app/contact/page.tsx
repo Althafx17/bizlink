@@ -6,6 +6,21 @@ export const metadata: Metadata = {
   description: "Contact BizLink Qatar by phone, email or WhatsApp, or visit the Ain Khalid head office and Bin Mahmoud branch in Doha.",
 };
 
+function FacebookIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+      className="shrink-0"
+    >
+      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+    </svg>
+  );
+}
+
 const branches = [
   {
     name: "AIN KHALID – HEAD OFFICE",
@@ -53,7 +68,7 @@ const contactGroups = [
 ];
 
 const socialLinks = [
-  { label: "Facebook Page", href: "https://www.facebook.com/share/1Ce1qEyQDQ/", icon: null },
+  { label: "Facebook Page", href: "https://www.facebook.com/share/1Ce1qEyQDQ/", icon: FacebookIcon },
   { label: "Threads", href: "https://www.threads.com/@bizlink_servises_qa", icon: AtSign },
   { label: "Instagram", href: "https://www.instagram.com/bizlink_servises_qa", icon: Camera },
   { label: "TikTok", href: "https://www.tiktok.com/@biz.link.qa", icon: Music2 },
@@ -61,11 +76,11 @@ const socialLinks = [
 
 export default function ContactPage() {
   return (
-    <main id="main-content" className="pt-16 sm:pt-20">
+    <main id="main-content" className="pt-20 sm:pt-28">
       <section aria-labelledby="contact-title" className="border-b border-white/20 bg-transparent">
         <div className="shell pt-14 pb-10 sm:pt-20 sm:pb-12">
           <p className="text-xs font-bold tracking-[0.15em] text-[#FFA048] uppercase">BIZ LINK - QATAR</p>
-          <h1 id="contact-title" className="mt-4 text-5xl leading-none font-extrabold tracking-tight sm:text-7xl">Contact</h1>
+          <h1 id="contact-title" className="mt-4 text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.2]">Contact</h1>
           <p className="mt-5 text-lg leading-relaxed text-white/80">
             One Roof. Multiple Solutions. One Trusted Partner.
           </p>
@@ -75,12 +90,12 @@ export default function ContactPage() {
       <div className="bg-transparent">
         <div className="shell py-12 sm:py-16">
           <section aria-labelledby="branches-title">
-            <h2 id="branches-title" className="text-3xl font-extrabold tracking-tight">Our branches</h2>
+            <h2 id="branches-title" className="text-2xl sm:text-3xl font-extrabold tracking-tight">Our branches</h2>
             <div className="mt-5 grid gap-5 md:grid-cols-2 lg:gap-7">
               {branches.map(({ name, lines }) => (
-                <article key={name} className="rounded-xl border border-white/20 bg-white/5 p-5 sm:p-8">
-                  <span aria-hidden="true" className="mb-5 grid size-10 place-items-center rounded-md bg-white/5 text-white">
-                    <MapPin size={20} />
+                <article key={name} className="rounded-xl border border-white/20 bg-white/5 p-5 sm:p-8 shadow-md">
+                  <span aria-hidden="true" className="mb-5 grid size-10 place-items-center rounded-md bg-white/10 text-white">
+                    <MapPin size={20} className="text-[#D35400]" />
                   </span>
                   <h3 className="text-sm font-extrabold tracking-wide sm:text-base">{name}</h3>
                   <address className="mt-3 text-base leading-relaxed text-white/80 not-italic">
@@ -92,12 +107,12 @@ export default function ContactPage() {
           </section>
 
           <section aria-labelledby="contact-methods" className="mt-12 rounded-xl bg-[#0F1B3D] border border-white/15 p-5 text-white sm:p-8 lg:p-10 shadow-xl">
-            <h2 id="contact-methods" className="text-3xl font-extrabold tracking-tight">Get in touch</h2>
+            <h2 id="contact-methods" className="text-2xl sm:text-3xl font-extrabold tracking-tight">Get in touch</h2>
             <div className="mt-6 grid gap-6 md:grid-cols-3">
               {contactGroups.map(({ name, icon: Icon, links }) => (
                 <div key={name} className="border-t border-white/25 pt-4">
                   <h3 className="flex items-center gap-2 text-sm font-bold">
-                    <Icon size={18} aria-hidden="true" className="text-[#FF6B00]" /> {name}
+                    <Icon size={18} aria-hidden="true" className="text-[#D35400]" /> {name}
                   </h3>
                   <ul className="mt-3 space-y-2 text-sm">
                     {links.map(({ label, href }) => (
@@ -114,14 +129,18 @@ export default function ContactPage() {
           </section>
 
           <section aria-labelledby="social-title" className="mt-12">
-            <h2 id="social-title" className="text-3xl font-extrabold tracking-tight">Follow Biz Link Services Qatar</h2>
+            <h2 id="social-title" className="text-2xl sm:text-3xl font-extrabold tracking-tight">Follow Biz Link Services Qatar</h2>
             <ul className="mt-5 grid grid-cols-1 gap-3 min-[360px]:grid-cols-2 lg:grid-cols-4">
               {socialLinks.map(({ label, href, icon: Icon }) => (
                 <li key={href}>
-                  <a href={href} className="flex min-h-14 items-center gap-2.5 rounded-lg border border-white/20 bg-white/5 px-3 text-sm font-bold transition-colors hover:border-[#FF6B00] hover:text-[#FFA048] sm:px-4">
-                    {Icon ? <Icon size={18} className="shrink-0" aria-hidden="true" /> : (
-                      <span aria-hidden="true" className="grid size-[18px] shrink-0 place-items-center rounded-full bg-[#FF6B00] text-xs text-white">f</span>
-                    )}
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Visit BizLink on ${label}`}
+                    className="flex min-h-14 items-center gap-2.5 rounded-lg border border-white/20 bg-white/5 px-3 text-sm font-bold transition-colors hover:border-[#D35400] hover:text-[#FFA048] sm:px-4"
+                  >
+                    <Icon size={18} />
                     <span>{label}</span>
                     <ArrowUpRight size={16} className="ml-auto shrink-0 text-white/80" aria-hidden="true" />
                   </a>

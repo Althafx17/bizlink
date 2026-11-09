@@ -6,9 +6,9 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#FF6B00",
-          hover: "#E65A00",
-          light: "#FF8A3D",
+          DEFAULT: "#D35400",
+          hover: "#B84300",
+          light: "#FFA048",
         },
         navy: {
           DEFAULT: "#0F1B3D",
@@ -16,14 +16,14 @@ export default {
           dark: "#080F24",
         },
         orange: {
-          DEFAULT: "#FF6B00",
-          hover: "#E65A00",
-          light: "#FF8A3D",
-          accent: "#FFA048",
+          DEFAULT: "#D35400",
+          hover: "#B84300",
+          light: "#FFA048",
+          accent: "#FF9436",
         },
         accent: {
-          DEFAULT: "#FF6B00",
-          orange: "#FF6B00",
+          DEFAULT: "#D35400",
+          orange: "#D35400",
         },
         surface: "#0F1B3D",
         line: "rgb(255 255 255 / 15%)",

@@ -10,9 +10,9 @@ export const metadata: Metadata = {
 
 const categoryColors = {
   blue: {
-    border: "border-t-[#FF6B00]",
-    badge: "bg-[#FF6B00] text-white",
-    heading: "text-[#FF8A3D]",
+    border: "border-t-[#D35400]",
+    badge: "bg-[#D35400] text-white",
+    heading: "text-[#FFA048]",
   },
   orange: {
     border: "border-t-[#FFA048]",
@@ -20,9 +20,9 @@ const categoryColors = {
     heading: "text-[#FFA048]",
   },
   green: {
-    border: "border-t-[#FF6B00]",
-    badge: "bg-[#FF6B00] text-white",
-    heading: "text-[#FF8A3D]",
+    border: "border-t-[#D35400]",
+    badge: "bg-[#D35400] text-white",
+    heading: "text-[#FFA048]",
   },
 } as const;
 
@@ -94,15 +94,17 @@ const categoryDetails = {
 
 export default function ServicesPage() {
   return (
-    <main id="main-content" className="bg-transparent pt-16 sm:pt-20">
+    <main id="main-content" className="bg-transparent pt-20 sm:pt-28">
       <section aria-labelledby="services-title" className="border-b border-white/20 bg-transparent">
         <div className="shell pt-14 pb-10 sm:pt-20 sm:pb-12">
           <div aria-hidden="true" className="mb-5 flex gap-1">
-            <span className="h-1 w-7 rounded-full bg-[#FF6B00]" />
+            <span className="h-1 w-7 rounded-full bg-[#D35400]" />
             <span className="h-1 w-7 rounded-full bg-[#FFA048]" />
             <span className="h-1 w-7 rounded-full bg-white/40" />
           </div>
-          <h1 id="services-title" className="text-5xl leading-none font-extrabold tracking-tight sm:text-7xl">Our services</h1>
+          <h1 id="services-title" className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.2]">
+            Our services
+          </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/80">
             BIZ LINK - QATAR offers integrated solutions across Business, Trading, Facility, Automotive and Digital Services in Qatar.
           </p>
@@ -110,7 +112,10 @@ export default function ServicesPage() {
             <ul className="flex flex-wrap gap-2.5">
               {services.map(({ id, title }) => (
                 <li key={id}>
-                  <a href={`#${id}`} className="inline-block rounded-full border border-white/20 px-3.5 py-2 text-sm font-bold text-white hover:bg-white/5">
+                  <a
+                    href={`#${id}`}
+                    className="inline-block rounded-full border border-white/20 px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-white/10 hover:border-[#D35400]"
+                  >
                     {title}
                   </a>
                 </li>
@@ -121,7 +126,7 @@ export default function ServicesPage() {
       </section>
 
       <div className="shell py-12 sm:py-16">
-        <div className="grid gap-5 md:grid-cols-2 lg:gap-7">
+        <div className="grid gap-6 md:grid-cols-2 lg:gap-8">
           {services.map(({ id, title }, index) => {
             const { color, items } = categoryDetails[id];
             const palette = categoryColors[color];
@@ -131,33 +136,49 @@ export default function ServicesPage() {
                 key={id}
                 id={id}
                 aria-labelledby={`${id}-title`}
-                className={`scroll-mt-6 rounded-xl border border-white/20 border-t-4 bg-white/5 p-5 sm:p-8 md:last:col-span-2 ${palette.border}`}
+                className={`scroll-mt-24 rounded-2xl border border-white/20 border-t-4 bg-white/5 p-6 sm:p-8 shadow-[0_8px_20px_rgba(0,0,0,0.25)] md:last:col-span-2 ${palette.border}`}
               >
                 {id !== "automotive" && (
-                  <span id={id.split("-")[0]} className="block scroll-mt-6" aria-hidden="true" />
+                  <span id={id.split("-")[0]} className="block scroll-mt-24" aria-hidden="true" />
                 )}
                 <div className="flex items-center gap-3">
-                  <span aria-hidden="true" className={`grid size-9 shrink-0 place-items-center rounded-md text-sm font-extrabold tabular-nums ${palette.badge}`}>
+                  <span
+                    aria-hidden="true"
+                    className={`grid size-9 shrink-0 place-items-center rounded-lg text-sm font-extrabold tabular-nums shadow-sm ${palette.badge}`}
+                  >
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <h2 id={`${id}-title`} className={`text-base font-extrabold tracking-wide uppercase sm:text-xl ${palette.heading}`}>
+                  <h2
+                    id={`${id}-title`}
+                    className={`text-base font-extrabold tracking-wide uppercase sm:text-xl ${palette.heading}`}
+                  >
                     {title}
                   </h2>
                 </div>
-                <ul className={`mt-5 divide-y divide-line border-t border-line text-sm leading-relaxed text-white sm:text-base ${id === "digital-creative" ? "md:columns-2 md:gap-10 md:divide-y-0 md:border-t-0" : ""}`}>
+
+                {/* Elevated Service Cards replacing flat lists */}
+                <div className={`mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 ${id === "digital-creative" ? "lg:grid-cols-3" : ""}`}>
                   {items.map((item) => (
-                    <li key={item} className={`break-inside-avoid py-2.5 ${id === "digital-creative" ? "md:border-t md:border-line" : ""}`}>
-                      {item}
-                    </li>
+                    <div
+                      key={item}
+                      className="flex items-center gap-2.5 rounded-lg border border-white/10 bg-white/[0.04] p-3 text-sm font-medium text-white shadow-[0_4px_6px_rgba(0,0,0,0.15)] transition-all hover:bg-white/[0.08] hover:border-white/20"
+                    >
+                      <span className="size-2 rounded-full bg-[#D35400] shrink-0" aria-hidden="true" />
+                      <span>{item}</span>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </section>
             );
           })}
         </div>
 
-        <Link href="/contact" className="mt-8 inline-flex items-center gap-3 rounded-md bg-[#FF6B00] px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-[#E65A00]">
-          Get a Free Quote <ArrowRight size={18} aria-hidden="true" />
+        <Link
+          href="/contact"
+          className="mt-10 inline-flex items-center gap-3 rounded-full bg-[#D35400] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#D35400]/30 transition-all hover:bg-[#B84300] hover:shadow-xl hover:scale-[1.02]"
+        >
+          <span>Get a Free Quote</span>
+          <ArrowRight size={18} aria-hidden="true" />
         </Link>
       </div>
     </main>

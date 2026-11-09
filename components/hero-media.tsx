@@ -16,7 +16,8 @@ export function HeroMedia() {
     if (!video) return;
 
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const updateMotion = () => {
+
+    const attachVideo = () => {
       if (preference.matches) {
         video.pause();
         video.removeAttribute("src");
@@ -28,11 +29,29 @@ export function HeroMedia() {
         void video.play().catch(() => setPlaying(false));
       }
     };
-    preference.addEventListener("change", updateMotion);
-    updateMotion();
+
+    // Defer video initialization to idle so LCP and TTI are fast and unblocked
+    let idleId: number | undefined;
+    let timerId: NodeJS.Timeout | undefined;
+
+    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+      idleId = (window as unknown as { requestIdleCallback: (cb: () => void) => number }).requestIdleCallback(attachVideo);
+    } else {
+      timerId = setTimeout(attachVideo, 300);
+    }
+
+    const onMotionChange = () => {
+      attachVideo();
+    };
+
+    preference.addEventListener("change", onMotionChange);
 
     return () => {
-      preference.removeEventListener("change", updateMotion);
+      if (idleId && typeof window !== "undefined" && "cancelIdleCallback" in window) {
+        (window as unknown as { cancelIdleCallback: (id: number) => void }).cancelIdleCallback(idleId);
+      }
+      if (timerId) clearTimeout(timerId);
+      preference.removeEventListener("change", onMotionChange);
       video.pause();
       video.removeAttribute("src");
       video.load();
@@ -52,7 +71,15 @@ export function HeroMedia() {
   return (
     <>
       <div className={styles.media} aria-hidden="true">
-        <Image src="/images/doha-hero-poster.webp" alt="" fill sizes="100vw" preload className={styles.poster} />
+        <Image
+          src="/images/doha-hero-poster.webp"
+          alt=""
+          fill
+          sizes="100vw"
+          priority
+          quality={80}
+          className={styles.poster}
+        />
         <video
           ref={videoRef}
           className={styles.video}
@@ -60,7 +87,7 @@ export function HeroMedia() {
           muted
           playsInline
           loop
-          preload="metadata"
+          preload="none"
           onLoadedData={() => setReady(true)}
           onPlay={() => setPlaying(true)}
           onPause={() => setPlaying(false)}
@@ -70,9 +97,14 @@ export function HeroMedia() {
         />
       </div>
       {ready && (
-        <button type="button" className={styles.control} onClick={togglePlayback} aria-label={playing ? "Pause background video" : "Play background video"}>
-          {playing ? <Pause size={15} aria-hidden="true" /> : <Play size={15} aria-hidden="true" />}
-          {playing ? "Pause" : "Play"}
+        <button
+          type="button"
+          className={styles.control}
+          onClick={togglePlayback}
+          aria-label={playing ? "Pause background video" : "Play background video"}
+        >
+          {playing ? <Pause size={14} aria-hidden="true" /> : <Play size={14} aria-hidden="true" />}
+          <span>{playing ? "Pause" : "Play"}</span>
         </button>
       )}
     </>

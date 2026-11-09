@@ -142,14 +142,15 @@ export default function HomePage() {
               className="absolute size-72 sm:size-96 rounded-full bg-[#D35400]/20 blur-3xl pointer-events-none -z-10"
               aria-hidden="true"
             />
-            <div className="relative w-full flex justify-center lg:justify-end">
+            <div className="relative flex justify-center lg:justify-end w-full">
               <Image
                 src="/images/bizlink-logo-transparent-1.png"
                 alt="BizLink Monumental Emblem"
                 width={1120}
                 height={910}
                 sizes="(max-width: 48rem) 280px, (max-width: 80rem) 440px, 520px"
-                className="w-full max-w-[280px] sm:max-w-[340px] md:max-w-[380px] lg:max-w-[460px] xl:max-w-[520px] max-w-full h-auto object-contain filter drop-shadow-[0_0_35px_rgba(211,84,0,0.35)] drop-shadow-[0_25px_50px_rgba(0,0,0,0.75)] transition-transform duration-500 hover:scale-[1.02]"
+                className="w-64 sm:w-80 md:w-96 lg:w-[460px] xl:w-[520px] max-w-full h-auto object-contain filter drop-shadow-[0_0_35px_rgba(211,84,0,0.35)] drop-shadow-[0_25px_50px_rgba(0,0,0,0.75)] transition-transform duration-500 hover:scale-[1.02]"
+                style={{ maxWidth: "100%" }}
                 priority
               />
             </div>

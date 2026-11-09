@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import styles from "./hero-media.module.css";
 
+const HERO_VIDEO_SPEED = 1.0;
+
 export function HeroMedia() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [ready, setReady] = useState(false);
@@ -22,8 +24,7 @@ export function HeroMedia() {
         setReady(false);
       } else {
         video.src = "/videos/hero-bg.mp4";
-        // Less motion speed as requested
-        video.playbackRate = 0.8;
+        video.playbackRate = HERO_VIDEO_SPEED;
         video.load();
         void video.play().catch(() => undefined);
       }
@@ -31,7 +32,7 @@ export function HeroMedia() {
 
     const keepPlaying = () => {
       if (!preference.matches && video.src && video.paused) {
-        video.playbackRate = 0.8;
+        video.playbackRate = HERO_VIDEO_SPEED;
         void video.play().catch(() => undefined);
       }
     };
@@ -90,7 +91,7 @@ export function HeroMedia() {
         onLoadedData={() => {
           setReady(true);
           if (videoRef.current) {
-            videoRef.current.playbackRate = 0.8;
+            videoRef.current.playbackRate = HERO_VIDEO_SPEED;
           }
         }}
         onError={() => setReady(false)}

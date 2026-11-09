@@ -49,6 +49,8 @@ export function SiteNavbar() {
     return null;
   }
 
+  const isAboutStatic = pathname === "/about" && !isScrolled && !mobileMenuOpen;
+
   return (
     <div
       className={`fixed z-50 left-0 right-0 flex justify-center pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
@@ -71,7 +73,7 @@ export function SiteNavbar() {
             className="group flex items-center gap-2.5 transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D35400] rounded-full min-h-[44px] min-w-[44px]"
             aria-label="BizLink Qatar Home"
           >
-            <span className="relative flex size-10 items-center justify-center rounded-lg bg-white/10 p-1.5 ring-1 ring-white/15 transition-transform duration-200 group-hover:scale-105">
+            <span className={`relative flex size-10 items-center justify-center rounded-lg p-1.5 ring-1 transition-transform duration-200 group-hover:scale-105 ${isAboutStatic ? "bg-[#0F1B3D]/10 ring-[#0F1B3D]/15" : "bg-white/10 ring-white/15"}`}>
               <Image
                 src="/images/bizlink-logo-transparent-1.png"
                 alt="BizLink"
@@ -82,7 +84,7 @@ export function SiteNavbar() {
               />
             </span>
             <span className="flex flex-col leading-none">
-              <span className="text-sm sm:text-base font-extrabold tracking-tight text-white drop-shadow-sm">
+              <span className={`text-sm sm:text-base font-extrabold tracking-tight drop-shadow-sm ${isAboutStatic ? "text-[#0F1B3D]" : "text-white"}`}>
                 BizLink<span className="text-[#D35400]">.</span>
               </span>
               <span className="text-[10px] font-bold tracking-widest text-[#FFA048] uppercase">
@@ -101,8 +103,12 @@ export function SiteNavbar() {
                   href={href}
                   className={`relative min-h-[44px] inline-flex items-center px-4 py-2 rounded-full text-xs lg:text-sm font-semibold transition-all duration-200 ${
                     isActive
-                      ? "bg-white/15 text-white shadow-sm"
-                      : "text-white/80 hover:text-white hover:bg-white/10 drop-shadow-sm"
+                      ? isAboutStatic
+                        ? "bg-[#0F1B3D]/10 text-[#0F1B3D] shadow-sm"
+                        : "bg-white/15 text-white shadow-sm"
+                      : isAboutStatic
+                        ? "text-[#0F1B3D]/75 hover:text-[#0F1B3D] hover:bg-[#0F1B3D]/5"
+                        : "text-white/80 hover:text-white hover:bg-white/10 drop-shadow-sm"
                   }`}
                 >
                   {label}
@@ -121,7 +127,7 @@ export function SiteNavbar() {
           <div className="flex items-center gap-2.5 sm:gap-4">
             <a
               href="tel:+97450091006"
-              className="hidden lg:inline-flex min-h-[44px] items-center gap-1.5 text-xs font-semibold text-white/80 transition-colors duration-150 hover:text-[#FFA048] drop-shadow-sm"
+              className={`hidden lg:inline-flex min-h-[44px] items-center gap-1.5 text-xs font-semibold transition-colors duration-150 hover:text-[#FFA048] ${isAboutStatic ? "text-[#0F1B3D]/75" : "text-white/80 drop-shadow-sm"}`}
             >
               <Phone size={14} className="text-[#D35400]" aria-hidden="true" />
               <span>+974 5009 1006</span>
@@ -145,7 +151,7 @@ export function SiteNavbar() {
               onClick={() => setMobileMenuOpen((open) => !open)}
               aria-expanded={mobileMenuOpen}
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-              className="md:hidden flex size-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition-colors hover:bg-white/20"
+              className={`md:hidden flex size-11 items-center justify-center rounded-full transition-colors ${isAboutStatic ? "border border-[#0F1B3D]/20 bg-[#0F1B3D]/10 text-[#0F1B3D] hover:bg-[#0F1B3D]/15" : "border border-white/20 bg-white/10 text-white hover:bg-white/20"}`}
             >
               {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>

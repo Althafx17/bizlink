@@ -42,6 +42,19 @@
 }
 
 @layer components {
+  .hero-logo-color-cycle {
+    animation: bizlink-logo-color-cycle 10s steps(1, end) infinite;
+  }
+
+  @keyframes bizlink-logo-color-cycle {
+    0%, 50% { filter: none; }
+    50.01%, 100% { filter: hue-rotate(160deg) saturate(1.25); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-logo-color-cycle { animation: none; }
+  }
+
   .shell {
     width: min(100% - 7rem, 80rem);
     margin-inline: auto;

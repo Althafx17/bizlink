@@ -43,12 +43,14 @@
 
 @layer components {
   .hero-logo-color-cycle {
-    animation: bizlink-logo-color-cycle 10s steps(1, end) infinite;
+    animation: bizlink-logo-color-cycle 16s ease-in-out infinite;
   }
 
   @keyframes bizlink-logo-color-cycle {
-    0%, 50% { filter: none; }
-    50.01%, 100% { filter: hue-rotate(160deg) saturate(1.25); }
+    0%, 56.25% { filter: none; }
+    62.5% { filter: hue-rotate(160deg) saturate(1.25); }
+    93.75% { filter: hue-rotate(160deg) saturate(1.25); }
+    100% { filter: none; }
   }
 
   @media (prefers-reduced-motion: reduce) {

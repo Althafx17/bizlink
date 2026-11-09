@@ -56,7 +56,7 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-              <div className="absolute inset-0 grid place-items-center bg-[#F7F9FC] lg:hidden">
+              <div className="absolute inset-0 grid place-items-center bg-[#101A2B] lg:hidden">
                 <Image src="/images/bizlink-logo-transparent-1.png" alt="BizLink logo" width={1120} height={910} sizes="280px" className="hero-logo-color-cycle h-auto w-[72%] object-contain" />
                 <span className="absolute bottom-8 text-[10px] font-bold uppercase tracking-[0.22em] text-[#0F1B3D]/60">BizLink Qatar</span>
               </div>

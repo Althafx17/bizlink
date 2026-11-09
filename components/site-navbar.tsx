@@ -15,36 +15,15 @@ const navLinks = [
 
 export function SiteNavbar() {
   const pathname = usePathname();
-  const [isAtTop, setIsAtTop] = useState(true);
-  const [showScrolledNav, setShowScrolledNav] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    let lastScrollY = typeof window !== "undefined" ? window.scrollY : 0;
     let ticking = false;
 
     const updateScroll = () => {
       const currentScrollY = window.scrollY;
-
-      if (currentScrollY <= 24) {
-        // Initial form at the top: strictly NO background
-        setIsAtTop(true);
-        setShowScrolledNav(false);
-      } else {
-        setIsAtTop(false);
-
-        const delta = currentScrollY - lastScrollY;
-        // Direction threshold to prevent trackpad flutter
-        if (delta < -6) {
-          // Scrolling UP -> Reveal the rounded navbar with background
-          setShowScrolledNav(true);
-        } else if (delta > 8) {
-          // Scrolling DOWN -> Hide the navbar
-          setShowScrolledNav(false);
-        }
-      }
-
-      lastScrollY = currentScrollY;
+      setIsScrolled(currentScrollY > 20);
       ticking = false;
     };
 
@@ -70,29 +49,17 @@ export function SiteNavbar() {
     return null;
   }
 
-  // Determine visibility:
-  // - Always visible at the top (in initial form)
-  // - When scrolled: visible when scrolling UP or when mobile menu is open
-  const isVisible = isAtTop || showScrolledNav || mobileMenuOpen;
-
-  // Background is only applied when scrolled away from top
-  const hasBackground = !isAtTop && (showScrolledNav || mobileMenuOpen);
-
   return (
     <div
       className={`fixed z-50 left-0 right-0 flex justify-center pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-        isAtTop
-          ? "top-0"
-          : "top-3 sm:top-4"
-      } ${
-        isVisible
-          ? "translate-y-0 opacity-100"
-          : "-translate-y-28 opacity-0"
+        isScrolled
+          ? "top-3 sm:top-4"
+          : "top-0"
       }`}
     >
       <header
         className={`pointer-events-auto relative flex items-center transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-          hasBackground
+          isScrolled || mobileMenuOpen
             ? "w-[calc(100%-1.5rem)] sm:w-[calc(100%-3rem)] max-w-5xl rounded-full bg-[#0F1B3D]/90 backdrop-blur-md border border-white/15 shadow-2xl shadow-black/50 min-h-[60px] sm:min-h-[66px] py-2 px-4 sm:px-6"
             : "w-full max-w-7xl bg-transparent border-transparent shadow-none backdrop-blur-none min-h-[72px] sm:min-h-[80px] py-3.5 sm:py-4 px-4 sm:px-6 lg:px-8"
         }`}

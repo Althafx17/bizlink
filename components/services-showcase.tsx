@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, ChevronLeft, ChevronRight, Phone } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 
 export interface ShowcaseService {
   id: string;
@@ -121,11 +121,13 @@ export const showcaseServices: readonly ShowcaseService[] = [
 interface ServicesShowcaseProps {
   initialServiceId?: string;
   isStandalonePage?: boolean;
+  autoPlayInterval?: number; // Duration in ms (defaults to 3000ms = 3s span)
 }
 
 export function ServicesShowcase({
   initialServiceId,
   isStandalonePage = false,
+  autoPlayInterval = 3000, // 3-second cycle requested by user
 }: ServicesShowcaseProps) {
   const initialIndex = initialServiceId
     ? Math.max(0, showcaseServices.findIndex((s) => s.id === initialServiceId))
@@ -161,14 +163,14 @@ export function ServicesShowcase({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [handleNext, handlePrev]);
 
-  // Subtle auto-advance when not hovered
+  // Exact 3-second span auto-rotation: card image smoothly expands into background
   useEffect(() => {
     if (isPaused) return;
     const timer = setInterval(() => {
       handleNext();
-    }, 7000);
+    }, autoPlayInterval);
     return () => clearInterval(timer);
-  }, [isPaused, handleNext]);
+  }, [isPaused, activeIndex, autoPlayInterval, handleNext]);
 
   // Other services queue for the right carousel deck
   const cardsQueue = showcaseServices
@@ -183,17 +185,21 @@ export function ServicesShowcase({
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Top slide progress indicator line (from reference video) */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-white/10 z-30">
-        <div
-          className="h-full bg-[#D35400] transition-all duration-700 ease-out"
-          style={{
-            width: `${((activeIndex + 1) / showcaseServices.length) * 100}%`,
+      {/* 3-Second Active Progress Bar (Fills smoothly across the 3s span, then advances) */}
+      <div className="absolute top-0 left-0 right-0 h-1.5 bg-white/10 z-30 overflow-hidden">
+        <motion.div
+          key={activeIndex}
+          initial={{ width: "0%" }}
+          animate={{ width: isPaused ? "100%" : "100%" }}
+          transition={{
+            duration: autoPlayInterval / 1000,
+            ease: "linear",
           }}
+          className="h-full bg-gradient-to-r from-[#D35400] to-[#FFA048]"
         />
       </div>
 
-      {/* Crossfading Backgrounds with Cinematographic Vignettes */}
+      {/* Crossfading Backgrounds with Card Expansion Animation */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {showcaseServices.map((service, idx) => {
           const isActive = idx === activeIndex;
@@ -201,18 +207,25 @@ export function ServicesShowcase({
             <div
               key={service.id}
               className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                isActive ? "opacity-100 scale-100" : "opacity-0 scale-105"
-              } transition-transform duration-1000 ease-out`}
+                isActive ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+              }`}
               aria-hidden={!isActive}
             >
-              <Image
-                src={service.bgImage}
-                alt={service.title}
-                fill
-                priority={idx === 0}
-                sizes="100vw"
-                className="object-cover object-center brightness-[0.78] contrast-[1.08]"
-              />
+              <motion.div
+                initial={false}
+                animate={isActive ? { scale: 1 } : { scale: 1.08 }}
+                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={service.bgImage}
+                  alt={service.title}
+                  fill
+                  priority={idx === 0 || idx === 1}
+                  sizes="100vw"
+                  className="object-cover object-center brightness-[0.78] contrast-[1.08]"
+                />
+              </motion.div>
               {/* Vignette gradients to guarantee pristine readability */}
               <div className="absolute inset-0 bg-gradient-to-r from-[#0F1B3D]/95 via-[#0F1B3D]/75 to-[#0F1B3D]/40" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A1128] via-transparent to-[#0F1B3D]/70" />
@@ -231,7 +244,8 @@ export function ServicesShowcase({
           </span>
         </div>
         <div className="hidden sm:flex items-center gap-2 text-xs font-semibold tracking-wider text-white/60">
-          <span>ONE ROOF · INTEGRATED BUSINESS SOLUTIONS</span>
+          <Sparkles size={13} className="text-[#FFA048]" />
+          <span>AUTOPLAY (3S SPAN) · CLICK ANY CARD TO FOCUS</span>
         </div>
       </div>
 
@@ -245,7 +259,7 @@ export function ServicesShowcase({
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -16 }}
-              transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
               className="flex flex-col gap-5 sm:gap-6"
             >
               {/* Category Subtitle with Accent Dash */}
@@ -279,7 +293,7 @@ export function ServicesShowcase({
                 ))}
               </div>
 
-              {/* Action Buttons (Video Style: Circle Button + Glass Pill Button) */}
+              {/* Action Buttons (Circle Button + Glass Pill Button) */}
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <Link
                   href={activeService.link}
@@ -310,53 +324,70 @@ export function ServicesShowcase({
           </AnimatePresence>
         </div>
 
-        {/* Right Column: Floating Interactive Card Deck (Exact match to reference video) */}
+        {/* Right Column: Floating Interactive Card Deck */}
         <div className="lg:col-span-6 xl:col-span-7 flex items-center overflow-visible">
           <div className="w-full relative">
             <div className="flex items-center gap-4 sm:gap-5 overflow-x-auto pb-4 pt-2 no-scrollbar scroll-smooth">
-              {cardsQueue.map((item, index) => (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => handleSelect(item.id)}
-                  className="group relative shrink-0 w-[200px] sm:w-[230px] md:w-[250px] aspect-[3/4] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl shadow-black/80 border border-white/20 text-left transition-all duration-300 hover:scale-[1.03] hover:-translate-y-1 hover:border-[#FFA048] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D35400]"
-                  aria-label={`Switch to ${item.title}`}
-                >
-                  {/* Card Background Image */}
-                  <Image
-                    src={item.cardImage}
-                    alt={item.title}
-                    fill
-                    sizes="(max-width: 640px) 200px, (max-width: 1024px) 230px, 250px"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-110 brightness-[0.88]"
-                  />
+              {cardsQueue.map((item, index) => {
+                const isNextInQueue = index === 0;
 
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-transparent transition-opacity group-hover:opacity-90" />
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => handleSelect(item.id)}
+                    className={`group relative shrink-0 w-[200px] sm:w-[230px] md:w-[250px] aspect-[3/4] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl shadow-black/80 text-left transition-all duration-300 hover:scale-[1.04] hover:-translate-y-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D35400] ${
+                      isNextInQueue
+                        ? "border-2 border-[#FFA048] ring-4 ring-[#FFA048]/20"
+                        : "border border-white/20 hover:border-[#FFA048]"
+                    }`}
+                    aria-label={`Switch to ${item.title}`}
+                  >
+                    {/* Card Background Image */}
+                    <Image
+                      src={item.cardImage}
+                      alt={item.title}
+                      fill
+                      sizes="(max-width: 640px) 200px, (max-width: 1024px) 230px, 250px"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-110 brightness-[0.88]"
+                    />
 
-                  {/* Number Badge at Top Right */}
-                  <span className="absolute top-3.5 right-3.5 text-xs font-mono font-bold text-white/90 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15">
-                    {item.number}
-                  </span>
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-transparent transition-opacity group-hover:opacity-90" />
 
-                  {/* Card Details at Bottom */}
-                  <div className="absolute bottom-0 inset-x-0 p-4 sm:p-5 flex flex-col gap-1 z-10">
-                    <span className="w-5 h-[2px] bg-[#FFA048] mb-1 group-hover:w-8 transition-all duration-300" />
-                    <span className="text-[10px] font-bold text-white/70 uppercase tracking-widest truncate">
-                      {item.tag.split("·")[0]}
-                    </span>
-                    <h3 className="text-sm sm:text-base font-extrabold text-white uppercase tracking-tight leading-tight group-hover:text-[#FFA048] transition-colors">
-                      {item.title}
-                    </h3>
-                  </div>
-                </button>
-              ))}
+                    {/* Number Badge & 'Up Next' Tag at Top Right */}
+                    <div className="absolute top-3.5 inset-x-3.5 flex items-center justify-between">
+                      {isNextInQueue ? (
+                        <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#FFA048] bg-black/60 px-2.5 py-1 rounded-full border border-[#FFA048]/40 backdrop-blur-md">
+                          Next in 3s
+                        </span>
+                      ) : (
+                        <span />
+                      )}
+                      <span className="text-xs font-mono font-bold text-white/90 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15">
+                        {item.number}
+                      </span>
+                    </div>
+
+                    {/* Card Details at Bottom */}
+                    <div className="absolute bottom-0 inset-x-0 p-4 sm:p-5 flex flex-col gap-1 z-10">
+                      <span className="w-5 h-[2px] bg-[#FFA048] mb-1 group-hover:w-8 transition-all duration-300" />
+                      <span className="text-[10px] font-bold text-white/70 uppercase tracking-widest truncate">
+                        {item.tag.split("·")[0]}
+                      </span>
+                      <h3 className="text-sm sm:text-base font-extrabold text-white uppercase tracking-tight leading-tight group-hover:text-[#FFA048] transition-colors">
+                        {item.title}
+                      </h3>
+                    </div>
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom Controls Row (Circular Arrows + Horizontal Progress Track + Big Number) */}
+      {/* Bottom Controls Row */}
       <div className="relative z-20 pb-8 sm:pb-10 px-4 sm:px-8 lg:px-14 flex items-center justify-between gap-6 border-t border-white/10 pt-5">
         {/* Left: Circular Arrow Navigation */}
         <div className="flex items-center gap-3">
@@ -377,11 +408,11 @@ export function ServicesShowcase({
             <ChevronRight size={20} />
           </button>
           <span className="hidden md:inline-block text-xs font-semibold text-white/50 pl-2">
-            Use arrows or click cards to explore
+            Auto-rotates every 3s · Click any card to select
           </span>
         </div>
 
-        {/* Center: Sleek Horizontal Track with Active Segment */}
+        {/* Center: Progress Bar Track with Slide Steps */}
         <div className="flex-1 max-w-md mx-4 hidden sm:block">
           <div className="relative h-[2px] w-full bg-white/20 rounded-full overflow-hidden">
             <div
@@ -393,7 +424,7 @@ export function ServicesShowcase({
           </div>
         </div>
 
-        {/* Right: Big Stylized Numeral (Video Style: 01, 02, etc.) */}
+        {/* Right: Big Stylized Numeral */}
         <div className="flex items-baseline gap-1.5 font-extrabold tracking-tight">
           <span className="text-3xl sm:text-5xl text-white font-mono leading-none">
             {activeService.number}
@@ -406,4 +437,3 @@ export function ServicesShowcase({
     </section>
   );
 }
-

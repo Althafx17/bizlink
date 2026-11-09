@@ -170,8 +170,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Interactive Cinematic Services Showcase (Matching Reference Video) */}
-      <ServicesShowcase />
+      {/* Interactive Cinematic Services Showcase (Matching Reference Video, 3s Cycle) */}
+      <ServicesShowcase autoPlayInterval={3000} />
 
       {/* Company Overview (About, Principles, Values, Footprint, Why BizLink) */}
       <CompanyOverview includeWhy includeServices={false} />

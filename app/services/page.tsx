@@ -115,8 +115,8 @@ const categoryDetails = {
 export default function ServicesPage() {
   return (
     <main id="main-content" className="bg-[#0F1B3D] text-white">
-      {/* 1. Interactive Cinematic Showcase (Matching Reference Video) */}
-      <ServicesShowcase isStandalonePage />
+      {/* 1. Interactive Cinematic Showcase (Matching Reference Video, 3s Cycle) */}
+      <ServicesShowcase isStandalonePage autoPlayInterval={3000} />
 
       {/* 2. Comprehensive Detailed Directory for All 5 Divisions */}
       <section

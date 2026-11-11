@@ -112,8 +112,8 @@ export const showcaseServices: readonly ShowcaseService[] = [
       "Digital Marketing & SEO",
       "Corporate IT & Cloud Setup",
     ],
-    bgImage: "/images/services/digital-creative-bg.webp",
-    cardImage: "/images/services/digital-creative-card.webp",
+    bgImage: "/images/about/philosophy-detail.webp",
+    cardImage: "/images/about/doha-corporate.webp",
     link: "/services#digital-creative",
   },
 ] as const;
@@ -195,7 +195,7 @@ export function ServicesShowcase({
             duration: autoPlayInterval / 1000,
             ease: "linear",
           }}
-          className="h-full bg-gradient-to-r from-[#D35400] to-[#FFA048]"
+          className="h-full bg-gradient-to-r from-[#0056B3] to-[#00A2E8]"
         />
       </div>
 
@@ -227,8 +227,8 @@ export function ServicesShowcase({
                 />
               </motion.div>
               {/* Vignette gradients to guarantee pristine readability */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0F1B3D]/95 via-[#0F1B3D]/75 to-[#0F1B3D]/40" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A1128] via-transparent to-[#0F1B3D]/70" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#0B2C5F]/95 via-[#0B2C5F]/75 to-[#0B2C5F]/40" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#071E42] via-transparent to-[#0B2C5F]/70" />
               <div className="absolute inset-0 bg-radial-at-c from-transparent via-black/25 to-black/60" />
             </div>
           );
@@ -238,13 +238,13 @@ export function ServicesShowcase({
       {/* Top Brand & Category Kicker */}
       <div className="relative z-20 pt-24 sm:pt-28 px-4 sm:px-8 lg:px-14 flex items-center justify-between border-b border-white/10 pb-4">
         <div className="flex items-center gap-3">
-          <span className="size-2 rounded-full bg-[#D35400] animate-pulse" />
-          <span className="text-xs sm:text-sm font-extrabold uppercase tracking-[0.3em] text-[#FFA048]">
+          <span className="size-2 rounded-full bg-[#00A2E8] animate-pulse" />
+          <span className="text-xs sm:text-sm font-extrabold uppercase tracking-[0.3em] text-[#7CD4FF]">
             OUR SERVICES · BIZLINK QATAR
           </span>
         </div>
         <div className="hidden sm:flex items-center gap-2 text-xs font-semibold tracking-wider text-white/60">
-          <Sparkles size={13} className="text-[#FFA048]" />
+          <Sparkles size={13} className="text-[#7CD4FF]" />
           <span>AUTOPLAY (3S SPAN) · CLICK ANY CARD TO FOCUS</span>
         </div>
       </div>
@@ -264,8 +264,8 @@ export function ServicesShowcase({
             >
               {/* Category Subtitle with Accent Dash */}
               <div className="flex items-center gap-3">
-                <span className="w-8 h-[2px] bg-[#FFA048] inline-block" />
-                <p className="text-xs sm:text-sm font-bold tracking-[0.22em] text-[#FFA048] uppercase">
+                <span className="w-8 h-[2px] bg-[#00A2E8] inline-block" />
+                <p className="text-xs sm:text-sm font-bold tracking-[0.22em] text-[#7CD4FF] uppercase">
                   {activeService.tag}
                 </p>
               </div>
@@ -297,7 +297,7 @@ export function ServicesShowcase({
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <Link
                   href={activeService.link}
-                  className="size-12 rounded-full bg-[#D35400] text-white flex items-center justify-center shadow-lg shadow-[#D35400]/40 transition-all duration-200 hover:bg-[#B84300] hover:scale-105 active:scale-95 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                  className="size-12 rounded-full bg-[#0056B3] text-white flex items-center justify-center shadow-lg shadow-[#0056B3]/40 transition-all duration-200 hover:bg-[#004088] hover:scale-105 active:scale-95 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                   aria-label={`View ${activeService.title} details`}
                 >
                   <ArrowUpRight
@@ -308,14 +308,14 @@ export function ServicesShowcase({
 
                 <Link
                   href={activeService.link}
-                  className="px-6 py-3 rounded-full border border-white/30 bg-white/10 backdrop-blur-md text-white hover:border-white hover:bg-white/20 text-xs sm:text-sm font-bold tracking-wider uppercase transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D35400]"
+                  className="px-6 py-3 rounded-full border border-white/30 bg-white/10 backdrop-blur-md text-white hover:border-white hover:bg-white/20 text-xs sm:text-sm font-bold tracking-wider uppercase transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00A2E8]"
                 >
                   Explore Solutions
                 </Link>
 
                 <Link
                   href="/contact"
-                  className="px-5 py-3 rounded-full bg-white/10 text-[#FFA048] border border-white/15 hover:bg-white/20 text-xs sm:text-sm font-bold tracking-wider uppercase transition-all duration-200"
+                  className="px-5 py-3 rounded-full bg-white text-[#0B2C5F] hover:bg-[#EAF2FA] text-xs sm:text-sm font-bold tracking-wider uppercase transition-all duration-200 shadow-md"
                 >
                   Get a Free Quote
                 </Link>
@@ -336,10 +336,10 @@ export function ServicesShowcase({
                     key={item.id}
                     type="button"
                     onClick={() => handleSelect(item.id)}
-                    className={`group relative shrink-0 w-[200px] sm:w-[230px] md:w-[250px] aspect-[3/4] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl shadow-black/80 text-left transition-all duration-300 hover:scale-[1.04] hover:-translate-y-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D35400] ${
+                    className={`group relative shrink-0 w-[200px] sm:w-[230px] md:w-[250px] aspect-[3/4] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl shadow-black/80 text-left transition-all duration-300 hover:scale-[1.04] hover:-translate-y-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00A2E8] ${
                       isNextInQueue
-                        ? "border-2 border-[#FFA048] ring-4 ring-[#FFA048]/20"
-                        : "border border-white/20 hover:border-[#FFA048]"
+                        ? "border-2 border-[#00A2E8] ring-4 ring-[#00A2E8]/25"
+                        : "border border-white/20 hover:border-[#00A2E8]"
                     }`}
                     aria-label={`Switch to ${item.title}`}
                   >
@@ -358,7 +358,7 @@ export function ServicesShowcase({
                     {/* Number Badge & 'Up Next' Tag at Top Right */}
                     <div className="absolute top-3.5 inset-x-3.5 flex items-center justify-between">
                       {isNextInQueue ? (
-                        <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#FFA048] bg-black/60 px-2.5 py-1 rounded-full border border-[#FFA048]/40 backdrop-blur-md">
+                        <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#7CD4FF] bg-[#0B2C5F]/80 px-2.5 py-1 rounded-full border border-[#00A2E8]/40 backdrop-blur-md">
                           Next in 3s
                         </span>
                       ) : (
@@ -371,11 +371,11 @@ export function ServicesShowcase({
 
                     {/* Card Details at Bottom */}
                     <div className="absolute bottom-0 inset-x-0 p-4 sm:p-5 flex flex-col gap-1 z-10">
-                      <span className="w-5 h-[2px] bg-[#FFA048] mb-1 group-hover:w-8 transition-all duration-300" />
+                      <span className="w-5 h-[2px] bg-[#00A2E8] mb-1 group-hover:w-8 transition-all duration-300" />
                       <span className="text-[10px] font-bold text-white/70 uppercase tracking-widest truncate">
                         {item.tag.split("·")[0]}
                       </span>
-                      <h3 className="text-sm sm:text-base font-extrabold text-white uppercase tracking-tight leading-tight group-hover:text-[#FFA048] transition-colors">
+                      <h3 className="text-sm sm:text-base font-extrabold text-white uppercase tracking-tight leading-tight group-hover:text-[#7CD4FF] transition-colors">
                         {item.title}
                       </h3>
                     </div>
@@ -395,7 +395,7 @@ export function ServicesShowcase({
             type="button"
             onClick={handlePrev}
             aria-label="Previous service"
-            className="size-11 sm:size-12 rounded-full border border-white/30 text-white flex items-center justify-center hover:border-white hover:bg-white/15 transition-all duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D35400]"
+            className="size-11 sm:size-12 rounded-full border border-white/30 text-white flex items-center justify-center hover:border-white hover:bg-white/15 transition-all duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00A2E8]"
           >
             <ChevronLeft size={20} />
           </button>
@@ -403,7 +403,7 @@ export function ServicesShowcase({
             type="button"
             onClick={handleNext}
             aria-label="Next service"
-            className="size-11 sm:size-12 rounded-full border border-white/30 text-white flex items-center justify-center hover:border-white hover:bg-white/15 transition-all duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D35400]"
+            className="size-11 sm:size-12 rounded-full border border-white/30 text-white flex items-center justify-center hover:border-white hover:bg-white/15 transition-all duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00A2E8]"
           >
             <ChevronRight size={20} />
           </button>
@@ -416,7 +416,7 @@ export function ServicesShowcase({
         <div className="flex-1 max-w-md mx-4 hidden sm:block">
           <div className="relative h-[2px] w-full bg-white/20 rounded-full overflow-hidden">
             <div
-              className="absolute top-0 bottom-0 left-0 bg-[#D35400] transition-all duration-500 ease-out rounded-full"
+              className="absolute top-0 bottom-0 left-0 bg-[#00A2E8] transition-all duration-500 ease-out rounded-full"
               style={{
                 width: `${((activeIndex + 1) / showcaseServices.length) * 100}%`,
               }}

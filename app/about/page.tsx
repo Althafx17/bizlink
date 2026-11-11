@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main id="main-content" className="bg-[#FAF9F6] min-h-screen">
+    <main id="main-content" className="bg-white min-h-screen">
       <AboutSection isStandalonePage />
     </main>
   );

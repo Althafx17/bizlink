@@ -14,7 +14,7 @@ const inter = Inter({
 const siteTitle = "BizLink Trading and Contracting Services WLL";
 
 export const viewport: Viewport = {
-  themeColor: "#0F1B3D",
+  themeColor: "#0B2C5F",
   width: "device-width",
   initialScale: 1,
 };
@@ -35,15 +35,6 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en" className={inter.variable}>
-      <head>
-        <link
-          rel="preload"
-          as="image"
-          href="/images/hero-poster.webp"
-          type="image/webp"
-          fetchPriority="high"
-        />
-      </head>
       <body className={inter.className}>
         <SiteNavbar />
         {children}

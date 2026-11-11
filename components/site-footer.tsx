@@ -41,8 +41,8 @@ export function SiteFooter() {
               <li><a href="mailto:bizlink.qa@gmail.com">bizlink.qa@gmail.com</a></li>
             </ul>
             <address className={styles.address}>
-              <Link href="/contact#branches-title">Ain Khalid – Head Office, Doha, Qatar</Link>
-              <Link href="/contact#branches-title">Bin Mahmoud – Branch, Doha, Qatar</Link>
+              <Link href="/#offices-map">Ain Khalid – Head Office, Souq Naif, Street 100, Doha</Link>
+              <Link href="/#offices-map">Bin Mahmoud – Bldg #28, Unit #7, Al Jazeera St, Doha</Link>
             </address>
           </div>
         </div>

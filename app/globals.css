@@ -3,30 +3,18 @@
 
 @layer base {
   :root {
-    --site-text: #ffffff;
-    --site-muted: #d1d9e6;
-    --site-line: rgb(255 255 255 / 16%);
-    --site-card: rgb(255 255 255 / 6%);
-    --site-panel: rgb(15 27 61 / 75%);
-  }
-
-  body::before {
-    position: fixed;
-    z-index: -1;
-    inset: -35px;
-    pointer-events: none;
-    background:
-      linear-gradient(110deg, rgb(15 27 61 / 95%), rgb(15 27 61 / 82%)),
-      url("/images/doha-skyline.webp") center / cover no-repeat;
-    filter: blur(18px);
-    content: "";
+    --site-text: #0b2c5f;
+    --site-muted: #475d7a;
+    --site-line: rgb(11 44 95 / 12%);
+    --site-card: #f2f7fd;
+    --site-panel: #ffffff;
   }
 
   body {
     position: relative;
     isolation: isolate;
     min-height: 100vh;
-    background: #0f1b3d;
+    background: #ffffff;
     color: var(--site-text);
     font-family: var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
@@ -36,7 +24,7 @@
   }
 
   :focus-visible {
-    outline: 3px solid #D35400;
+    outline: 3px solid #0056b3;
     outline-offset: 4px;
   }
 }

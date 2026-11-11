@@ -210,9 +210,89 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right Prototype Visual Signature: Tall Arch + Overlapping White Circle Emblem */}
-            <div className="lg:col-span-6 flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-[270px] sm:max-w-[330px] lg:max-w-[390px] pb-4 pl-4 sm:pl-8">
+            {/* Mobile View Hero Image Section: Bright Sky + Doha Skyline BG + Suited Royal-Blue BizLink Logo */}
+            <div className="lg:col-span-6 lg:hidden">
+              <div className="relative mx-auto w-full max-w-lg aspect-[2.05/1] sm:aspect-[2.25/1] overflow-hidden rounded-3xl border border-[#0077CC]/15 bg-white shadow-xl shadow-[#0B2C5F]/12">
+                {/* Container Background Image: Bright Sky-White Gradient + Sunlit Doha Skyline & Cyan/Navy Corner Wave */}
+                <Image
+                  src="/images/hero-mobile-skyline-bg.webp"
+                  alt="Doha West Bay skyline background"
+                  fill
+                  priority
+                  sizes="(max-width: 640px) 95vw, 540px"
+                  className="object-cover object-right-bottom"
+                />
+
+                {/* Protective White Radial-to-Right Mist Guaranteeing Zero Skyline Text Overlap */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-y-0 left-0 w-[62%] bg-gradient-to-r from-white via-white/95 via-[72%] to-transparent"
+                />
+
+                {/* Soft Bottom-Left Navy Wave Accent mirroring the Banner Curve */}
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 320 44"
+                  preserveAspectRatio="none"
+                  className="pointer-events-none absolute bottom-0 left-0 z-[2] h-4 sm:h-5 w-[38%] text-[#0B2C5F]"
+                >
+                  <path fill="currentColor" d="M0,14 Q95,42 220,44 L0,44 Z" />
+                </svg>
+
+                {/* Top-Right Handwritten-Style Accent above Towers */}
+                <div className="pointer-events-none absolute right-3.5 top-2.5 sm:right-5 sm:top-4 z-[3] text-right">
+                  <p className="font-serif italic font-bold text-xs sm:text-sm leading-tight text-[#0B2C5F] -rotate-6">
+                    Your Trusted
+                    <span className="block -mt-0.5 pr-1">Partner</span>
+                  </p>
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 110 14"
+                    className="ml-auto mt-0.5 h-2 w-16 sm:w-20 text-[#0B2C5F] -rotate-6"
+                  >
+                    <path
+                      d="M4,11 Q55,2 106,6"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.4"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </div>
+
+                {/* Suited Logo & Tagline Lockup positioned cleanly over Pure Left White Sky Field */}
+                <div className="relative z-10 flex h-full w-[58%] sm:w-[56%] flex-col items-center justify-center px-3 py-3 sm:px-5 text-center">
+                  <Image
+                    src="/images/bizlink-mark-royal-blue.png"
+                    alt="BizLink Trading and Contracting Services WLL"
+                    width={960}
+                    height={726}
+                    priority
+                    sizes="(max-width: 640px) 160px, 210px"
+                    className="h-auto w-[112px] sm:w-[155px] object-contain"
+                  />
+
+                  <p className="mt-1 text-[6.2px] sm:text-[9px] font-black tracking-[0.025em] sm:tracking-[0.04em] text-[#0B2C5F] uppercase whitespace-nowrap">
+                    TRADING AND CONTRACTING SERVICES WLL
+                  </p>
+
+                  <div className="mt-0.5 flex items-center justify-center gap-1 w-full max-w-[175px] sm:max-w-[225px]">
+                    <span className="h-[1px] flex-1 bg-[#0077CC]/60" />
+                    <span className="text-[5.8px] sm:text-[7.5px] font-extrabold tracking-[0.06em] text-[#0B2C5F] uppercase whitespace-nowrap">
+                      One Roof. Multiple Solutions.
+                    </span>
+                    <span className="h-[1px] flex-1 bg-[#0077CC]/60" />
+                  </div>
+                  <p className="text-[5.8px] sm:text-[7.5px] font-extrabold tracking-[0.06em] text-[#0B2C5F] uppercase">
+                    One Trusted Partner.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Desktop Web View Visual Signature: Tall Arch + Overlapping White Circle Emblem */}
+            <div className="lg:col-span-6 hidden lg:flex justify-end">
+              <div className="relative w-full max-w-[390px] pb-4 pl-8">
                 {/* Main Arched Window */}
                 <div className="relative aspect-[4/4.6] w-full overflow-hidden rounded-t-full rounded-b-2xl border-4 border-white bg-[#D6E8FB] shadow-2xl shadow-[#0B2C5F]/15">
                   <Image
@@ -220,7 +300,7 @@ export default function HomePage() {
                     alt="Doha Qatar skyline representing BizLink commercial solutions"
                     fill
                     priority
-                    sizes="(max-width: 640px) 360px, 480px"
+                    sizes="480px"
                     className="object-cover object-center"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0B2C5F]/65 via-[#0066CC]/15 to-transparent" />
@@ -233,7 +313,7 @@ export default function HomePage() {
                 </div>
 
                 {/* Overlapping Circular BizLink Emblem (Bottom-Left of Arch per Prototype) */}
-                <div className="absolute -bottom-2 left-0 sm:bottom-2 sm:-left-2 size-28 sm:size-36 lg:size-40 rounded-full border-4 border-white bg-white p-3.5 sm:p-4 shadow-2xl shadow-[#0B2C5F]/20 grid place-items-center">
+                <div className="absolute bottom-2 -left-2 size-40 rounded-full border-4 border-white bg-white p-4 shadow-2xl shadow-[#0B2C5F]/20 grid place-items-center">
                   <Image
                     src="/images/bizlink-logo-transparent-1.png"
                     alt="BizLink Trading and Contracting Services WLL"

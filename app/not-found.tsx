@@ -10,7 +10,7 @@ export default function NotFound() {
       </Link>
       <nav aria-label="Find a page" className="mt-6 flex flex-wrap gap-5">
         <Link href="/about">About</Link>
-        <Link href="/GALLERY">GALLERY</Link>
+        <Link href="/services">Services</Link>
         <Link href="/contact">Contact</Link>
       </nav>
     </main>

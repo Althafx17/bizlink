@@ -1,8 +1,8 @@
 const questions = [
-  ["What can BizLink help me with?", "BizLink provides business and corporate, trading and supply, facility and maintenance, automotive, and digital and creative GALLERY."],
-  ["Can BizLink help set up a company in Qatar?", "Yes. Business and corporate GALLERY include company formation, commercial registration, licensing, and government and PRO support."],
+  ["What can BizLink help me with?", "BizLink provides business and corporate, trading and supply, facility and maintenance, automotive, and digital and creative services."],
+  ["Can BizLink help set up a company in Qatar?", "Yes. Business and corporate services include company formation, commercial registration, licensing, and government and PRO support."],
   ["Is facility support available around the clock?", "BizLink offers 24/7 pest control and cleaning in Doha."],
-  ["Can I book mobile automotive GALLERY?", "Pathas Car Wash offers mobile car washing, and Prime Glass offers mobile windshield replacement."],
+  ["Can I book mobile automotive services?", "Pathas Car Wash offers mobile car washing, and Prime Glass offers mobile windshield replacement."],
   ["How do I contact BizLink?", "Call +974 7766 1037 or +974 5009 1006, or email bizlink.qa@gmail.com."],
 ] as const;
 

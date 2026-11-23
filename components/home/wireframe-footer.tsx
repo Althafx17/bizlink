@@ -33,7 +33,7 @@ export function WireframeFooter() {
                   BizLink<span className="text-cyan-400">.</span>
                 </h3>
                 <p className="text-xs font-bold uppercase tracking-wider text-slate-300">
-                  Trading & Contracting GALLERY WLL
+                  Trading & Contracting Services WLL
                 </p>
                 <p className="text-[11px] text-slate-400 mt-1">
                   CR No. 222380 · P.O. Box 201476 · Doha, Qatar
@@ -89,8 +89,8 @@ export function WireframeFooter() {
               <Link href="/about" className="hover:text-white transition-colors">
                 About
               </Link>
-              <Link href="/GALLERY" className="hover:text-white transition-colors">
-                GALLERY
+              <Link href="/services" className="hover:text-white transition-colors">
+                Services
               </Link>
               <Link href="/contact" className="hover:text-white transition-colors">
                 Offices

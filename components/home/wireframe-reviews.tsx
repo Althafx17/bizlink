@@ -133,7 +133,7 @@ export function WireframeReviews() {
         {/* Bottom CTA bar */}
         <div className="mt-8 flex justify-center">
           <a
-            href="https://wa.me/97450091006?text=Hello%20BizLink%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20GALLERY%20and%20client%20references."
+            href="https://wa.me/97450091006?text=Hello%20BizLink%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20services%20and%20client%20references."
             target="_blank"
             rel="noreferrer"
             className="text-xs font-bold uppercase tracking-wider text-cyan-400 hover:text-white transition-colors"

@@ -11,7 +11,7 @@ export default function PrivacyPage() {
       <p>When you contact BizLink, we use the contact details and message you provide to respond to your enquiry.</p>
       <h2 className="text-xl font-bold">Website analytics</h2>
       <p>When enabled, the website uses Google Analytics to measure visits and interactions.</p>
-      <h2 className="text-xl font-bold">External GALLERY</h2>
+      <h2 className="text-xl font-bold">External Services</h2>
       <p>Maps, WhatsApp and social links are provided by third parties and are subject to their own privacy policies.</p>
       <h2 className="text-xl font-bold">Privacy questions</h2>
       <p>Email <a className="underline" href={`mailto:${company.email}`}>{company.email}</a> for questions about your information.</p>

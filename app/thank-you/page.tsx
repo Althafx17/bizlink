@@ -23,7 +23,7 @@ export default async function ThankYouPage() {
       </nav>
       <h1 className="mt-5 text-4xl font-black">Thank you for your enquiry</h1>
       <p className="mt-4">BizLink has received your message.</p>
-      <Link href="/GALLERY" className="mt-6 inline-block text-cyan-300 underline">Explore GALLERY</Link>
+      <Link href="/services" className="mt-6 inline-block text-cyan-300 underline">Explore Services</Link>
     </main>
   );
 }

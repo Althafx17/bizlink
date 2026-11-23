@@ -22,10 +22,10 @@ export default function HomePage() {
       {/* 2. About Us: Corporate Photo & 3 Feature Pillars (Speed, Standards, Hubs) */}
       <WireframeAbout />
 
-      {/* 3. Vision and Mission: Positioned above GALLERY/Gallery per user instruction */}
+      {/* 3. Vision and Mission: Positioned above Services per user instruction */}
       <WireframeVisionMission />
 
-      {/* 4. GALLERY (Renamed from Gallery): 5 Core Operational Divisions */}
+      {/* 4. Services: 5 Core Operational Divisions */}
       <WireframeGallery />
 
       {/* WireframeReviews (VERIFIED FEEDBACK): Hidden per user instruction */}

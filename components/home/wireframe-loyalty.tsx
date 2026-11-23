@@ -19,7 +19,7 @@ const tiers: LoyaltyTier[] = [
     badge: "EXPRESS SETUP",
     discount: "-15%",
     title: "Starter Package",
-    description: "Ideal for new commercial startups, CR setup, and single division GALLERY.",
+    description: "Ideal for new commercial startups, CR setup, and single division services.",
     features: [
       "Fast-Track Commercial Registration (CR)",
       "Free Initial Ministry Consultation",

@@ -48,15 +48,15 @@ export function WireframeHero() {
             {/* Primary Action Buttons (Rounded Pill matching reference mockup) */}
             <div className="mt-7 flex flex-wrap items-center gap-3.5">
               <Link
-                href="/GALLERY"
+                href="/services"
                 className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#0056B3] via-[#0088CE] to-[#00B4FF] px-7 py-3 text-sm font-bold text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
               >
-                <span>EXPLORE GALLERY</span>
+                <span>EXPLORE SERVICES</span>
                 <ArrowRight size={16} />
               </Link>
 
               <a
-                href="https://wa.me/97450091006?text=Hello%20BizLink%20Qatar%2C%20I%20would%20like%20to%20inquire%20about%20your%20GALLERY."
+                href="https://wa.me/97450091006?text=Hello%20BizLink%20Qatar%2C%20I%20would%20like%20to%20inquire%20about%20your%20services."
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[0.07] px-6 py-3 text-sm font-bold text-white hover:bg-white/15 hover:border-cyan-400/40 backdrop-blur-md transition-all active:scale-[0.98]"

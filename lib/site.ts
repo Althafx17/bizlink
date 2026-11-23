@@ -18,7 +18,7 @@ export function shareMetadata(path: string, title: string, description: string):
 export const localBusiness = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "BizLink Trading and Contracting GALLERY WLL",
+  name: "BizLink Trading and Contracting Services WLL",
   url: siteUrl.href,
   image: new URL("/images/doha-daytime.webp", siteUrl).href,
   telephone: ["+97477661037", "+97450091006"],
@@ -33,4 +33,4 @@ export const localBusiness = {
   hasMap: "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(branches[1].mapsQuery),
 };
 
-export const publicPaths = ["/", "/about", "/GALLERY", "/contact", "/privacy"];
+export const publicPaths = ["/", "/about", "/services", "/contact", "/privacy"];

@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+import { EnquiryForm } from "@/components/contact/enquiry-form";
+import { shareMetadata } from "@/lib/site";
 import {
   PageIntro,
   BranchCards,
@@ -7,11 +8,11 @@ import {
   MobileBottomActionDock,
 } from "@/components/brochure-sections";
 
-export const metadata: Metadata = {
-  title: "Contact & Branches | BizLink Qatar",
-  description:
-    "Visit BizLink's Ain Khalid Head Office or Bin Mahmoud Branch in Doha, Qatar. Call +974 5009 1006 or +974 7766 1037, or email bizlink.qa@gmail.com.",
-};
+export const metadata = shareMetadata(
+  "/contact",
+  "Contact & Branches",
+  "Visit BizLink's Ain Khalid Head Office or Bin Mahmoud Branch in Doha, Qatar. Call +974 5009 1006 or +974 7766 1037, or email bizlink.qa@gmail.com.",
+);
 
 export default function ContactPage() {
   return (
@@ -21,6 +22,7 @@ export default function ContactPage() {
         subtitle="Two Locations in Doha · Same Commitment to Commercial Excellence"
       />
       <BranchCards />
+      {process.env.ENQUIRY_WEBHOOK_URL && <EnquiryForm />}
       <ContactBand social />
       <WhyBizLink />
       <MobileBottomActionDock />

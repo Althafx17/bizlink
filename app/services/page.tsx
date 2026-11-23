@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { shareMetadata } from "@/lib/site";
 import {
   PageIntro,
   SectorIconsBar,
@@ -7,11 +7,11 @@ import {
   MobileBottomActionDock,
 } from "@/components/brochure-sections";
 
-export const metadata: Metadata = {
-  title: "Our Services | 5 Core Divisions | BizLink Qatar",
-  description:
-    "Explore BizLink Qatar's 35+ services across Business & Corporate, Digital & Creative, Trading & Supply, Facility Management, and Automotive Care.",
-};
+export const metadata = shareMetadata(
+  "/services",
+  "Our Services",
+  "Explore BizLink Qatar's 35+ services across Business & Corporate, Digital & Creative, Trading & Supply, Facility Management, and Automotive Care.",
+);
 
 export default function ServicesPage() {
   return (

@@ -6,7 +6,7 @@ import { SocialLinks } from "@/components/social-links";
 
 export function SiteFooter() {
   return (
-    <footer className="relative bg-[#071E42] text-white overflow-hidden border-t border-[#0056B3]/30">
+    <footer className="relative bg-[#070B14] text-white overflow-hidden border-t border-white/10">
       {/* Decorative Top Accent Gradient */}
       <div
         aria-hidden="true"
@@ -96,6 +96,7 @@ export function SiteFooter() {
                   Branches & Contact
                 </Link>
               </li>
+              <li><Link href="/privacy" className="text-sky-100/80 hover:text-white">Privacy Policy</Link></li>
             </ul>
           </div>
 
@@ -135,10 +136,10 @@ export function SiteFooter() {
               <li className="flex items-start gap-2 pt-1">
                 <MapPin size={15} className="text-[#0088CE] shrink-0 mt-0.5" aria-hidden="true" />
                 <div className="text-xs text-sky-100/80 leading-relaxed">
-                  <p className="font-bold text-white">Ain Khalid Head Office:</p>
-                  <p>Office 164, Souq Naif, Ain Khalid, Doha</p>
-                  <p className="font-bold text-white mt-1">Bin Mahmoud Branch:</p>
-                  <p>Shop 07, Building 28, Al Jazeera St, Doha</p>
+                  <p className="font-bold text-white">Head Office:</p>
+                  <p>Bldg #43, Zone #56, St #100, Souq Naif, Ain Khalid</p>
+                  <p className="font-bold text-white mt-1">Typing Centre:</p>
+                  <p>Bldg #28, Zone #22, St #342, Al Jazeera St, Bin Mahamoud</p>
                 </div>
               </li>
             </ul>

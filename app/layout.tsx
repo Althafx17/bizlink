@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
+import { siteUrl, localBusiness } from "@/lib/site";
 import type { ReactNode } from "react";
 import "./globals.css";
 import { SiteFooter } from "@/components/site-footer";
@@ -20,6 +22,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: siteUrl,
   title: {
     default: siteTitle,
     template: "%s | BizLink",
@@ -35,12 +38,27 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: ReactNode }>) {
+  const analyticsId = process.env.NEXT_PUBLIC_GA_ID;
+  const analyticsEnabled = analyticsId && /^G-[A-Z0-9]+$/.test(analyticsId);
+
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: `if (location.pathname === '/' && matchMedia('(prefers-reduced-motion: no-preference)').matches) document.documentElement.dataset.homeMotion = 'pending';` }} />
+      </head>
       <body className={inter.className}>
-        {/* <a className="skip-link" href="#main-content">
+        <a className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-[#071426] focus:p-3" href="#main-content">
           Skip to content
-        </a> */}
+        </a>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness) }} />
+        {analyticsEnabled && (
+          <>
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${analyticsId}`} strategy="afterInteractive" />
+            <Script id="bizlink-analytics" strategy="afterInteractive">
+              {`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${analyticsId}');`}
+            </Script>
+          </>
+        )}
         <SiteNavbar />
         {children}
         <SiteFooter />

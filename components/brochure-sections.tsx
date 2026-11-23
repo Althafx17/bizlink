@@ -23,6 +23,7 @@ import {
   Monitor,
   Phone,
   Play,
+  QrCode,
   Rocket,
   ShieldCheck,
   Sparkles,
@@ -31,8 +32,11 @@ import {
   Users,
   Wrench,
 } from "lucide-react";
-import { company, branches, principles, values, reasons } from "@/content/company";
+import { company, branches, principles, values, reasons, sisterConcerns } from "@/content/company";
 import { services, type ServiceDivision } from "@/content/services";
+import { InteractiveServicesShowcase } from "@/components/services/interactive-services-showcase";
+
+export { InteractiveServicesShowcase };
 
 function getDivisionIcon(name: ServiceDivision["iconName"]) {
   switch (name) {
@@ -188,9 +192,9 @@ export function BrochureCover() {
 
       {/* Main Hero Content Container */}
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full flex-1 flex flex-col justify-center my-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 lg:items-center gap-8 lg:gap-10">
-          {/* Primary Content Column: Typography & CTAs */}
-          <div className="flex flex-col text-left lg:col-span-7 xl:col-span-7 max-w-2xl xl:max-w-3xl order-2 lg:order-1">
+        <div className="grid grid-cols-1 lg:grid-cols-12 lg:items-center gap-6 lg:gap-10">
+          {/* 1. Main Heading Block (Kicker Eyebrow + H1) */}
+          <div className="order-1 lg:order-none lg:col-span-7 xl:col-span-7 flex flex-col text-left max-w-2xl xl:max-w-3xl">
             {/* Kicker Eyebrow */}
             <div className="inline-flex items-center gap-2">
               <span className="inline-flex items-center gap-2 rounded-full border border-cyan-400/35 bg-[#001438]/75 px-4 py-1.5 text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-cyan-300 shadow-[0_0_15px_rgba(34,211,238,0.25)] backdrop-blur-md">
@@ -204,22 +208,47 @@ export function BrochureCover() {
               id="hero-title"
               className="mt-3 sm:mt-4 text-3xl sm:text-5xl lg:text-[66px] xl:text-[74px] font-black tracking-tight text-white leading-[1.1] sm:leading-[1.08] drop-shadow-[0_4px_28px_rgba(0,0,0,0.9)]"
             >
-              <span>All Business</span>
+              <span>All BUSINESS</span>
               <span className="block bg-gradient-to-r from-sky-200 via-cyan-200 to-indigo-200 bg-clip-text text-transparent">
-                Solutions.
+                SOLUTIONS
               </span>
               <span className="block text-xl sm:text-3xl lg:text-5xl font-extrabold text-white/95 mt-1 sm:mt-2 drop-shadow-md">
-                UNDER ONE ROOF.
+                UNDER ONE ROOF
               </span>
             </h1>
+          </div>
 
-            {/* Subtitle / Value Proposition */}
-            {/* <p className="mt-3 sm:mt-5 max-w-xl text-xs sm:text-base lg:text-lg leading-relaxed text-slate-200 drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] font-normal">
-              BizLink Trading and Contracting Services provides comprehensive business solutions across Corporate Consulting, Trading & Supply, Facility Maintenance, Automotive Care, and Digital Creative Services under one roof in Qatar.
-            </p> */}
+          {/* 2. 3D BizLink Brand Monument Centerpiece (Order 2 on mobile: directly beneath heading) */}
+          <div className="order-2 lg:order-none lg:col-span-5 xl:col-span-5 lg:row-span-2 lg:col-start-8 lg:row-start-1 flex flex-col items-center justify-center relative my-3 lg:my-0">
+            {/* Ambient Cyan / Royal Blue Halo Glow behind the 3D logo */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -inset-4 sm:-inset-8 rounded-full bg-gradient-to-tr from-cyan-500/20 via-sky-400/15 to-blue-600/25 blur-3xl opacity-70"
+            />
 
+            {/* Stable 3D Logo Container */}
+            <div className="relative w-full max-w-[260px] sm:max-w-[340px] lg:max-w-[460px] xl:max-w-[490px] flex flex-col items-center">
+              <div className="relative w-full aspect-[641/570] drop-shadow-[0_25px_60px_rgba(0,140,255,0.45)]">
+                <Image
+                  src="/images/bizlink_3d_logo_transparent.webp"
+                  alt="BizLink Qatar - 3D Architectural Emblem and Typography"
+                  fill
+                  sizes="(min-width: 1024px) 40vw, 75vw"
+                  priority
+                  className="object-contain select-none"
+                />
+              </div>
+
+              {/* Reflection pedestal glow line */}
+              <div className="w-3/4 h-[3px] bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent blur-sm -mt-2" />
+              <div className="w-1/2 h-[1px] bg-gradient-to-r from-transparent via-cyan-300 to-transparent -mt-[2px]" />
+            </div>
+          </div>
+
+          {/* 3. Primary Action Buttons & Sub-Services Tags (Order 3 on mobile: beneath the 3D logo) */}
+          <div className="order-3 lg:order-none lg:col-span-7 xl:col-span-7 lg:row-start-2 flex flex-col text-left max-w-2xl xl:max-w-3xl">
             {/* Primary Action Buttons (Pill styling matching reference image) */}
-            <div className="mt-5 sm:mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4">
               <Link
                 href="/services"
                 className="inline-flex min-h-[46px] sm:min-h-[50px] items-center justify-center gap-2 sm:gap-2.5 rounded-full bg-gradient-to-r from-[#0066FF] via-[#0088FF] to-[#00B4D8] px-6 sm:px-8 py-3 text-xs sm:text-base font-bold text-white shadow-[0_0_25px_rgba(0,180,255,0.4)] transition-all duration-200 hover:scale-[1.03] hover:shadow-[0_0_35px_rgba(0,180,255,0.6)] active:scale-[0.98]"
@@ -247,7 +276,7 @@ export function BrochureCover() {
               </a>
             </div>
 
-            {/* Sub-services row (Image 1 style quick tags) */}
+            {/* Sub-Services row (Image 1 style quick tags) */}
             <div className="mt-6 pt-5 border-t border-white/10 flex flex-wrap items-center gap-2 sm:gap-3 text-slate-300 text-[11px] sm:text-xs">
               <span className="inline-flex items-center gap-1.5 rounded-lg bg-white/5 border border-white/10 px-2.5 py-1 text-slate-200">
                 <Building2 size={13} className="text-cyan-400" />
@@ -267,42 +296,6 @@ export function BrochureCover() {
               </span>
             </div>
           </div>
-
-          {/* 3D BizLink Brand Monument Centerpiece ("and logo on top of that") */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.9, delay: 0.15 }}
-            className="flex flex-col items-center justify-center lg:col-span-5 xl:col-span-5 relative order-1 lg:order-2 my-2 lg:my-0"
-          >
-            {/* Ambient Cyan / Royal Blue Halo Glow behind the 3D logo */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -inset-4 sm:-inset-8 rounded-full bg-gradient-to-tr from-cyan-500/20 via-sky-400/15 to-blue-600/25 blur-3xl opacity-70"
-            />
-
-            {/* Floating 3D Logo Container */}
-            <motion.div
-              animate={{ y: [-6, 6, -6] }}
-              transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-              className="relative w-full max-w-[280px] sm:max-w-[360px] lg:max-w-[460px] xl:max-w-[490px] flex flex-col items-center"
-            >
-              <div className="relative w-full aspect-[641/570] drop-shadow-[0_25px_60px_rgba(0,140,255,0.45)]">
-                <Image
-                  src="/images/bizlink_3d_logo_transparent.webp"
-                  alt="BizLink Qatar - 3D Architectural Emblem and Typography"
-                  fill
-                  sizes="(min-width: 1024px) 40vw, 75vw"
-                  priority
-                  className="object-contain select-none"
-                />
-              </div>
-
-              {/* Reflection pedestal glow line */}
-              <div className="w-3/4 h-[3px] bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent blur-sm -mt-2" />
-              <div className="w-1/2 h-[1px] bg-gradient-to-r from-transparent via-cyan-300 to-transparent -mt-[2px]" />
-            </motion.div>
-          </motion.div>
         </div>
       </div>
 
@@ -404,7 +397,7 @@ export function SectorIconsBar() {
             <Link
               key={service.id}
               href={`/services#${service.id}`}
-              className="group flex flex-col items-center rounded-2xl border border-white/10 bg-[#0F254B]/60 p-4 text-center transition-all duration-200 hover:-translate-y-1 hover:border-cyan-400/40 hover:bg-[#143161] hover:shadow-xl hover:shadow-cyan-500/10"
+              className="group flex flex-col items-center rounded-2xl border border-white/10 bg-[#0F254B]/60 p-4 text-center transition-all duration-200 hover:-translate-y-1 hover:border-cyan-400/40 hover:bg-[#143161] hover:shadow-xl hover:shadow-cyan-500/10 last:col-span-2 last:justify-self-center last:w-full last:max-w-[260px] sm:last:col-span-1 sm:last:w-auto sm:last:max-w-none"
             >
               {/* Circular Blue Icon Badge */}
               <span className="relative flex size-14 items-center justify-center rounded-full bg-gradient-to-br from-[#0056B3] to-[#0088CE] text-white shadow-md shadow-[#0088CE]/25 transition-transform duration-200 group-hover:scale-110">
@@ -435,79 +428,69 @@ export function CompanyStory({ standalone = false }: { standalone?: boolean }) {
       aria-labelledby="about-title"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-16">
-        {/* TOP SECTION: About BizLink with 3D Climbing Figures (Exact Page 2 Top Layout) */}
-        <div className="relative overflow-hidden rounded-3xl border border-cyan-400/25 bg-gradient-to-br from-[#0B1B36] via-[#0F254B] to-[#0A1F3D] p-6 sm:p-10 lg:p-12 shadow-2xl">
-          {/* Subtle background glow */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -top-24 -right-24 size-96 rounded-full bg-cyan-400/10 blur-3xl"
-          />
+        {/* TOP SECTION: About BizLink with Executive Handshake Background */}
+        <div className="relative overflow-hidden rounded-3xl border border-cyan-400/25 bg-[#071426] p-6 sm:p-10 lg:p-12 shadow-2xl min-h-[480px] lg:min-h-[520px] flex flex-col justify-center">
+          {/* Background Image: Executive Handshake in Gulf Skyline Office */}
+          <div className="absolute inset-0 z-0 overflow-hidden">
+            <Image
+              src="/images/about/executive_handshake_bg.webp"
+              alt="BizLink Business Partnership in Modern Gulf Skyline Office"
+              fill
+              priority
+              sizes="(min-width: 1024px) 100vw, 100vw"
+              className="object-cover object-[78%_center] sm:object-[72%_center] lg:object-[80%_center] select-none"
+            />
+            {/* Dark gradient overlay on the left so all text has maximum contrast and readability */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#071426] via-[#071426]/92 to-transparent sm:from-[#071426]/95 sm:via-[#071426]/85 sm:to-transparent lg:w-[65%]" />
+            <div className="absolute inset-0 bg-[#071426]/30" />
+            <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#071426] to-transparent" />
+          </div>
 
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-center">
+          <div className="relative z-10 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-center">
             {/* Left Content Column */}
-            <div className="lg:col-span-7">
-              <span className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3.5 py-1 text-[11px] font-extrabold uppercase tracking-widest text-cyan-300">
-                <span className="size-2 rounded-full bg-cyan-400" />
-                Company Profile · Doha, Qatar
-              </span>
+            <div className="lg:col-span-7 flex flex-col justify-center">
+              {/* Top "Company Profile · Doha, Qatar" removed per instruction */}
 
               <h2
                 id="about-title"
-                className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white"
+                className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white drop-shadow-md"
               >
                 About BizLink
               </h2>
 
-              <p className="mt-2 text-base sm:text-lg font-bold text-cyan-300">
+              <p className="mt-2 text-base sm:text-lg font-bold text-cyan-300 drop-shadow-sm">
                 {company.aboutSubhead}
               </p>
 
-              <div className="mt-4 space-y-3 text-sm sm:text-base leading-relaxed text-slate-300">
+              <div className="mt-4 space-y-3 text-sm sm:text-base leading-relaxed text-slate-300 drop-shadow-sm max-w-xl">
                 <p>{company.about}</p>
                 <p>{company.aboutParagraph2}</p>
               </div>
 
               {/* Quick Feature Pills */}
               <div className="mt-6 flex flex-wrap items-center gap-2.5 text-xs font-bold text-slate-200">
-                <span className="rounded-full bg-white/10 px-3.5 py-1.5 border border-white/10">
+                <span className="rounded-full bg-white/10 px-3.5 py-1.5 border border-white/10 backdrop-blur-md">
                   Founded {company.since}
                 </span>
-                <span className="rounded-full bg-white/10 px-3.5 py-1.5 border border-white/10">
+                <span className="rounded-full bg-white/10 px-3.5 py-1.5 border border-white/10 backdrop-blur-md">
                   {company.registration}
                 </span>
-                <span className="rounded-full bg-white/10 px-3.5 py-1.5 border border-white/10">
+                <span className="rounded-full bg-white/10 px-3.5 py-1.5 border border-white/10 backdrop-blur-md">
                   Pathas Group of Companies
                 </span>
-                <span className="rounded-full bg-cyan-400/20 px-3.5 py-1.5 text-cyan-300 border border-cyan-400/30">
-                  {company.footprint}
+              </div>
+
+              {/* Bottom Footprint Pill per instruction: QATAR • INDIA • UAE • CHINA */}
+              <div className="mt-6 pt-4 border-t border-white/15 flex items-center">
+                <span className="inline-flex items-center gap-2 rounded-full border border-cyan-400/40 bg-[#001D4A]/80 px-4 py-1.5 text-xs sm:text-sm font-black uppercase tracking-[0.22em] text-cyan-300 shadow-[0_0_15px_rgba(34,211,238,0.25)] backdrop-blur-md">
+                  <span className="size-2 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)] animate-pulse" />
+                  QATAR • INDIA • UAE • CHINA
                 </span>
               </div>
             </div>
 
-            {/* Right Visual: 3D Climbing Teamwork Figures (from Page 2) */}
-            <div className="flex justify-center lg:col-span-5">
-              <div className="relative w-full max-w-[420px]">
-                <motion.div
-                  animate={{ y: [-5, 5, -5] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className="relative overflow-hidden rounded-2xl border-2 border-cyan-400/30 bg-gradient-to-b from-sky-400/10 via-[#071E42] to-[#0B2C5F] shadow-2xl p-2"
-                >
-                  <Image
-                    src="/images/brochure_about/teamwork_climbing.webp"
-                    alt="BizLink Teamwork and Business Partnership"
-                    width={830}
-                    height={524}
-                    sizes="(max-width: 640px) 340px, 420px"
-                    className="w-full h-auto object-cover rounded-xl drop-shadow-[0_8px_20px_rgba(0,0,0,0.5)]"
-                    priority
-                  />
-                  <div className="mt-2 flex items-center justify-between px-3 pb-1 text-[11px] font-bold text-cyan-200">
-                    <span>Collaborative Partnership</span>
-                    <span className="text-amber-400">Mutual Success</span>
-                  </div>
-                </motion.div>
-              </div>
-            </div>
+            {/* Right Free Space: Inside card removed, businessmen and skyline appear naturally */}
+            <div className="hidden lg:block lg:col-span-5 min-h-[380px]" aria-hidden="true" />
           </div>
         </div>
 
@@ -706,6 +689,68 @@ export function CompanyStory({ standalone = false }: { standalone?: boolean }) {
           </div>
         </div>
 
+        {/* SISTER CONCERN COMPANIES SECTION (Exact Page 2 Layout) */}
+        <div className="overflow-hidden rounded-3xl border border-cyan-400/25 bg-gradient-to-br from-[#0B1B36] via-[#0F254B] to-[#0A1F3D] p-6 sm:p-8 shadow-2xl">
+          <div className="flex flex-col lg:flex-row items-stretch gap-6">
+            {/* Left Badge: "Our Sister Concern Companies" matching Page 2 */}
+            <div className="flex flex-col justify-center items-center text-center rounded-2xl bg-gradient-to-b from-[#0056B3] to-[#003B7A] p-6 text-white min-w-[220px] shrink-0 shadow-lg border border-cyan-400/30">
+              <span className="text-[11px] font-bold uppercase tracking-widest text-cyan-300">
+                Pathas Group of Companies
+              </span>
+              <h3 className="mt-2 text-2xl sm:text-3xl font-black leading-tight text-white">
+                Our Sister<br />Concern<br />Companies
+              </h3>
+              <p className="mt-2 text-xs text-sky-200 font-medium">
+                Established Presence Across Qatar
+              </p>
+            </div>
+
+            {/* Right: 3 Sister Concerns Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 flex-1 items-stretch">
+              {sisterConcerns.map((sister) => (
+                <div
+                  key={sister.name}
+                  className="flex flex-col justify-between h-full min-h-[250px] rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur-md transition-all hover:border-cyan-400/40 hover:bg-white/[0.08] group"
+                >
+                  <div className="flex flex-col flex-1">
+                    {/* Header with Emblem & Since Badge */}
+                    <div className="flex items-center justify-between">
+                      <span className="inline-flex size-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#0056B3] to-[#0088CE] text-white font-black text-sm shadow-md">
+                        {sister.name[0]}
+                      </span>
+                      {sister.since && (
+                        <span className="text-[10px] font-bold text-amber-400 bg-amber-400/10 px-2.5 py-0.5 rounded-full border border-amber-400/25">
+                          {sister.since}
+                        </span>
+                      )}
+                    </div>
+
+                    <h4 className="mt-3 text-base sm:text-lg font-black text-white group-hover:text-cyan-300 transition-colors">
+                      {sister.name}
+                    </h4>
+                    {sister.arabicName && (
+                      <p className="text-xs font-bold text-slate-300 mt-0.5" dir="rtl">
+                        {sister.arabicName}
+                      </p>
+                    )}
+                    <span className="mt-1.5 inline-block text-[11px] font-extrabold uppercase tracking-wider text-cyan-400">
+                      {sister.tagline}
+                    </span>
+                    <p className="mt-1 text-xs text-slate-400 line-clamp-2">
+                      {sister.category}
+                    </p>
+                  </div>
+
+                  <div className="mt-5 pt-3 border-t border-white/10 flex items-start gap-2 text-xs text-slate-300">
+                    <MapPin size={14} className="shrink-0 text-cyan-400 mt-0.5" aria-hidden="true" />
+                    <span className="leading-snug font-medium">{sister.location}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
         {/* GLOBAL FOOTPRINT: Pathas Group of Companies Banner */}
         <div className="rounded-3xl bg-gradient-to-r from-[#1E1B4B] via-[#1E3A8A] to-[#0284C7] p-6 sm:p-8 text-white shadow-2xl border border-white/15">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
@@ -738,185 +783,7 @@ export function CompanyStory({ standalone = false }: { standalone?: boolean }) {
 }
 
 export function ServicesDirectory({ detailed = false }: { detailed?: boolean }) {
-  const [selectedDivision, setSelectedDivision] = useState<string>("all");
-
-  const filteredServices =
-    selectedDivision === "all"
-      ? services
-      : services.filter((s) => s.id === selectedDivision);
-
-  return (
-    <section
-      id="services"
-      className="scroll-mt-20 py-16 sm:py-24 bg-[#0B1B36] border-b border-white/10"
-      aria-labelledby="services-title"
-    >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section Title */}
-        <div className="text-center max-w-3xl mx-auto">
-          <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-cyan-400">
-            All Business Solutions Under One Roof
-          </p>
-          <h2
-            id="services-title"
-            className="mt-2 text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white"
-          >
-            {detailed ? "Complete Services Directory" : "Our Service Solutions"}
-          </h2>
-          <p className="mt-3 text-sm sm:text-base text-slate-300">
-            From corporate licensing and PRO support to facility maintenance, commercial trading, automotive care, and digital marketing.
-          </p>
-        </div>
-
-        {/* Division Filter Tabs */}
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
-          <button
-            type="button"
-            onClick={() => setSelectedDivision("all")}
-            className={`min-h-[40px] rounded-full px-4 py-2 text-xs font-bold transition-all ${
-              selectedDivision === "all"
-                ? "bg-gradient-to-r from-[#0056B3] to-[#0088CE] text-white shadow-lg shadow-cyan-500/25"
-                : "border border-white/15 bg-[#0F254B] text-slate-200 hover:bg-[#143161]"
-            }`}
-          >
-            All Divisions ({services.length})
-          </button>
-          {services.map((s) => (
-            <button
-              key={s.id}
-              type="button"
-              onClick={() => setSelectedDivision(s.id)}
-              className={`min-h-[40px] rounded-full px-4 py-2 text-xs font-bold transition-all ${
-                selectedDivision === s.id
-                  ? "bg-gradient-to-r from-[#0056B3] to-[#0088CE] text-white shadow-lg shadow-cyan-500/25"
-                  : "border border-white/15 bg-[#0F254B] text-slate-200 hover:bg-[#143161]"
-              }`}
-            >
-              {s.name}
-            </button>
-          ))}
-        </div>
-
-        {/* Detailed Services Division Cards */}
-        <div className="mt-12 space-y-12">
-          {filteredServices.map((service) => (
-            <article
-              key={service.id}
-              id={service.id}
-              className="scroll-mt-28 overflow-hidden rounded-3xl border border-white/15 bg-[#0F254B]/80 shadow-xl backdrop-blur-md transition-all duration-300 hover:border-cyan-400/40"
-            >
-              <div className="grid grid-cols-1 lg:grid-cols-12">
-                {/* Left/Top Content Header */}
-                <div className="p-6 sm:p-8 lg:col-span-8 flex flex-col justify-between">
-                  <div>
-                    {/* Badge Pill */}
-                    <div className="flex items-center gap-2">
-                      <span className="flex size-7 items-center justify-center rounded-lg bg-gradient-to-br from-[#0056B3] to-[#0088CE] text-xs font-black text-white">
-                        {service.number}
-                      </span>
-                      <span className="text-xs font-bold uppercase tracking-wider text-cyan-400">
-                        Division {service.number} · {service.name}
-                      </span>
-                    </div>
-
-                    {/* Main Title & Tagline from Brochure */}
-                    <h3 className="mt-3 text-xl sm:text-2xl lg:text-3xl font-extrabold text-white">
-                      {service.title}
-                    </h3>
-                    <p className="mt-1 text-xs sm:text-sm font-semibold italic text-cyan-300">
-                      “{service.tagline}”
-                    </p>
-
-                    {/* Highlight Box from Brochure */}
-                    <div className="mt-4 inline-flex items-center gap-2 rounded-xl border border-cyan-400/30 bg-cyan-400/10 px-3.5 py-2 text-xs font-bold text-cyan-300">
-                      <Sparkles size={15} aria-hidden="true" />
-                      <span>{service.highlight}</span>
-                    </div>
-
-                    {/* Service Checklist Items Grid */}
-                    <div className="mt-6">
-                      <p className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                        Key Scope of Services:
-                      </p>
-                      <ul className="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
-                        {service.items.map((item) => (
-                          <li
-                            key={item}
-                            className="flex items-start gap-2 text-xs sm:text-sm text-slate-200"
-                          >
-                            <CheckCircle2
-                              size={16}
-                              className="mt-0.5 shrink-0 text-cyan-400"
-                              aria-hidden="true"
-                            />
-                            <span className="leading-snug">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
-                  {/* Division Action Buttons */}
-                  <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center gap-3">
-                    <Link
-                      href={`/contact?service=${service.anchor}`}
-                      className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-gradient-to-r from-[#0056B3] to-[#0088CE] px-5 py-2.5 text-xs sm:text-sm font-bold text-white shadow-sm transition hover:from-[#004088] hover:to-[#0077D7]"
-                    >
-                      <span>Inquire About {service.name}</span>
-                      <ArrowUpRight size={15} aria-hidden="true" />
-                    </Link>
-
-                    <a
-                      href="https://wa.me/97450091006"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2.5 text-xs sm:text-sm font-bold text-white hover:bg-white/20"
-                    >
-                      <MessageCircle size={16} className="text-[#25D366]" aria-hidden="true" />
-                      <span>Fast WhatsApp Inquiry</span>
-                    </a>
-                  </div>
-                </div>
-
-                {/* Right Image Feature Card */}
-                <div className="relative min-h-[220px] lg:min-h-full lg:col-span-4 bg-[#071426] overflow-hidden">
-                  <Image
-                    src={service.imageCard}
-                    alt={service.title}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 380px"
-                    className="object-cover object-center opacity-85 transition-transform duration-500 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F254B] via-[#0F254B]/40 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-4 p-4 text-white">
-                    <p className="text-[11px] font-bold uppercase tracking-wider text-cyan-300">
-                      BizLink Qatar
-                    </p>
-                    <p className="text-sm font-black text-white">
-                      {service.name}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        {/* Global CTA Banner if not detailed */}
-        {!detailed && (
-          <div className="mt-14 text-center">
-            <Link
-              href="/services"
-              className="inline-flex min-h-[50px] items-center gap-2 rounded-full bg-gradient-to-r from-[#0056B3] to-[#0088CE] px-8 py-3.5 text-sm sm:text-base font-bold text-white shadow-xl shadow-cyan-500/25 hover:from-[#004088] hover:to-[#0077D7] transition"
-            >
-              <span>View Full 35+ Services Catalog</span>
-              <ArrowRight size={18} aria-hidden="true" />
-            </Link>
-          </div>
-        )}
-      </div>
-    </section>
-  );
+  return <InteractiveServicesShowcase detailed={detailed} />;
 }
 
 export function WhyBizLink() {
@@ -1010,11 +877,10 @@ export function BranchCards() {
                   key={b.id}
                   type="button"
                   onClick={() => setSelectedBranchId(b.id)}
-                  className={`min-h-[42px] rounded-full px-5 py-2 text-xs sm:text-sm font-bold transition-all ${
-                    isActive
+                  className={`min-h-[42px] rounded-full px-5 py-2 text-xs sm:text-sm font-bold transition-all ${isActive
                       ? "bg-gradient-to-r from-[#0056B3] to-[#0088CE] text-white shadow-md"
                       : "text-slate-300 hover:text-white"
-                  }`}
+                    }`}
                 >
                   {b.title}
                 </button>
@@ -1063,13 +929,13 @@ export function BranchCards() {
             {/* Direct Action Buttons */}
             <div className="mt-6 pt-5 border-t border-white/10 flex flex-wrap gap-2.5">
               <a
-                href={activeBranch.mapsDirectUrl}
+                href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(activeBranch.mapsQuery)}`}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex min-h-[42px] items-center gap-1.5 rounded-full bg-gradient-to-r from-[#0056B3] to-[#0088CE] px-4 py-2 text-xs font-bold text-white shadow-xs hover:from-[#004088] hover:to-[#0077D7] transition"
               >
                 <MapPin size={14} aria-hidden="true" />
-                <span>Open in Google Maps</span>
+                <span>Get directions</span>
               </a>
 
               <a
@@ -1101,65 +967,195 @@ export function ContactBand({ social = false }: { social?: boolean }) {
   return (
     <section
       id="contact-bizlink"
-      className="scroll-mt-20 py-16 sm:py-20 bg-gradient-to-b from-[#071426] via-[#0B1B36] to-[#050F1D] text-white"
+      className="scroll-mt-20 py-16 sm:py-24 bg-gradient-to-b from-[#071426] via-[#0B1B36] to-[#050F1D] text-white"
       aria-labelledby="contact-band-title"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl border border-white/15 bg-white/[0.04] p-8 sm:p-12 backdrop-blur-xl shadow-2xl text-center max-w-4xl mx-auto">
-          <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-cyan-400">
-            Connect With BizLink Qatar
-          </p>
-          <h2
-            id="contact-band-title"
-            className="mt-2 text-2xl sm:text-4xl font-black text-white"
-          >
-            One Partner. Multiple Solutions. Endless Possibilities.
-          </h2>
-          <p className="mt-3 text-sm sm:text-base text-slate-300 max-w-xl mx-auto">
-            Ready to streamline your company setup, facility operations, or corporate supply? Speak directly with our consultants today.
-          </p>
+        <div className="overflow-hidden rounded-3xl border border-cyan-400/25 bg-gradient-to-br from-[#0B1B36] via-[#0F254B] to-[#0A1F3D] p-6 sm:p-10 lg:p-12 shadow-2xl">
+          {/* Header */}
+          <div className="text-center max-w-3xl mx-auto">
+            <span className="inline-flex items-center gap-2 rounded-full border border-cyan-400/35 bg-[#001438]/80 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-cyan-300 shadow-[0_0_15px_rgba(34,211,238,0.2)]">
+              {company.registration} · {company.postBox}
+            </span>
+            <h2
+              id="contact-band-title"
+              className="mt-4 text-3xl sm:text-5xl font-black tracking-tight text-white"
+            >
+              Connect with BizLink
+            </h2>
+            <p className="mt-2 text-base sm:text-lg font-bold text-cyan-300">
+              One Partner, Multiple Solutions, Endless Possibilities
+            </p>
+            <p className="mt-2 text-xs sm:text-sm text-slate-300 max-w-xl mx-auto">
+              Reach out directly to our corporate consulting, facility, trading, and digital teams across Doha.
+            </p>
+          </div>
 
-          {/* Phone Numbers & Actions */}
+          {/* Primary Quick Action Badges */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-            <a
-              href="tel:+97450091006"
-              className="inline-flex min-h-[48px] items-center gap-2 rounded-full bg-white px-5 py-3 text-xs sm:text-sm font-extrabold text-[#0B2C5F] shadow-lg hover:bg-slate-100 transition"
-            >
-              <Phone size={17} className="text-[#0056B3]" aria-hidden="true" />
-              <span>+974 5009 1006</span>
-            </a>
-
-            <a
-              href="tel:+97477661037"
-              className="inline-flex min-h-[48px] items-center gap-2 rounded-full bg-white px-5 py-3 text-xs sm:text-sm font-extrabold text-[#0B2C5F] shadow-lg hover:bg-slate-100 transition"
-            >
-              <Phone size={17} className="text-[#0088CE]" aria-hidden="true" />
-              <span>+974 7766 1037</span>
-            </a>
-
             <a
               href="https://wa.me/97450091006"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex min-h-[48px] items-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-xs sm:text-sm font-extrabold text-white shadow-lg hover:bg-[#20ba59] transition"
+              className="inline-flex min-h-[50px] items-center gap-2.5 rounded-full bg-[#25D366] px-6 py-3 text-xs sm:text-base font-extrabold text-white shadow-[0_0_20px_rgba(37,211,102,0.4)] transition hover:bg-[#20ba59] hover:scale-105 active:scale-95"
             >
               <MessageCircle size={18} aria-hidden="true" />
-              <span>Chat on WhatsApp</span>
+              <span>WhatsApp: +974 5009 1006</span>
             </a>
 
             <a
-              href={`mailto:${company.email}`}
-              className="inline-flex min-h-[48px] items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-3 text-xs sm:text-sm font-bold text-white hover:bg-white/20 transition"
+              href="tel:+97444121001"
+              className="inline-flex min-h-[50px] items-center gap-2 rounded-full border border-cyan-400/40 bg-cyan-400/10 px-5 sm:px-6 py-3 text-xs sm:text-base font-bold text-cyan-300 hover:bg-cyan-400/20 transition"
             >
-              <Mail size={17} aria-hidden="true" />
-              <span>{company.email}</span>
+              <Phone size={16} aria-hidden="true" />
+              <span>Landline: +974 4412 1001</span>
+            </a>
+
+            <a
+              href="mailto:info@bizlinkqatar.com"
+              className="inline-flex min-h-[50px] items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 sm:px-6 py-3 text-xs sm:text-base font-bold text-white hover:bg-white/20 transition"
+            >
+              <Mail size={16} aria-hidden="true" />
+              <span>info@bizlinkqatar.com</span>
             </a>
           </div>
 
-          {/* Subtitle / Footer Note */}
-          <p className="mt-6 text-xs text-slate-400">
-            {company.name} · {company.registration} · {company.postBox} · Doha, Qatar
-          </p>
+          {/* 3-Column Directory Grid (Page 8 Specification) */}
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Col 1: Phone Numbers & Landline */}
+            <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 sm:p-6 backdrop-blur-md flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-2 text-cyan-400 font-bold text-xs uppercase tracking-wider">
+                  <Phone size={15} />
+                  <span>Call Lines & WhatsApp</span>
+                </div>
+                <div className="mt-4 space-y-2.5">
+                  <div className="flex items-center justify-between pb-2 border-b border-white/10">
+                    <span className="text-xs text-slate-300 font-medium">WhatsApp Hotline:</span>
+                    <a href="tel:+97450091006" className="text-xs sm:text-sm font-bold text-white hover:text-cyan-300">
+                      +974 5009 1006
+                    </a>
+                  </div>
+                  <div className="flex items-center justify-between pb-2 border-b border-white/10">
+                    <span className="text-xs text-slate-300 font-medium">Office Landline:</span>
+                    <a href="tel:+97444121001" className="text-xs sm:text-sm font-bold text-white hover:text-cyan-300">
+                      +974 4412 1001
+                    </a>
+                  </div>
+                  <div className="pt-1">
+                    <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Additional Desk Lines:</p>
+                    <div className="mt-2 grid grid-cols-2 gap-2 text-xs font-semibold text-slate-200">
+                      <a href="tel:+97477661037" className="hover:text-cyan-300">+974 7766 1037</a>
+                      <a href="tel:+97470081001" className="hover:text-cyan-300">+974 7008 1001</a>
+                      <a href="tel:+97430003916" className="hover:text-cyan-300">+974 30003 916</a>
+                      <a href="tel:+97430003821" className="hover:text-cyan-300">+974 30003 821</a>
+                      <a href="tel:+97455929821" className="hover:text-cyan-300 col-span-2">+974 559 29 821</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-5 pt-3 border-t border-white/10 text-[11px] text-cyan-300 font-medium">
+                Available Saturday – Thursday, 8 AM – 7 PM
+              </div>
+            </div>
+
+            {/* Col 2: Locations & Branches */}
+            <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 sm:p-6 backdrop-blur-md flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-2 text-cyan-400 font-bold text-xs uppercase tracking-wider">
+                  <MapPin size={15} />
+                  <span>Our Doha Locations</span>
+                </div>
+
+                <div className="mt-4 space-y-4">
+                  {/* Head Office */}
+                  <div className="pb-3 border-b border-white/10">
+                    <span className="inline-block rounded-md bg-cyan-400/20 px-2 py-0.5 text-[10px] font-black uppercase text-cyan-300">
+                      Head Office
+                    </span>
+                    <p className="mt-1 text-xs text-slate-200 font-medium leading-relaxed">
+                      Building #43, Zone #56, Street # 100,<br />
+                      Souq Naif, East Industrial Area Road,<br />
+                      Ain Khalid, Doha Qatar
+                    </p>
+                  </div>
+
+                  {/* Typing Centre */}
+                  <div>
+                    <span className="inline-block rounded-md bg-sky-400/20 px-2 py-0.5 text-[10px] font-black uppercase text-sky-300">
+                      Typing Centre
+                    </span>
+                    <p className="mt-1 text-xs text-slate-200 font-medium leading-relaxed">
+                      Building # 28, Zone #22, Street # 342,<br />
+                      Al Jazeera Street, Bin Mahamoud,<br />
+                      Doha Qatar (P.O. Box 13710)
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs font-bold text-cyan-300">
+                <Link href="/contact" className="hover:underline flex items-center gap-1">
+                  <span>View interactive maps</span>
+                  <ArrowRight size={13} />
+                </Link>
+              </div>
+            </div>
+
+            {/* Col 3: Official Emails, Website & Social */}
+            <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 sm:p-6 backdrop-blur-md flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-2 text-cyan-400 font-bold text-xs uppercase tracking-wider">
+                  <Mail size={15} />
+                  <span>Email & Digital Channels</span>
+                </div>
+
+                <div className="mt-4 space-y-3">
+                  <div>
+                    <p className="text-[11px] text-slate-400 font-medium">Primary Inquiries:</p>
+                    <a href="mailto:info@bizlinkqatar.com" className="text-xs sm:text-sm font-bold text-white hover:text-cyan-300">
+                      info@bizlinkqatar.com
+                    </a>
+                  </div>
+
+                  <div>
+                    <p className="text-[11px] text-slate-400 font-medium">Alternative Gmail:</p>
+                    <a href="mailto:bizlink.qatar@gmail.com" className="text-xs sm:text-sm font-bold text-white hover:text-cyan-300">
+                      bizlink.qatar@gmail.com
+                    </a>
+                  </div>
+
+                  <div>
+                    <p className="text-[11px] text-slate-400 font-medium">Official Website:</p>
+                    <a href="https://www.bizlinkqatar.com" target="_blank" rel="noreferrer" className="text-xs sm:text-sm font-bold text-cyan-300 hover:underline">
+                      www.bizlinkqatar.com
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-5 pt-3 border-t border-white/10">
+                <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Follow Us:</p>
+                <p className="mt-0.5 text-xs font-black text-white">BizLink Services Qatar</p>
+                <div className="mt-2 flex flex-wrap gap-2 text-slate-300 text-xs">
+                  <a href="https://wa.me/97450091006" target="_blank" rel="noreferrer" className="hover:text-cyan-300">WhatsApp</a>
+                  <span>·</span>
+                  <a href="https://www.facebook.com/share/1Ce1qEyQDQ/" target="_blank" rel="noreferrer" className="hover:text-cyan-300">Facebook</a>
+                  <span>·</span>
+                  <a href="https://www.instagram.com/bizlink_servises_qa" target="_blank" rel="noreferrer" className="hover:text-cyan-300">Instagram</a>
+                  <span>·</span>
+                  <a href="https://www.tiktok.com/@biz.link.qa" target="_blank" rel="noreferrer" className="hover:text-cyan-300">TikTok</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Footer Note */}
+          <div className="mt-8 pt-6 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-semibold text-slate-400">
+            <span>{company.name} · {company.registration} · {company.postBox}</span>
+            <span className="text-cyan-300">Doha, State of Qatar</span>
+          </div>
         </div>
       </div>
     </section>

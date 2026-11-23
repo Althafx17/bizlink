@@ -2,13 +2,13 @@ export const company = {
   name: "BIZ LINK TRADING AND CONTRACTING SERVICES WLL.",
   shortName: "BizLink Qatar",
   registration: "CR No. 206520",
-  postBox: "P.O. Box 13710",
+  postBox: "Post Box No. 13710",
   group: "PATHAS GROUP OF COMPANIES",
   footprint: "QATAR • INDIA • UAE • CHINA",
   since: "2010",
   tagline: "ONE ROOF. MULTIPLE SOLUTIONS. ONE TRUSTED PARTNER.",
   slogan: "ALL BUSINESS SOLUTIONS UNDER ONE ROOF",
-  subTagline: "Your Trusted Partner",
+  subTagline: "One Roof. Multiple Solutions. One Trusted Partner.",
   intro:
     "Biz Link Trading and Contracting Services WLL provides comprehensive enterprise and personal solutions across Business & Corporate, Digital & Creative, Trading & Supply, Facility Management, and Automotive Care in Qatar.",
   aboutSubhead: "Your Trusted Partner for Integrated Business Solutions in Qatar",
@@ -16,15 +16,21 @@ export const company = {
     "BizLink Trading and Contracting Services W.L.L. is a diversified service provider in Qatar, offering business consultancy, trading, facility management, automotive and digital solutions. Part of Pathas Group of Companies, with operations across India, Qatar, UAE and China, we bring diverse expertise and reliable services under one roof.",
   aboutParagraph2:
     "Since 2010, we have been committed to simplifying business operations and delivering quality products and professional solutions to individuals and organizations.",
-  email: "bizlink.qa@gmail.com",
-  secondaryEmail: "info@bizlinkqatar.com",
+  email: "info@bizlinkqatar.com",
+  secondaryEmail: "bizlink.qatar@gmail.com",
   website: "www.bizlinkqatar.com",
-  phones: [
-    { label: "+974 5009 1006", href: "tel:+97450091006", primary: true },
-    { label: "+974 7766 1037", href: "tel:+97477661037", primary: false },
-  ],
   whatsappNumber: "97450091006",
   whatsappUrl: "https://wa.me/97450091006",
+  landline: "+974 4412 1001",
+  phones: [
+    { label: "+974 5009 1006", href: "tel:+97450091006", primary: true, note: "WhatsApp & Hotline" },
+    { label: "+974 7766 1037", href: "tel:+97477661037", primary: false, note: "Sales & Support" },
+    { label: "+974 7008 1001", href: "tel:+97470081001", primary: false, note: "Corporate Desk" },
+    { label: "+974 30003 916", href: "tel:+97430003916", primary: false, note: "Services Team" },
+    { label: "+974 30003 821", href: "tel:+97430003821", primary: false, note: "Operations" },
+    { label: "+974 559 29 821", href: "tel:+97455929821", primary: false, note: "Support" },
+  ],
+  socialUsername: "BizLink Services Qatar",
 } as const;
 
 export const principles = [
@@ -48,23 +54,53 @@ export const principles = [
 export const values = [
   {
     title: "Integrity",
-    description: "Complete transparency, ethical compliance, and unyielding honesty in every transaction.",
+    description: "Transparency & Ethics across every transaction and government engagement.",
   },
   {
     title: "Quality",
-    description: "Rigorous standards, certified processes, and precision across every single service.",
+    description: "Standard Excellence and rigorous quality compliance for all deliverables.",
   },
   {
     title: "Reliability",
-    description: "Punctual execution, dedicated account managers, and dependable ongoing support.",
+    description: "Punctual & Accountable partnership you can depend on at every phase.",
   },
   {
     title: "Innovation",
-    description: "Modern operational methodologies, digital systems, and forward-looking business models.",
+    description: "Forward Systems, AI-powered digital media, and modern workflows.",
   },
   {
     title: "Customer Focus",
-    description: "Client-centric mindset tailored specifically to your unique organizational goals.",
+    description: "Client-Centric Success tailored to your exact business objectives.",
+  },
+] as const;
+
+export const sisterConcerns = [
+  {
+    name: "PATHAS GALLERY",
+    arabicName: "",
+    tagline: "LIVE ON FASHION",
+    since: "SINCE 2010",
+    location: "SAFARI MALL, ABU HAMOUR, DOHA QATAR",
+    category: "Fashion & Lifestyle Retail",
+    badgeColor: "from-amber-500 to-orange-600",
+  },
+  {
+    name: "aapco Limousine W.L.L",
+    arabicName: "ابكو ليموزين ذ.م.م",
+    tagline: "EXECUTIVE & CHAUFFEUR TRANSPORT",
+    since: "",
+    location: "SOUQ NAIF, EAST INDUSTRIAL ROAD, AIN KHALID, DOHA QATAR",
+    category: "Luxury Mobility & Limousine",
+    badgeColor: "from-orange-500 to-red-600",
+  },
+  {
+    name: "PATHAS IMPORTS & EXPORTS",
+    arabicName: "",
+    tagline: "GLOBAL SOURCING & TRADE",
+    since: "SINCE 2010",
+    location: "SOUQ NAIF, EAST INDUSTRIAL ROAD, AIN KHALID, DOHA QATAR",
+    category: "Import, Export & Logistics",
+    badgeColor: "from-blue-600 to-cyan-600",
   },
 ] as const;
 
@@ -88,38 +124,38 @@ export const reasons = [
 
 export const branches = [
   {
-    id: "ain-khalid",
-    title: "Ain Khalid - Head Office",
-    role: "Corporate Headquarters",
+    id: "head-office",
+    title: "Head Office",
+    role: "Corporate Headquarters & Management",
     lines: [
-      "Office No. 164, First Floor, Building No. 43",
-      "Zone 53, Street 100, Souq Naif",
+      "Building #43, Zone #56, Street # 100",
+      "Souq Naif, East Industrial Area Road",
       "Ain Khalid, Doha, Qatar",
     ],
-    zone: "Zone 53, Street 100",
-    building: "Building No. 43, Office 164",
-    mapsQuery: "Office 164, Building 43, Souq Naif, Ain Khalid, Doha, Qatar",
+    zone: "Zone #56, Street # 100",
+    building: "Building #43, Souq Naif",
+    mapsQuery: "Building 43, Street 100, Souq Naif, East Industrial Area Road, Ain Khalid, Doha, Qatar",
     mapEmbedUrl:
       "https://www.openstreetmap.org/export/embed.html?bbox=51.4340%2C25.2060%2C51.4620%2C25.2240&layer=mapnik&marker=25.2150%2C51.4480",
     mapsDirectUrl:
-      "https://www.google.com/maps/search/?api=1&query=Ain+Khalid+Doha+Qatar",
+      "https://www.google.com/maps/search/?api=1&query=Building+43+Street+100+Souq+Naif+Ain+Khalid+Doha+Qatar",
   },
   {
-    id: "bin-mahmoud",
-    title: "Bin Mahmoud - Branch",
-    role: "Customer Operations & PRO Center",
+    id: "typing-centre",
+    title: "Typing Centre",
+    role: "Government Documentation & PRO Center",
     lines: [
-      "Shop No. 07, Building No. 28",
-      "Zone 22, Street 342, Al Jazeera Street, Main Road",
-      "Bin Mahmoud, Doha, Qatar (P.O. Box 13710)",
+      "Building # 28, Zone #22, Street # 342",
+      "Al Jazeera Street, Bin Mahamoud",
+      "Doha, Qatar (P.O. Box 13710)",
     ],
-    zone: "Zone 22, Street 342",
-    building: "Building No. 28, Shop 07",
+    zone: "Zone #22, Street # 342",
+    building: "Building # 28, Al Jazeera Street",
     mapsQuery:
-      "Shop 07, Building 28, Street 342, Al Jazeera Street, Bin Mahmoud, Doha, Qatar",
+      "Building 28, Street 342, Al Jazeera Street, Bin Mahamoud, Doha, Qatar",
     mapEmbedUrl:
       "https://www.openstreetmap.org/export/embed.html?bbox=51.4940%2C25.2760%2C51.5160%2C25.2910&layer=mapnik&marker=25.2835%2C51.5050",
     mapsDirectUrl:
-      "https://www.google.com/maps/search/?api=1&query=Al+Jazeera+Street+Bin+Mahmoud+Doha+Qatar",
+      "https://www.google.com/maps/search/?api=1&query=Building+28+Street+342+Al+Jazeera+Street+Bin+Mahamoud+Doha+Qatar",
   },
 ] as const;

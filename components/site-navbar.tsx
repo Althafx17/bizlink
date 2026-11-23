@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowRight, ArrowUpRight, Menu, Phone, X } from "lucide-react";
+import { ArrowRight, Menu, Phone, X } from "lucide-react";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -15,7 +15,8 @@ const navLinks = [
 
 export function SiteNavbar() {
   const pathname = usePathname();
-  const [isScrolled, setIsScrolled] = useState(false);
+  const isHome = pathname === "/";
+  const [hasScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -43,6 +44,8 @@ export function SiteNavbar() {
     };
   }, [pathname]);
 
+  const isScrolled = hasScrolled;
+
   // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
@@ -55,32 +58,27 @@ export function SiteNavbar() {
 
   return (
     <div
-      className={`fixed z-50 left-0 right-0 flex justify-center pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-        isScrolled ? "top-3 sm:top-4" : "top-0"
-      }`}
+      className={`fixed z-50 left-0 right-0 flex justify-center pointer-events-none transition-none md:transition-all md:duration-500 md:ease-[cubic-bezier(0.16,1,0.3,1)] ${isScrolled ? "top-0 md:top-3 md:sm:top-4" : "top-0"
+        }`}
     >
       <header
-        className={`pointer-events-auto relative flex items-center transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-          isScrolled
-            ? "w-[calc(100%-1.5rem)] sm:w-[calc(100%-3rem)] max-w-6xl rounded-full bg-white/95 backdrop-blur-lg border border-[#0B2C5F]/15 shadow-xl shadow-[#0B2C5F]/10 min-h-[60px] sm:min-h-[66px] py-2 px-4 sm:px-6"
+        className={`site-header-glass pointer-events-auto relative flex items-center transition-none md:transition-all md:duration-500 md:ease-[cubic-bezier(0.16,1,0.3,1)] w-full rounded-none min-h-[60px] py-2 px-4 border-b border-white/10 bg-[#070B14]/95 backdrop-blur-xl shadow-md ${isScrolled
+            ? "md:w-[calc(100%-1.5rem)] md:sm:w-[calc(100%-3rem)] md:max-w-6xl md:rounded-full md:bg-[#070B14]/85 md:border md:border-white/20 md:shadow-[0_8px_32px_rgba(0,0,0,0.6)] md:backdrop-blur-xl md:min-h-[66px] md:py-2 md:px-6"
             : mobileMenuOpen
-            ? "w-full bg-[#071426]/95 backdrop-blur-xl border-b border-white/10 shadow-xl min-h-[70px] sm:min-h-[78px] py-3 sm:py-3.5 px-4 sm:px-8 lg:px-12"
-            : "w-full bg-transparent border-b border-transparent shadow-none min-h-[70px] sm:min-h-[78px] py-3 sm:py-4 px-4 sm:px-8 lg:px-12"
-        }`}
+              ? "md:w-[calc(100%-1rem)] md:sm:w-[calc(100%-3rem)] md:max-w-[98rem] md:mt-4 md:rounded-2xl md:bg-[#070B14]/75 md:border md:border-white/20 md:shadow-[0_8px_32px_rgba(0,0,0,0.4)] md:min-h-[78px] md:py-3.5 md:px-8 lg:md:px-12"
+              : "md:w-[calc(100%-1rem)] md:sm:w-[calc(100%-3rem)] md:max-w-[98rem] md:mt-4 md:rounded-2xl md:bg-[#070B14]/50 md:border md:border-white/15 md:shadow-[0_8px_32px_rgba(0,0,0,0.3)] md:min-h-[78px] md:py-4 md:px-8 lg:md:px-12"
+          }`}
       >
         <div className="mx-auto flex items-center justify-between w-full max-w-7xl gap-2">
           {/* Brand / Logo */}
           <Link
             href="/"
-            className="group flex items-center gap-2.5 transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0056B3] rounded-full min-h-[44px] min-w-[44px]"
+            className="group flex items-center gap-3 transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0056B3] rounded-full min-h-[44px] min-w-[44px]"
             aria-label="BizLink Qatar Home"
+            data-navbar-brand
           >
             <span
-              className={`relative flex size-10 items-center justify-center rounded-xl p-1.5 transition-all duration-300 group-hover:scale-105 ${
-                isScrolled
-                  ? "bg-[#F2F7FD] ring-1 ring-[#0B2C5F]/10"
-                  : "bg-white/10 ring-1 ring-white/20 backdrop-blur-md shadow-inner"
-              }`}
+              className="relative flex size-10 items-center justify-center rounded-xl p-1.5 transition-all duration-300 md:group-hover:scale-105 bg-white/10 ring-1 ring-white/20 backdrop-blur-md shadow-inner"
             >
               <Image
                 src="/images/bizlink-logo-transparent-1.png"
@@ -93,16 +91,13 @@ export function SiteNavbar() {
             </span>
             <span className="flex flex-col leading-none">
               <span
-                className={`text-sm sm:text-base font-extrabold tracking-tight transition-colors duration-300 ${
-                  isScrolled ? "text-[#0B2C5F]" : "text-white drop-shadow-sm"
-                }`}
+                data-brand-wordmark
+                className="text-base font-black tracking-tight transition-colors duration-300 text-white drop-shadow-sm"
               >
-                BizLink<span className={isScrolled ? "text-[#0088CE]" : "text-cyan-400"}>.</span>
+                BizLink<span className="text-cyan-400">.</span>
               </span>
               <span
-                className={`text-[10px] font-bold tracking-widest uppercase transition-colors duration-300 ${
-                  isScrolled ? "text-[#0077CC]" : "text-cyan-300 drop-shadow-sm"
-                }`}
+                className="mt-1 text-[10px] font-bold tracking-widest uppercase transition-colors duration-300 text-cyan-300 drop-shadow-sm"
               >
                 Qatar
               </span>
@@ -110,31 +105,22 @@ export function SiteNavbar() {
           </Link>
 
           {/* Center Nav Links - Desktop */}
-          <nav aria-label="Main navigation" className="hidden md:flex items-center gap-1 lg:gap-1.5">
+          <nav aria-label="Main navigation" className="hidden md:flex items-center gap-1 lg:gap-2">
             {navLinks.map(({ label, href }) => {
               const isActive = pathname === href;
               return (
                 <Link
                   key={href}
                   href={href}
-                  className={`relative min-h-[44px] inline-flex items-center px-4 py-2 rounded-full text-xs lg:text-sm font-semibold transition-all duration-300 ${
-                    isScrolled
-                      ? isActive
-                        ? "bg-[#EAF2FA] text-[#0056B3] shadow-sm font-bold"
-                        : "text-[#0B2C5F]/75 hover:text-[#0056B3] hover:bg-[#F2F7FD]"
-                      : isActive
-                      ? "bg-white/20 text-white font-bold backdrop-blur-md border border-white/25 shadow-md shadow-black/20"
-                      : "text-white/80 hover:text-white hover:bg-white/10"
-                  }`}
+                  className={`relative min-h-[44px] inline-flex items-center px-3.5 py-2 text-xs lg:text-sm font-semibold transition-all duration-300 ${isActive
+                      ? "text-cyan-300 font-bold"
+                      : "text-white/80 hover:text-white"
+                    }`}
                 >
-                  {label}
+                  <span>{label}</span>
                   {isActive && (
                     <span
-                      className={`absolute -bottom-0.5 left-1/2 -translate-x-1/2 size-1.5 rounded-full transition-colors duration-300 ${
-                        isScrolled
-                          ? "bg-[#0088CE]"
-                          : "bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]"
-                      }`}
+                      className="absolute bottom-0 left-0 w-full h-[2px] rounded-none bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.9)]"
                       aria-hidden="true"
                     />
                   )}
@@ -147,15 +133,11 @@ export function SiteNavbar() {
           <div className="flex items-center gap-2 sm:gap-3.5">
             <a
               href="tel:+97477661037"
-              className={`hidden lg:inline-flex min-h-[44px] items-center gap-1.5 text-xs font-bold transition-colors duration-300 ${
-                isScrolled
-                  ? "text-[#0B2C5F]/80 hover:text-[#0056B3]"
-                  : "text-white/90 hover:text-cyan-300 drop-shadow-sm"
-              }`}
+              className="hidden lg:inline-flex min-h-[44px] items-center gap-1.5 text-xs font-bold transition-colors duration-300 text-white/90 hover:text-cyan-300 drop-shadow-sm"
             >
               <Phone
                 size={14}
-                className={isScrolled ? "text-[#0088CE]" : "text-cyan-400"}
+                className="text-cyan-400"
                 aria-hidden="true"
               />
               <span>+974 7766 1037</span>
@@ -163,11 +145,7 @@ export function SiteNavbar() {
 
             <Link
               href="/contact"
-              className={`group inline-flex min-h-[40px] sm:min-h-[44px] items-center gap-2 rounded-full px-4 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm font-bold transition-all duration-300 active:scale-[0.98] ${
-                isScrolled
-                  ? "bg-[#0056B3] text-white shadow-md shadow-[#0056B3]/25 hover:bg-[#004088] hover:shadow-lg hover:scale-[1.02]"
-                  : "border border-cyan-400/45 bg-cyan-400/15 backdrop-blur-md text-white shadow-[0_0_20px_rgba(56,189,248,0.35)] hover:bg-cyan-400/25 hover:border-cyan-300 hover:shadow-[0_0_30px_rgba(56,189,248,0.55)] hover:scale-[1.02]"
-              }`}
+              className="group hidden sm:inline-flex min-h-[44px] items-center gap-2 rounded-full px-6 py-2.5 text-sm font-bold transition-all duration-300 active:scale-[0.98] bg-gradient-to-r from-[#0056B3] via-[#0088CE] to-[#00B4FF] text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02]"
             >
               <span>Get Started</span>
               <ArrowRight
@@ -183,11 +161,7 @@ export function SiteNavbar() {
               onClick={() => setMobileMenuOpen((open) => !open)}
               aria-expanded={mobileMenuOpen}
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-              className={`md:hidden flex size-10 sm:size-11 items-center justify-center rounded-full transition-colors ${
-                isScrolled
-                  ? "border border-[#0B2C5F]/15 bg-[#F2F7FD] text-[#0B2C5F] hover:bg-[#EAF2FA]"
-                  : "border border-white/25 bg-white/15 backdrop-blur-md text-white hover:bg-white/25"
-              }`}
+              className="md:hidden flex size-10 items-center justify-center rounded-xl border border-white/20 bg-white/10 text-white hover:bg-white/20 transition-colors"
             >
               {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -197,11 +171,7 @@ export function SiteNavbar() {
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
           <div
-            className={`md:hidden absolute top-[calc(100%+0.5rem)] left-0 right-0 rounded-2xl p-4 shadow-2xl animate-in fade-in slide-in-from-top-2 duration-200 ${
-              isScrolled
-                ? "border border-[#0B2C5F]/15 bg-white/98 backdrop-blur-xl shadow-[#0B2C5F]/15 text-[#0B2C5F]"
-                : "border border-white/20 bg-[#071426]/95 backdrop-blur-2xl shadow-black/60 text-white"
-            }`}
+            className="md:hidden absolute top-[calc(100%+0.5rem)] left-0 right-0 rounded-2xl p-4 shadow-2xl border border-white/20 bg-[#071426]/95 backdrop-blur-2xl shadow-black/40 text-white animate-in fade-in slide-in-from-top-2 duration-150"
           >
             <nav aria-label="Mobile navigation" className="flex flex-col gap-1">
               {navLinks.map(({ label, href }) => {
@@ -210,52 +180,28 @@ export function SiteNavbar() {
                   <Link
                     key={href}
                     href={href}
-                    className={`flex min-h-[44px] items-center justify-between rounded-xl px-4 py-2.5 text-sm font-bold transition-colors ${
-                      isScrolled
-                        ? isActive
-                          ? "bg-[#EAF2FA] text-[#0056B3]"
-                          : "text-[#0B2C5F]/80 hover:bg-[#F2F7FD] hover:text-[#0B2C5F]"
-                        : isActive
+                    className={`flex min-h-[44px] items-center justify-between rounded-xl px-4 py-2.5 text-sm font-bold transition-colors ${isActive
                         ? "bg-white/20 text-cyan-300 font-extrabold border border-white/20"
                         : "text-white/85 hover:bg-white/10 hover:text-white"
-                    }`}
+                      }`}
                   >
                     <span>{label}</span>
                     {isActive && (
-                      <span
-                        className={`size-2 rounded-full ${
-                          isScrolled ? "bg-[#0088CE]" : "bg-cyan-400"
-                        }`}
-                      />
+                      <span className="size-2 rounded-full bg-cyan-400" />
                     )}
                   </Link>
                 );
               })}
             </nav>
-            <div
-              className={`mt-3 pt-3 flex items-center justify-between px-1 border-t ${
-                isScrolled ? "border-[#0B2C5F]/10" : "border-white/15"
-              }`}
-            >
+            <div className="mt-3 pt-3 flex items-center justify-between px-1 border-t border-white/15">
               <a
                 href="tel:+97450091006"
-                className={`inline-flex min-h-[44px] items-center gap-1.5 text-xs font-bold ${
-                  isScrolled
-                    ? "text-[#0B2C5F]/80 hover:text-[#0056B3]"
-                    : "text-white/90 hover:text-cyan-300"
-                }`}
+                className="inline-flex min-h-[44px] items-center gap-1.5 text-xs font-bold text-white/90 hover:text-cyan-300"
               >
-                <Phone
-                  size={14}
-                  className={isScrolled ? "text-[#0088CE]" : "text-cyan-400"}
-                />
+                <Phone size={14} className="text-cyan-400" />
                 <span>+974 5009 1006</span>
               </a>
-              <span
-                className={`text-[11px] font-bold ${
-                  isScrolled ? "text-[#475D7A]" : "text-slate-300"
-                }`}
-              >
+              <span className="text-[11px] font-bold text-slate-300">
                 Doha, Qatar
               </span>
             </div>

@@ -66,7 +66,7 @@ export function CompanyOverview({
         <section id="services" className={styles.services} aria-labelledby="about-services">
           <div className={styles.shell}>
             <div className={styles.sectionHeading}>
-              <div><p className={styles.eyebrow}>One roof. Multiple solutions.</p><Heading id="about-services">Our services</Heading></div>
+              <div><p className={styles.eyebrow}>All solutions under one roof</p><Heading id="about-services">Our services</Heading></div>
               <Link href="/services">View all services <ArrowUpRight size={17} aria-hidden="true" /></Link>
             </div>
             <ul className={styles.summaryGrid}>

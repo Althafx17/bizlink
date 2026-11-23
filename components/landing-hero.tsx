@@ -66,9 +66,9 @@ export function LandingHero({ about, homeHref = "/" }: { about: ReactNode; homeH
             </div>
 
             <h1 id="landing-hero-title" className={styles.title}>
-              <span>ONE ROOF.</span>
-              <span>MULTIPLE SOLUTIONS.</span>
-              <span>ONE TRUSTED PARTNER.</span>
+              <span>ALL</span>
+              <span>BUSINESS SOLUTIONS.</span>
+              <span>UNDER ONE ROOF.</span>
             </h1>
 
             <p className={styles.subhead}>

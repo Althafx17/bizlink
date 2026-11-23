@@ -14,7 +14,7 @@ const inter = Inter({
 const siteTitle = "BizLink Trading and Contracting Services WLL";
 
 export const viewport: Viewport = {
-  themeColor: "#0B2C5F",
+  themeColor: "#0056B3",
   width: "device-width",
   initialScale: 1,
 };
@@ -32,10 +32,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en" className={inter.variable}>
       <body className={inter.className}>
+        {/* <a className="skip-link" href="#main-content">
+          Skip to content
+        </a> */}
         <SiteNavbar />
         {children}
         <SiteFooter />

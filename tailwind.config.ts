@@ -5,6 +5,16 @@ export default {
   theme: {
     extend: {
       colors: {
+        corporate: {
+          dark: "#071426",
+          navy: "#0B1B36",
+          card: "#0F254B",
+          cardHover: "#143161",
+          blue: "#2563EB",
+          cyan: "#00D2FF",
+          sky: "#38BDF8",
+          amber: "#F97316",
+        },
         primary: {
           DEFAULT: "#0056B3",
           hover: "#004088",

@@ -22,7 +22,7 @@ export function WireframeHero() {
         {/* DESKTOP: 2-Column Grid | MOBILE: Clean Vertical Stack */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
 
-          {/* Left Column (Desktop 6-7 cols): All existing contents preserved */}
+          {/* Left Column (Desktop 6-7 cols): All contents preserved */}
           <div className="lg:col-span-6 xl:col-span-6 flex flex-col justify-center text-left">
             {/* Top Eyebrow Chip */}
             <div className="inline-flex items-center gap-2 self-start rounded-full border border-cyan-400/30 bg-cyan-950/40 px-3.5 py-1 text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-cyan-300 backdrop-blur-md">
@@ -97,71 +97,79 @@ export function WireframeHero() {
             </div>
           </div>
 
-          {/* Right Column: Concentric Overlapping Gradient Circles matching reference design */}
-          <div className="lg:col-span-6 xl:col-span-6 flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-[380px] sm:max-w-[480px] lg:max-w-[560px] xl:max-w-[620px] aspect-square flex items-center justify-center select-none">
+          {/* Right Column: Big Blue Semicircle Background with BizLink Logo Card in Front (Matching Reference Images) */}
+          <div className="lg:col-span-6 xl:col-span-6 flex justify-center lg:justify-end items-center relative">
+            <div className="relative w-full max-w-[420px] sm:max-w-[520px] lg:max-w-[580px] xl:max-w-[640px] aspect-[1/1] flex items-center justify-center select-none">
 
-              {/* 1. OUTER CIRCLE (Largest): Deep Ocean Azure Blue */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#123966] via-[#0d2747] to-[#07162b] border border-cyan-500/25 shadow-2xl shadow-cyan-950/60 overflow-hidden group">
-                {/* Subtle ambient lighting */}
-                <div className="absolute inset-0 bg-radial from-cyan-400/10 via-transparent to-transparent pointer-events-none" />
-
-                {/* Outer Circle Stat Label (Top Right) */}
-                <div className="absolute top-6 sm:top-10 right-6 sm:right-10 text-right z-10">
-                  <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-cyan-400/90 block">
-                    GLOBAL FOOTPRINT
-                  </span>
-                  <span className="text-xl sm:text-2xl lg:text-3xl font-black text-white block mt-0.5">
-                    4 Trade Hubs
-                  </span>
-                  <span className="text-[10px] sm:text-[11px] font-semibold text-slate-300 block mt-0.5">
-                    Qatar • India • UAE • China
-                  </span>
-                </div>
-              </div>
-
-              {/* 2. MIDDLE CIRCLE: Medium Sapphire Blue (Offset towards Center-Left) */}
-              <div className="absolute size-[72%] rounded-full bg-gradient-to-br from-[#1d5c9c] via-[#144372] to-[#0c2a49] border border-cyan-400/35 shadow-xl shadow-cyan-950/50 overflow-hidden flex items-center justify-center">
-                {/* Middle Circle Stat Label */}
-                <div className="absolute top-5 sm:top-7 right-5 sm:right-7 text-right z-10">
-                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-cyan-300 block">
-                    OPERATIONAL SCALE
-                  </span>
-                  <span className="text-lg sm:text-xl lg:text-2xl font-black text-white block mt-0.5">
-                    1,000+ Clients
-                  </span>
-                  <span className="text-[9px] sm:text-[10px] font-medium text-slate-300 block">
-                    5 Enterprise Divisions
-                  </span>
-                </div>
-              </div>
-
-              {/* 3. INNER SMALL CIRCLE AT THE CENTER: Glowing Cyan/Sky Blue */}
-              <div className="relative z-20 size-[44%] sm:size-[42%] rounded-full bg-gradient-to-br from-[#0284c7] via-[#0369a1] to-[#07365c] border-2 border-cyan-300/80 shadow-[0_0_60px_rgba(34,211,238,0.55)] flex flex-col items-center justify-center p-4 text-center transition-transform duration-500 hover:scale-105 cursor-pointer">
+              {/* 1. Big Blue Semicircle Background (from Second Image) - Middle and front circle removed */}
+              <div className="absolute right-0 sm:-right-4 lg:-right-8 size-[360px] sm:size-[460px] lg:size-[540px] xl:size-[600px] rounded-full bg-gradient-to-bl from-[#3b93e8] via-[#1c64b5] to-[#09294d] border border-cyan-400/40 shadow-[0_0_100px_rgba(45,139,230,0.35)] overflow-hidden">
+                {/* Subtle interior ambient glow */}
+                <div className="absolute inset-0 bg-radial from-cyan-300/20 via-transparent to-transparent pointer-events-none" />
                 
-                {/* Ambient pulse halo */}
-                <div className="absolute inset-0 rounded-full border border-cyan-300/40 animate-ping opacity-30 pointer-events-none" />
+                {/* Subtle architectural arch rings */}
+                <div className="absolute inset-8 rounded-full border border-white/10 pointer-events-none" />
+                <div className="absolute inset-20 rounded-full border border-cyan-300/15 pointer-events-none" />
 
-                {/* ROUND LOGO FROM THE IMAGES */}
-                <div className="relative size-16 sm:size-20 lg:size-24 drop-shadow-[0_12px_28px_rgba(0,180,255,0.7)]">
-                  <Image
-                    src="/images/bizlink_3d_logo_transparent.webp"
-                    alt="BizLink Round 3D Architectural Emblem"
-                    fill
-                    priority
-                    sizes="(min-width: 1024px) 120px, 80px"
-                    className="object-contain"
-                  />
+                {/* Semicircle Floating Indicator Tag */}
+                <div className="absolute top-8 sm:top-12 right-8 sm:right-12 text-right">
+                  <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-cyan-200 block drop-shadow-md">
+                    CORPORATE ECOSYSTEM
+                  </span>
+                  <span className="text-xl sm:text-2xl lg:text-3xl font-black text-white block mt-0.5 drop-shadow-md">
+                    Doha · Qatar
+                  </span>
+                </div>
+              </div>
+
+              {/* 2. Floating BizLink Logo Card in front of Semicircle (from First Image Reference) */}
+              <div className="relative z-20 w-[84%] sm:w-[78%] lg:w-[74%] rounded-3xl border border-white/20 bg-[#070B14]/85 backdrop-blur-xl p-6 sm:p-7 shadow-[0_25px_60px_rgba(0,0,0,0.85)] shadow-cyan-950/60 transition-transform duration-500 hover:scale-[1.02] group">
+                
+                {/* Top Header of the Logo Card */}
+                <div className="flex items-center justify-between pb-3.5 border-b border-white/10">
+                  <div className="flex items-center gap-2">
+                    <span className="size-2 rounded-full bg-cyan-400 animate-pulse" />
+                    <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-cyan-300">
+                      Corporate Emblem
+                    </span>
+                  </div>
+                  <span className="text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full bg-white/10 text-slate-300 border border-white/10">
+                    Est. 2010
+                  </span>
                 </div>
 
-                {/* Center Core Brand Badge */}
-                <div className="mt-1 sm:mt-1.5 flex flex-col items-center">
-                  <span className="text-[10px] sm:text-xs font-black uppercase tracking-wider text-white drop-shadow-sm">
-                    BIZLINK QATAR
-                  </span>
-                  <span className="text-[8px] sm:text-[9px] font-bold text-cyan-200 uppercase tracking-widest mt-0.5">
-                    Pathas Group
-                  </span>
+                {/* Center 3D BizLink Logo */}
+                <div className="relative w-full aspect-[641/460] my-4 flex items-center justify-center">
+                  <div className="relative w-4/5 h-full drop-shadow-[0_15px_35px_rgba(0,180,255,0.6)] group-hover:scale-105 transition-transform duration-700 ease-out">
+                    <Image
+                      src="/images/bizlink_3d_logo_transparent.webp"
+                      alt="BizLink 3D Architectural Logo"
+                      fill
+                      priority
+                      sizes="(min-width: 1024px) 350px, 280px"
+                      className="object-contain"
+                    />
+                  </div>
+                </div>
+
+                {/* Bottom Brand Title & Credentials */}
+                <div className="pt-3.5 border-t border-white/10">
+                  <div className="flex items-baseline justify-between">
+                    <h3 className="text-sm sm:text-base font-black text-white uppercase tracking-wider">
+                      BIZLINK QATAR
+                    </h3>
+                    <span className="text-[10px] font-bold text-cyan-300">
+                      Pathas Group
+                    </span>
+                  </div>
+                  <div className="mt-2 flex items-center gap-1.5 text-[10px] font-bold text-slate-400">
+                    <span className="text-cyan-300">QATAR</span>
+                    <span>•</span>
+                    <span>INDIA</span>
+                    <span>•</span>
+                    <span>UAE</span>
+                    <span>•</span>
+                    <span>CHINA</span>
+                  </div>
                 </div>
               </div>
 

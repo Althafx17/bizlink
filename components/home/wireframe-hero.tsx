@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, MessageCircle, Phone, Sparkles } from "lucide-react";
+import { ArrowRight, MessageCircle, Phone } from "lucide-react";
 
 export function WireframeHero() {
   return (
@@ -22,7 +22,7 @@ export function WireframeHero() {
         {/* DESKTOP: 2-Column Grid | MOBILE: Clean Vertical Stack */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
 
-          {/* Left Column (Desktop 6-7 cols): All contents preserved */}
+          {/* Left Column (Desktop 6-7 cols): All editorial contents preserved */}
           <div className="lg:col-span-6 xl:col-span-6 flex flex-col justify-center text-left">
             {/* Top Eyebrow Chip */}
             <div className="inline-flex items-center gap-2 self-start rounded-full border border-cyan-400/30 bg-cyan-950/40 px-3.5 py-1 text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-cyan-300 backdrop-blur-md">
@@ -97,71 +97,81 @@ export function WireframeHero() {
             </div>
           </div>
 
-          {/* Right Column: Big Blue Semicircle Background with BizLink Logo Card in Front (Matching Reference Images) */}
+          {/* Right Column: Semicircle Arch Background with Floating BizLink Logo Card at Bottom-Left Corner */}
           <div className="lg:col-span-6 xl:col-span-6 flex justify-center lg:justify-end items-center relative">
-            <div className="relative w-full max-w-[420px] sm:max-w-[520px] lg:max-w-[580px] xl:max-w-[640px] aspect-[1/1] flex items-center justify-center select-none">
+            <div className="relative w-full max-w-[440px] sm:max-w-[540px] lg:max-w-[600px] xl:max-w-[660px] h-[480px] sm:h-[540px] lg:h-[600px] xl:h-[640px] flex items-end justify-start select-none">
 
-              {/* 1. Big Blue Semicircle Background (from Second Image) - Middle and front circle removed */}
-              <div className="absolute right-0 sm:-right-4 lg:-right-8 size-[360px] sm:size-[460px] lg:size-[540px] xl:size-[600px] rounded-full bg-gradient-to-bl from-[#3b93e8] via-[#1c64b5] to-[#09294d] border border-cyan-400/40 shadow-[0_0_100px_rgba(45,139,230,0.35)] overflow-hidden">
-                {/* Subtle interior ambient glow */}
-                <div className="absolute inset-0 bg-radial from-cyan-300/20 via-transparent to-transparent pointer-events-none" />
-                
-                {/* Subtle architectural arch rings */}
-                <div className="absolute inset-8 rounded-full border border-white/10 pointer-events-none" />
-                <div className="absolute inset-20 rounded-full border border-cyan-300/15 pointer-events-none" />
+              {/* 1. Semicircle Arch Background (Matching the curved glass building from reference image) */}
+              <div className="absolute right-0 top-0 bottom-0 w-[84%] sm:w-[80%] lg:w-[76%] rounded-t-full overflow-hidden border border-cyan-400/40 bg-gradient-to-b from-[#3b93e8] via-[#1c64b5] to-[#09294d] shadow-[0_0_90px_rgba(45,139,230,0.35)]">
+                {/* Architectural curved glass image blend matching reference image */}
+                <div className="absolute inset-0 z-0">
+                  <Image
+                    src="/images/about/luxury_boardroom_skyline.jpg"
+                    alt="BizLink Architectural Penthouse Arch"
+                    fill
+                    priority
+                    sizes="(min-width: 1024px) 500px, 400px"
+                    className="object-cover object-top opacity-35 mix-blend-overlay"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-cyan-400/20 via-transparent to-[#070B14]/80 pointer-events-none" />
+                </div>
 
-                {/* Semicircle Floating Indicator Tag */}
-                <div className="absolute top-8 sm:top-12 right-8 sm:right-12 text-right">
-                  <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-cyan-200 block drop-shadow-md">
+                {/* Subtle interior ambient glow and arch lines */}
+                <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-cyan-300/25 to-transparent pointer-events-none" />
+                <div className="absolute inset-6 rounded-t-full border border-white/10 pointer-events-none" />
+
+                {/* Top Tag inside Arch */}
+                <div className="absolute top-10 sm:top-14 inset-x-0 flex flex-col items-center text-center px-4 z-10">
+                  <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-cyan-200 drop-shadow-md">
                     CORPORATE ECOSYSTEM
                   </span>
-                  <span className="text-xl sm:text-2xl lg:text-3xl font-black text-white block mt-0.5 drop-shadow-md">
+                  <span className="text-xl sm:text-2xl lg:text-3xl font-black text-white mt-1 drop-shadow-md">
                     Doha · Qatar
                   </span>
                 </div>
               </div>
 
-              {/* 2. Floating BizLink Logo Card in front of Semicircle (from First Image Reference) */}
-              <div className="relative z-20 w-[84%] sm:w-[78%] lg:w-[74%] rounded-3xl border border-white/20 bg-[#070B14]/85 backdrop-blur-xl p-6 sm:p-7 shadow-[0_25px_60px_rgba(0,0,0,0.85)] shadow-cyan-950/60 transition-transform duration-500 hover:scale-[1.02] group">
+              {/* 2. Floating BizLink Logo Card at the Bottom Left Corner (matching reference 1 & user diagnostics) */}
+              <div className="relative z-20 w-[55%] sm:w-[50%] lg:w-[50%] rounded-2xl sm:rounded-3xl border border-white/20 bg-[#070B14]/92 backdrop-blur-xl p-4 sm:p-5 shadow-[0_25px_60px_rgba(0,0,0,0.9)] shadow-cyan-950/70 transition-transform duration-500 hover:scale-[1.03] group mb-2 ml-0 sm:mb-4">
                 
                 {/* Top Header of the Logo Card */}
-                <div className="flex items-center justify-between pb-3.5 border-b border-white/10">
-                  <div className="flex items-center gap-2">
+                <div className="flex items-center justify-between pb-2.5 border-b border-white/10">
+                  <div className="flex items-center gap-1.5">
                     <span className="size-2 rounded-full bg-cyan-400 animate-pulse" />
-                    <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-cyan-300">
-                      Corporate Emblem
+                    <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-cyan-300">
+                      Corporate
                     </span>
                   </div>
-                  <span className="text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full bg-white/10 text-slate-300 border border-white/10">
+                  <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded-full bg-white/10 text-slate-300 border border-white/10">
                     Est. 2010
                   </span>
                 </div>
 
                 {/* Center 3D BizLink Logo */}
-                <div className="relative w-full aspect-[641/460] my-4 flex items-center justify-center">
-                  <div className="relative w-4/5 h-full drop-shadow-[0_15px_35px_rgba(0,180,255,0.6)] group-hover:scale-105 transition-transform duration-700 ease-out">
+                <div className="relative w-full aspect-[641/460] my-2.5 sm:my-3 flex items-center justify-center">
+                  <div className="relative w-4/5 h-full drop-shadow-[0_12px_28px_rgba(0,180,255,0.65)] group-hover:scale-105 transition-transform duration-700 ease-out">
                     <Image
                       src="/images/bizlink_3d_logo_transparent.webp"
                       alt="BizLink 3D Architectural Logo"
                       fill
                       priority
-                      sizes="(min-width: 1024px) 350px, 280px"
+                      sizes="240px"
                       className="object-contain"
                     />
                   </div>
                 </div>
 
                 {/* Bottom Brand Title & Credentials */}
-                <div className="pt-3.5 border-t border-white/10">
+                <div className="pt-2.5 border-t border-white/10">
                   <div className="flex items-baseline justify-between">
-                    <h3 className="text-sm sm:text-base font-black text-white uppercase tracking-wider">
-                      BIZLINK QATAR
+                    <h3 className="text-xs sm:text-sm font-black text-white uppercase tracking-wider">
+                      BIZLINK
                     </h3>
-                    <span className="text-[10px] font-bold text-cyan-300">
+                    <span className="text-[9px] font-bold text-cyan-300">
                       Pathas Group
                     </span>
                   </div>
-                  <div className="mt-2 flex items-center gap-1.5 text-[10px] font-bold text-slate-400">
+                  <div className="mt-1.5 flex items-center gap-1 text-[8px] sm:text-[9px] font-bold text-slate-400">
                     <span className="text-cyan-300">QATAR</span>
                     <span>•</span>
                     <span>INDIA</span>

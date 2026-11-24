@@ -134,19 +134,6 @@ export function WireframeHero() {
               {/* 2. Floating BizLink Logo Card at the Bottom Left Corner (matching reference 1 & user diagnostics) */}
               <div className="relative z-20 w-[55%] sm:w-[50%] lg:w-[50%] rounded-2xl sm:rounded-3xl border border-white/20 bg-[#070B14]/92 backdrop-blur-xl p-4 sm:p-5 shadow-[0_25px_60px_rgba(0,0,0,0.9)] shadow-cyan-950/70 transition-transform duration-500 hover:scale-[1.03] group mb-2 ml-0 sm:mb-4">
                 
-                {/* Top Header of the Logo Card */}
-                <div className="flex items-center justify-between pb-2.5 border-b border-white/10">
-                  <div className="flex items-center gap-1.5">
-                    <span className="size-2 rounded-full bg-cyan-400 animate-pulse" />
-                    <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-cyan-300">
-                      Corporate
-                    </span>
-                  </div>
-                  <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded-full bg-white/10 text-slate-300 border border-white/10">
-                    Est. 2010
-                  </span>
-                </div>
-
                 {/* Center 3D BizLink Logo */}
                 <div className="relative w-full aspect-[641/460] my-2.5 sm:my-3 flex items-center justify-center">
                   <div className="relative w-4/5 h-full drop-shadow-[0_12px_28px_rgba(0,180,255,0.65)] group-hover:scale-105 transition-transform duration-700 ease-out">

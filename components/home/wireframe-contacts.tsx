@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { branches } from "@/content/company";
 import { Clock, Mail, MapPin, MessageCircle, Navigation, Phone } from "lucide-react";
 
@@ -16,8 +17,14 @@ export function WireframeContacts() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
-        {/* Header Section matching "КОНТАКТЫ" from mockup */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
+        {/* Header Section with Scroll Reveal */}
+        <motion.div
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center max-w-2xl mx-auto mb-12"
+        >
           <span className="text-xs font-black uppercase tracking-[0.25em] text-cyan-400">
             DOHA OFFICES
           </span>
@@ -27,10 +34,16 @@ export function WireframeContacts() {
           <p className="mt-3 text-sm text-slate-300">
             Directly accessible at two strategic corporate hubs in Doha. Walk in or connect with our support advisors.
           </p>
-        </div>
+        </motion.div>
 
         {/* Branch Switcher Tabs */}
-        <div className="flex justify-center mb-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="flex justify-center mb-8"
+        >
           <div className="inline-flex rounded-full border border-white/15 bg-[#0F182A] p-1.5 shadow-md">
             {branches.map((b) => {
               const isActive = b.id === activeBranch.id;
@@ -50,10 +63,16 @@ export function WireframeContacts() {
               );
             })}
           </div>
-        </div>
+        </motion.div>
 
-        {/* Map Container with Floating Contact Card matching wireframe "КОНТАКТЫ" */}
-        <div className="relative rounded-3xl overflow-hidden border border-white/15 bg-[#0F182A] shadow-2xl min-h-[460px] flex flex-col lg:block">
+        {/* Map Container with Floating Contact Card & Scroll Reveal */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          className="relative rounded-3xl overflow-hidden border border-white/15 bg-[#0F182A] shadow-2xl min-h-[460px] flex flex-col lg:block"
+        >
           
           {/* Interactive Google Map Embed (Full Background on Desktop, Bottom on Mobile) */}
           <div className="order-2 lg:order-none lg:absolute lg:inset-0 w-full h-[320px] lg:h-full z-0">
@@ -137,7 +156,7 @@ export function WireframeContacts() {
             </div>
           </div>
 
-        </div>
+        </motion.div>
 
       </div>
     </section>

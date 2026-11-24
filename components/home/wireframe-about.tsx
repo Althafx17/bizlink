@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { ArrowUpRight, CheckCircle2, Clock, ShieldCheck, Zap } from "lucide-react";
 import { company } from "@/content/company";
 
@@ -10,24 +11,36 @@ export function WireframeAbout() {
     <section
       id="about"
       aria-label="About BizLink"
-      className="scroll-mt-20 py-16 sm:py-24 bg-[#090D18] border-b border-white/10"
+      className="scroll-mt-20 py-16 sm:py-24 bg-[#090D18] border-b border-white/10 overflow-hidden"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
-        {/* DESKTOP: Asymmetric 2-Column Layout | MOBILE: Stacked Layout ("ОБО МНЕ" wireframe) */}
+        {/* DESKTOP: Asymmetric 2-Column Layout | MOBILE: Stacked Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
-          {/* Left Column (Desktop 5 cols): Featured Corporate / Team Photo Card */}
-          <div className="lg:col-span-5 flex justify-center">
+          {/* Left Column: Featured Corporate Photo Card with Ken Burns Breathing & Scroll Reveal */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 flex justify-center"
+          >
             <div className="relative w-full max-w-[440px] aspect-[4/3] sm:aspect-[4/3] lg:aspect-[4/5] rounded-3xl overflow-hidden border border-white/15 bg-[#0F1E38] shadow-2xl">
-              <Image
-                src="/images/about/executive_handshake_bg.webp"
-                alt="BizLink Executive Handshake Doha Qatar"
-                fill
-                sizes="(min-width: 1024px) 40vw, 90vw"
-                className="object-cover object-[70%_center]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#070B14] via-[#070B14]/40 to-transparent" />
+              <motion.div
+                animate={{ scale: [1, 1.07, 1] }}
+                transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+                className="relative w-full h-full"
+              >
+                <Image
+                  src="/images/about/executive_handshake_bg.webp"
+                  alt="BizLink Executive Handshake Doha Qatar"
+                  fill
+                  sizes="(min-width: 1024px) 40vw, 90vw"
+                  className="object-cover object-[70%_center]"
+                />
+              </motion.div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#070B14] via-[#070B14]/40 to-transparent pointer-events-none" />
               
               {/* Floating Bottom Card */}
               <div className="absolute bottom-4 inset-x-4 p-4 rounded-2xl border border-white/15 bg-[#070B14]/90 backdrop-blur-md">
@@ -42,10 +55,16 @@ export function WireframeAbout() {
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Right Column (Desktop 7 cols): Title, Bio Card, and 3 Horizontal Feature Pillars */}
-          <div className="lg:col-span-7 flex flex-col justify-center">
+          {/* Right Column: Title, Bio Card, and 3 Horizontal Feature Pillars */}
+          <motion.div
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7 flex flex-col justify-center"
+          >
             <span className="text-xs font-black uppercase tracking-[0.25em] text-cyan-400">
               WHO WE ARE
             </span>
@@ -62,10 +81,16 @@ export function WireframeAbout() {
               {company.about}
             </p>
 
-            {/* 3 Horizontal Feature Pillars matching "СКОРОСТЬ / ЭСТЕТИКА / УДОБСТВО" from wireframe */}
+            {/* 3 Horizontal Feature Pillars with Staggered Entrance & Hover Lift */}
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3.5">
               {/* Pillar 1: Speed / Turnaround */}
-              <div className="rounded-2xl border border-white/10 bg-[#0F182A] p-4 transition-all hover:border-cyan-400/40 group">
+              <motion.div
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="rounded-2xl border border-white/10 bg-[#0F182A] p-4 transition-all hover:border-cyan-400/40 hover:-translate-y-1 group"
+              >
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-black uppercase tracking-wider text-cyan-400 bg-cyan-400/10 px-2 py-0.5 rounded-md">
                     01
@@ -78,10 +103,16 @@ export function WireframeAbout() {
                 <p className="mt-1 text-xs text-slate-400 leading-snug">
                   Express 24-48h licensing approvals & prompt emergency maintenance response.
                 </p>
-              </div>
+              </motion.div>
 
               {/* Pillar 2: Standard Excellence / Quality */}
-              <div className="rounded-2xl border border-white/10 bg-[#0F182A] p-4 transition-all hover:border-cyan-400/40 group">
+              <motion.div
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="rounded-2xl border border-white/10 bg-[#0F182A] p-4 transition-all hover:border-cyan-400/40 hover:-translate-y-1 group"
+              >
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-black uppercase tracking-wider text-cyan-400 bg-cyan-400/10 px-2 py-0.5 rounded-md">
                     02
@@ -94,10 +125,16 @@ export function WireframeAbout() {
                 <p className="mt-1 text-xs text-slate-400 leading-snug">
                   100% compliant with MOCI regulations, Qatar Labour laws, and Baladiya standards.
                 </p>
-              </div>
+              </motion.div>
 
               {/* Pillar 3: Accessibility / Network */}
-              <div className="rounded-2xl border border-white/10 bg-[#0F182A] p-4 transition-all hover:border-cyan-400/40 group">
+              <motion.div
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="rounded-2xl border border-white/10 bg-[#0F182A] p-4 transition-all hover:border-cyan-400/40 hover:-translate-y-1 group"
+              >
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-black uppercase tracking-wider text-cyan-400 bg-cyan-400/10 px-2 py-0.5 rounded-md">
                     03
@@ -110,7 +147,7 @@ export function WireframeAbout() {
                 <p className="mt-1 text-xs text-slate-400 leading-snug">
                   Two full-service physical offices in Ain Khalid & Bin Mahmoud with 24/7 on-call teams.
                 </p>
-              </div>
+              </motion.div>
             </div>
 
             {/* Quick Action Link */}
@@ -123,7 +160,7 @@ export function WireframeAbout() {
                 <ArrowUpRight size={14} />
               </Link>
             </div>
-          </div>
+          </motion.div>
 
         </div>
 

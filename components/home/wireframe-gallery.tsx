@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import {
   Building2,
   Cpu,
@@ -166,8 +167,14 @@ export function WireframeGallery() {
       </div>
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center">
+        {/* Section Header with Scroll Reveal */}
+        <motion.div
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center"
+        >
           <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-950/40 px-4 py-1.5 text-xs font-semibold tracking-wider text-cyan-300 uppercase shadow-sm">
             <span>Our Service Solutions</span>
           </div>
@@ -222,7 +229,7 @@ export function WireframeGallery() {
               </button>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* 1. CAROUSEL VIEW: 3-Card Panoramic with Full Contents on All Cards */}
         {viewMode === "carousel" && (
@@ -295,15 +302,21 @@ export function WireframeGallery() {
 
                 <div>
                   <div className="relative h-56 w-full overflow-hidden rounded-2xl border border-cyan-400/40 shadow-inner">
-                    <Image
-                      src={currentItem.image}
-                      alt={currentItem.title}
-                      fill
-                      priority
-                      className="object-cover transition-transform duration-700 hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, 40vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0e2738] via-transparent to-black/20" />
+                    <motion.div
+                      animate={{ scale: [1, 1.06, 1] }}
+                      transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+                      className="relative w-full h-full"
+                    >
+                      <Image
+                        src={currentItem.image}
+                        alt={currentItem.title}
+                        fill
+                        priority
+                        className="object-cover transition-transform duration-700 hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, 40vw"
+                      />
+                    </motion.div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0e2738] via-transparent to-black/20 pointer-events-none" />
                     <div className="absolute top-3 left-3 flex items-center gap-2 rounded-full border border-cyan-400/50 bg-[#07131b]/95 px-3.5 py-1 text-xs font-bold text-cyan-300 backdrop-blur-md shadow-md">
                       <currentItem.icon className="h-4 w-4 text-cyan-400" />
                       <span>{currentItem.category} • {currentItem.badge}</span>

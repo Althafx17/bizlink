@@ -14,8 +14,14 @@ export function WireframeVisionMission() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10">
         
-        {/* Header */}
-        <div className="text-center max-w-2xl mx-auto">
+        {/* Header with Scroll Reveal */}
+        <motion.div
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center max-w-2xl mx-auto"
+        >
           <span className="text-xs font-black uppercase tracking-[0.25em] text-cyan-400">
             STRATEGIC PILLARS
           </span>
@@ -25,20 +31,26 @@ export function WireframeVisionMission() {
           <p className="mt-3 text-sm text-slate-300">
             Forward-thinking guidance and execution standards driving every client engagement across Qatar.
           </p>
-        </div>
+        </motion.div>
 
-        {/* 2-Column Grid for Vision & Mission */}
+        {/* 2-Column Grid for Vision & Mission with Staggered Scroll Reveal */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-stretch">
           
           {/* Card 1: Our Vision */}
-          <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-br from-[#0F1E38] via-[#0C172B] to-[#080F1E] p-6 sm:p-8 shadow-2xl flex flex-col justify-between group hover:border-cyan-400/40 transition-all">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="relative overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-br from-[#0F1E38] via-[#0C172B] to-[#080F1E] p-6 sm:p-8 shadow-2xl flex flex-col justify-between group hover:border-cyan-400/40 transition-all hover:-translate-y-1"
+          >
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
               {/* 3D Character with Vision */}
               <div className="shrink-0 flex items-center justify-center">
                 <motion.div
                   animate={{ y: [-4, 4, -4], rotate: [-1, 1, -1] }}
                   transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-                  className="relative size-28 sm:size-32 rounded-2xl bg-white border border-cyan-400/30 p-2 flex items-center justify-center shadow-lg overflow-hidden"
+                  className="relative size-28 sm:size-32 rounded-2xl bg-white border border-cyan-400/30 p-2 flex items-center justify-center shadow-lg overflow-hidden group-hover:scale-105 transition-transform"
                 >
                   <Image
                     src="/images/vision and mission.jpg"
@@ -68,17 +80,23 @@ export function WireframeVisionMission() {
               <span className="text-cyan-300">Sustainable Growth</span>
               <span>Excellence Across Qatar</span>
             </div>
-          </div>
+          </motion.div>
 
           {/* Card 2: Our Mission */}
-          <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-br from-[#0F1E38] via-[#0C172B] to-[#080F1E] p-6 sm:p-8 shadow-2xl flex flex-col justify-between group hover:border-amber-400/40 transition-all">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.8, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
+            className="relative overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-br from-[#0F1E38] via-[#0C172B] to-[#080F1E] p-6 sm:p-8 shadow-2xl flex flex-col justify-between group hover:border-amber-400/40 transition-all hover:-translate-y-1"
+          >
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
               {/* 3D Bullseye Target */}
               <div className="shrink-0 flex items-center justify-center">
                 <motion.div
                   animate={{ scale: [0.96, 1.04, 0.96], rotate: [-2, 2, -2] }}
                   transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut" }}
-                  className="relative size-28 sm:size-32 rounded-2xl bg-white border border-amber-400/30 p-2 flex items-center justify-center shadow-lg overflow-hidden"
+                  className="relative size-28 sm:size-32 rounded-2xl bg-white border border-amber-400/30 p-2 flex items-center justify-center shadow-lg overflow-hidden group-hover:scale-105 transition-transform"
                 >
                   <Image
                     src="/images/mission.png"
@@ -108,12 +126,18 @@ export function WireframeVisionMission() {
               <span className="text-amber-300">Operational Efficiency</span>
               <span>Trusted Commercial Partner</span>
             </div>
-          </div>
+          </motion.div>
 
         </div>
 
-        {/* 5 Core Values Rounded Pill Bar */}
-        <div className="rounded-3xl border border-white/10 bg-[#0F182A] p-4 sm:p-6 shadow-xl">
+        {/* 5 Core Values Rounded Pill Bar with Entrance Animation */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="rounded-3xl border border-white/10 bg-[#0F182A] p-4 sm:p-6 shadow-xl"
+        >
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 items-center justify-around text-center">
             {/* Integrity */}
             <div className="flex flex-col items-center p-2">
@@ -160,7 +184,7 @@ export function WireframeVisionMission() {
               <span className="text-[10px] text-slate-400 mt-0.5">Client-Centric</span>
             </div>
           </div>
-        </div>
+        </motion.div>
 
       </div>
     </section>

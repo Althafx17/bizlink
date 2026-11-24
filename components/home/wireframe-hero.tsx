@@ -22,16 +22,16 @@ export function WireframeHero() {
         {/* DESKTOP: 2-Column Grid | MOBILE: Clean Vertical Stack */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
 
-          {/* Left Column (Desktop 6-7 cols): All editorial contents preserved */}
+          {/* Left Column (Desktop 6-7 cols): Scaled for maximum mobile impact & readability */}
           <div className="lg:col-span-6 xl:col-span-6 flex flex-col justify-center text-left">
-            {/* Top Eyebrow Chip */}
-            <div className="inline-flex items-center gap-2 self-start rounded-full border border-cyan-400/30 bg-cyan-950/40 px-3.5 py-1 text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-cyan-300 backdrop-blur-md">
-              <span className="size-1.5 rounded-full bg-cyan-400 animate-pulse" />
+            {/* Top Eyebrow Chip - Scaled to 14px on mobile */}
+            <div className="inline-flex items-center gap-2 self-start rounded-full border border-cyan-400/30 bg-cyan-950/40 px-5 py-2 text-[14px] sm:text-xs font-bold uppercase tracking-[0.2em] text-cyan-300 backdrop-blur-md shadow-sm">
+              <span className="size-2 rounded-full bg-cyan-400 animate-pulse" />
               Pathas Group · Doha, Qatar
             </div>
 
-            {/* Main Headline: Bold, modern, clean editorial look */}
-            <h1 className="mt-4 text-3xl sm:text-5xl lg:text-[54px] xl:text-[62px] font-black tracking-tight text-white uppercase leading-[1.08]">
+            {/* Main Headline: Bold 44px mobile scale with tight 1.05 leading */}
+            <h1 className="mt-6 text-[44px] leading-[1.05] sm:text-5xl lg:text-[54px] xl:text-[62px] font-black tracking-tight text-white uppercase sm:leading-[1.08]">
               All Business <br className="hidden sm:inline" />
               <span className="bg-gradient-to-r from-cyan-300 via-sky-200 to-blue-400 bg-clip-text text-transparent">
                 Solutions Under
@@ -40,57 +40,57 @@ export function WireframeHero() {
               One Roof
             </h1>
 
-            {/* Subtitle / Value Proposition */}
-            <p className="mt-4 text-sm sm:text-base lg:text-lg text-slate-300 font-normal leading-relaxed max-w-xl">
+            {/* Subtitle / Value Proposition: Relaxed 18px text-lg on mobile */}
+            <p className="mt-6 text-lg sm:text-base lg:text-lg text-slate-300 font-normal leading-relaxed max-w-xl">
               From 100% foreign-owned corporate formation &amp; licensing to 24/7 facility engineering, global industrial trading, automotive care, and creative media production in Qatar.
             </p>
 
-            {/* Primary Action Buttons */}
-            <div className="mt-7 flex flex-wrap items-center gap-3.5">
+            {/* Primary Action Buttons: Full width on mobile for thumb reachability, flex-row on desktop */}
+            <div className="mt-10 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3.5">
               <Link
                 href="/services"
-                className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#0056B3] via-[#0088CE] to-[#00B4FF] px-7 py-3 text-sm font-bold text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+                className="w-full sm:w-auto inline-flex min-h-[52px] sm:min-h-[48px] items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#0056B3] via-[#0088CE] to-[#00B4FF] px-8 py-4 sm:px-7 sm:py-3 text-base sm:text-sm font-bold text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer text-center"
               >
                 <span>EXPLORE SERVICES</span>
-                <ArrowRight size={16} />
+                <ArrowRight size={18} />
               </Link>
 
               <a
                 href="https://wa.me/97450091006?text=Hello%20BizLink%20Qatar%2C%20I%20would%20like%20to%20inquire%20about%20your%20services."
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[0.07] px-6 py-3 text-sm font-bold text-white hover:bg-white/15 hover:border-cyan-400/40 backdrop-blur-md transition-all active:scale-[0.98]"
+                className="w-full sm:w-auto inline-flex min-h-[52px] sm:min-h-[48px] items-center justify-center gap-2.5 rounded-full border border-white/20 bg-white/[0.07] px-8 py-4 sm:px-6 sm:py-3 text-base sm:text-sm font-bold text-white hover:bg-white/15 hover:border-cyan-400/40 backdrop-blur-md transition-all active:scale-[0.98] text-center"
               >
-                <MessageCircle size={16} className="text-[#25D366]" />
+                <MessageCircle size={18} className="text-[#25D366]" />
                 <span>WHATSAPP DIRECT</span>
               </a>
 
               <a
                 href="tel:+97450091006"
-                className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-white/10 bg-transparent px-5 py-3 text-xs sm:text-sm font-bold text-slate-300 hover:text-white hover:border-white/30 transition-colors"
+                className="w-full sm:w-auto inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-white/10 bg-transparent px-5 py-3 text-sm font-bold text-slate-300 hover:text-white hover:border-white/30 transition-colors text-center"
               >
-                <Phone size={14} className="text-cyan-400" />
+                <Phone size={15} className="text-cyan-400" />
                 <span>+974 5009 1006</span>
               </a>
             </div>
 
-            {/* Quick Metrics Bar at bottom of left column */}
-            <div className="mt-8 pt-6 border-t border-white/10 grid grid-cols-3 gap-4 max-w-lg">
+            {/* Quick Metrics Bar: 48px margin-top (mt-12) & 28px bold numerals */}
+            <div className="mt-12 pt-6 border-t border-white/10 grid grid-cols-3 gap-4 max-w-lg">
               <div>
-                <span className="block text-xl sm:text-2xl font-black text-white">15+</span>
-                <span className="block text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400 mt-0.5">
+                <span className="block text-[28px] sm:text-2xl font-black text-white leading-tight">15+</span>
+                <span className="block text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">
                   Years Exp
                 </span>
               </div>
               <div>
-                <span className="block text-xl sm:text-2xl font-black text-cyan-300">1,000+</span>
-                <span className="block text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400 mt-0.5">
+                <span className="block text-[28px] sm:text-2xl font-black text-cyan-300 leading-tight">1,000+</span>
+                <span className="block text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">
                   Clients in Qatar
                 </span>
               </div>
               <div>
-                <span className="block text-xl sm:text-2xl font-black text-white">4 Hubs</span>
-                <span className="block text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400 mt-0.5">
+                <span className="block text-[28px] sm:text-2xl font-black text-white leading-tight">4 Hubs</span>
+                <span className="block text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">
                   Global Footprint
                 </span>
               </div>

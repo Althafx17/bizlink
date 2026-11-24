@@ -55,8 +55,8 @@ export const showcaseServices: readonly ShowcaseService[] = [
       "Electrical & Plumbing Supplies",
       "Cargo & Distribution Support",
     ],
-    bgImage: "/images/services/trading and supplay video image.jpg",
-    cardImage: "/images/services/trading and supplay video image.jpg",
+    bgImage: "/images/services/trading-supply-card.webp",
+    cardImage: "/images/services/trading-supply-card.webp",
     link: "/services#trading-supply",
   },
   {
@@ -93,8 +93,8 @@ export const showcaseServices: readonly ShowcaseService[] = [
       "Windshield Replacement",
       "Fleet Maintenance Support",
     ],
-    bgImage: "/images/services/bizlink professional.jpg",
-    cardImage: "/images/services/bizlink professional.jpg",
+    bgImage: "/images/services/automotive-card.webp",
+    cardImage: "/images/services/automotive-card.webp",
     link: "/services#automotive",
   },
   {
@@ -223,7 +223,7 @@ export function ServicesShowcase({
                   fill
                   priority={idx === 0 || idx === 1}
                   sizes="100vw"
-                  className="object-cover object-center brightness-[0.78] contrast-[1.08]"
+                  className="object-cover object-[center_30%] brightness-[0.78] contrast-[1.08]"
                 />
               </motion.div>
               {/* Vignette gradients to guarantee pristine readability */}
@@ -349,7 +349,7 @@ export function ServicesShowcase({
                       alt={item.title}
                       fill
                       sizes="(max-width: 640px) 200px, (max-width: 1024px) 230px, 250px"
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-110 brightness-[0.88]"
+                      className="object-cover object-[center_30%] transition-transform duration-700 ease-out group-hover:scale-110 brightness-[0.88]"
                     />
 
                     {/* Gradient Overlay */}

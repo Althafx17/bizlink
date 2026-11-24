@@ -65,7 +65,7 @@ export const services: readonly ServiceDivision[] = [
     tagline: "Quality Products. Reliable Supply. Business Excellence.",
     highlight: "Our Commitment to Supply Chain Excellence",
     description: "Wholesale Distribution, Procurement & Fragrances",
-    imageCard: "/images/services/trading and supplay video image.jpg",
+    imageCard: "/images/services/trading-supply-card.webp",
     iconName: "truck",
     items: [
       "General Trading, Retail & Commercial Supply",
@@ -107,7 +107,7 @@ export const services: readonly ServiceDivision[] = [
     tagline: "Professional Automotive Services, Delivered to Your Location.",
     highlight: "Your Car. Our Care. Your Location — Convenience At Your Doorstep",
     description: "Mobile Car Wash, Detailing & Auto Glass Replacement",
-    imageCard: "/images/services/bizlink professional.jpg",
+    imageCard: "/images/services/automotive-card.webp",
     iconName: "car",
     items: [
       "Pathas Mobile Car Wash (Any Where, Any Time in Doha)",

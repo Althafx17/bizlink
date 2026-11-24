@@ -80,7 +80,7 @@ const homeServices: ServiceDivisionItem[] = [
     ],
     ctaText: "Explore Trading",
     ctaHref: "/services#trading",
-    image: "/images/services/trading and supplay video image.jpg",
+    image: "/images/services/trading-supply-card.webp",
     icon: TrendingUp,
   },
   {
@@ -114,7 +114,7 @@ const homeServices: ServiceDivisionItem[] = [
     ],
     ctaText: "Explore Automotive",
     ctaHref: "/services#automotive",
-    image: "/images/services/bizlink professional.jpg",
+    image: "/images/services/automotive-card.webp",
     icon: Car,
   },
 ];
@@ -246,12 +246,12 @@ export function WireframeGallery() {
                 className="group relative hidden cursor-pointer flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-[#0c1f2b]/80 p-6 backdrop-blur-md transition-all duration-500 hover:border-cyan-400/50 md:flex"
               >
                 <div>
-                  <div className="relative h-48 w-full overflow-hidden rounded-2xl border border-white/10">
+                  <div className="relative aspect-[16/10] sm:aspect-[16/9] min-h-[190px] w-full overflow-hidden rounded-2xl border border-white/10">
                     <Image
                       src={prevItem.image}
                       alt={prevItem.title}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="object-cover object-[center_30%] transition-transform duration-700 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0c1f2b] via-[#0c1f2b]/30 to-transparent" />
@@ -301,7 +301,7 @@ export function WireframeGallery() {
                 <div className="absolute -top-12 -right-12 h-36 w-36 rounded-full bg-cyan-400/15 blur-2xl pointer-events-none" />
 
                 <div>
-                  <div className="relative h-56 w-full overflow-hidden rounded-2xl border border-cyan-400/40 shadow-inner">
+                  <div className="relative aspect-[16/10] sm:aspect-[16/9] min-h-[220px] w-full overflow-hidden rounded-2xl border border-cyan-400/40 shadow-inner">
                     <motion.div
                       animate={{ scale: [1, 1.06, 1] }}
                       transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
@@ -312,7 +312,7 @@ export function WireframeGallery() {
                         alt={currentItem.title}
                         fill
                         priority
-                        className="object-cover transition-transform duration-700 hover:scale-105"
+                        className="object-cover object-[center_30%] transition-transform duration-700 hover:scale-105"
                         sizes="(max-width: 768px) 100vw, 40vw"
                       />
                     </motion.div>
@@ -368,12 +368,12 @@ export function WireframeGallery() {
                 className="group relative hidden cursor-pointer flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-[#0c1f2b]/80 p-6 backdrop-blur-md transition-all duration-500 hover:border-cyan-400/50 md:flex"
               >
                 <div>
-                  <div className="relative h-48 w-full overflow-hidden rounded-2xl border border-white/10">
+                  <div className="relative aspect-[16/10] sm:aspect-[16/9] min-h-[190px] w-full overflow-hidden rounded-2xl border border-white/10">
                     <Image
                       src={nextItem.image}
                       alt={nextItem.title}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="object-cover object-[center_30%] transition-transform duration-700 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0c1f2b] via-[#0c1f2b]/30 to-transparent" />
@@ -456,12 +456,12 @@ export function WireframeGallery() {
                 >
                   <div>
                     {/* Respective Image Banner */}
-                    <div className="relative h-48 w-full overflow-hidden rounded-2xl border border-white/10">
+                    <div className="relative aspect-[16/10] sm:aspect-[16/9] min-h-[190px] w-full overflow-hidden rounded-2xl border border-white/10">
                       <Image
                         src={service.image}
                         alt={service.title}
                         fill
-                        className="object-cover transition-transform duration-700 hover:scale-105"
+                        className="object-cover object-[center_30%] transition-transform duration-700 hover:scale-105"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0c1f2b] via-[#0c1f2b]/30 to-transparent" />

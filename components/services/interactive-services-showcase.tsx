@@ -176,7 +176,7 @@ export const catalogServices: readonly CatalogServiceItem[] = [
     title: "General, Retail & Wholesale Trading Supply",
     subtitle: "Construction Essentials, Safety PPE & Lifestyle Products",
     categoryTag: "Wholesale & Supply",
-    image: "/images/services/trading and supplay video image.jpg",
+    image: "/images/services/trading-supply-card.webp",
     engagementType: "Turnkey / Retail",
     turnaround: "24-48 Hours",
     specs: {
@@ -272,7 +272,7 @@ export const catalogServices: readonly CatalogServiceItem[] = [
     title: "Doorstep Mobile Car Wash & Premium Detailing",
     subtitle: "Steam Cleaning, Paint Protection, Interior Disinfection & Wax",
     categoryTag: "Mobile Automotive",
-    image: "/images/services/bizlink professional.jpg",
+    image: "/images/services/automotive-wash.jpg",
     engagementType: "Turnkey / Retail",
     turnaround: "Same-Day",
     specs: {
@@ -296,7 +296,7 @@ export const catalogServices: readonly CatalogServiceItem[] = [
     title: "Auto Glass Inspection & Windshield Replacement",
     subtitle: "OEM Certified Glass, Crack Repair & On-Site Installation",
     categoryTag: "Auto Glass Care",
-    image: "/images/services/bizlink professional.jpg",
+    image: "/images/services/automotive-detailing.jpg",
     engagementType: "Express Setup",
     turnaround: "Same-Day",
     specs: {
@@ -481,7 +481,7 @@ export function InteractiveServicesShowcase({ detailed = false }: { detailed?: b
                     fill
                     priority
                     sizes="(min-width: 1024px) 66vw, 100vw"
-                    className="object-cover object-center"
+                    className="object-cover object-[center_30%] sm:object-center transition-all duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#071426] via-[#071426]/75 to-[#071426]/30" />
                   <div className="absolute inset-0 bg-gradient-to-r from-[#071426]/90 via-[#071426]/50 to-transparent" />
@@ -600,7 +600,7 @@ export function InteractiveServicesShowcase({ detailed = false }: { detailed?: b
                     alt={s.name}
                     fill
                     sizes="96px"
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="object-cover object-[center_30%] group-hover:scale-110 transition-transform duration-500"
                   />
                   <span className="absolute top-1.5 left-1.5 flex size-5 items-center justify-center rounded-md bg-[#0056B3] text-[10px] font-black text-white">
                     {s.number}
@@ -737,7 +737,7 @@ export function InteractiveServicesShowcase({ detailed = false }: { detailed?: b
               {visibleCatalogCards.map((service) => (
                 <article
                   key={service.id}
-                  className="group relative overflow-hidden rounded-3xl border border-white/15 bg-[#0F254B] shadow-2xl transition-all duration-300 hover:border-cyan-400/50 hover:shadow-[0_12px_40px_rgba(0,180,255,0.2)] flex flex-col justify-end aspect-[16/11] sm:aspect-[16/10] min-h-[380px]"
+                  className="group relative overflow-hidden rounded-3xl border border-white/15 bg-[#0F254B] shadow-2xl transition-all duration-300 hover:border-cyan-400/50 hover:shadow-[0_12px_40px_rgba(0,180,255,0.2)] flex flex-col justify-end aspect-[16/11] sm:aspect-[16/10] min-h-[390px] sm:min-h-[420px]"
                 >
                   {/* Background Image with Zoom on Hover (Woodland signature effect) */}
                   <div className="absolute inset-0 z-0 overflow-hidden">
@@ -746,7 +746,7 @@ export function InteractiveServicesShowcase({ detailed = false }: { detailed?: b
                       alt={service.title}
                       fill
                       sizes="(min-width: 768px) 50vw, 100vw"
-                      className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                      className="object-cover object-[center_35%] transition-transform duration-700 ease-out group-hover:scale-105"
                     />
                     {/* Deepening dark overlay on hover */}
                     <div className="absolute inset-0 bg-gradient-to-t from-[#071426] via-[#071426]/75 to-[#071426]/20 group-hover:via-[#071426]/85 transition-colors duration-300" />

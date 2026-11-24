@@ -53,7 +53,7 @@ const serviceDivisions: DivisionCard[] = [
     number: "03",
     name: "Trading & Supply",
     tagline: "Wholesale Procurement, Industrial Supplies & Logistics",
-    image: "/images/services/trading and supplay video image.jpg",
+    image: "/images/services/trading-supply-card.webp",
     accent: "#38bdf8",
     servicesCount: 7,
     anchor: "#trading",
@@ -83,7 +83,7 @@ const serviceDivisions: DivisionCard[] = [
     number: "05",
     name: "Automotive Care",
     tagline: "Mobile Car Wash, Detailing & Fleet Maintenance",
-    image: "/images/services/bizlink professional.jpg",
+    image: "/images/services/automotive-card.webp",
     accent: "#f472b6",
     servicesCount: 6,
     anchor: "#automotive",
@@ -200,7 +200,7 @@ export function ServicesHeroPresentation() {
                         alt={division.name}
                         fill
                         sizes="(min-width: 1024px) 250px, 180px"
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        className="object-cover object-[center_30%] transition-transform duration-700 group-hover:scale-105"
                       />
                       {/* Gradient veil for text readability */}
                       <div className="absolute inset-0 bg-gradient-to-t from-[#000E24] via-[#000E24]/65 to-transparent" />
@@ -268,7 +268,7 @@ export function ServicesHeroPresentation() {
                       alt={division.name}
                       fill
                       sizes="260px"
-                      className="object-cover"
+                      className="object-cover object-[center_30%]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#000E24] via-[#000E24]/65 to-transparent" />
                   </div>

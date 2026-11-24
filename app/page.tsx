@@ -32,7 +32,7 @@ export default function HomePage() {
       {/* WireframeLoyalty (ENTERPRISE CONTRACTS): Hidden per user instruction */}
 
       {/* 5. Pricing & Scope: Itemized List with Dotted Leaders & Portrait Showcase Card */}
-      <WireframePricing />
+      {/* <WireframePricing /> */}
 
       {/* WireframeFaq (FAQ): Hidden per user instruction */}
 

@@ -15,8 +15,8 @@ export const metadata = shareMetadata(
 
 export default function ServicesPage() {
   return (
-    <main id="main-content" className="pb-16 md:pb-0 bg-[#070A10]">
-      {/* 1. Services Hero Presentation Cover matching reference design (3D Fanned-out Cards & Gold Accents) */}
+    <main id="main-content" className="pb-16 md:pb-0 bg-[#000E24]">
+      {/* 1. Services Hero Presentation Cover matching website blue theme & 3D Fanned Cards */}
       <ServicesHeroPresentation />
 
       {/* 2. Operational Sectors & Highlights */}

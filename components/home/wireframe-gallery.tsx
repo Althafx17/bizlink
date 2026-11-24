@@ -155,7 +155,7 @@ export function WireframeGallery() {
     <section
       id="services"
       aria-label="Our Service Solutions & Divisions"
-      className="relative overflow-hidden bg-[#07131b] py-20 text-white md:py-28"
+      className="relative overflow-hidden bg-[#000E24] py-20 text-white md:py-28"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >

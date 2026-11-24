@@ -427,7 +427,7 @@ export function InteractiveServicesShowcase({ detailed = false }: { detailed?: b
           <div
             onMouseEnter={() => setIsAutoPlayPaused(true)}
             onMouseLeave={() => setIsAutoPlayPaused(false)}
-            className="lg:col-span-8 relative overflow-hidden rounded-3xl border border-white/15 bg-[#0B1B36] shadow-2xl min-h-[460px] sm:min-h-[520px] flex flex-col justify-end p-6 sm:p-10 group"
+            className="lg:col-span-8 relative overflow-hidden rounded-3xl border border-white/15 bg-[#0B1B36] shadow-2xl min-h-[460px] sm:min-h-[520px] flex flex-col justify-end p-6 sm:p-10 group w-full max-w-full min-w-0"
           >
             {/* Top Auto-Rotation Animated Progress Bar */}
             <div className="absolute top-0 left-0 right-0 h-1 bg-white/10 z-20 overflow-hidden">
@@ -631,7 +631,7 @@ export function InteractiveServicesShowcase({ detailed = false }: { detailed?: b
         {/* ============================================================== */}
         {/* 2. INTERACTIVE FILTER & REFINEMENT BAR (00:04 - 00:05) */}
         {/* ============================================================== */}
-        <div className="mt-16 rounded-3xl border border-white/15 bg-gradient-to-r from-[#0B1B36]/90 via-[#0F254B]/90 to-[#0B1B36]/90 p-4 sm:p-6 shadow-2xl backdrop-blur-xl">
+        <div className="mt-16 rounded-3xl border border-white/15 bg-gradient-to-r from-[#0B1B36]/90 via-[#0F254B]/90 to-[#0B1B36]/90 p-4 sm:p-6 shadow-2xl backdrop-blur-xl w-full max-w-full min-w-0 overflow-hidden">
           <div className="flex flex-col gap-4">
             {/* Top Row: Primary Category Tabs */}
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4">
@@ -732,12 +732,12 @@ export function InteractiveServicesShowcase({ detailed = false }: { detailed?: b
         {/* 3. SIGNATURE 2-COLUMN SERVICE GRID WITH HOVER SPEC DRAWER (00:06 - 00:14) */}
         {/* ============================================================== */}
         {viewMode === "catalog" ? (
-          <div>
-            <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
+          <div className="w-full max-w-full min-w-0">
+            <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch w-full max-w-full min-w-0">
               {visibleCatalogCards.map((service) => (
                 <article
                   key={service.id}
-                  className="group relative overflow-hidden rounded-3xl border border-white/15 bg-[#0F254B] shadow-2xl transition-all duration-300 hover:border-cyan-400/50 hover:shadow-[0_12px_40px_rgba(0,180,255,0.2)] flex flex-col justify-end aspect-[16/11] sm:aspect-[16/10] min-h-[390px] sm:min-h-[420px]"
+                  className="group relative overflow-hidden rounded-3xl border border-white/15 bg-[#0F254B] shadow-2xl transition-all duration-300 hover:border-cyan-400/50 hover:shadow-[0_12px_40px_rgba(0,180,255,0.2)] flex flex-col justify-end w-full max-w-full min-w-0 aspect-auto sm:aspect-[16/10] min-h-[380px] sm:min-h-[420px]"
                 >
                   {/* Background Image with Zoom on Hover (Woodland signature effect) */}
                   <div className="absolute inset-0 z-0 overflow-hidden">
@@ -871,7 +871,7 @@ export function InteractiveServicesShowcase({ detailed = false }: { detailed?: b
               <article
                 key={service.id}
                 id={service.id}
-                className="group scroll-mt-28 overflow-hidden rounded-3xl border border-white/15 bg-[#0F254B]/80 shadow-xl backdrop-blur-md transition-all duration-300 hover:border-cyan-400/40"
+                className="group scroll-mt-28 overflow-hidden rounded-3xl border border-white/15 bg-[#0F254B]/80 shadow-xl backdrop-blur-md transition-all duration-300 hover:border-cyan-400/40 w-full max-w-full min-w-0"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12">
                   {/* Left Content Header */}

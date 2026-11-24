@@ -27,9 +27,9 @@ export function WireframeHero() {
       className="relative min-h-[92vh] lg:min-h-screen bg-[#070B14] pt-24 sm:pt-28 lg:pt-32 pb-14 sm:pb-20 flex flex-col justify-center overflow-hidden border-b border-white/10"
     >
       {/* Background ambient gradient glow with parallax shift */}
-      <motion.div style={{ y: yParallaxGlow }} className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute -top-32 -left-32 size-[500px] rounded-full bg-[#0056B3]/20 blur-[140px]" />
-        <div className="absolute top-1/2 -right-32 size-[600px] rounded-full bg-[#00B4FF]/15 blur-[160px]" />
+      <motion.div style={{ y: yParallaxGlow }} className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <div className="absolute -top-32 -left-32 size-[300px] sm:size-[500px] rounded-full bg-[#0056B3]/20 blur-[100px] sm:blur-[140px]" />
+        <div className="absolute top-1/2 -right-32 size-[300px] sm:size-[600px] rounded-full bg-[#00B4FF]/15 blur-[100px] sm:blur-[160px]" />
         <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-[#070B14] to-transparent" />
       </motion.div>
 

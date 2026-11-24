@@ -156,12 +156,12 @@ export function WireframeGallery() {
     <section
       id="services"
       aria-label="Our Service Solutions & Divisions"
-      className="relative overflow-hidden bg-[#000E24] py-20 text-white md:py-28"
+      className="relative overflow-hidden bg-[#000E24] py-20 text-white md:py-28 w-full max-w-full"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
       {/* Ambient glowing watermarks */}
-      <div className="pointer-events-none absolute inset-0 -z-10 opacity-35">
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-35 overflow-hidden">
         <div className="absolute -left-24 top-1/4 h-[420px] w-[420px] rounded-full bg-cyan-500/20 blur-3xl" />
         <div className="absolute -right-24 bottom-1/4 h-[420px] w-[420px] rounded-full bg-teal-500/20 blur-3xl" />
       </div>
@@ -424,7 +424,7 @@ export function WireframeGallery() {
               type="button"
               onClick={prevSlide}
               aria-label="Previous division"
-              className="absolute -left-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-[#0c1f2b]/95 text-white shadow-xl backdrop-blur-md transition hover:border-cyan-400 hover:bg-cyan-500 hover:text-slate-950 sm:-left-6"
+              className="absolute left-1 sm:-left-6 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-[#0c1f2b]/95 text-white shadow-xl backdrop-blur-md transition hover:border-cyan-400 hover:bg-cyan-500 hover:text-slate-950 z-20"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
@@ -432,7 +432,7 @@ export function WireframeGallery() {
               type="button"
               onClick={nextSlide}
               aria-label="Next division"
-              className="absolute -right-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-[#0c1f2b]/95 text-white shadow-xl backdrop-blur-md transition hover:border-cyan-400 hover:bg-cyan-500 hover:text-slate-950 sm:-right-6"
+              className="absolute right-1 sm:-right-6 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-[#0c1f2b]/95 text-white shadow-xl backdrop-blur-md transition hover:border-cyan-400 hover:bg-cyan-500 hover:text-slate-950 z-20"
             >
               <ChevronRight className="h-5 w-5" />
             </button>

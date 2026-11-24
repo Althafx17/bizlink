@@ -1190,7 +1190,7 @@ export function MobileBottomActionDock() {
   return (
     <div
       aria-label="Quick mobile contacts"
-      className="fixed bottom-0 inset-x-0 z-40 md:hidden border-t border-white/15 bg-[#071426]/95 backdrop-blur-md px-3 py-2 shadow-2xl flex items-center justify-around gap-2"
+      className="fixed bottom-0 inset-x-0 z-40 md:hidden border-t border-white/15 bg-[#071426]/95 backdrop-blur-md px-3 py-2 shadow-2xl flex items-center justify-around gap-2 max-w-full box-border"
     >
       <a
         href="tel:+97450091006"

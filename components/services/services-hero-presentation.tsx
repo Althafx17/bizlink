@@ -102,12 +102,12 @@ export function ServicesHeroPresentation() {
     <section
       id="services-presentation"
       aria-label="Our Service Solutions & Divisions"
-      className="relative w-full bg-[#000E24] pt-24 sm:pt-28 pb-16 sm:pb-24 overflow-hidden border-b border-white/10"
+      className="relative w-full max-w-full bg-[#000E24] pt-24 sm:pt-28 pb-16 sm:pb-24 overflow-hidden border-b border-white/10"
     >
       {/* Ambient website blue & sapphire background glow */}
-      <div className="pointer-events-none absolute inset-0 z-0 opacity-40">
-        <div className="absolute -top-32 -left-32 size-[500px] rounded-full bg-[#0056B3]/25 blur-[140px]" />
-        <div className="absolute top-1/2 -right-32 size-[550px] rounded-full bg-[#00B4FF]/20 blur-[150px]" />
+      <div className="pointer-events-none absolute inset-0 z-0 opacity-40 overflow-hidden">
+        <div className="absolute -top-32 -left-32 size-[320px] sm:size-[500px] rounded-full bg-[#0056B3]/25 blur-[100px] sm:blur-[140px]" />
+        <div className="absolute top-1/2 -right-32 size-[320px] sm:size-[550px] rounded-full bg-[#00B4FF]/20 blur-[100px] sm:blur-[150px]" />
         <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-[#000E24] to-transparent" />
       </div>
 
@@ -116,8 +116,10 @@ export function ServicesHeroPresentation() {
         <div className="relative rounded-3xl border border-cyan-400/30 bg-gradient-to-b from-[#001438]/90 via-[#071426]/95 to-[#000E24] p-6 sm:p-10 lg:p-14 shadow-2xl shadow-cyan-950/50 overflow-hidden backdrop-blur-md">
           
           {/* Subtle Ambient Radial Lighting */}
-          <div className="pointer-events-none absolute -top-40 -left-40 size-[500px] rounded-full bg-cyan-400/15 blur-[140px]" />
-          <div className="pointer-events-none absolute -bottom-40 -right-40 size-[500px] rounded-full bg-sky-500/15 blur-[150px]" />
+          <div className="pointer-events-none absolute inset-0 overflow-hidden">
+            <div className="absolute -top-40 -left-40 size-[320px] sm:size-[500px] rounded-full bg-cyan-400/15 blur-[100px] sm:blur-[140px]" />
+            <div className="absolute -bottom-40 -right-40 size-[320px] sm:size-[500px] rounded-full bg-sky-500/15 blur-[100px] sm:blur-[150px]" />
+          </div>
 
           {/* Top Header Row matching the typography & fonts of other website pages */}
           <div className="relative z-10 flex flex-col sm:flex-row sm:items-start justify-between gap-6">
@@ -159,7 +161,7 @@ export function ServicesHeroPresentation() {
           </div>
 
           {/* 3D Perspective Fanned-Out Cards Array */}
-          <div className="relative mt-12 sm:mt-16 w-full py-4">
+          <div className="relative mt-12 sm:mt-16 w-full max-w-full overflow-hidden py-4">
             
             {/* Desktop 3D Perspective Container */}
             <div className="hidden md:flex items-center justify-center gap-3 lg:gap-4 perspective-[1200px]">
@@ -256,7 +258,7 @@ export function ServicesHeroPresentation() {
             </div>
 
             {/* Mobile / Tablet Horizontal Scrollable Showcase */}
-            <div className="md:hidden flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 no-scrollbar">
+            <div className="md:hidden flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 no-scrollbar w-full max-w-full">
               {serviceDivisions.map((division) => (
                 <div
                   key={division.id}

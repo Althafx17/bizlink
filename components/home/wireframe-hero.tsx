@@ -161,36 +161,45 @@ export function WireframeHero() {
           <div className="lg:col-span-6 xl:col-span-6 flex justify-center lg:justify-end items-center relative">
             <div className="relative w-full max-w-[440px] sm:max-w-[540px] lg:max-w-[600px] xl:max-w-[660px] h-[480px] sm:h-[540px] lg:h-[600px] xl:h-[640px] flex items-end justify-start select-none">
 
-              {/* 1. Semicircle Arch Background with Parallax */}
+              {/* 1. Semicircle Arch / Mobile Rounded Showcase with Video and Parallax */}
               <motion.div
                 style={{ y: yParallaxArch }}
-                className="absolute right-0 top-0 bottom-0 w-[84%] sm:w-[80%] lg:w-[76%] rounded-t-full overflow-hidden border border-cyan-400/40 bg-gradient-to-b from-[#3b93e8] via-[#1c64b5] to-[#09294d] shadow-[0_0_90px_rgba(45,139,230,0.35)]"
+                className="absolute inset-0 sm:inset-y-0 sm:left-auto sm:right-0 w-full sm:w-[80%] lg:w-[76%] rounded-3xl sm:rounded-t-full overflow-hidden border border-cyan-400/40 bg-gradient-to-b from-[#3b93e8] via-[#1c64b5] to-[#09294d] shadow-[0_0_90px_rgba(45,139,230,0.35)]"
               >
-                {/* Architectural curved glass image with Ken Burns breathing animation */}
+                {/* Architectural video background with modern corporate aesthetic */}
                 <div className="absolute inset-0 z-0 overflow-hidden">
-                  <motion.div
-                    animate={{ scale: [1, 1.08, 1] }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-                    className="relative w-full h-full"
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    poster="/images/about/luxury_boardroom_skyline.jpg"
+                    className="h-full w-full object-cover object-center scale-105"
+                    aria-label="BizLink Architectural Penthouse Arch"
                   >
-                    <Image
-                      src="/images/about/luxury_boardroom_skyline.jpg"
-                      alt="BizLink Architectural Penthouse Arch"
-                      fill
-                      priority
-                      sizes="(min-width: 1024px) 500px, 400px"
-                      className="object-cover object-top opacity-35 mix-blend-overlay"
-                    />
-                  </motion.div>
-                  <div className="absolute inset-0 bg-gradient-to-b from-cyan-400/20 via-transparent to-[#070B14]/80 pointer-events-none" />
+                    <source src="/videos/hero-bg.mp4" type="video/mp4" />
+                    <source src="/videos/hero-bg-2.mp4" type="video/mp4" />
+                  </video>
+
+                  {/* Fallback & semantic image for accessibility & search indexing */}
+                  <Image
+                    src="/images/about/luxury_boardroom_skyline.jpg"
+                    alt="BizLink Architectural Penthouse Arch"
+                    fill
+                    sizes="(min-width: 1024px) 500px, 100vw"
+                    className="sr-only"
+                  />
+
+                  {/* Gradient overlays for contrast with typography and card */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-cyan-400/20 via-transparent to-[#070B14]/85 pointer-events-none" />
                 </div>
 
-                {/* Subtle interior ambient glow and arch lines */}
+                {/* Subtle interior ambient glow and frame lines */}
                 <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-cyan-300/25 to-transparent pointer-events-none" />
-                <div className="absolute inset-6 rounded-t-full border border-white/10 pointer-events-none" />
+                <div className="absolute inset-4 sm:inset-6 rounded-2xl sm:rounded-t-full border border-white/10 pointer-events-none" />
 
-                {/* Top Tag inside Arch */}
-                <div className="absolute top-10 sm:top-14 inset-x-0 flex flex-col items-center text-center px-4 z-10">
+                {/* Top Tag inside Frame */}
+                <div className="absolute top-8 sm:top-14 inset-x-0 flex flex-col items-center text-center px-4 z-10">
                   <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-cyan-200 drop-shadow-md">
                     CORPORATE ECOSYSTEM
                   </span>
@@ -203,7 +212,7 @@ export function WireframeHero() {
               {/* 2. Floating BizLink Logo Card at the Bottom Left Corner with opposing Parallax */}
               <motion.div
                 style={{ y: yParallaxCard }}
-                className="relative z-20 w-[55%] sm:w-[50%] lg:w-[50%] rounded-2xl sm:rounded-3xl border border-white/20 bg-[#070B14]/92 backdrop-blur-xl p-4 sm:p-5 shadow-[0_25px_60px_rgba(0,0,0,0.9)] shadow-cyan-950/70 transition-transform duration-500 hover:scale-[1.03] group mb-2 ml-0 sm:mb-4"
+                className="relative z-20 w-[55%] sm:w-[50%] lg:w-[50%] rounded-2xl sm:rounded-3xl border border-white/20 bg-[#070B14]/92 backdrop-blur-xl p-4 sm:p-5 shadow-[0_25px_60px_rgba(0,0,0,0.9)] shadow-cyan-950/70 transition-transform duration-500 hover:scale-[1.03] group mb-3 ml-3 sm:mb-4 sm:ml-0"
               >
                 {/* Center 3D BizLink Logo */}
                 <div className="relative w-full aspect-[641/460] my-2.5 sm:my-3 flex items-center justify-center">

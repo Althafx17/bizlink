@@ -515,19 +515,19 @@ export function CompanyStory({ standalone = false }: { standalone?: boolean }) {
                 </svg>
               </div>
 
-              {/* 3D Character with Binoculars (from Page 2) */}
+              {/* 3D Character with Vision */}
               <div className="flex justify-center md:col-span-3">
                 <motion.div
                   animate={{ y: [-4, 4, -4], rotate: [-1, 1, -1] }}
                   transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-                  className="relative size-32 sm:size-36 flex items-center justify-center"
+                  className="relative size-32 sm:size-36 rounded-2xl bg-white border border-cyan-400/30 p-2 flex items-center justify-center shadow-lg overflow-hidden"
                 >
                   <Image
-                    src="/images/brochure_about/vision_binoculars.webp"
-                    alt="Our Vision 3D Binoculars"
+                    src="/images/vision and mission.jpg"
+                    alt="Our Vision"
                     width={150}
                     height={150}
-                    className="size-32 sm:size-36 object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.6)]"
+                    className="size-full object-contain drop-shadow-md"
                   />
                 </motion.div>
               </div>
@@ -563,19 +563,19 @@ export function CompanyStory({ standalone = false }: { standalone?: boolean }) {
                 </p>
               </div>
 
-              {/* 3D Target with Arrows (from Page 2) */}
+              {/* 3D Target with Arrows */}
               <div className="order-1 md:order-2 flex justify-center md:col-span-3">
                 <motion.div
                   animate={{ scale: [0.96, 1.04, 0.96], rotate: [-2, 2, -2] }}
                   transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut" }}
-                  className="relative size-32 sm:size-36 flex items-center justify-center"
+                  className="relative size-32 sm:size-36 rounded-2xl bg-white border border-amber-400/30 p-2 flex items-center justify-center shadow-lg overflow-hidden"
                 >
                   <Image
-                    src="/images/brochure_about/mission_target.webp"
+                    src="/images/mission.png"
                     alt="Our Mission 3D Bullseye Target"
-                    width={144}
-                    height={144}
-                    className="size-32 sm:size-36 object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.6)]"
+                    width={150}
+                    height={150}
+                    className="size-full object-contain drop-shadow-md"
                   />
                 </motion.div>
               </div>

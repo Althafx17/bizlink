@@ -33,19 +33,19 @@ export function WireframeVisionMission() {
           {/* Card 1: Our Vision */}
           <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-br from-[#0F1E38] via-[#0C172B] to-[#080F1E] p-6 sm:p-8 shadow-2xl flex flex-col justify-between group hover:border-cyan-400/40 transition-all">
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
-              {/* 3D Character with Binoculars */}
+              {/* 3D Character with Vision */}
               <div className="shrink-0 flex items-center justify-center">
                 <motion.div
                   animate={{ y: [-4, 4, -4], rotate: [-1, 1, -1] }}
                   transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-                  className="relative size-28 sm:size-32 rounded-2xl bg-cyan-400/10 border border-cyan-400/20 p-2 flex items-center justify-center shadow-lg"
+                  className="relative size-28 sm:size-32 rounded-2xl bg-white border border-cyan-400/30 p-2 flex items-center justify-center shadow-lg overflow-hidden"
                 >
                   <Image
-                    src="/images/brochure_about/vision_binoculars.webp"
-                    alt="Our Vision 3D Binoculars"
+                    src="/images/vision and mission.jpg"
+                    alt="Our Vision"
                     width={130}
                     height={130}
-                    className="size-24 sm:size-28 object-contain drop-shadow-[0_8px_16px_rgba(0,0,0,0.5)]"
+                    className="size-full object-contain drop-shadow-md"
                   />
                 </motion.div>
               </div>
@@ -78,14 +78,14 @@ export function WireframeVisionMission() {
                 <motion.div
                   animate={{ scale: [0.96, 1.04, 0.96], rotate: [-2, 2, -2] }}
                   transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut" }}
-                  className="relative size-28 sm:size-32 rounded-2xl bg-amber-400/10 border border-amber-400/20 p-2 flex items-center justify-center shadow-lg"
+                  className="relative size-28 sm:size-32 rounded-2xl bg-white border border-amber-400/30 p-2 flex items-center justify-center shadow-lg overflow-hidden"
                 >
                   <Image
-                    src="/images/brochure_about/mission_target.webp"
+                    src="/images/mission.png"
                     alt="Our Mission 3D Bullseye Target"
                     width={130}
                     height={130}
-                    className="size-24 sm:size-28 object-contain drop-shadow-[0_8px_16px_rgba(0,0,0,0.5)]"
+                    className="size-full object-contain drop-shadow-md"
                   />
                 </motion.div>
               </div>

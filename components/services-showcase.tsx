@@ -36,8 +36,8 @@ export const showcaseServices: readonly ShowcaseService[] = [
       "PRO & Government Visas",
       "WPS Payroll Support",
     ],
-    bgImage: "/images/services/business-corporate-bg.webp",
-    cardImage: "/images/services/business-corporate-card.webp",
+    bgImage: "/images/services/business and cooperate.jpg",
+    cardImage: "/images/services/business and cooperate.jpg",
     link: "/services#business-corporate",
   },
   {
@@ -55,8 +55,8 @@ export const showcaseServices: readonly ShowcaseService[] = [
       "Electrical & Plumbing Supplies",
       "Cargo & Distribution Support",
     ],
-    bgImage: "/images/services/trading-supply-bg.webp",
-    cardImage: "/images/services/trading-supply-card.webp",
+    bgImage: "/images/services/trading and supplay video image.jpg",
+    cardImage: "/images/services/trading and supplay video image.jpg",
     link: "/services#trading-supply",
   },
   {
@@ -74,8 +74,8 @@ export const showcaseServices: readonly ShowcaseService[] = [
       "Gypsum & Glass Partitions",
       "Electrical & Plumbing Works",
     ],
-    bgImage: "/images/services/facility-maintenance-bg.webp",
-    cardImage: "/images/services/facility-maintenance-card.webp",
+    bgImage: "/images/services/fdacility maintainace.jpg",
+    cardImage: "/images/services/fdacility maintainace.jpg",
     link: "/services#facility-maintenance",
   },
   {
@@ -93,8 +93,8 @@ export const showcaseServices: readonly ShowcaseService[] = [
       "Windshield Replacement",
       "Fleet Maintenance Support",
     ],
-    bgImage: "/images/services/automotive-bg.webp",
-    cardImage: "/images/services/automotive-card.webp",
+    bgImage: "/images/services/bizlink professional.jpg",
+    cardImage: "/images/services/bizlink professional.jpg",
     link: "/services#automotive",
   },
   {

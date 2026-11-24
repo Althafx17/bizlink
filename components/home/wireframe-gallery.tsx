@@ -45,7 +45,7 @@ const homeServices: ServiceDivisionItem[] = [
     ],
     ctaText: "Explore Corporate",
     ctaHref: "/services#business",
-    image: "/images/services/business-corporate-card.webp",
+    image: "/images/services/business and cooperate.jpg",
     icon: Building2,
   },
   {
@@ -62,7 +62,7 @@ const homeServices: ServiceDivisionItem[] = [
     ],
     ctaText: "Explore Digital",
     ctaHref: "/services#digital",
-    image: "/images/services/digital-creative-card.webp",
+    image: "/images/services/biz link digitial services.jpg",
     icon: Cpu,
   },
   {
@@ -79,7 +79,7 @@ const homeServices: ServiceDivisionItem[] = [
     ],
     ctaText: "Explore Trading",
     ctaHref: "/services#trading",
-    image: "/images/services/trading-supply-card.webp",
+    image: "/images/services/trading and supplay video image.jpg",
     icon: TrendingUp,
   },
   {
@@ -96,7 +96,7 @@ const homeServices: ServiceDivisionItem[] = [
     ],
     ctaText: "Explore Facilities",
     ctaHref: "/services#facility",
-    image: "/images/services/facility-maintenance-card.webp",
+    image: "/images/services/fdacility maintainace.jpg",
     icon: Sparkles,
   },
   {
@@ -113,7 +113,7 @@ const homeServices: ServiceDivisionItem[] = [
     ],
     ctaText: "Explore Automotive",
     ctaHref: "/services#automotive",
-    image: "/images/services/automotive-card.webp",
+    image: "/images/services/bizlink professional.jpg",
     icon: Car,
   },
 ];

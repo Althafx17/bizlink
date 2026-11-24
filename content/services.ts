@@ -22,7 +22,7 @@ export const services: readonly ServiceDivision[] = [
     tagline: "Simplifying Business. Supporting Growth. Creating Opportunities.",
     highlight: "Your Business Journey, Made Simple With Us",
     description: "Corporate Licensing, PRO Services & Compliance",
-    imageCard: "/images/services/business-corporate-card.webp",
+    imageCard: "/images/services/business and cooperate.jpg",
     iconName: "building",
     items: [
       "Company Formation, CR & Commercial Licensing",
@@ -44,7 +44,7 @@ export const services: readonly ServiceDivision[] = [
     tagline: "Building Brands. Connecting Audiences. Growing Businesses.",
     highlight: "Grow Your Brand, With BizLink",
     description: "Digital Marketing, Web Development & Brand Identity",
-    imageCard: "/images/services/digital-creative-card.webp",
+    imageCard: "/images/services/biz link digitial services.jpg",
     iconName: "monitor",
     items: [
       "Digital Marketing & Social Media Management",
@@ -65,7 +65,7 @@ export const services: readonly ServiceDivision[] = [
     tagline: "Quality Products. Reliable Supply. Business Excellence.",
     highlight: "Our Commitment to Supply Chain Excellence",
     description: "Wholesale Distribution, Procurement & Fragrances",
-    imageCard: "/images/services/trading-supply-card.webp",
+    imageCard: "/images/services/trading and supplay video image.jpg",
     iconName: "truck",
     items: [
       "General Trading, Retail & Commercial Supply",
@@ -86,7 +86,7 @@ export const services: readonly ServiceDivision[] = [
     tagline: "Maintaining Spaces. Enhancing Environments. Ensuring Reliability.",
     highlight: "Complete Property Care & 24/7 Reliability",
     description: "Commercial Cleaning, MEP Repairs & AMC",
-    imageCard: "/images/services/facility-maintenance-card.webp",
+    imageCard: "/images/services/fdacility maintainace.jpg",
     iconName: "wrench",
     items: [
       "Commercial & Residential Deep Cleaning (24/7 Doha)",
@@ -107,7 +107,7 @@ export const services: readonly ServiceDivision[] = [
     tagline: "Professional Automotive Services, Delivered to Your Location.",
     highlight: "Your Car. Our Care. Your Location — Convenience At Your Doorstep",
     description: "Mobile Car Wash, Detailing & Auto Glass Replacement",
-    imageCard: "/images/services/automotive-card.webp",
+    imageCard: "/images/services/bizlink professional.jpg",
     iconName: "car",
     items: [
       "Pathas Mobile Car Wash (Any Where, Any Time in Doha)",

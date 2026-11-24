@@ -56,7 +56,7 @@ export const catalogServices: readonly CatalogServiceItem[] = [
     title: "Company Formation & 100% Foreign Ownership",
     subtitle: "Commercial Registration (CR), Trade Licensing & MOCI Approvals",
     categoryTag: "Corporate & Legal Setup",
-    image: "/images/services/business-corporate-card.webp",
+    image: "/images/services/business and cooperate.jpg",
     engagementType: "Express Setup",
     turnaround: "2-3 Days",
     specs: {
@@ -104,7 +104,7 @@ export const catalogServices: readonly CatalogServiceItem[] = [
     title: "Digital Marketing, SEO & High-Impact Ads",
     subtitle: "Full-Funnel Meta, Google, TikTok & Qualified Lead Generation",
     categoryTag: "Growth Marketing",
-    image: "/images/services/digital-creative-card.webp",
+    image: "/images/services/biz link digitial services.jpg",
     engagementType: "Monthly Package",
     turnaround: "Weekly / Monthly",
     specs: {
@@ -176,7 +176,7 @@ export const catalogServices: readonly CatalogServiceItem[] = [
     title: "General, Retail & Wholesale Trading Supply",
     subtitle: "Construction Essentials, Safety PPE & Lifestyle Products",
     categoryTag: "Wholesale & Supply",
-    image: "/images/services/trading-supply-card.webp",
+    image: "/images/services/trading and supplay video image.jpg",
     engagementType: "Turnkey / Retail",
     turnaround: "24-48 Hours",
     specs: {
@@ -224,7 +224,7 @@ export const catalogServices: readonly CatalogServiceItem[] = [
     title: "Annual Maintenance Contracts (AMC) & MEP Works",
     subtitle: "HVAC Servicing, Electrical, Plumbing & Emergency Building Care",
     categoryTag: "Facility Engineering",
-    image: "/images/services/facility-maintenance-card.webp",
+    image: "/images/services/fdacility maintainace.jpg",
     engagementType: "Contract / AMC",
     turnaround: "Annual AMC",
     specs: {
@@ -272,7 +272,7 @@ export const catalogServices: readonly CatalogServiceItem[] = [
     title: "Doorstep Mobile Car Wash & Premium Detailing",
     subtitle: "Steam Cleaning, Paint Protection, Interior Disinfection & Wax",
     categoryTag: "Mobile Automotive",
-    image: "/images/services/automotive-card.webp",
+    image: "/images/services/bizlink professional.jpg",
     engagementType: "Turnkey / Retail",
     turnaround: "Same-Day",
     specs: {
@@ -296,7 +296,7 @@ export const catalogServices: readonly CatalogServiceItem[] = [
     title: "Auto Glass Inspection & Windshield Replacement",
     subtitle: "OEM Certified Glass, Crack Repair & On-Site Installation",
     categoryTag: "Auto Glass Care",
-    image: "/images/services/automotive-bg.webp",
+    image: "/images/services/bizlink professional.jpg",
     engagementType: "Express Setup",
     turnaround: "Same-Day",
     specs: {

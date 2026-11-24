@@ -33,11 +33,11 @@ export function WireframeAbout() {
                 className="relative w-full h-full"
               >
                 <Image
-                  src="/images/about/executive_handshake_bg.webp"
+                  src="/images/about/executive_handshake_expanded.webp"
                   alt="BizLink Executive Handshake Doha Qatar"
                   fill
                   sizes="(min-width: 1024px) 40vw, 90vw"
-                  className="object-cover object-[70%_center]"
+                  className="object-cover object-[50%_top] sm:object-[70%_center]"
                 />
               </motion.div>
               <div className="absolute inset-0 bg-gradient-to-t from-[#070B14] via-[#070B14]/40 to-transparent pointer-events-none" />

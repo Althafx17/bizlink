@@ -15,7 +15,7 @@ export function ContactHero() {
           initial={{ opacity: 0, scale: 0.98, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="relative min-h-[220px] sm:min-h-[280px] lg:min-h-[320px] w-full overflow-hidden rounded-[2rem] sm:rounded-[2.8rem] border border-cyan-400/25 bg-[#071426] p-8 sm:p-12 lg:p-16 flex items-center shadow-[0_20px_60px_rgba(0,18,46,0.6)]"
+          className="relative min-h-[400px] sm:min-h-[440px] lg:min-h-[480px] w-full overflow-hidden rounded-[2rem] sm:rounded-[2.8rem] border border-cyan-400/25 bg-[#071426] p-8 sm:p-12 lg:p-16 flex items-center shadow-[0_20px_60px_rgba(0,18,46,0.6)]"
         >
           {/* Blue Background Image */}
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">

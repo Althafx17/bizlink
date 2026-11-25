@@ -18,13 +18,19 @@ import {
   Keyboard,
   Landmark,
   Languages,
+  Laptop,
+  Layers,
+  Megaphone,
   MessageCircle,
+  PenTool,
   Phone,
+  Share2,
   ShieldCheck,
   ShoppingCart,
   Sparkles,
   TrendingUp,
   Users,
+  Video,
 } from "lucide-react";
 import { services, type ServiceDivision } from "@/content/services";
 import { company } from "@/content/company";
@@ -38,6 +44,7 @@ interface ServicePageProps {
 
 function getSubServiceIcon(id: string) {
   switch (id) {
+    // Division 01: Business & Corporate
     case "company-formation":
       return <Users className="size-5 text-cyan-400" />;
     case "cr-licensing":
@@ -54,6 +61,19 @@ function getSubServiceIcon(id: string) {
       return <TrendingUp className="size-5 text-cyan-400" />;
     case "ecommerce-setup":
       return <ShoppingCart className="size-5 text-cyan-400" />;
+    // Division 02: Digital & Creative
+    case "digital-marketing-seo":
+      return <Megaphone className="size-5 text-cyan-400" />;
+    case "content-ai-video":
+      return <Video className="size-5 text-cyan-400" />;
+    case "web-ecommerce-development":
+      return <Laptop className="size-5 text-cyan-400" />;
+    case "branding-graphic-design":
+      return <PenTool className="size-5 text-cyan-400" />;
+    case "social-media-management":
+      return <Share2 className="size-5 text-cyan-400" />;
+    case "digital-retainer-packages":
+      return <Layers className="size-5 text-cyan-400" />;
     default:
       return <Sparkles className="size-5 text-cyan-400" />;
   }
@@ -253,16 +273,23 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                 <div className="absolute inset-0 bg-cyan-950/20 mix-blend-color pointer-events-none" />
 
                 {/* Signature Curved Blue Badge Overlay matching official brochure */}
-                <div className="absolute top-4 right-4 z-10 max-w-[190px] sm:max-w-[210px] p-3 sm:p-4 rounded-2xl bg-[#004BB7]/95 border border-white/20 backdrop-blur-md shadow-xl text-right">
-                  <span className="block text-xs sm:text-sm font-black text-white leading-tight">
-                    Your Business Journey,
-                  </span>
-                  <span className="block text-xs sm:text-sm font-black text-white leading-tight mt-0.5">
-                    Made Simple
-                  </span>
-                  <span className="block text-xs sm:text-sm font-black text-cyan-300 leading-tight">
-                    WithUs
-                  </span>
+                <div className="absolute top-4 right-4 z-10 max-w-[200px] sm:max-w-[230px] p-3 sm:p-4 rounded-2xl bg-[#004BB7]/95 border border-white/20 backdrop-blur-md shadow-xl text-right">
+                  {service.id === "business-corporate" ? (
+                    <span className="block text-xs sm:text-sm font-black text-white leading-tight">
+                      <span className="block">Your Business Journey,</span>
+                      <span className="block mt-0.5">Made Simple</span>
+                      <span className="block text-cyan-300">WithUs</span>
+                    </span>
+                  ) : service.id === "digital-creative" ? (
+                    <span className="block text-xs sm:text-sm font-black text-white leading-tight">
+                      <span className="block">Grow Your Brand,</span>
+                      <span className="block text-cyan-300 mt-0.5">With BizLink</span>
+                    </span>
+                  ) : (
+                    <span className="block text-xs sm:text-sm font-black text-white leading-tight">
+                      {service.highlight}
+                    </span>
+                  )}
                 </div>
 
                 {/* Badge Overlay */}
@@ -374,8 +401,8 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
             <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-300">
               <div className="flex items-center gap-2">
                 <span className="size-2 rounded-full bg-cyan-400 animate-pulse" />
-                <span className="font-mono text-cyan-300 font-bold">www.bizlinkqatar.com 03</span>
-                <span className="text-slate-400">· Official Qatar Business &amp; Corporate Solutions</span>
+                <span className="font-mono text-cyan-300 font-bold">{service.brochurePage}</span>
+                <span className="text-slate-400">· Official Qatar {service.title}</span>
               </div>
               <span className="text-amber-400 font-semibold text-center sm:text-right">
                 Click any service to inspect official deliverables &amp; regulatory scope below ↓

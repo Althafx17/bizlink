@@ -248,7 +248,7 @@ export const services: readonly ServiceDivision[] = [
     imageCard: "/images/services/bizlink digital service.jpg",
     brochureMainImage: "/images/services/bizlink digital service.jpg",
     iconName: "monitor",
-    brochurePage: "Page 04",
+    brochurePage: "www.bizlinkqatar.com 04",
     brochureIntro:
       "In today's competitive digital environment, a strong online presence is essential for business growth. BizLink provides creative and digital solutions that help businesses establish their identity, connect with customers and strengthen their market presence. From branding and content creation to website development and digital marketing, we deliver solutions designed around your business objectives.",
     brochureCommitment:
@@ -256,13 +256,12 @@ export const services: readonly ServiceDivision[] = [
     whatsappMessage:
       "Hello BizLink Qatar, I would like to consult with your Digital & Creative team regarding web development, branding, or performance marketing in Doha.",
     items: [
-      "Digital Marketing & Social Media Management",
-      "Branding, Graphic Design & Corporate Identity",
-      "Custom Website Design & E-Commerce Development",
-      "Search Engine Optimization (SEO) & Online Visibility",
-      "Content Creation, Commercial Photography & Video",
-      "Performance Marketing & Paid Social/PPC Advertising",
-      "Biz Link Computer Center & IT Solutions",
+      "Digital Marketing & SEO",
+      "Content Creation & Ai Video",
+      "Website & E Commerce Development",
+      "Branding & Graphic Design",
+      "Social Media Management",
+      "Weekly & Monthly Digital Packages",
     ],
     subServices: [
       {
@@ -282,8 +281,23 @@ export const services: readonly ServiceDivision[] = [
         badge: "Growth Engine",
       },
       {
+        id: "content-ai-video",
+        title: "Content Creation & Ai Video",
+        tagline: "4K Commercial Video Production & Motion Graphics",
+        description:
+          "Cinematic commercial storytelling that stops the scroll. Our creative media team produces 4K promotional brand videos, on-site industrial photography, corporate boardroom shoots, product showcases, and dynamic motion graphics. Enhanced with generative AI video techniques for rapid turnaround and creative effects.",
+        deliverables: [
+          "On-location 4K video filming and drone aerial cinematography",
+          "High-impact vertical reels and TikTok videos with motion captions",
+          "Native Arabic and English professional voiceover recording",
+          "Color grading, sound design, and 3D motion graphics bumpers",
+          "Commercial product photography catalog and high-res retouching",
+        ],
+        compliance: "Broadcast-Quality 4K / HDR Production Standards",
+      },
+      {
         id: "web-ecommerce-development",
-        title: "Website & E-Commerce Development",
+        title: "Website & E Commerce Development",
         tagline: "Ultra-Fast Modern Web Applications & E-Stores",
         description:
           "Custom enterprise web architecture engineered for speed, mobile responsiveness, and high conversion. Built using industry-leading modern stacks including Next.js, React, Tailwind CSS, and headless commerce. Featuring lightning-fast server-rendered performance, bank-grade SSL security, and seamless Qatari payment gateway integrations.",
@@ -296,36 +310,6 @@ export const services: readonly ServiceDivision[] = [
         ],
         compliance: "W3C Web Standards & OWASP Security Architecture",
         badge: "Flagship",
-      },
-      {
-        id: "social-media-management",
-        title: "Social Media Management",
-        tagline: "Strategic Presence on Instagram, TikTok & LinkedIn",
-        description:
-          "Full-funnel organic and paid social management designed to build authentic authority in Qatar. We craft tailored monthly content calendars, write engaging culturally tuned copy in Arabic and English, manage active community interactions, and deploy hyper-targeted ads across Instagram, TikTok, LinkedIn, and Facebook.",
-        deliverables: [
-          "Monthly content strategy and 16-24 custom-designed feed & story assets",
-          "Professional bilingual Arabic/English copy and hashtag architecture",
-          "Community moderation, direct message triage, and audience engagement",
-          "Influencer collaboration outreach and event live coverage in Doha",
-          "Quarterly growth dashboards with follower sentiment analytics",
-        ],
-        compliance: "GCC Advertising Standards & Brand Safety Guidelines",
-      },
-      {
-        id: "content-ai-video",
-        title: "Content Creation & AI Video",
-        tagline: "4K Commercial Video Production & Motion Graphics",
-        description:
-          "Cinematic commercial storytelling that stops the scroll. Our creative media team produces 4K promotional brand videos, on-site industrial photography, corporate boardroom shoots, product showcases, and dynamic motion graphics. Enhanced with generative AI video techniques for rapid turnaround and creative effects.",
-        deliverables: [
-          "On-location 4K video filming and drone aerial cinematography",
-          "High-impact vertical reels and TikTok videos with motion captions",
-          "Native Arabic and English professional voiceover recording",
-          "Color grading, sound design, and 3D motion graphics bumpers",
-          "Commercial product photography catalog and high-res retouching",
-        ],
-        compliance: "Broadcast-Quality 4K / HDR Production Standards",
       },
       {
         id: "branding-graphic-design",
@@ -341,6 +325,21 @@ export const services: readonly ServiceDivision[] = [
           "Uniform embroidery designs, building signage, and fleet livery wraps",
         ],
         compliance: "Registered Trademark Specifications",
+      },
+      {
+        id: "social-media-management",
+        title: "Social Media Management",
+        tagline: "Strategic Presence on Instagram, TikTok & LinkedIn",
+        description:
+          "Full-funnel organic and paid social management designed to build authentic authority in Qatar. We craft tailored monthly content calendars, write engaging culturally tuned copy in Arabic and English, manage active community interactions, and deploy hyper-targeted ads across Instagram, TikTok, LinkedIn, and Facebook.",
+        deliverables: [
+          "Monthly content strategy and 16-24 custom-designed feed & story assets",
+          "Professional bilingual Arabic/English copy and hashtag architecture",
+          "Community moderation, direct message triage, and audience engagement",
+          "Influencer collaboration outreach and event live coverage in Doha",
+          "Quarterly growth dashboards with follower sentiment analytics",
+        ],
+        compliance: "GCC Advertising Standards & Brand Safety Guidelines",
       },
       {
         id: "digital-retainer-packages",

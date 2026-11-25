@@ -214,17 +214,11 @@ export function WireframeGallery() {
             <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8 mb-3 sm:mb-5 shrink-0">
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 sm:gap-4">
                 <div>
-                  <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-950/40 px-3.5 py-1 text-xs font-semibold tracking-wider text-cyan-300 uppercase shadow-sm">
-                    <span className="size-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                    <span>Our Service Solutions</span>
-                  </div>
-
                   <h2 className="mt-1.5 sm:mt-2 text-xl sm:text-3xl lg:text-4xl font-black tracking-tight text-white uppercase leading-tight">
                     Specialized Corporate &amp; Industrial Capabilities
                   </h2>
-                  <p className="mt-1 text-xs sm:text-sm text-slate-300 max-w-xl">
-                    Scroll down to glide through all 5 divisions across Qatar before proceeding.
-                  </p>
+                  <br />
+                  <br />
                 </div>
 
                 {/* Progress Indicators & View Mode Toggle */}

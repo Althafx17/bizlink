@@ -282,7 +282,7 @@ export function WireframeGallery() {
                     >
                       {/* Top Visual Banner with Image */}
                       <div>
-                        <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-white/15 shadow-inner">
+                        <Link href={service.ctaHref} className="block relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-white/15 shadow-inner cursor-pointer group/img">
                           <Image
                             src={service.image}
                             alt={service.title}
@@ -302,16 +302,18 @@ export function WireframeGallery() {
                           <div className="absolute top-3 right-3 flex items-center justify-center size-7 rounded-lg bg-black/60 border border-white/20 text-xs font-black text-white/90 backdrop-blur-md">
                             {service.id}
                           </div>
-                        </div>
+                        </Link>
 
                         {/* Title & Description */}
                         <div className="mt-4">
                           <div className="text-[10px] font-black uppercase tracking-[0.2em] text-cyan-400">
                             {service.badge}
                           </div>
-                          <h3 className="mt-1 text-base sm:text-xl font-black text-white leading-snug group-hover:text-cyan-200 transition-colors">
-                            {service.title}
-                          </h3>
+                          <Link href={service.ctaHref} className="block group/title">
+                            <h3 className="mt-1 text-base sm:text-xl font-black text-white leading-snug group-hover/title:text-cyan-200 transition-colors">
+                              {service.title}
+                            </h3>
+                          </Link>
                           <p className="mt-2 text-xs text-slate-300 line-clamp-2 leading-relaxed">
                             {service.description}
                           </p>
@@ -407,27 +409,29 @@ export function WireframeGallery() {
                   }`}
                 >
                   <div>
-                    <div className="relative aspect-[16/10] sm:aspect-[16/9] min-h-[190px] w-full overflow-hidden rounded-2xl border border-white/10">
+                    <Link href={service.ctaHref} className="block relative aspect-[16/10] sm:aspect-[16/9] min-h-[190px] w-full overflow-hidden rounded-2xl border border-white/10 group/img cursor-pointer">
                       <Image
                         src={service.image}
                         alt={service.title}
                         fill
-                        className="object-cover object-[center_30%] transition-transform duration-700 hover:scale-105"
+                        className="object-cover object-[center_30%] transition-transform duration-700 group-hover/img:scale-105"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0c1f2b] via-[#0c1f2b]/30 to-transparent" />
                       <div className="absolute top-3 left-3 flex items-center">
                         <ServiceIcon className="h-4 w-4 text-cyan-300 drop-shadow-md" />
                       </div>
-                    </div>
+                    </Link>
 
                     <div className="mt-5">
                       <div className="text-xs font-semibold tracking-wider uppercase text-cyan-400">
                         {service.badge}
                       </div>
-                      <h3 className="mt-1.5 text-xl font-bold text-white">
-                        {service.title}
-                      </h3>
+                      <Link href={service.ctaHref} className="block group/title">
+                        <h3 className="mt-1.5 text-xl font-bold text-white group-hover/title:text-cyan-300 transition-colors">
+                          {service.title}
+                        </h3>
+                      </Link>
                       <p className="mt-2.5 text-xs leading-relaxed text-slate-300">
                         {service.description}
                       </p>

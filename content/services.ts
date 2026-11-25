@@ -45,12 +45,12 @@ export const services: readonly ServiceDivision[] = [
     title: "Business & Corporate Solutions",
     name: "Business & Corporate",
     tagline: "Simplifying Business. Supporting Growth. Creating Opportunities.",
-    highlight: "Your Business Journey, Made Simple With Us",
+    highlight: "Your Business Journey, Made Simple WithUs",
     description: "Corporate Licensing, PRO Services & Compliance",
     imageCard: "/images/services/business and cooperate.jpg",
     brochureMainImage: "/images/services/brochure/business-corporate-main.webp",
     iconName: "building",
-    brochurePage: "Page 03",
+    brochurePage: "www.bizlinkqatar.com 03",
     brochureIntro:
       "Starting and managing a business in Qatar requires the right guidance, documentation and professional support. BizLink provides comprehensive business and corporate services to help entrepreneurs, investors and companies establish and manage their operations efficiently. From company formation to government documentation, our team provides practical assistance throughout the business journey.",
     brochureCommitment:
@@ -58,14 +58,14 @@ export const services: readonly ServiceDivision[] = [
     whatsappMessage:
       "Hello BizLink Qatar, I would like to consult with your Business & Corporate Services team regarding company formation and commercial licensing in Qatar.",
     items: [
-      "Company Formation, CR & Commercial Licensing",
-      "Corporate PRO & Government Liaison Services",
-      "Document Attestation (MOFA, Embassies & Apostille)",
-      "WPS (Wage Protection System) & Payroll Compliance",
-      "Bookkeeping, Accounting & Auditing Support",
-      "Qatari Sponsorship & Business Partnership Arrangements",
-      "Legal Documentation, Typing & Official Translation",
-      "Corporate Bank Account Opening Assistance & E-Commerce",
+      "Business Consulting & Company Formation",
+      "CR, Licensing & Government Services",
+      "Qatari Sponsor Arrangements",
+      "Typing, PRO & Documentation Services",
+      "Translation & Attestation",
+      "Bank Account & WPS Assistance",
+      "Auditing & Bookkeeping",
+      "E-Commerce & Online Business Setup",
     ],
     subServices: [
       {
@@ -86,7 +86,7 @@ export const services: readonly ServiceDivision[] = [
       },
       {
         id: "cr-licensing",
-        title: "CR, Licensing & Government Approvals",
+        title: "CR, Licensing & Government Services",
         tagline: "Commercial Registration & Municipality Licensing",
         description:
           "End-to-end processing of statutory permits required to trade legally in Qatar. We secure the Commercial Registration (Sijil Tijari), Municipal Trade License (Ruksa Tijariya from Baladiya), Civil Defense inspection approval (QCDD), commercial signage permits, and sector-specific approvals from the Ministry of Public Health or Ministry of Education.",
@@ -132,7 +132,7 @@ export const services: readonly ServiceDivision[] = [
       },
       {
         id: "translation-attestation",
-        title: "Translation & Document Attestation",
+        title: "Translation & Attestation",
         tagline: "Ministry of Foreign Affairs & Consular Legalization",
         description:
           "Sworn, certified legal translations in Arabic, English, French, Hindi, and Urdu recognized by all Qatar ministries, courts, and embassies. We manage the complete attestation chain for foreign personal and corporate documents—including educational degrees, marriage certificates, board resolutions, certificates of incumbency, and powers of attorney.",

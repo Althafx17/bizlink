@@ -12,11 +12,19 @@ import {
   ChevronRight,
   Clock,
   ExternalLink,
+  FileText,
+  Handshake,
   HelpCircle,
+  Keyboard,
+  Landmark,
+  Languages,
   MessageCircle,
   Phone,
   ShieldCheck,
+  ShoppingCart,
   Sparkles,
+  TrendingUp,
+  Users,
 } from "lucide-react";
 import { services, type ServiceDivision } from "@/content/services";
 import { company } from "@/content/company";
@@ -26,6 +34,29 @@ interface ServicePageProps {
   params: Promise<{
     slug: string;
   }>;
+}
+
+function getSubServiceIcon(id: string) {
+  switch (id) {
+    case "company-formation":
+      return <Users className="size-5 text-cyan-400" />;
+    case "cr-licensing":
+      return <FileText className="size-5 text-cyan-400" />;
+    case "qatari-sponsorship":
+      return <Handshake className="size-5 text-cyan-400" />;
+    case "typing-pro-services":
+      return <Keyboard className="size-5 text-cyan-400" />;
+    case "translation-attestation":
+      return <Languages className="size-5 text-cyan-400" />;
+    case "bank-wps-assistance":
+      return <Landmark className="size-5 text-cyan-400" />;
+    case "auditing-bookkeeping":
+      return <TrendingUp className="size-5 text-cyan-400" />;
+    case "ecommerce-setup":
+      return <ShoppingCart className="size-5 text-cyan-400" />;
+    default:
+      return <Sparkles className="size-5 text-cyan-400" />;
+  }
 }
 
 export async function generateStaticParams() {
@@ -221,6 +252,19 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#070B14]/90 via-[#070B14]/30 to-transparent pointer-events-none" />
                 <div className="absolute inset-0 bg-cyan-950/20 mix-blend-color pointer-events-none" />
 
+                {/* Signature Curved Blue Badge Overlay matching official brochure */}
+                <div className="absolute top-4 right-4 z-10 max-w-[190px] sm:max-w-[210px] p-3 sm:p-4 rounded-2xl bg-[#004BB7]/95 border border-white/20 backdrop-blur-md shadow-xl text-right">
+                  <span className="block text-xs sm:text-sm font-black text-white leading-tight">
+                    Your Business Journey,
+                  </span>
+                  <span className="block text-xs sm:text-sm font-black text-white leading-tight mt-0.5">
+                    Made Simple
+                  </span>
+                  <span className="block text-xs sm:text-sm font-black text-cyan-300 leading-tight">
+                    WithUs
+                  </span>
+                </div>
+
                 {/* Badge Overlay */}
                 <div className="absolute bottom-4 left-4 right-4 z-10 flex items-center justify-between text-xs backdrop-blur-md bg-[#070B14]/80 border border-white/15 rounded-2xl p-3">
                   <div>
@@ -285,6 +329,60 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
             </div>
 
           </div>
+        </div>
+      </section>
+
+      {/* 3.5 BROCHURE SIGNATURE SHOWCASE: "Our Services" (Exact Brochure Match from User Document) */}
+      <section className="py-12 sm:py-16 bg-gradient-to-b from-[#070B14] via-[#091526] to-[#070B14]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          
+          {/* "Our Services" Brochure Card */}
+          <div className="relative rounded-3xl border border-cyan-400/40 bg-gradient-to-br from-white/[0.08] via-[#0B1B36]/90 to-[#071426] p-6 sm:p-10 shadow-2xl backdrop-blur-2xl ring-1 ring-white/10">
+            {/* Header Capsule matching brochure */}
+            <div className="inline-flex items-center gap-2 rounded-full bg-[#0056B3] border border-cyan-400/40 px-5 py-2 text-sm sm:text-base font-black text-white uppercase tracking-wider shadow-lg shadow-cyan-500/20 mb-6 sm:mb-8">
+              <Sparkles className="size-4 text-cyan-300" />
+              <span>Our Services</span>
+            </div>
+
+            {/* 2-Column Grid of 8 Services */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4.5">
+              {service.subServices.map((sub) => (
+                <Link
+                  key={sub.id}
+                  href={`#${sub.id}`}
+                  className="group flex items-center justify-between p-4 sm:p-4.5 rounded-2xl border border-white/10 bg-white/[0.04] hover:bg-white/[0.08] hover:border-cyan-400/50 hover:shadow-lg hover:shadow-cyan-500/10 transition-all duration-300 cursor-pointer"
+                >
+                  <div className="flex items-center gap-3.5 sm:gap-4 min-w-0">
+                    <span className="flex size-11 items-center justify-center rounded-xl bg-cyan-950/70 border border-cyan-400/30 text-cyan-300 group-hover:scale-105 group-hover:bg-cyan-500 group-hover:text-slate-950 transition-all shrink-0">
+                      {getSubServiceIcon(sub.id)}
+                    </span>
+                    <div className="min-w-0">
+                      <h4 className="text-sm sm:text-base font-bold text-white group-hover:text-cyan-300 transition-colors leading-snug">
+                        {sub.title}
+                      </h4>
+                      <p className="text-[11px] text-slate-400 truncate mt-0.5">
+                        {sub.tagline}
+                      </p>
+                    </div>
+                  </div>
+                  <ChevronRight size={18} className="text-white/40 group-hover:text-cyan-400 group-hover:translate-x-1 transition-transform shrink-0 ml-2" />
+                </Link>
+              ))}
+            </div>
+
+            {/* Footer Citation matching brochure */}
+            <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-300">
+              <div className="flex items-center gap-2">
+                <span className="size-2 rounded-full bg-cyan-400 animate-pulse" />
+                <span className="font-mono text-cyan-300 font-bold">www.bizlinkqatar.com 03</span>
+                <span className="text-slate-400">· Official Qatar Business &amp; Corporate Solutions</span>
+              </div>
+              <span className="text-amber-400 font-semibold text-center sm:text-right">
+                Click any service to inspect official deliverables &amp; regulatory scope below ↓
+              </span>
+            </div>
+          </div>
+
         </div>
       </section>
 

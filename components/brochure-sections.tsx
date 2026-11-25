@@ -396,7 +396,7 @@ export function SectorIconsBar() {
           {services.map((service) => (
             <Link
               key={service.id}
-              href={`/services#${service.id}`}
+              href={`/services/${service.id}`}
               className="group flex flex-col items-center rounded-2xl border border-white/10 bg-[#0F254B]/60 p-4 text-center transition-all duration-200 hover:-translate-y-1 hover:border-cyan-400/40 hover:bg-[#143161] hover:shadow-xl hover:shadow-cyan-500/10 last:col-span-2 last:justify-self-center last:w-full last:max-w-[260px] sm:last:col-span-1 sm:last:w-auto sm:last:max-w-none"
             >
               {/* Circular Blue Icon Badge */}

@@ -26,10 +26,14 @@ export function WireframeHero() {
       aria-label="BizLink Qatar Hero"
       className="relative min-h-[92vh] lg:min-h-screen bg-[#070B14] pt-24 sm:pt-28 lg:pt-32 pb-14 sm:pb-20 flex flex-col justify-center overflow-hidden border-b border-white/10"
     >
-      {/* Background ambient gradient glow with parallax shift */}
+      {/* Background ambient gradient glow with vibrant multi-spectral aurora orbs */}
       <motion.div style={{ y: yParallaxGlow }} className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-32 -left-32 size-[300px] sm:size-[500px] rounded-full bg-[#0056B3]/20 blur-[100px] sm:blur-[140px]" />
-        <div className="absolute top-1/2 -right-32 size-[300px] sm:size-[600px] rounded-full bg-[#00B4FF]/15 blur-[100px] sm:blur-[160px]" />
+        {/* Luminous Electric Cyan Orb */}
+        <div className="absolute -top-32 -left-32 size-[360px] sm:size-[600px] rounded-full bg-gradient-to-br from-cyan-400/30 to-blue-600/20 blur-[110px] sm:blur-[150px]" />
+        {/* Vibrant Royal Violet / Sapphire Glow */}
+        <div className="absolute top-1/3 -right-32 size-[380px] sm:size-[650px] rounded-full bg-gradient-to-bl from-violet-500/25 via-blue-600/20 to-cyan-400/15 blur-[120px] sm:blur-[170px]" />
+        {/* Warm Golden / Amber Accent Glow */}
+        <div className="absolute -bottom-10 left-1/4 size-[250px] sm:size-[450px] rounded-full bg-amber-400/10 blur-[100px] sm:blur-[140px]" />
         <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-[#070B14] to-transparent" />
       </motion.div>
 
@@ -209,10 +213,10 @@ export function WireframeHero() {
                 </div>
               </motion.div>
 
-              {/* 2. Floating BizLink Logo Card at the Bottom Left Corner with opposing Parallax */}
+              {/* 2. Floating BizLink Logo Card at the Bottom Left Corner with opposing Parallax & Luminous Glassmorphism */}
               <motion.div
                 style={{ y: yParallaxCard }}
-                className="relative top-[25px] sm:top-0 -mb-[20px] sm:mb-4 ml-3 sm:ml-0 z-20 w-[55%] sm:w-[50%] lg:w-[50%] rounded-2xl sm:rounded-3xl border border-white/20 bg-[#070B14]/92 backdrop-blur-xl p-4 sm:p-5 shadow-[0_25px_60px_rgba(0,0,0,0.9)] shadow-cyan-950/70 transition-transform duration-500 hover:scale-[1.03] group"
+                className="relative top-[25px] sm:top-0 -mb-[20px] sm:mb-4 ml-3 sm:ml-0 z-20 w-[55%] sm:w-[50%] lg:w-[50%] rounded-2xl sm:rounded-3xl border border-white/30 bg-gradient-to-br from-white/[0.14] via-[#0b1c36]/70 to-[#070B14]/85 backdrop-blur-2xl p-4 sm:p-5 shadow-[0_25px_60px_rgba(0,0,0,0.7),inset_0_1px_2px_rgba(255,255,255,0.35),0_0_35px_rgba(0,210,255,0.25)] transition-all duration-500 hover:scale-[1.03] hover:border-cyan-400/70 group"
               >
                 {/* Center 3D BizLink Logo */}
                 <div className="relative w-full aspect-[641/460] my-2.5 sm:my-3 flex items-center justify-center">

@@ -104,16 +104,17 @@ export function ServicesHeroPresentation() {
       aria-label="Our Service Solutions & Divisions"
       className="relative w-full max-w-full bg-[#000E24] pt-24 sm:pt-28 pb-16 sm:pb-24 overflow-clip border-b border-white/10"
     >
-      {/* Ambient website blue & sapphire background glow */}
-      <div className="pointer-events-none absolute inset-0 z-0 opacity-40 overflow-hidden">
-        <div className="absolute -top-32 -left-32 size-[260px] sm:size-[500px] rounded-full bg-[#0056B3]/25 blur-[90px] sm:blur-[140px]" />
-        <div className="absolute top-1/2 right-0 translate-x-1/3 size-[260px] sm:size-[550px] rounded-full bg-[#00B4FF]/20 blur-[90px] sm:blur-[150px]" />
+      {/* Ambient multi-spectral radiant aurora glow mesh */}
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+        <div className="absolute -top-32 -left-32 size-[320px] sm:size-[600px] rounded-full bg-cyan-400/25 blur-[120px] sm:blur-[160px]" />
+        <div className="absolute top-1/3 right-0 translate-x-1/4 size-[320px] sm:size-[600px] rounded-full bg-violet-600/25 blur-[120px] sm:blur-[160px]" />
+        <div className="absolute -bottom-20 left-1/4 size-[300px] sm:size-[500px] rounded-full bg-blue-500/20 blur-[110px] sm:blur-[140px]" />
         <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-[#000E24] to-transparent" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Main Blue Theme Container Frame matching the website's aesthetic */}
-        <div className="relative rounded-3xl border border-cyan-400/30 bg-gradient-to-b from-[#001438]/90 via-[#071426]/95 to-[#000E24] p-6 sm:p-10 lg:p-14 shadow-2xl shadow-cyan-950/50 overflow-hidden backdrop-blur-md">
+        {/* Main Luminous Glass Theme Container Frame matching the website's aesthetic */}
+        <div className="relative rounded-3xl border border-white/25 bg-gradient-to-b from-white/[0.1] via-[#071426]/85 to-[#000E24]/95 p-6 sm:p-10 lg:p-14 shadow-[0_25px_60px_rgba(0,0,0,0.7),inset_0_1px_2px_rgba(255,255,255,0.3),0_0_40px_rgba(0,180,255,0.2)] overflow-hidden backdrop-blur-2xl">
           
           {/* Subtle Ambient Radial Lighting */}
           <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -191,8 +192,8 @@ export function ServicesHeroPresentation() {
                     }}
                     className={`relative w-48 lg:w-56 xl:w-64 h-[340px] lg:h-[400px] rounded-2xl overflow-hidden border transition-all duration-500 cursor-pointer shadow-2xl group flex flex-col justify-between p-4 select-none ${
                       isActive
-                        ? "border-cyan-400 shadow-2xl shadow-cyan-950/80 ring-1 ring-cyan-400/50 bg-[#001438]"
-                        : "border-white/15 hover:border-cyan-400/40 bg-[#071426]/90"
+                        ? "border-cyan-400/90 shadow-[0_25px_60px_rgba(0,0,0,0.7),inset_0_1px_2px_rgba(255,255,255,0.4),0_0_35px_rgba(0,210,255,0.35)] ring-1 ring-cyan-400/60 bg-gradient-to-br from-white/[0.18] via-[#001438]/85 to-[#000E24]/95 backdrop-blur-2xl"
+                        : "border-white/25 hover:border-cyan-400/60 bg-gradient-to-br from-white/[0.1] via-[#071426]/75 to-[#000E24]/90 backdrop-blur-xl shadow-[0_16px_40px_rgba(0,0,0,0.5),inset_0_1px_2px_rgba(255,255,255,0.25)]"
                     }`}
                   >
                     {/* Background Photography */}
@@ -262,7 +263,7 @@ export function ServicesHeroPresentation() {
               {serviceDivisions.map((division) => (
                 <div
                   key={division.id}
-                  className="snap-center shrink-0 relative w-[calc(100vw-5rem)] max-w-[280px] h-[340px] rounded-2xl overflow-hidden border border-cyan-400/40 p-4 flex flex-col justify-between shadow-xl bg-[#001438] box-border"
+                  className="snap-center shrink-0 relative w-[calc(100vw-5rem)] max-w-[280px] h-[340px] rounded-2xl overflow-hidden border border-cyan-400/50 p-4 flex flex-col justify-between shadow-[0_16px_40px_rgba(0,0,0,0.6),inset_0_1px_2px_rgba(255,255,255,0.3),0_0_25px_rgba(0,180,255,0.2)] bg-gradient-to-br from-white/[0.14] via-[#001438]/85 to-[#000E24]/95 backdrop-blur-2xl box-border"
                 >
                   <div className="absolute inset-0 z-0 overflow-hidden">
                     <Image

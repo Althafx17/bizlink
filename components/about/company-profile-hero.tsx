@@ -48,8 +48,8 @@ export function CompanyProfileHero({
         <span className="size-2 rounded-full border border-white/60" />
       </div>
 
-      {/* Floating Corporate Status Card in Skyline (Bottom Right) */}
-      <div className="absolute bottom-8 right-24 sm:right-32 z-20 hidden md:flex items-center gap-3 rounded-2xl border border-white/15 bg-[#070B14]/85 px-4 py-2.5 backdrop-blur-xl shadow-2xl">
+      {/* Floating Corporate Status Card in Skyline (Bottom Right) - Luminous Glassmorphic */}
+      <div className="absolute bottom-8 right-24 sm:right-32 z-20 hidden md:flex items-center gap-3 rounded-2xl border border-white/25 bg-gradient-to-br from-white/[0.14] via-slate-900/60 to-[#070B14]/85 px-4 py-2.5 backdrop-blur-2xl shadow-[0_16px_40px_rgba(0,0,0,0.6),inset_0_1px_2px_rgba(255,255,255,0.3),0_0_25px_rgba(0,180,255,0.2)] hover:border-cyan-400/60 transition-all">
         <div className="relative size-8 shrink-0">
           <Image
             src="/images/bizlink_3d_logo_transparent.webp"

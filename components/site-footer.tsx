@@ -6,14 +6,20 @@ import { SocialLinks } from "@/components/social-links";
 
 export function SiteFooter() {
   return (
-    <footer className="relative bg-[#070B14] text-white overflow-hidden border-t border-white/10">
-      {/* Decorative Top Accent Gradient */}
+    <footer className="relative bg-[#070B14] text-white overflow-hidden border-t border-white/15">
+      {/* Decorative Top Multi-Color Accent Gradient */}
       <div
         aria-hidden="true"
-        className="h-1.5 w-full bg-gradient-to-r from-[#0056B3] via-[#0088CE] to-[#0056B3]"
+        className="h-1.5 w-full bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 shadow-[0_0_15px_rgba(56,189,248,0.5)]"
       />
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 pb-8">
+      {/* Ambient Aurora Glow in Footer */}
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+        <div className="absolute -top-20 -left-20 size-[320px] rounded-full bg-cyan-500/15 blur-[120px]" />
+        <div className="absolute -bottom-20 -right-20 size-[320px] rounded-full bg-violet-600/15 blur-[130px]" />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 pb-8">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           {/* Col 1: Brand & Identity */}
           <div className="lg:col-span-5">

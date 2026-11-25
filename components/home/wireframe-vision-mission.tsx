@@ -10,9 +10,16 @@ export function WireframeVisionMission() {
     <section
       id="vision-mission"
       aria-label="Our Vision and Mission"
-      className="py-16 sm:py-24 bg-[#070B14] border-b border-white/10"
+      className="relative py-16 sm:py-24 bg-[#070B14] border-b border-white/10 overflow-hidden"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10">
+      {/* Radiant Multi-Color Aurora Glow Mesh in Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <div className="absolute -top-24 -left-24 size-[400px] sm:size-[600px] rounded-full bg-cyan-500/20 blur-[130px]" />
+        <div className="absolute top-1/2 left-1/3 size-[350px] sm:size-[550px] rounded-full bg-amber-500/15 blur-[140px]" />
+        <div className="absolute -bottom-20 -right-20 size-[400px] sm:size-[650px] rounded-full bg-violet-600/20 blur-[150px]" />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10">
         
         {/* Header with Scroll Reveal */}
         <motion.div
@@ -36,18 +43,18 @@ export function WireframeVisionMission() {
         {/* 2-Column Grid for Vision & Mission with Staggered Scroll Reveal */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-stretch">
           
-          {/* Card 1: Our Vision */}
+          {/* Card 1: Our Vision - Luminous Glassmorphic Panel */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="relative overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-br from-[#0F1E38] via-[#0C172B] to-[#080F1E] p-6 sm:p-8 shadow-2xl flex flex-col justify-between group hover:border-cyan-400/40 transition-colors"
+            className="relative overflow-hidden rounded-3xl border border-white/25 bg-gradient-to-br from-white/[0.12] via-[#0c1a30]/80 to-[#080F1E]/90 backdrop-blur-2xl p-6 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5),inset_0_1px_2px_rgba(255,255,255,0.3),0_0_35px_rgba(0,180,255,0.2)] flex flex-col justify-between group hover:border-cyan-400/60 transition-all duration-300"
           >
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
               {/* 3D Character with Vision (Stabilized, No Looping/Hover Movement) */}
               <div className="shrink-0 flex items-center justify-center">
-                <div className="relative size-28 sm:size-32 rounded-2xl bg-white border border-cyan-400/30 p-2 flex items-center justify-center shadow-lg overflow-hidden">
+                <div className="relative size-28 sm:size-32 rounded-2xl bg-white/95 border border-cyan-400/40 p-2 flex items-center justify-center shadow-lg shadow-cyan-950/50 overflow-hidden">
                   <Image
                     src="/images/vision and mission.jpg"
                     alt="Our Vision"
@@ -60,36 +67,36 @@ export function WireframeVisionMission() {
 
               {/* Text */}
               <div className="text-center sm:text-left flex-1">
-                <span className="inline-block rounded-full bg-cyan-400/15 px-3 py-1 text-[11px] font-extrabold uppercase tracking-wider text-cyan-400">
+                <span className="inline-block rounded-full bg-cyan-400/20 border border-cyan-400/40 px-3.5 py-1 text-[11px] font-black uppercase tracking-wider text-cyan-300 shadow-sm shadow-cyan-500/20">
                   Guiding Direction
                 </span>
                 <h3 className="mt-2 text-2xl sm:text-3xl font-black text-white">
                   Our Vision
                 </h3>
-                <p className="mt-3 text-xs sm:text-sm leading-relaxed text-slate-300">
+                <p className="mt-3 text-xs sm:text-sm leading-relaxed text-slate-200">
                   {principles[1].body}
                 </p>
               </div>
             </div>
 
-            <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] font-bold text-slate-400">
+            <div className="mt-6 pt-4 border-t border-white/15 flex items-center justify-between text-[11px] font-bold text-slate-300">
               <span className="text-cyan-300">Sustainable Growth</span>
               <span>Excellence Across Qatar</span>
             </div>
           </motion.div>
 
-          {/* Card 2: Our Mission */}
+          {/* Card 2: Our Mission - Luminous Glassmorphic Panel */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.8, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
-            className="relative overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-br from-[#0F1E38] via-[#0C172B] to-[#080F1E] p-6 sm:p-8 shadow-2xl flex flex-col justify-between group hover:border-amber-400/40 transition-colors"
+            className="relative overflow-hidden rounded-3xl border border-white/25 bg-gradient-to-br from-white/[0.12] via-[#241a0e]/80 to-[#080F1E]/90 backdrop-blur-2xl p-6 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5),inset_0_1px_2px_rgba(255,255,255,0.3),0_0_35px_rgba(245,158,11,0.2)] flex flex-col justify-between group hover:border-amber-400/60 transition-all duration-300"
           >
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
               {/* 3D Bullseye Target (Stabilized, No Looping/Hover Movement) */}
               <div className="shrink-0 flex items-center justify-center">
-                <div className="relative size-28 sm:size-32 rounded-2xl bg-white border border-amber-400/30 p-2 flex items-center justify-center shadow-lg overflow-hidden">
+                <div className="relative size-28 sm:size-32 rounded-2xl bg-white/95 border border-amber-400/40 p-2 flex items-center justify-center shadow-lg shadow-amber-950/50 overflow-hidden">
                   <Image
                     src="/images/mission.png"
                     alt="Our Mission 3D Bullseye Target"
@@ -102,19 +109,19 @@ export function WireframeVisionMission() {
 
               {/* Text */}
               <div className="text-center sm:text-left flex-1">
-                <span className="inline-block rounded-full bg-amber-400/15 px-3 py-1 text-[11px] font-extrabold uppercase tracking-wider text-amber-400">
+                <span className="inline-block rounded-full bg-amber-400/20 border border-amber-400/40 px-3.5 py-1 text-[11px] font-black uppercase tracking-wider text-amber-300 shadow-sm shadow-amber-500/20">
                   Execution Focus
                 </span>
                 <h3 className="mt-2 text-2xl sm:text-3xl font-black text-white">
                   Our Mission
                 </h3>
-                <p className="mt-3 text-xs sm:text-sm leading-relaxed text-slate-300">
+                <p className="mt-3 text-xs sm:text-sm leading-relaxed text-slate-200">
                   {principles[2].body}
                 </p>
               </div>
             </div>
 
-            <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] font-bold text-slate-400">
+            <div className="mt-6 pt-4 border-t border-white/15 flex items-center justify-between text-[11px] font-bold text-slate-300">
               <span className="text-amber-300">Operational Efficiency</span>
               <span>Trusted Commercial Partner</span>
             </div>
@@ -122,58 +129,58 @@ export function WireframeVisionMission() {
 
         </div>
 
-        {/* 5 Core Values Rounded Pill Bar with Entrance Animation */}
+        {/* 5 Core Values Luminous Glass Pill Bar with Multi-Color Badges */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="rounded-3xl border border-white/10 bg-[#0F182A] p-4 sm:p-6 shadow-xl"
+          className="rounded-3xl border border-white/20 bg-gradient-to-r from-white/[0.1] via-white/[0.04] to-white/[0.1] backdrop-blur-2xl p-5 sm:p-7 shadow-[0_20px_50px_rgba(0,0,0,0.6),inset_0_1px_2px_rgba(255,255,255,0.25)]"
         >
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 items-center justify-around text-center">
-            {/* Integrity */}
-            <div className="flex flex-col items-center p-2">
-              <span className="flex size-10 items-center justify-center rounded-full bg-cyan-400/15 text-cyan-300">
-                <ShieldCheck size={20} />
+            {/* Integrity - Electric Cyan */}
+            <div className="flex flex-col items-center p-2 group">
+              <span className="flex size-11 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-400/25 to-blue-500/20 border border-cyan-400/40 text-cyan-300 shadow-lg shadow-cyan-500/25 group-hover:scale-110 transition-transform">
+                <ShieldCheck size={22} />
               </span>
-              <span className="mt-2 text-xs sm:text-sm font-extrabold text-white">Integrity</span>
-              <span className="text-[10px] text-slate-400 mt-0.5">Transparency</span>
+              <span className="mt-2.5 text-xs sm:text-sm font-black text-white">Integrity</span>
+              <span className="text-[10px] text-cyan-200 font-medium mt-0.5">Transparency</span>
             </div>
 
-            {/* Quality */}
-            <div className="flex flex-col items-center p-2">
-              <span className="flex size-10 items-center justify-center rounded-full bg-cyan-400/15 text-cyan-300">
-                <Award size={20} />
+            {/* Quality - Radiant Amber / Gold */}
+            <div className="flex flex-col items-center p-2 group">
+              <span className="flex size-11 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-400/25 to-orange-500/20 border border-amber-400/40 text-amber-300 shadow-lg shadow-amber-500/25 group-hover:scale-110 transition-transform">
+                <Award size={22} />
               </span>
-              <span className="mt-2 text-xs sm:text-sm font-extrabold text-white">Quality</span>
-              <span className="text-[10px] text-slate-400 mt-0.5">Standard Excellence</span>
+              <span className="mt-2.5 text-xs sm:text-sm font-black text-white">Quality</span>
+              <span className="text-[10px] text-amber-200 font-medium mt-0.5">Standard Excellence</span>
             </div>
 
-            {/* Reliability */}
-            <div className="flex flex-col items-center p-2">
-              <span className="flex size-10 items-center justify-center rounded-full bg-cyan-400/15 text-cyan-300">
-                <Handshake size={20} />
+            {/* Reliability - Vibrant Emerald / Teal */}
+            <div className="flex flex-col items-center p-2 group">
+              <span className="flex size-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400/25 to-teal-500/20 border border-emerald-400/40 text-emerald-300 shadow-lg shadow-emerald-500/25 group-hover:scale-110 transition-transform">
+                <Handshake size={22} />
               </span>
-              <span className="mt-2 text-xs sm:text-sm font-extrabold text-white">Reliability</span>
-              <span className="text-[10px] text-slate-400 mt-0.5">Punctual & Accountable</span>
+              <span className="mt-2.5 text-xs sm:text-sm font-black text-white">Reliability</span>
+              <span className="text-[10px] text-emerald-200 font-medium mt-0.5">Punctual & Accountable</span>
             </div>
 
-            {/* Innovation */}
-            <div className="flex flex-col items-center p-2">
-              <span className="flex size-10 items-center justify-center rounded-full bg-cyan-400/15 text-cyan-300">
-                <Lightbulb size={20} />
+            {/* Innovation - Electric Neon Violet */}
+            <div className="flex flex-col items-center p-2 group">
+              <span className="flex size-11 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-400/25 to-purple-500/20 border border-violet-400/40 text-violet-300 shadow-lg shadow-violet-500/25 group-hover:scale-110 transition-transform">
+                <Lightbulb size={22} />
               </span>
-              <span className="mt-2 text-xs sm:text-sm font-extrabold text-white">Innovation</span>
-              <span className="text-[10px] text-slate-400 mt-0.5">Modern Systems</span>
+              <span className="mt-2.5 text-xs sm:text-sm font-black text-white">Innovation</span>
+              <span className="text-[10px] text-violet-200 font-medium mt-0.5">Modern Systems</span>
             </div>
 
-            {/* Customer Focus */}
-            <div className="col-span-2 sm:col-span-1 flex flex-col items-center p-2">
-              <span className="flex size-10 items-center justify-center rounded-full bg-cyan-400/15 text-cyan-300">
-                <Users size={20} />
+            {/* Customer Focus - Radiant Coral / Sky */}
+            <div className="col-span-2 sm:col-span-1 flex flex-col items-center p-2 group">
+              <span className="flex size-11 items-center justify-center rounded-2xl bg-gradient-to-br from-rose-400/25 to-sky-500/20 border border-rose-400/40 text-rose-300 shadow-lg shadow-rose-500/25 group-hover:scale-110 transition-transform">
+                <Users size={22} />
               </span>
-              <span className="mt-2 text-xs sm:text-sm font-extrabold text-white">Customer Focus</span>
-              <span className="text-[10px] text-slate-400 mt-0.5">Client-Centric</span>
+              <span className="mt-2.5 text-xs sm:text-sm font-black text-white">Customer Focus</span>
+              <span className="text-[10px] text-rose-200 font-medium mt-0.5">Client-Centric</span>
             </div>
           </div>
         </motion.div>
@@ -211,7 +218,7 @@ export function WireframeVisionMission() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 * (idx + 1) }}
-                className="group relative overflow-hidden rounded-3xl border border-white/10 bg-[#0F182A] p-6 shadow-xl transition-all duration-300 hover:border-cyan-400/50 flex flex-col justify-between min-h-[380px]"
+                className="group relative overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-white/[0.1] via-[#0d1c33]/70 to-[#070B14]/85 backdrop-blur-2xl p-6 shadow-[0_16px_40px_rgba(0,0,0,0.5),inset_0_1px_2px_rgba(255,255,255,0.25)] transition-all duration-300 hover:border-cyan-400/60 hover:shadow-[0_20px_50px_rgba(0,180,255,0.25)] flex flex-col justify-between min-h-[380px]"
               >
                 {/* Background Image with Dark Gradient Overlays */}
                 <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">

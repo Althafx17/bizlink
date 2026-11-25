@@ -648,9 +648,9 @@ export function InteractiveServicesShowcase({ detailed = false }: { detailed?: b
         </div>
 
         {/* ============================================================== */}
-        {/* 2. INTERACTIVE FILTER & REFINEMENT BAR (00:04 - 00:05) */}
+        {/* 2. INTERACTIVE FILTER & REFINEMENT BAR (Luminous Glassmorphic Pill) */}
         {/* ============================================================== */}
-        <div className="mt-16 rounded-3xl border border-white/15 bg-gradient-to-r from-[#0B1B36]/90 via-[#0F254B]/90 to-[#0B1B36]/90 p-4 sm:p-6 shadow-2xl backdrop-blur-xl w-full max-w-full min-w-0 overflow-hidden">
+        <div className="mt-16 rounded-3xl border border-white/25 bg-gradient-to-r from-white/[0.1] via-white/[0.04] to-white/[0.1] p-4 sm:p-6 shadow-[0_20px_50px_rgba(0,0,0,0.6),inset_0_1px_2px_rgba(255,255,255,0.25)] backdrop-blur-2xl w-full max-w-full min-w-0 overflow-hidden">
           <div className="flex flex-col gap-4">
             {/* Top Row: Primary Category Tabs */}
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4">
@@ -796,7 +796,7 @@ export function InteractiveServicesShowcase({ detailed = false }: { detailed?: b
                   {filteredCatalogCards.map((service) => (
                     <article
                       key={service.id}
-                      className="group relative overflow-hidden rounded-3xl border border-white/15 bg-[#0F254B] shadow-2xl transition-all duration-300 hover:border-cyan-400/50 hover:shadow-[0_12px_40px_rgba(0,180,255,0.2)] flex flex-col justify-end w-[360px] lg:w-[440px] xl:w-[460px] h-[480px] sm:h-[520px] shrink-0 select-none"
+                      className="group relative overflow-hidden rounded-3xl border border-white/25 bg-gradient-to-br from-white/[0.12] via-[#0F254B]/70 to-[#071426]/90 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.6),inset_0_1px_2px_rgba(255,255,255,0.3)] transition-all duration-300 hover:border-cyan-400/60 hover:shadow-[0_25px_60px_rgba(0,180,255,0.3)] flex flex-col justify-end w-[360px] lg:w-[440px] xl:w-[460px] h-[480px] sm:h-[520px] shrink-0 select-none"
                     >
                       {/* Background Image with Zoom on Hover */}
                       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -904,7 +904,7 @@ export function InteractiveServicesShowcase({ detailed = false }: { detailed?: b
                 {filteredCatalogCards.map((service) => (
                   <article
                     key={service.id}
-                    className="snap-center group relative overflow-hidden rounded-3xl border border-white/15 bg-[#0F254B] shadow-2xl flex flex-col justify-end w-[290px] sm:w-[330px] min-h-[440px] shrink-0 select-none"
+                    className="snap-center group relative overflow-hidden rounded-3xl border border-white/25 bg-gradient-to-br from-white/[0.12] via-[#0F254B]/70 to-[#071426]/90 backdrop-blur-2xl shadow-[0_16px_40px_rgba(0,0,0,0.6),inset_0_1px_2px_rgba(255,255,255,0.3)] flex flex-col justify-end w-[290px] sm:w-[330px] min-h-[440px] shrink-0 select-none"
                   >
                     {/* Background Image */}
                     <div className="absolute inset-0 z-0 overflow-hidden">

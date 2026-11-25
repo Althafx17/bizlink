@@ -63,7 +63,7 @@ export function ContactCardsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#0F182A]/75 backdrop-blur-xl p-5 shadow-xl hover:border-cyan-400/50 transition-all duration-300 flex flex-col justify-between min-h-[220px]"
+                className="group relative overflow-hidden rounded-2xl border border-white/25 bg-gradient-to-br from-white/[0.12] via-[#0F182A]/70 to-[#070B14]/85 backdrop-blur-2xl p-5 shadow-[0_16px_40px_rgba(0,0,0,0.5),inset_0_1px_2px_rgba(255,255,255,0.25)] hover:border-cyan-400/60 hover:shadow-[0_20px_50px_rgba(0,180,255,0.25)] transition-all duration-300 flex flex-col justify-between min-h-[220px]"
               >
                 {/* Background Image with Dark Gradient */}
                 <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -128,7 +128,7 @@ export function ContactCardsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#0F182A]/75 backdrop-blur-xl p-5 shadow-xl hover:border-cyan-400/50 transition-all duration-300 flex flex-col justify-between min-h-[220px]"
+                className="group relative overflow-hidden rounded-2xl border border-white/25 bg-gradient-to-br from-white/[0.12] via-[#0F182A]/70 to-[#070B14]/85 backdrop-blur-2xl p-5 shadow-[0_16px_40px_rgba(0,0,0,0.5),inset_0_1px_2px_rgba(255,255,255,0.25)] hover:border-cyan-400/60 hover:shadow-[0_20px_50px_rgba(0,180,255,0.25)] transition-all duration-300 flex flex-col justify-between min-h-[220px]"
               >
                 {/* Background Image with Dark Gradient */}
                 <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -183,7 +183,7 @@ export function ContactCardsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#0F182A]/75 backdrop-blur-xl p-5 shadow-xl hover:border-cyan-400/50 transition-all duration-300 flex flex-col justify-between min-h-[220px]"
+                className="group relative overflow-hidden rounded-2xl border border-white/25 bg-gradient-to-br from-white/[0.12] via-[#0F182A]/70 to-[#070B14]/85 backdrop-blur-2xl p-5 shadow-[0_16px_40px_rgba(0,0,0,0.5),inset_0_1px_2px_rgba(255,255,255,0.25)] hover:border-cyan-400/60 hover:shadow-[0_20px_50px_rgba(0,180,255,0.25)] transition-all duration-300 flex flex-col justify-between min-h-[220px]"
               >
                 {/* Background Image with Dark Gradient */}
                 <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -242,7 +242,7 @@ export function ContactCardsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#0F182A]/75 backdrop-blur-xl p-5 shadow-xl hover:border-cyan-400/50 transition-all duration-300 flex flex-col justify-between min-h-[220px]"
+                className="group relative overflow-hidden rounded-2xl border border-white/25 bg-gradient-to-br from-white/[0.12] via-[#0F182A]/70 to-[#070B14]/85 backdrop-blur-2xl p-5 shadow-[0_16px_40px_rgba(0,0,0,0.5),inset_0_1px_2px_rgba(255,255,255,0.25)] hover:border-cyan-400/60 hover:shadow-[0_20px_50px_rgba(0,180,255,0.25)] transition-all duration-300 flex flex-col justify-between min-h-[220px]"
               >
                 {/* Background Image with Dark Gradient */}
                 <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -336,7 +336,7 @@ export function ContactCardsSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="lg:col-span-5 relative"
           >
-            <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-[#0F182A]/85 backdrop-blur-2xl p-7 sm:p-9 shadow-2xl">
+            <div className="relative overflow-hidden rounded-3xl border border-white/25 bg-gradient-to-br from-white/[0.14] via-[#0F182A]/80 to-[#070B14]/90 backdrop-blur-2xl p-7 sm:p-9 shadow-[0_25px_60px_rgba(0,0,0,0.7),inset_0_1px_2px_rgba(255,255,255,0.35),0_0_35px_rgba(0,180,255,0.2)]">
               
               {/* Form Background Image with Luxury Tint */}
               <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">

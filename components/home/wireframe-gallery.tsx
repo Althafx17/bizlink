@@ -160,10 +160,12 @@ export function WireframeGallery() {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Ambient glowing watermarks */}
-      <div className="pointer-events-none absolute inset-0 -z-10 opacity-35 overflow-hidden">
-        <div className="absolute -left-24 top-1/4 h-[420px] w-[420px] rounded-full bg-cyan-500/20 blur-3xl" />
-        <div className="absolute -right-24 bottom-1/4 h-[420px] w-[420px] rounded-full bg-teal-500/20 blur-3xl" />
+      {/* Ambient multi-spectral radiant aurora glow mesh */}
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute -left-24 top-1/4 h-[500px] w-[500px] rounded-full bg-cyan-400/25 blur-[140px]" />
+        <div className="absolute -right-24 top-1/3 h-[520px] w-[520px] rounded-full bg-violet-600/25 blur-[150px]" />
+        <div className="absolute left-1/3 bottom-10 h-[450px] w-[450px] rounded-full bg-blue-500/20 blur-[130px]" />
+        <div className="absolute right-1/4 -bottom-20 h-[400px] w-[400px] rounded-full bg-amber-500/15 blur-[130px]" />
       </div>
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -235,7 +237,7 @@ export function WireframeGallery() {
         {viewMode === "carousel" && (
           <div className="relative mt-12 sm:mt-16">
             <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-3">
-              {/* Previous Card */}
+              {/* Previous Card - Luminous Glassmorphic */}
               <div
                 onClick={prevSlide}
                 role="button"
@@ -243,7 +245,7 @@ export function WireframeGallery() {
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") prevSlide();
                 }}
-                className="group relative hidden cursor-pointer flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-[#0c1f2b]/80 p-6 backdrop-blur-md transition-all duration-500 hover:border-cyan-400/50 md:flex"
+                className="group relative hidden cursor-pointer flex-col justify-between overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-white/[0.1] via-[#0b2138]/60 to-[#07131b]/80 p-6 backdrop-blur-2xl shadow-[0_16px_40px_rgba(0,0,0,0.5),inset_0_1px_2px_rgba(255,255,255,0.25)] transition-all duration-500 hover:border-cyan-400/60 hover:shadow-[0_20px_50px_rgba(0,180,255,0.25)] md:flex"
               >
                 <div>
                   <div className="relative aspect-[16/10] sm:aspect-[16/9] min-h-[190px] w-full overflow-hidden rounded-2xl border border-white/10">
@@ -296,9 +298,10 @@ export function WireframeGallery() {
                 </div>
               </div>
 
-              {/* Active Center Card (Spotlight) */}
-              <div className="relative z-10 flex flex-col justify-between overflow-hidden rounded-3xl border-2 border-cyan-400/70 bg-[#0e2738]/95 p-6 sm:p-8 shadow-2xl shadow-cyan-950/70 backdrop-blur-xl transition-all duration-500">
-                <div className="absolute -top-12 -right-12 h-36 w-36 rounded-full bg-cyan-400/15 blur-2xl pointer-events-none" />
+              {/* Active Center Card (Spotlight) - Luminous Crystal Glass */}
+              <div className="relative z-10 flex flex-col justify-between overflow-hidden rounded-3xl border-2 border-cyan-400/80 bg-gradient-to-br from-white/[0.16] via-[#0f324d]/80 to-[#07131b]/95 p-6 sm:p-8 shadow-[0_25px_60px_rgba(0,0,0,0.7),inset_0_1px_2px_rgba(255,255,255,0.4),0_0_45px_rgba(0,210,255,0.3)] backdrop-blur-2xl transition-all duration-500">
+                <div className="absolute -top-12 -right-12 h-44 w-44 rounded-full bg-cyan-400/25 blur-3xl pointer-events-none" />
+                <div className="absolute -bottom-10 -left-10 h-36 w-36 rounded-full bg-blue-500/20 blur-2xl pointer-events-none" />
 
                 <div>
                   <div className="relative aspect-[16/10] sm:aspect-[16/9] min-h-[220px] w-full overflow-hidden rounded-2xl border border-cyan-400/40 shadow-inner">
@@ -357,7 +360,7 @@ export function WireframeGallery() {
                 </div>
               </div>
 
-              {/* Next Card */}
+              {/* Next Card - Luminous Glassmorphic */}
               <div
                 onClick={nextSlide}
                 role="button"
@@ -365,7 +368,7 @@ export function WireframeGallery() {
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") nextSlide();
                 }}
-                className="group relative hidden cursor-pointer flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-[#0c1f2b]/80 p-6 backdrop-blur-md transition-all duration-500 hover:border-cyan-400/50 md:flex"
+                className="group relative hidden cursor-pointer flex-col justify-between overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-white/[0.1] via-[#0b2138]/60 to-[#07131b]/80 p-6 backdrop-blur-2xl shadow-[0_16px_40px_rgba(0,0,0,0.5),inset_0_1px_2px_rgba(255,255,255,0.25)] transition-all duration-500 hover:border-cyan-400/60 hover:shadow-[0_20px_50px_rgba(0,180,255,0.25)] md:flex"
               >
                 <div>
                   <div className="relative aspect-[16/10] sm:aspect-[16/9] min-h-[190px] w-full overflow-hidden rounded-2xl border border-white/10">
@@ -448,10 +451,10 @@ export function WireframeGallery() {
               return (
                 <div
                   key={service.id}
-                  className={`flex flex-col justify-between overflow-hidden rounded-3xl border bg-[#0c1f2b]/85 p-6 backdrop-blur-md transition-all duration-300 hover:border-cyan-400/60 hover:shadow-xl hover:shadow-cyan-950/40 ${
+                  className={`flex flex-col justify-between overflow-hidden rounded-3xl border bg-gradient-to-br from-white/[0.1] via-[#0b2138]/70 to-[#07131b]/85 p-6 backdrop-blur-2xl shadow-[0_16px_40px_rgba(0,0,0,0.5),inset_0_1px_2px_rgba(255,255,255,0.25)] transition-all duration-300 hover:border-cyan-400/70 hover:shadow-[0_20px_50px_rgba(0,180,255,0.25)] ${
                     isLead
-                      ? "border-cyan-400/50 ring-1 ring-cyan-400/20"
-                      : "border-white/10"
+                      ? "border-cyan-400/60 ring-1 ring-cyan-400/30 shadow-[0_0_25px_rgba(0,180,255,0.2)]"
+                      : "border-white/20"
                   }`}
                 >
                   <div>

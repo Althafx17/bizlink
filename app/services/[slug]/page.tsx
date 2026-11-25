@@ -243,43 +243,43 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         </div>
       </section>
 
-      {/* 3. KEY METRICS & TRUST PILLARS BAR */}
-      <section className="py-6 border-y border-white/10 bg-[#0F182A]/50">
+      {/* 3. KEY METRICS & TRUST PILLARS BAR (Luminous Glassmorphic Bar) */}
+      <section className="py-6 border-y border-white/15 bg-gradient-to-r from-white/[0.06] via-white/[0.02] to-white/[0.06] backdrop-blur-2xl shadow-inner">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
             
-            <div className="p-3 rounded-2xl bg-white/[0.03] border border-white/5">
+            <div className="p-3.5 rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/15 backdrop-blur-xl shadow-md">
               <span className="block text-xl sm:text-2xl font-black text-cyan-300">
                 100% Compliant
               </span>
-              <span className="text-[11px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider mt-0.5 block">
+              <span className="text-[11px] sm:text-xs font-semibold text-slate-300 uppercase tracking-wider mt-0.5 block">
                 Qatar Legal Standing
               </span>
             </div>
 
-            <div className="p-3 rounded-2xl bg-white/[0.03] border border-white/5">
+            <div className="p-3.5 rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/15 backdrop-blur-xl shadow-md">
               <span className="block text-xl sm:text-2xl font-black text-white">
                 24 - 48h
               </span>
-              <span className="text-[11px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider mt-0.5 block">
+              <span className="text-[11px] sm:text-xs font-semibold text-slate-300 uppercase tracking-wider mt-0.5 block">
                 Express Approvals SLA
               </span>
             </div>
 
-            <div className="p-3 rounded-2xl bg-white/[0.03] border border-white/5">
+            <div className="p-3.5 rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/15 backdrop-blur-xl shadow-md">
               <span className="block text-xl sm:text-2xl font-black text-cyan-300">
                 Since 2010
               </span>
-              <span className="text-[11px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider mt-0.5 block">
+              <span className="text-[11px] sm:text-xs font-semibold text-slate-300 uppercase tracking-wider mt-0.5 block">
                 15+ Years Track Record
               </span>
             </div>
 
-            <div className="p-3 rounded-2xl bg-white/[0.03] border border-white/5">
+            <div className="p-3.5 rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/15 backdrop-blur-xl shadow-md">
               <span className="block text-xl sm:text-2xl font-black text-white">
                 1,000+ Clients
               </span>
-              <span className="text-[11px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider mt-0.5 block">
+              <span className="text-[11px] sm:text-xs font-semibold text-slate-300 uppercase tracking-wider mt-0.5 block">
                 Active in Qatar & GCC
               </span>
             </div>
@@ -313,7 +313,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
               <article
                 key={sub.id}
                 id={sub.id}
-                className="group relative overflow-hidden rounded-3xl border border-white/10 bg-[#0F182A]/80 backdrop-blur-xl p-6 sm:p-8 shadow-xl hover:border-cyan-400/50 transition-all duration-300 flex flex-col justify-between"
+                className="group relative overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-white/[0.1] via-[#0F182A]/70 to-[#070B14]/85 backdrop-blur-2xl p-6 sm:p-8 shadow-[0_16px_40px_rgba(0,0,0,0.5),inset_0_1px_2px_rgba(255,255,255,0.25)] hover:border-cyan-400/60 hover:shadow-[0_20px_50px_rgba(0,180,255,0.25)] transition-all duration-300 flex flex-col justify-between"
               >
                 {/* Subtle Ambient Background Tint */}
                 <div className="absolute top-0 right-0 -mr-16 -mt-16 size-48 rounded-full bg-cyan-500/10 blur-3xl pointer-events-none group-hover:bg-cyan-500/20 transition-all" />

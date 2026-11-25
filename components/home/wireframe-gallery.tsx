@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 import {
   Building2,
   Cpu,
@@ -120,45 +120,77 @@ const homeServices: ServiceDivisionItem[] = [
 ];
 
 export function WireframeGallery() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const [viewMode, setViewMode] = useState<"carousel" | "grid">("carousel");
+  const [viewMode, setViewMode] = useState<"scroll" | "grid">("scroll");
+  const [activeDivisionIndex, setActiveDivisionIndex] = useState(0);
 
-  const total = homeServices.length;
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const [maxScrollX, setMaxScrollX] = useState<number>(0);
 
-  const nextSlide = useCallback(() => {
-    setCurrentIndex((prev) => (prev + 1) % total);
-  }, [total]);
-
-  const prevSlide = useCallback(() => {
-    setCurrentIndex((prev) => (prev - 1 + total) % total);
-  }, [total]);
-
-  // Auto-advance slides every 4.5 seconds in carousel view unless hovered
+  // Measure track scroll width vs window width for sticky horizontal progression
   useEffect(() => {
-    if (isPaused || viewMode !== "carousel") return;
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 4500);
-    return () => clearInterval(interval);
-  }, [isPaused, viewMode, nextSlide]);
+    const calculateScrollDistance = () => {
+      if (trackRef.current) {
+        const track = trackRef.current;
+        const cards = track.querySelectorAll("article");
+        if (cards.length > 0) {
+          const lastCard = cards[cards.length - 1] as HTMLElement;
+          const containerWidth = track.parentElement?.clientWidth || window.innerWidth;
+          const targetLastCardLeft = Math.max(16, (containerWidth - lastCard.offsetWidth) / 2);
+          const totalDistance = lastCard.offsetLeft - targetLastCardLeft;
+          setMaxScrollX(Math.max(0, totalDistance));
+        } else {
+          const trackWidth = track.scrollWidth;
+          const clientWidth = window.innerWidth;
+          const paddingOffset = window.innerWidth < 640 ? 30 : 120;
+          setMaxScrollX(Math.max(0, trackWidth - clientWidth + paddingOffset));
+        }
+      }
+    };
 
-  const getSlideAt = (offset: number) => {
-    const idx = (currentIndex + offset + total) % total;
-    return homeServices[idx];
+    calculateScrollDistance();
+    const timer = setTimeout(calculateScrollDistance, 400);
+    window.addEventListener("resize", calculateScrollDistance);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", calculateScrollDistance);
+    };
+  }, [viewMode]);
+
+  // Framer Motion Sticky Scroll Progress
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+
+  const x = useTransform(scrollYProgress, [0, 1], [0, -maxScrollX]);
+
+  // Keep active division in sync with scroll position
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    const total = homeServices.length;
+    const index = Math.min(total - 1, Math.max(0, Math.floor(latest * total)));
+    setActiveDivisionIndex(index);
+  });
+
+  // Scroll smoothly to a specific division when clicked
+  const scrollToDivision = (index: number) => {
+    if (!containerRef.current) return;
+    if (viewMode === "grid") {
+      setViewMode("scroll");
+    }
+    const rect = containerRef.current.getBoundingClientRect();
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const sectionTop = rect.top + scrollTop;
+    const scrollableDistance = containerRef.current.offsetHeight - window.innerHeight;
+    const targetY = sectionTop + (index / (homeServices.length - 1)) * Math.max(0, scrollableDistance);
+    window.scrollTo({ top: targetY, behavior: "smooth" });
   };
-
-  const prevItem = getSlideAt(-1);
-  const currentItem = getSlideAt(0);
-  const nextItem = getSlideAt(1);
 
   return (
     <section
       id="services"
       aria-label="Our Service Solutions & Divisions"
-      className="relative overflow-hidden bg-[#000E24] py-20 text-white md:py-28 w-full max-w-full"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
+      className="relative bg-[#000E24] text-white w-full max-w-full overflow-visible"
     >
       {/* Ambient multi-spectral radiant aurora glow mesh */}
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
@@ -168,279 +200,200 @@ export function WireframeGallery() {
         <div className="absolute right-1/4 -bottom-20 h-[400px] w-[400px] rounded-full bg-amber-500/15 blur-[130px]" />
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section Header with Scroll Reveal */}
-        <motion.div
-          initial={{ opacity: 0, y: 35 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center"
+      {/* 1. SIGNATURE STICKY SCROLL CONTAINER: Cards Move From First to Last as User Scrolls */}
+      {viewMode === "scroll" ? (
+        <div
+          ref={containerRef}
+          style={{ height: "320vh" }}
+          className="relative w-full"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-950/40 px-4 py-1.5 text-xs font-semibold tracking-wider text-cyan-300 uppercase shadow-sm">
-            <span>Our Service Solutions</span>
-          </div>
-
-          {/* Elegant wavy ribbon accent */}
-          <div className="mt-3 flex justify-center">
-            <svg
-              className="h-4 w-28 text-cyan-400/70"
-              viewBox="0 0 120 16"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-            >
-              <path d="M 0,8 C 15,2 30,14 45,8 C 60,2 75,14 90,8 C 105,2 115,12 120,8" />
-            </svg>
-          </div>
-
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-            Specialized Corporate &amp; Industrial Capabilities
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-slate-300 sm:text-lg">
-            Delivering trusted business setup, facility management, international trading, automotive care, and technology infrastructure across Qatar and the GCC.
-          </p>
-
-          {/* View Mode Switch: Carousel vs All 5 Cards Grid */}
-          <div className="mt-6 flex items-center justify-center gap-2">
-            <div className="inline-flex items-center rounded-xl border border-white/10 bg-[#0c1f2b]/80 p-1 backdrop-blur-md">
-              <button
-                type="button"
-                onClick={() => setViewMode("carousel")}
-                className={`flex items-center gap-2 rounded-lg px-3.5 py-1.5 text-xs font-semibold transition-all ${
-                  viewMode === "carousel"
-                    ? "bg-cyan-500 text-slate-950 shadow-md shadow-cyan-500/20"
-                    : "text-slate-400 hover:text-white"
-                }`}
-              >
-                <SlidersHorizontal className="h-3.5 w-3.5" />
-                <span>Carousel View</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => setViewMode("grid")}
-                className={`flex items-center gap-2 rounded-lg px-3.5 py-1.5 text-xs font-semibold transition-all ${
-                  viewMode === "grid"
-                    ? "bg-cyan-500 text-slate-950 shadow-md shadow-cyan-500/20"
-                    : "text-slate-400 hover:text-white"
-                }`}
-              >
-                <Grid3X3 className="h-3.5 w-3.5" />
-                <span>Show All 5 Divisions</span>
-              </button>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* 1. CAROUSEL VIEW: 3-Card Panoramic with Full Contents on All Cards */}
-        {viewMode === "carousel" && (
-          <div className="relative mt-12 sm:mt-16">
-            <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-3">
-              {/* Previous Card - Luminous Glassmorphic */}
-              <div
-                onClick={prevSlide}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") prevSlide();
-                }}
-                className="group relative hidden cursor-pointer flex-col justify-between overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-white/[0.1] via-[#0b2138]/60 to-[#07131b]/80 p-6 backdrop-blur-2xl shadow-[0_16px_40px_rgba(0,0,0,0.5),inset_0_1px_2px_rgba(255,255,255,0.25)] transition-all duration-500 hover:border-cyan-400/60 hover:shadow-[0_20px_50px_rgba(0,180,255,0.25)] md:flex"
-              >
+          {/* Pinned Viewport while scrolling through this section */}
+          <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden py-3 sm:py-6">
+            
+            {/* Section Header with Scroll Sync Progress Bar & Active Division Pill */}
+            <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8 mb-3 sm:mb-5 shrink-0">
+              <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 sm:gap-4">
                 <div>
-                  <div className="relative aspect-[16/10] sm:aspect-[16/9] min-h-[190px] w-full overflow-hidden rounded-2xl border border-white/10">
-                    <Image
-                      src={prevItem.image}
-                      alt={prevItem.title}
-                      fill
-                      className="object-cover object-[center_30%] transition-transform duration-700 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0c1f2b] via-[#0c1f2b]/30 to-transparent" />
-                    <div className="absolute top-3 left-3 flex items-center">
-                      <prevItem.icon className="h-4 w-4 text-cyan-300 drop-shadow-md" />
-                    </div>
+                  <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-950/40 px-3.5 py-1 text-xs font-semibold tracking-wider text-cyan-300 uppercase shadow-sm">
+                    <span className="size-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                    <span>Our Service Solutions</span>
                   </div>
 
-                  <div className="mt-5">
-                    <div className="text-xs font-semibold tracking-wider uppercase text-cyan-400">
-                      {prevItem.badge}
-                    </div>
-                    <h3 className="mt-1.5 text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">
-                      {prevItem.title}
-                    </h3>
-                    <p className="mt-2.5 text-xs leading-relaxed text-slate-300">
-                      {prevItem.description}
-                    </p>
-
-                    {/* Full Feature Checklist on Previous Card */}
-                    <ul className="mt-4 space-y-2 border-t border-white/10 pt-4 text-xs text-slate-300">
-                      {prevItem.points.map((pt, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-cyan-400" />
-                          <span>{pt}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  <h2 className="mt-1.5 sm:mt-2 text-xl sm:text-3xl lg:text-4xl font-black tracking-tight text-white uppercase leading-tight">
+                    Specialized Corporate &amp; Industrial Capabilities
+                  </h2>
+                  <p className="mt-1 text-xs sm:text-sm text-slate-300 max-w-xl">
+                    Scroll down to glide through all 5 divisions across Qatar before proceeding.
+                  </p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-white/10">
-                  <Link
-                    href={prevItem.ctaHref}
-                    onClick={(e) => e.stopPropagation()}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-cyan-400/40 bg-cyan-950/40 px-4 py-2.5 text-xs font-semibold text-cyan-300 transition-all duration-300 hover:bg-cyan-500 hover:text-slate-950"
-                  >
-                    <span>{prevItem.ctaText}</span>
-                    <ArrowRight className="h-3.5 w-3.5" />
-                  </Link>
-                </div>
-              </div>
+                {/* Progress Indicators & View Mode Toggle */}
+                <div className="flex items-center gap-3 sm:gap-4 self-start md:self-end">
+                  {/* Active Division Chip */}
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/30 bg-cyan-950/60 px-3 py-1 text-[11px] font-bold text-cyan-300 backdrop-blur-md">
+                    <span>Division {homeServices[activeDivisionIndex].id} of 05</span>
+                  </span>
 
-              {/* Active Center Card (Spotlight) - Luminous Crystal Glass */}
-              <div className="relative z-10 flex flex-col justify-between overflow-hidden rounded-3xl border-2 border-cyan-400/80 bg-gradient-to-br from-white/[0.16] via-[#0f324d]/80 to-[#07131b]/95 p-6 sm:p-8 shadow-[0_25px_60px_rgba(0,0,0,0.7),inset_0_1px_2px_rgba(255,255,255,0.4),0_0_45px_rgba(0,210,255,0.3)] backdrop-blur-2xl transition-all duration-500">
-                <div className="absolute -top-12 -right-12 h-44 w-44 rounded-full bg-cyan-400/25 blur-3xl pointer-events-none" />
-                <div className="absolute -bottom-10 -left-10 h-36 w-36 rounded-full bg-blue-500/20 blur-2xl pointer-events-none" />
-
-                <div>
-                  <div className="relative aspect-[16/10] sm:aspect-[16/9] min-h-[220px] w-full overflow-hidden rounded-2xl border border-cyan-400/40 shadow-inner">
-                    <motion.div
-                      animate={{ scale: [1, 1.06, 1] }}
-                      transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-                      className="relative w-full h-full"
-                    >
-                      <Image
-                        src={currentItem.image}
-                        alt={currentItem.title}
-                        fill
-                        priority
-                        className="object-cover object-[center_30%] transition-transform duration-700 hover:scale-105"
-                        sizes="(max-width: 768px) 100vw, 40vw"
+                  {/* Synchronized Scroll Progress Bar */}
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-mono font-bold text-cyan-400 uppercase tracking-widest hidden sm:inline">
+                      Scroll
+                    </span>
+                    <div className="w-24 sm:w-32 h-2 rounded-full bg-white/10 overflow-hidden p-0.5 border border-white/10">
+                      <motion.div
+                        style={{ scaleX: scrollYProgress, transformOrigin: "left" }}
+                        className="h-full rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 shadow-[0_0_8px_rgba(34,211,238,0.8)]"
                       />
-                    </motion.div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0e2738] via-transparent to-black/20 pointer-events-none" />
-                    {/* Top-left icon with cleared container styling & redundant span badges removed */}
-                    <div className="absolute top-3 left-3 flex items-center">
-                      <currentItem.icon className="h-5 w-5 text-cyan-300 drop-shadow-[0_2px_8px_rgba(0,180,255,0.8)]" />
                     </div>
                   </div>
 
-                  <div className="mt-4">
-                    {/* Primary Heading with Enhanced Typography & Gradient Text */}
-                    <h3 className="mt-[2.5rem] text-3xl sm:text-4xl lg:text-[3.5rem] lg:leading-[1.12] font-black tracking-[0.02em] bg-gradient-to-r from-white via-white to-[#cffafe] bg-clip-text text-transparent drop-shadow-md">
-                      {currentItem.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-slate-200">
-                      {currentItem.description}
-                    </p>
-
-                    {/* Full Feature Checklist on Active Card */}
-                    <ul className="mt-5 space-y-2.5 border-t border-cyan-500/20 pt-4 text-xs text-slate-200">
-                      {currentItem.points.map((pt, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-cyan-400" />
-                          <span className="font-medium">{pt}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="mt-8 pt-4 border-t border-cyan-500/20">
-                  <Link
-                    href={currentItem.ctaHref}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-teal-500 px-6 py-3.5 text-sm font-bold text-slate-950 transition-all duration-300 hover:from-cyan-400 hover:to-teal-400 hover:shadow-lg hover:shadow-cyan-500/30 active:scale-[0.98]"
+                  {/* Grid View Toggle */}
+                  <button
+                    type="button"
+                    onClick={() => setViewMode("grid")}
+                    className="inline-flex items-center gap-1.5 rounded-xl border border-white/15 bg-[#0c1f2b]/80 px-3 py-1.5 text-xs font-semibold text-slate-300 hover:text-white hover:border-cyan-400/40 transition-all backdrop-blur-md cursor-pointer"
+                    title="Switch to All 5 Divisions Grid View"
                   >
-                    <span>{currentItem.ctaText}</span>
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
-              </div>
-
-              {/* Next Card - Luminous Glassmorphic */}
-              <div
-                onClick={nextSlide}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") nextSlide();
-                }}
-                className="group relative hidden cursor-pointer flex-col justify-between overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-white/[0.1] via-[#0b2138]/60 to-[#07131b]/80 p-6 backdrop-blur-2xl shadow-[0_16px_40px_rgba(0,0,0,0.5),inset_0_1px_2px_rgba(255,255,255,0.25)] transition-all duration-500 hover:border-cyan-400/60 hover:shadow-[0_20px_50px_rgba(0,180,255,0.25)] md:flex"
-              >
-                <div>
-                  <div className="relative aspect-[16/10] sm:aspect-[16/9] min-h-[190px] w-full overflow-hidden rounded-2xl border border-white/10">
-                    <Image
-                      src={nextItem.image}
-                      alt={nextItem.title}
-                      fill
-                      className="object-cover object-[center_30%] transition-transform duration-700 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0c1f2b] via-[#0c1f2b]/30 to-transparent" />
-                    <div className="absolute top-3 right-3 flex items-center">
-                      <nextItem.icon className="h-4 w-4 text-cyan-300 drop-shadow-md" />
-                    </div>
-                  </div>
-
-                  <div className="mt-5">
-                    <div className="text-xs font-semibold tracking-wider uppercase text-cyan-400">
-                      {nextItem.badge}
-                    </div>
-                    <h3 className="mt-1.5 text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">
-                      {nextItem.title}
-                    </h3>
-                    <p className="mt-2.5 text-xs leading-relaxed text-slate-300">
-                      {nextItem.description}
-                    </p>
-
-                    {/* Full Feature Checklist on Next Card */}
-                    <ul className="mt-4 space-y-2 border-t border-white/10 pt-4 text-xs text-slate-300">
-                      {nextItem.points.map((pt, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-cyan-400" />
-                          <span>{pt}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="mt-6 pt-4 border-t border-white/10">
-                  <Link
-                    href={nextItem.ctaHref}
-                    onClick={(e) => e.stopPropagation()}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-cyan-400/40 bg-cyan-950/40 px-4 py-2.5 text-xs font-semibold text-cyan-300 transition-all duration-300 hover:bg-cyan-500 hover:text-slate-950"
-                  >
-                    <span>{nextItem.ctaText}</span>
-                    <ArrowRight className="h-3.5 w-3.5" />
-                  </Link>
+                    <Grid3X3 className="h-3.5 w-3.5 text-cyan-400" />
+                    <span className="hidden sm:inline">Grid</span>
+                  </button>
                 </div>
               </div>
             </div>
 
-            {/* Floating Navigation Controls */}
+            {/* Horizontal Cards Motion Track: Synchronously Slides from 1st to Last Card */}
+            <div className="w-full overflow-hidden">
+              <motion.div
+                ref={trackRef}
+                style={{ x }}
+                className="flex gap-4 sm:gap-6 pl-4 sm:pl-8 lg:pl-16 pr-8 sm:pr-16 w-max select-none"
+              >
+                {homeServices.map((service, idx) => {
+                  const ServiceIcon = service.icon;
+                  const isActive = idx === activeDivisionIndex;
+                  return (
+                    <article
+                      key={service.id}
+                      className={`group relative overflow-hidden rounded-3xl border bg-gradient-to-br from-white/[0.12] via-[#0b2138]/70 to-[#07131b]/90 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.6),inset_0_1px_2px_rgba(255,255,255,0.3)] transition-all duration-300 flex flex-col justify-between w-[295px] sm:w-[380px] lg:w-[420px] h-[420px] sm:h-[460px] lg:h-[485px] shrink-0 p-4 sm:p-6 ${
+                        isActive
+                          ? "border-cyan-400/70 shadow-[0_25px_60px_rgba(0,180,255,0.25)] ring-1 ring-cyan-400/40"
+                          : "border-white/20 hover:border-cyan-400/50"
+                      }`}
+                    >
+                      {/* Top Visual Banner with Image */}
+                      <div>
+                        <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-white/15 shadow-inner">
+                          <Image
+                            src={service.image}
+                            alt={service.title}
+                            fill
+                            sizes="(min-width: 1024px) 420px, 320px"
+                            className="object-cover object-[center_30%] transition-transform duration-700 ease-out group-hover:scale-105"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#07131b] via-[#07131b]/40 to-transparent pointer-events-none" />
+                          
+                          {/* Top Category Badge */}
+                          <div className="absolute top-3 left-3 flex items-center gap-1.5 rounded-full bg-[#07131b]/85 border border-cyan-400/40 px-2.5 py-1 text-[11px] font-bold text-cyan-300 backdrop-blur-md shadow-sm">
+                            <ServiceIcon className="h-3.5 w-3.5 text-cyan-400" />
+                            <span>{service.category}</span>
+                          </div>
+
+                          {/* Division Number Chip */}
+                          <div className="absolute top-3 right-3 flex items-center justify-center size-7 rounded-lg bg-black/60 border border-white/20 text-xs font-black text-white/90 backdrop-blur-md">
+                            {service.id}
+                          </div>
+                        </div>
+
+                        {/* Title & Description */}
+                        <div className="mt-4">
+                          <div className="text-[10px] font-black uppercase tracking-[0.2em] text-cyan-400">
+                            {service.badge}
+                          </div>
+                          <h3 className="mt-1 text-base sm:text-xl font-black text-white leading-snug group-hover:text-cyan-200 transition-colors">
+                            {service.title}
+                          </h3>
+                          <p className="mt-2 text-xs text-slate-300 line-clamp-2 leading-relaxed">
+                            {service.description}
+                          </p>
+
+                          {/* 3 Core Points Checklist */}
+                          <ul className="mt-3 pt-3 border-t border-white/10 space-y-1.5 text-[11px] text-slate-300">
+                            {service.points.map((pt, pIdx) => (
+                              <li key={pIdx} className="flex items-start gap-1.5">
+                                <CheckCircle2 className="h-3.5 w-3.5 text-cyan-400 shrink-0 mt-0.5" />
+                                <span className="line-clamp-1">{pt}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+
+                      {/* CTA Button */}
+                      <div className="pt-3 border-t border-white/10 mt-2">
+                        <Link
+                          href={service.ctaHref}
+                          className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-teal-500 px-4 py-2.5 text-xs font-bold text-slate-950 shadow-md shadow-cyan-500/20 hover:from-cyan-400 hover:to-teal-400 transition-all active:scale-[0.98]"
+                        >
+                          <span>View Details &amp; Scope</span>
+                          <ArrowRight className="h-3.5 w-3.5" />
+                        </Link>
+                      </div>
+                    </article>
+                  );
+                })}
+              </motion.div>
+            </div>
+
+            {/* Interactive Division Navigation Tabs at Bottom of Sticky Frame */}
+            <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8 mt-4 sm:mt-5 shrink-0 flex items-center justify-center gap-1.5 sm:gap-2.5">
+              {homeServices.map((service, index) => {
+                const isActive = index === activeDivisionIndex;
+                return (
+                  <button
+                    key={service.id}
+                    type="button"
+                    onClick={() => scrollToDivision(index)}
+                    aria-label={`Scroll to ${service.title}`}
+                    className={`group flex items-center gap-2 rounded-full px-3 sm:px-4 py-1.5 text-xs font-semibold transition-all duration-300 cursor-pointer ${
+                      isActive
+                        ? "bg-cyan-500 text-slate-950 shadow-md shadow-cyan-500/40 scale-105"
+                        : "border border-white/10 bg-white/5 text-slate-400 hover:border-white/20 hover:text-white"
+                    }`}
+                  >
+                    <span>{service.id}</span>
+                    <span className="hidden md:inline">{service.badge}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+          </div>
+        </div>
+      ) : (
+        /* 2. GRID VIEW: All 5 Cards Visible Simultaneously when explicitly selected */
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-950/40 px-3.5 py-1 text-xs font-semibold tracking-wider text-cyan-300 uppercase shadow-sm">
+                <span className="size-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                <span>Our Service Solutions</span>
+              </div>
+              <h2 className="mt-2 text-2xl sm:text-4xl font-black text-white uppercase">
+                Specialized Corporate &amp; Industrial Capabilities
+              </h2>
+            </div>
+
             <button
               type="button"
-              onClick={prevSlide}
-              aria-label="Previous division"
-              className="absolute left-1 sm:-left-6 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-[#0c1f2b]/95 text-white shadow-xl backdrop-blur-md transition hover:border-cyan-400 hover:bg-cyan-500 hover:text-slate-950 z-20"
+              onClick={() => setViewMode("scroll")}
+              className="inline-flex items-center gap-1.5 rounded-xl border border-white/15 bg-[#0c1f2b]/80 px-3.5 py-2 text-xs font-semibold text-slate-300 hover:text-white hover:border-cyan-400/40 transition-all backdrop-blur-md cursor-pointer self-start"
             >
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-            <button
-              type="button"
-              onClick={nextSlide}
-              aria-label="Next division"
-              className="absolute right-1 sm:-right-6 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-[#0c1f2b]/95 text-white shadow-xl backdrop-blur-md transition hover:border-cyan-400 hover:bg-cyan-500 hover:text-slate-950 z-20"
-            >
-              <ChevronRight className="h-5 w-5" />
+              <SlidersHorizontal className="h-3.5 w-3.5 text-cyan-400" />
+              <span>Back to Scroll View</span>
             </button>
           </div>
-        )}
 
-        {/* 2. GRID VIEW: All 5 Cards Visible Simultaneously with Full Contents & Respective Images */}
-        {viewMode === "grid" && (
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {homeServices.map((service, idx) => {
               const ServiceIcon = service.icon;
               const isLead = idx === 0;
@@ -454,7 +407,6 @@ export function WireframeGallery() {
                   }`}
                 >
                   <div>
-                    {/* Respective Image Banner */}
                     <div className="relative aspect-[16/10] sm:aspect-[16/9] min-h-[190px] w-full overflow-hidden rounded-2xl border border-white/10">
                       <Image
                         src={service.image}
@@ -469,7 +421,6 @@ export function WireframeGallery() {
                       </div>
                     </div>
 
-                    {/* Content */}
                     <div className="mt-5">
                       <div className="text-xs font-semibold tracking-wider uppercase text-cyan-400">
                         {service.badge}
@@ -481,7 +432,6 @@ export function WireframeGallery() {
                         {service.description}
                       </p>
 
-                      {/* Full Feature Checklist */}
                       <ul className="mt-4 space-y-2 border-t border-white/10 pt-4 text-xs text-slate-300">
                         {service.points.map((pt, i) => (
                           <li key={i} className="flex items-start gap-2">
@@ -493,7 +443,6 @@ export function WireframeGallery() {
                     </div>
                   </div>
 
-                  {/* CTA Button */}
                   <div className="mt-6 pt-4 border-t border-white/10">
                     <Link
                       href={service.ctaHref}
@@ -507,34 +456,8 @@ export function WireframeGallery() {
               );
             })}
           </div>
-        )}
-
-        {/* Carousel Pagination / Division Tabs */}
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-          {homeServices.map((service, index) => {
-            const isActive = index === currentIndex;
-            return (
-              <button
-                key={service.id}
-                type="button"
-                onClick={() => {
-                  setCurrentIndex(index);
-                  if (viewMode === "grid") setViewMode("carousel");
-                }}
-                aria-label={`Go to slide ${service.id} - ${service.title}`}
-                className={`group flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition-all duration-300 ${
-                  isActive && viewMode === "carousel"
-                    ? "bg-cyan-500 text-slate-950 shadow-md shadow-cyan-500/30 scale-105"
-                    : "border border-white/10 bg-white/5 text-slate-400 hover:border-white/20 hover:text-white"
-                }`}
-              >
-                <span>{service.id}</span>
-                <span className="hidden sm:inline">{service.badge}</span>
-              </button>
-            );
-          })}
         </div>
-      </div>
+      )}
     </section>
   );
 }

@@ -214,45 +214,47 @@ export function WireframeHero() {
               </motion.div>
 
               {/* 2. Floating BizLink Logo Card at the Bottom Left Corner with opposing Parallax & Luminous Glassmorphism */}
-              <motion.div
-                style={{ y: yParallaxCard }}
-                className="relative top-[25px] sm:top-0 -mb-[20px] sm:mb-4 ml-3 sm:ml-0 z-20 w-[55%] sm:w-[50%] lg:w-[50%] rounded-2xl sm:rounded-3xl border border-white/30 bg-gradient-to-br from-white/[0.14] via-[#0b1c36]/70 to-[#070B14]/85 backdrop-blur-2xl p-4 sm:p-5 shadow-[0_25px_60px_rgba(0,0,0,0.7),inset_0_1px_2px_rgba(255,255,255,0.35),0_0_35px_rgba(0,210,255,0.25)] transition-all duration-500 hover:scale-[1.03] hover:border-cyan-400/70 group"
-              >
-                {/* Center 3D BizLink Logo */}
-                <div className="relative w-full aspect-[641/460] my-2.5 sm:my-3 flex items-center justify-center">
-                  <div className="relative w-4/5 h-full drop-shadow-[0_12px_28px_rgba(0,180,255,0.65)] group-hover:scale-105 transition-transform duration-700 ease-out">
-                    <Image
-                      src="/images/bizlink_3d_logo_transparent.webp"
-                      alt="BizLink 3D Architectural Logo"
-                      fill
-                      priority
-                      sizes="240px"
-                      className="object-contain"
-                    />
+              <div className="relative top-[25px] sm:top-0 -mb-[20px] sm:mb-4 ml-3 sm:ml-0 z-20 w-[40%] sm:w-[50%] lg:w-[50%] origin-bottom-left scale-90 sm:scale-100">
+                <motion.div
+                  style={{ y: yParallaxCard }}
+                  className="w-full rounded-2xl sm:rounded-3xl border border-white/30 bg-gradient-to-br from-white/[0.14] via-[#0b1c36]/70 to-[#070B14]/85 backdrop-blur-2xl p-3 sm:p-5 shadow-[0_25px_60px_rgba(0,0,0,0.7),inset_0_1px_2px_rgba(255,255,255,0.35),0_0_35px_rgba(0,210,255,0.25)] transition-all duration-500 hover:scale-[1.03] hover:border-cyan-400/70 group"
+                >
+                  {/* Center 3D BizLink Logo */}
+                  <div className="relative w-full aspect-[641/460] my-2 sm:my-3 flex items-center justify-center">
+                    <div className="relative w-4/5 h-full drop-shadow-[0_12px_28px_rgba(0,180,255,0.65)] group-hover:scale-105 transition-transform duration-700 ease-out">
+                      <Image
+                        src="/images/bizlink_3d_logo_transparent.webp"
+                        alt="BizLink 3D Architectural Logo"
+                        fill
+                        priority
+                        sizes="240px"
+                        className="object-contain"
+                      />
+                    </div>
                   </div>
-                </div>
 
-                {/* Bottom Brand Title & Credentials */}
-                <div className="pt-2.5 border-t border-white/10 sm:mb-10">
-                  <div className="flex items-baseline justify-between">
-                    <p className="text-xs sm:text-sm font-black text-white uppercase tracking-wider">
-                      BIZLINK
-                    </p>
-                    <span className="text-[9px] font-bold text-cyan-300">
-                      Pathas Group
-                    </span>
+                  {/* Bottom Brand Title & Credentials */}
+                  <div className="pt-2 sm:pt-2.5 border-t border-white/10 sm:mb-10">
+                    <div className="flex items-baseline justify-between">
+                      <p className="text-[11px] sm:text-sm font-black text-white uppercase tracking-wider">
+                        BIZLINK
+                      </p>
+                      <span className="text-[8px] sm:text-[9px] font-bold text-cyan-300">
+                        Pathas Group
+                      </span>
+                    </div>
+                    <div className="mt-1 sm:mt-1.5 flex items-center gap-1 text-[7px] sm:text-[9px] font-bold text-slate-400">
+                      <span className="text-cyan-300">QATAR</span>
+                      <span>•</span>
+                      <span>INDIA</span>
+                      <span>•</span>
+                      <span>UAE</span>
+                      <span>•</span>
+                      <span>CHINA</span>
+                    </div>
                   </div>
-                  <div className="mt-1.5 flex items-center gap-1 text-[8px] sm:text-[9px] font-bold text-slate-400">
-                    <span className="text-cyan-300">QATAR</span>
-                    <span>•</span>
-                    <span>INDIA</span>
-                    <span>•</span>
-                    <span>UAE</span>
-                    <span>•</span>
-                    <span>CHINA</span>
-                  </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              </div>
 
             </div>
           </div>

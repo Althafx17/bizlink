@@ -744,25 +744,24 @@ export const services: readonly ServiceDivision[] = [
     title: "Automotive & Mobile Car Care",
     name: "Automotive Care",
     tagline: "Professional Automotive Services, Delivered to Your Location.",
-    highlight: "Your Car. Our Care. Your Location — Convenience At Your Doorstep",
+    highlight: "Your Car. Our Care. Your Location",
     description: "Mobile Car Wash, Detailing & Auto Glass Replacement",
     imageCard: "/images/services/automotive-card.webp",
     brochureMainImage: "/images/services/brochure/automotive-main.webp",
     iconName: "car",
-    brochurePage: "Page 07",
+    brochurePage: "www.bizlinkqatar.com 07",
     brochureIntro:
       "BizLink provides convenient mobile automotive services designed to make vehicle maintenance and care easier for customers across Qatar. Our on-site service approach saves time and offers practical solutions for vehicle cleaning, detailing and automotive glass requirements.",
     brochureCommitment:
-      "We combine convenience, professional service and customer focused support to deliver practical automotive solutions wherever you are. Your Car. Our Care. Your Location.",
+      "We combine convenience, professional service and customer focused support to deliver practical automotive solutions wherever you. Your Car. Our Care. Your Location.",
     whatsappMessage:
       "Hello BizLink Qatar, I would like to book a Mobile Car Wash, Interior Detailing, or Auto Glass Service at my location.",
     items: [
-      "Pathas Mobile Car Wash (Any Where, Any Time in Doha)",
-      "On-Site Interior Deep Cleaning, Shampooing & Detailing",
-      "Paint Protection, Machine Polishing & Ceramic Coating",
-      "Prime Glass Mobile Windshield Repair & Replacement",
-      "Corporate Fleet Washing & Scheduled Maintenance Packages",
-      "Eco-Friendly Waterless & Steam Wash Systems",
+      "Mobile Car Wash & Detailing",
+      "Windshield Replacement",
+      "Car Detailing & Interior Cleaning",
+      "On-Site Auto Glass Services",
+      "Auto Glass Inspection & Repair",
     ],
     subServices: [
       {
@@ -782,6 +781,22 @@ export const services: readonly ServiceDivision[] = [
         badge: "Doorstep Service",
       },
       {
+        id: "windshield-replacement",
+        title: "Windshield Replacement",
+        tagline: "Certified OEM-Grade Glass Installation",
+        description:
+          "Complete glass replacement for cracked, shattered, or severely pitted front windshields, rear screens, door windows, and panoramic sunroofs. We install certified OEM-equivalent automotive glass utilizing rapid-cure urethane adhesives that meet strict international crash safety standards and ADAS safety camera calibration.",
+        deliverables: [
+          "Certified OEM-standard laminated safety glass for all makes and models",
+          "Automotive-grade polyurethane adhesive with 1-hour safe drive-away time",
+          "Precision fitment preserving rain sensor and ADAS camera alignments",
+          "Complete glass cleanup and shattered fragment vacuuming",
+          "Lifetime warranty against air whistles, water leaks, and adhesive failure",
+        ],
+        compliance: "Federal Motor Vehicle Safety Standards (FMVSS 212/216)",
+        badge: "Certified Safety",
+      },
+      {
         id: "car-detailing-interior",
         title: "Car Detailing & Interior Cleaning",
         tagline: "Deep Steam Shampooing, Leather Care & Sanitization",
@@ -798,37 +813,6 @@ export const services: readonly ServiceDivision[] = [
         badge: "VIP Treatment",
       },
       {
-        id: "auto-glass-repair",
-        title: "Auto Glass Inspection & Repair",
-        tagline: "Windshield Chip & Crack Optical Resin Repair",
-        description:
-          "Mobile windshield repair powered by Prime Glass technology. Minor stone chips, starbursts, and hairline cracks up to 6 inches are repaired on-site using vacuum-pressure optical resin injection. This restores 95%+ optical clarity and structural windshield integrity, preventing costly full windshield replacement and passing annual vehicle inspection.",
-        deliverables: [
-          "Structural stone chip and starburst crack stabilization",
-          "High-grade optical UV-curable resin injection technology",
-          "15-minute rapid cure with zero optical distortion",
-          "Complete structural integrity restoration preventing crack spread",
-          "Official vehicle inspection pass assurance",
-        ],
-        compliance: "Prime Glass Certification & Qatar Traffic Inspection Standards",
-      },
-      {
-        id: "windshield-replacement",
-        title: "Windshield & Vehicle Glass Replacement",
-        tagline: "Certified OEM-Grade Glass Installation",
-        description:
-          "Complete glass replacement for cracked, shattered, or severely pitted front windshields, rear screens, door windows, and panoramic sunroofs. We install certified OEM-equivalent automotive glass utilizing rapid-cure urethane adhesives that meet strict international crash safety standards and ADAS safety camera calibration.",
-        deliverables: [
-          "Certified OEM-standard laminated safety glass for all makes and models",
-          "Automotive-grade polyurethane adhesive with 1-hour safe drive-away time",
-          "Precision fitment preserving rain sensor and ADAS camera alignments",
-          "Complete glass cleanup and shattered fragment vacuuming",
-          "Lifetime warranty against air whistles, water leaks, and adhesive failure",
-        ],
-        compliance: "Federal Motor Vehicle Safety Standards (FMVSS 212/216)",
-        badge: "Certified Safety",
-      },
-      {
         id: "onsite-auto-glass",
         title: "On-Site Auto Glass Services",
         tagline: "We Come to Your Home, Office, or Breakdown Location",
@@ -842,6 +826,21 @@ export const services: readonly ServiceDivision[] = [
           "Flexible scheduling including evening and weekend appointments",
         ],
         compliance: "Mobile Service Protocol & Safety Compliance",
+      },
+      {
+        id: "auto-glass-repair",
+        title: "Auto Glass Inspection & Repair",
+        tagline: "Windshield Chip & Crack Optical Resin Repair",
+        description:
+          "Mobile windshield repair powered by Prime Glass technology. Minor stone chips, starbursts, and hairline cracks up to 6 inches are repaired on-site using vacuum-pressure optical resin injection. This restores 95%+ optical clarity and structural windshield integrity, preventing costly full windshield replacement and passing annual vehicle inspection.",
+        deliverables: [
+          "Structural stone chip and starburst crack stabilization",
+          "High-grade optical UV-curable resin injection technology",
+          "15-minute rapid cure with zero optical distortion",
+          "Complete structural integrity restoration preventing crack spread",
+          "Official vehicle inspection pass assurance",
+        ],
+        compliance: "Prime Glass Certification & Qatar Traffic Inspection Standards",
       },
       {
         id: "corporate-fleet-care",

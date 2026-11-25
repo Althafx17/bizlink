@@ -39,6 +39,12 @@ import {
   Video,
   Zap,
   LayoutGrid,
+  Armchair,
+  Car,
+  MapPin,
+  Maximize2,
+  Shield,
+  ThumbsUp,
 } from "lucide-react";
 import { services, type ServiceDivision } from "@/content/services";
 import { company } from "@/content/company";
@@ -109,6 +115,17 @@ function getSubServiceIcon(id: string) {
       return <LayoutGrid className="size-5 text-cyan-400" />;
     case "property-maintenance-amc":
       return <Calendar className="size-5 text-cyan-400" />;
+    // Division 05: Automotive & Mobile Car Care
+    case "mobile-car-wash":
+      return <Car className="size-5 text-cyan-400" />;
+    case "windshield-replacement":
+      return <Maximize2 className="size-5 text-cyan-400" />;
+    case "car-detailing-interior":
+      return <Armchair className="size-5 text-cyan-400" />;
+    case "onsite-auto-glass":
+      return <MapPin className="size-5 text-cyan-400" />;
+    case "auto-glass-repair":
+      return <Shield className="size-5 text-cyan-400" />;
     default:
       return <Sparkles className="size-5 text-cyan-400" />;
   }
@@ -332,6 +349,12 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                       <span className="block text-cyan-300 mt-0.5">Enhancing Environments.</span>
                       <span className="block text-white/90 text-[10px] mt-0.5 font-bold tracking-wide">Complete Property Care</span>
                     </span>
+                  ) : service.id === "automotive" ? (
+                    <span className="block text-xs sm:text-sm font-black text-white leading-tight">
+                      <span className="block">Your Car.</span>
+                      <span className="block text-cyan-300 mt-0.5">Our Care.</span>
+                      <span className="block text-white/90 text-[10px] mt-0.5 font-bold tracking-wide">Your Location</span>
+                    </span>
                   ) : (
                     <span className="block text-xs sm:text-sm font-black text-white leading-tight">
                       {service.highlight}
@@ -474,6 +497,23 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                 <div>
                   <span className="inline-block text-sm font-black uppercase tracking-wider text-cyan-300 mb-1">
                     Complete Property Care
+                  </span>
+                  <p className="text-xs sm:text-sm text-slate-100 leading-relaxed font-medium">
+                    {service.brochureCommitment}
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* Convenience At Your Doorstep Box (Matching official Page 07 layout) */}
+            {service.id === "automotive" && service.brochureCommitment && (
+              <div className="mt-7 rounded-2xl bg-[#0056B3]/60 border border-cyan-400/40 p-5 sm:p-6 backdrop-blur-xl shadow-xl flex items-start gap-4">
+                <div className="size-12 rounded-xl bg-cyan-400/20 border border-cyan-300/40 flex items-center justify-center shrink-0 text-cyan-300">
+                  <ThumbsUp className="size-6" />
+                </div>
+                <div>
+                  <span className="inline-block text-sm font-black uppercase tracking-wider text-cyan-300 mb-1">
+                    Convenience At Your Doorstep
                   </span>
                   <p className="text-xs sm:text-sm text-slate-100 leading-relaxed font-medium">
                     {service.brochureCommitment}

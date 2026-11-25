@@ -96,12 +96,14 @@ export function WireframeHero() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-6 xl:col-span-6 flex flex-col justify-center text-left"
           >
-            {/* Top Eyebrow Chip - Scaled to 14px on mobile */}
+            {/* Top Eyebrow Status Badge - Content hidden with visibility: hidden preserving 38px layout flow */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="inline-flex items-center gap-2 self-start rounded-full border border-cyan-400/30 bg-cyan-950/40 px-5 py-2 text-[14px] sm:text-xs font-bold uppercase tracking-[0.2em] text-cyan-300 backdrop-blur-md shadow-sm"
+              style={{ visibility: "hidden" }}
+              aria-hidden="true"
+              className="invisible inline-flex items-center gap-2 self-start rounded-full border border-cyan-400/30 bg-cyan-950/40 px-5 py-2 text-[14px] sm:text-xs font-bold uppercase tracking-[0.2em] text-cyan-300 backdrop-blur-md shadow-sm"
             >
               <span className="size-2 rounded-full bg-cyan-400 animate-pulse" />
               Pathas Group · Doha, Qatar

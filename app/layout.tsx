@@ -42,7 +42,7 @@ export default function RootLayout({
   const analyticsEnabled = analyticsId && /^G-[A-Z0-9]+$/.test(analyticsId);
 
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
+    <html lang="en" className={inter.variable} data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: `if (location.pathname === '/' && matchMedia('(prefers-reduced-motion: no-preference)').matches) document.documentElement.dataset.homeMotion = 'pending';` }} />
       </head>

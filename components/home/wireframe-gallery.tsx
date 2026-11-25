@@ -208,10 +208,10 @@ export function WireframeGallery() {
           className="relative w-full"
         >
           {/* Pinned Viewport while scrolling through this section */}
-          <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden py-3 sm:py-6">
+          <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden py-0">
             
             {/* Section Header with Scroll Sync Progress Bar & Active Division Pill */}
-            <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8 mb-3 sm:mb-5 shrink-0">
+            <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8 mb-0 shrink-0">
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 sm:gap-4">
                 <div>
                   <h2 className="mt-1.5 sm:mt-2 text-xl sm:text-3xl lg:text-4xl font-black tracking-tight text-white uppercase leading-tight">
@@ -340,7 +340,7 @@ export function WireframeGallery() {
             </div>
 
             {/* Interactive Division Navigation Tabs at Bottom of Sticky Frame */}
-            <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8 mt-4 sm:mt-5 shrink-0 flex items-center justify-center gap-1.5 sm:gap-2.5">
+            <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8 mt-0 shrink-0 flex items-center justify-center gap-1.5 sm:gap-2.5">
               {homeServices.map((service, index) => {
                 const isActive = index === activeDivisionIndex;
                 return (

@@ -571,10 +571,10 @@ export function InteractiveServicesShowcase({ detailed = false }: { detailed?: b
                   {/* Action Buttons */}
                   <div className="mt-6 flex flex-wrap items-center gap-3">
                     <Link
-                      href={`/contact?service=${activeSpotlight.anchor}`}
+                      href={`/services/${activeSpotlight.id}`}
                       className="inline-flex min-h-[46px] items-center gap-2 rounded-full bg-gradient-to-r from-[#0066FF] to-[#00B4D8] px-6 py-2.5 text-xs sm:text-sm font-bold text-white shadow-lg shadow-cyan-500/20 hover:scale-[1.02] transition-transform"
                     >
-                      <span>Inquire Division {activeSpotlight.number}</span>
+                      <span>Explore Division {activeSpotlight.number} Full Scope</span>
                       <ArrowRight size={15} aria-hidden="true" />
                     </Link>
 
@@ -607,16 +607,15 @@ export function InteractiveServicesShowcase({ detailed = false }: { detailed?: b
             </div>
 
             {otherDivisions.map(({ service: s, index }) => (
-              <button
+              <Link
                 key={s.id}
-                type="button"
-                onClick={() => setActiveSpotlightIndex(index)}
+                href={`/services/${s.id}`}
                 className="group relative text-left overflow-hidden rounded-2xl border border-white/15 bg-[#0F254B]/80 hover:bg-[#143161] hover:border-cyan-400/40 p-3.5 transition-all duration-300 shadow-md flex items-center gap-4 hover:shadow-cyan-500/10 cursor-pointer w-full"
               >
                 {/* Thumbnail Image */}
                 <div className="relative size-20 sm:size-24 rounded-xl overflow-hidden shrink-0 border border-white/20">
                   <Image
-                    src={s.imageCard}
+                    src={s.brochureMainImage || s.imageCard}
                     alt={s.name}
                     fill
                     sizes="96px"
@@ -643,7 +642,7 @@ export function InteractiveServicesShowcase({ detailed = false }: { detailed?: b
                     <ArrowRight size={12} />
                   </div>
                 </div>
-              </button>
+              </Link>
             ))}
           </div>
         </div>
@@ -872,11 +871,11 @@ export function InteractiveServicesShowcase({ detailed = false }: { detailed?: b
                           {/* Action Row */}
                           <div className="mt-3 flex items-center justify-between gap-3">
                             <Link
-                              href={`/contact?service=${service.id}`}
-                              className="inline-flex flex-1 min-h-[40px] items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-[#0056B3] to-[#0088CE] px-4 py-2 text-xs font-bold text-white shadow-md hover:from-[#004088] hover:to-[#0077D7] transition-all"
+                              href={`/services/${service.divisionId}#${service.id}`}
+                              className="inline-flex flex-1 min-h-[40px] items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-[#0056B3] to-[#0088CE] px-4 py-2 text-xs font-bold text-white shadow-md hover:from-[#004088] hover:to-[#0077D7] transition-all cursor-pointer"
                             >
-                              <span>Inquire Service</span>
-                              <ArrowUpRight size={14} />
+                              <span>View Full Scope</span>
+                              <ArrowRight size={14} />
                             </Link>
 
                             <a
@@ -979,11 +978,11 @@ export function InteractiveServicesShowcase({ detailed = false }: { detailed?: b
                         {/* Action Row */}
                         <div className="mt-2.5 flex items-center justify-between gap-2">
                           <Link
-                            href={`/contact?service=${service.id}`}
+                            href={`/services/${service.divisionId}#${service.id}`}
                             className="inline-flex flex-1 min-h-[36px] items-center justify-center gap-1 rounded-full bg-gradient-to-r from-[#0056B3] to-[#0088CE] px-3 py-1.5 text-[11px] font-bold text-white shadow-sm"
                           >
-                            <span>Inquire</span>
-                            <ArrowUpRight size={12} />
+                            <span>View Full Scope</span>
+                            <ArrowRight size={12} />
                           </Link>
 
                           <a
@@ -1085,11 +1084,18 @@ export function InteractiveServicesShowcase({ detailed = false }: { detailed?: b
                     {/* Division Action Buttons */}
                     <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center gap-3">
                       <Link
-                        href={`/contact?service=${service.anchor}`}
-                        className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-gradient-to-r from-[#0056B3] to-[#0088CE] px-5 py-2.5 text-xs sm:text-sm font-bold text-white shadow-sm transition hover:from-[#004088] hover:to-[#0077D7]"
+                        href={`/services/${service.id}`}
+                        className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-gradient-to-r from-[#0056B3] via-[#0088CE] to-[#00B4FF] px-6 py-2.5 text-xs sm:text-sm font-bold text-white shadow-lg shadow-cyan-500/25 hover:scale-[1.02] transition-transform cursor-pointer"
                       >
-                        <span>Inquire About {service.name}</span>
-                        <ArrowUpRight size={15} aria-hidden="true" />
+                        <span>View Complete Division Page</span>
+                        <ArrowRight size={15} aria-hidden="true" />
+                      </Link>
+
+                      <Link
+                        href={`/contact?service=${service.anchor}`}
+                        className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2.5 text-xs sm:text-sm font-bold text-white hover:bg-white/20 transition-colors"
+                      >
+                        <span>Contact Desk</span>
                       </Link>
 
                       <a

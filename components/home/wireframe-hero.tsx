@@ -212,7 +212,7 @@ export function WireframeHero() {
               {/* 2. Floating BizLink Logo Card at the Bottom Left Corner with opposing Parallax */}
               <motion.div
                 style={{ y: yParallaxCard }}
-                className="relative z-20 w-[55%] sm:w-[50%] lg:w-[50%] rounded-2xl sm:rounded-3xl border border-white/20 bg-[#070B14]/92 backdrop-blur-xl p-4 sm:p-5 shadow-[0_25px_60px_rgba(0,0,0,0.9)] shadow-cyan-950/70 transition-transform duration-500 hover:scale-[1.03] group mb-3 ml-3 sm:mb-4 sm:ml-0"
+                className="relative top-[25px] sm:top-0 -mb-[20px] sm:mb-4 ml-3 sm:ml-0 z-20 w-[55%] sm:w-[50%] lg:w-[50%] rounded-2xl sm:rounded-3xl border border-white/20 bg-[#070B14]/92 backdrop-blur-xl p-4 sm:p-5 shadow-[0_25px_60px_rgba(0,0,0,0.9)] shadow-cyan-950/70 transition-transform duration-500 hover:scale-[1.03] group"
               >
                 {/* Center 3D BizLink Logo */}
                 <div className="relative w-full aspect-[641/460] my-2.5 sm:my-3 flex items-center justify-center">

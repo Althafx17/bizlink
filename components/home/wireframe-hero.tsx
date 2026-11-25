@@ -1,14 +1,62 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, MessageCircle, Phone } from "lucide-react";
 import { AnimatedCounter } from "@/components/home/animated-counter";
 
+const heroServiceVideos = [
+  {
+    id: "business-setup",
+    src: "/videos/services/business-setup.mp4",
+    title: "Corporate & Licensing",
+    tagline: "100% Foreign Ownership",
+  },
+  {
+    id: "facility-management",
+    src: "/videos/services/facility-management.mp4",
+    title: "Facility Management",
+    tagline: "Commercial Operations",
+  },
+  {
+    id: "automotive",
+    src: "/videos/services/automotive.mp4",
+    title: "Automotive Mobility",
+    tagline: "Fleet & Limousine",
+  },
+  {
+    id: "trading",
+    src: "/videos/services/trading.mp4",
+    title: "International Trading",
+    tagline: "Global Supply Chain",
+  },
+];
+
 export function WireframeHero() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [currentVideoIdx, setCurrentVideoIdx] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handleVideoEnded = () => {
+    setCurrentVideoIdx((prev) => (prev + 1) % heroServiceVideos.length);
+  };
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.src = heroServiceVideos[currentVideoIdx].src;
+    video.load();
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Autoplay policy handled: video is muted and playsInline
+      });
+    }
+  }, [currentVideoIdx]);
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
@@ -165,24 +213,25 @@ export function WireframeHero() {
           <div className="lg:col-span-6 xl:col-span-6 flex justify-center lg:justify-end items-center relative w-full max-w-full">
             <div className="relative w-full max-w-full sm:max-w-[540px] lg:max-w-[600px] xl:max-w-[660px] h-[440px] sm:h-[540px] lg:h-[600px] xl:h-[640px] flex items-end justify-start select-none">
 
-              {/* 1. Semicircle Arch / Mobile Rounded Showcase with Video and Parallax */}
+              {/* 1. Square Curved Edged Showcase with Continuous Video Playlist and Parallax */}
               <motion.div
                 style={{ y: yParallaxArch }}
-                className="absolute inset-0 sm:inset-y-0 sm:left-auto sm:right-0 w-full sm:w-[80%] lg:w-[76%] rounded-3xl sm:rounded-t-full overflow-hidden border border-cyan-400/40 bg-gradient-to-b from-[#3b93e8] via-[#1c64b5] to-[#09294d] shadow-[0_0_90px_rgba(45,139,230,0.35)]"
+                className="absolute inset-0 sm:inset-y-0 sm:left-auto sm:right-0 w-full sm:w-[85%] lg:w-[82%] rounded-3xl overflow-hidden border border-cyan-400/40 bg-gradient-to-b from-[#3b93e8] via-[#1c64b5] to-[#09294d] shadow-[0_0_90px_rgba(45,139,230,0.35)]"
               >
-                {/* Architectural video background with modern corporate aesthetic */}
+                {/* Continuous Sequential Service Videos */}
                 <div className="absolute inset-0 z-0 overflow-hidden">
                   <video
+                    ref={videoRef}
                     autoPlay
-                    loop
                     muted
                     playsInline
+                    onEnded={handleVideoEnded}
+                    src={heroServiceVideos[0].src}
                     poster="/images/about/luxury_boardroom_skyline.jpg"
-                    className="h-full w-full object-cover object-center scale-105"
-                    aria-label="BizLink Architectural Penthouse Arch"
+                    className="h-full w-full object-cover object-center scale-105 transition-opacity duration-700"
+                    aria-label={`BizLink Hero Background - ${heroServiceVideos[currentVideoIdx].title}`}
                   >
-                    <source src="/videos/hero-bg.mp4" type="video/mp4" />
-                    <source src="/videos/hero-bg-2.mp4" type="video/mp4" />
+                    <source src={heroServiceVideos[0].src} type="video/mp4" />
                   </video>
 
                   {/* Fallback & semantic image for accessibility & search indexing */}
@@ -195,20 +244,39 @@ export function WireframeHero() {
                   />
 
                   {/* Gradient overlays for contrast with typography and card */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-cyan-400/20 via-transparent to-[#070B14]/85 pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-cyan-950/40 via-transparent to-[#070B14]/85 pointer-events-none" />
+                  <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#070B14]/80 to-transparent pointer-events-none" />
                 </div>
 
-                {/* Subtle interior ambient glow and frame lines */}
+                {/* Subtle interior ambient glow and square curved border frame lines */}
                 <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-cyan-300/25 to-transparent pointer-events-none" />
-                <div className="absolute inset-4 sm:inset-6 rounded-2xl sm:rounded-t-full border border-white/10 pointer-events-none" />
+                <div className="absolute inset-3 sm:inset-5 rounded-2xl border border-white/15 pointer-events-none" />
 
-                {/* Top Tag inside Frame */}
-                <div className="absolute top-8 sm:top-14 inset-x-0 flex flex-col items-center text-center px-4 z-10">
+                {/* Top Service Indicator & Dynamic Title */}
+                <div className="absolute top-4 sm:top-6 inset-x-0 flex flex-col items-center text-center px-4 z-10">
+                  {/* 4-Pill Continuous Progress / Service Indicators */}
+                  <div className="flex items-center gap-1.5 mb-2.5">
+                    {heroServiceVideos.map((item, idx) => (
+                      <button
+                        key={item.id}
+                        type="button"
+                        onClick={() => setCurrentVideoIdx(idx)}
+                        className={`h-1.5 transition-all duration-300 rounded-full cursor-pointer ${
+                          idx === currentVideoIdx
+                            ? "w-8 bg-cyan-300 shadow-[0_0_10px_rgba(34,211,238,0.9)]"
+                            : "w-2.5 bg-white/30 hover:bg-white/60"
+                        }`}
+                        aria-label={`Play ${item.title}`}
+                        title={item.title}
+                      />
+                    ))}
+                  </div>
+
                   <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-cyan-200 drop-shadow-md">
-                    CORPORATE ECOSYSTEM
+                    {heroServiceVideos[currentVideoIdx].tagline}
                   </span>
-                  <span className="text-xl sm:text-2xl lg:text-3xl font-black text-white mt-1 drop-shadow-md">
-                    Doha · Qatar
+                  <span className="text-base sm:text-xl lg:text-2xl font-black text-white mt-0.5 drop-shadow-md uppercase tracking-tight">
+                    {heroServiceVideos[currentVideoIdx].title}
                   </span>
                 </div>
               </motion.div>

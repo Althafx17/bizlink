@@ -224,10 +224,10 @@ export function WireframeVisionMission() {
                     alt={sister.name}
                     fill
                     sizes="(min-width: 1024px) 33vw, 100vw"
-                    className="object-cover object-center opacity-25 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700 ease-out"
+                    className="object-cover object-center opacity-45 group-hover:opacity-65 group-hover:scale-105 transition-all duration-700 ease-out"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#070B14] via-[#0F182A]/90 to-[#0F182A]/60" />
-                  <div className="absolute inset-0 bg-cyan-950/20 mix-blend-color" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#070B14] via-[#0F182A]/85 to-[#0F182A]/45" />
+                  <div className="absolute inset-0 bg-cyan-950/15 mix-blend-color" />
                 </div>
 
                 {/* Card Content Top: White Glass Logo Container with Absolute Since Badge Overlay */}

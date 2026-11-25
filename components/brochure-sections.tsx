@@ -710,40 +710,51 @@ export function CompanyStory({ standalone = false }: { standalone?: boolean }) {
               {sisterConcerns.map((sister) => (
                 <div
                   key={sister.name}
-                  className="flex flex-col justify-between h-full min-h-[250px] rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur-md transition-all hover:border-cyan-400/40 hover:bg-white/[0.08] group"
+                  style={{
+                    backgroundImage: `linear-gradient(to top, rgba(7, 11, 20, 0.94) 0%, rgba(11, 27, 54, 0.78) 50%, rgba(7, 11, 20, 0.55) 100%), url("${sister.image}")`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                  className="flex flex-col justify-between h-full min-h-[260px] rounded-2xl border border-white/15 p-5 backdrop-blur-md transition-all hover:border-cyan-400/50 hover:shadow-lg hover:shadow-cyan-500/10 group relative overflow-hidden"
                 >
-                  <div className="flex flex-col flex-1">
-                    {/* Header with Emblem & Since Badge */}
-                    <div className="flex items-center justify-between">
-                      <span className="inline-flex size-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#0056B3] to-[#0088CE] text-white font-black text-sm shadow-md">
-                        {sister.name[0]}
-                      </span>
+                  <div className="flex flex-col flex-1 relative z-10">
+                    {/* Header with Company Logo & Since Badge */}
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="relative h-10 w-28 rounded-lg bg-white/95 p-1 backdrop-blur-md shadow-sm overflow-hidden flex items-center justify-center">
+                        <Image
+                          src={sister.logo}
+                          alt={sister.name}
+                          fill
+                          className="object-contain"
+                          sizes="120px"
+                        />
+                      </div>
                       {sister.since && (
-                        <span className="text-[10px] font-bold text-amber-400 bg-amber-400/10 px-2.5 py-0.5 rounded-full border border-amber-400/25">
+                        <span className="text-[10px] font-bold text-amber-300 bg-amber-400/15 px-2.5 py-0.5 rounded-full border border-amber-400/30 backdrop-blur-sm">
                           {sister.since}
                         </span>
                       )}
                     </div>
 
-                    <h4 className="mt-3 text-base sm:text-lg font-black text-white group-hover:text-cyan-300 transition-colors">
+                    <h4 className="mt-3.5 text-base sm:text-lg font-black text-white group-hover:text-cyan-300 transition-colors drop-shadow-md">
                       {sister.name}
                     </h4>
                     {sister.arabicName && (
-                      <p className="text-xs font-bold text-slate-300 mt-0.5" dir="rtl">
+                      <p className="text-xs font-bold text-slate-200 mt-0.5 drop-shadow-xs" dir="rtl">
                         {sister.arabicName}
                       </p>
                     )}
-                    <span className="mt-1.5 inline-block text-[11px] font-extrabold uppercase tracking-wider text-cyan-400">
+                    <span className="mt-1.5 inline-block text-[11px] font-extrabold uppercase tracking-wider text-cyan-300 drop-shadow-xs">
                       {sister.tagline}
                     </span>
-                    <p className="mt-1 text-xs text-slate-400 line-clamp-2">
+                    <p className="mt-1 text-xs text-slate-200 line-clamp-2 leading-relaxed drop-shadow-xs">
                       {sister.category}
                     </p>
                   </div>
 
-                  <div className="mt-5 pt-3 border-t border-white/10 flex items-start gap-2 text-xs text-slate-300">
+                  <div className="mt-5 pt-3 border-t border-white/15 flex items-start gap-2 text-xs text-slate-200 relative z-10">
                     <MapPin size={14} className="shrink-0 text-cyan-400 mt-0.5" aria-hidden="true" />
-                    <span className="leading-snug font-medium">{sister.location}</span>
+                    <span className="leading-snug font-medium drop-shadow-xs">{sister.location}</span>
                   </div>
                 </div>
               ))}

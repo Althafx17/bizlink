@@ -89,20 +89,35 @@ export function WireframeAbout() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="rounded-2xl border border-white/10 bg-[#0F182A] p-4 transition-all hover:border-cyan-400/40 hover:-translate-y-1 group"
+                className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0F182A] p-4 transition-all hover:border-cyan-400/50 hover:-translate-y-1 group shadow-lg"
               >
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-black uppercase tracking-wider text-cyan-400 bg-cyan-400/10 px-2 py-0.5 rounded-md">
-                    01
-                  </span>
-                  <Zap size={16} className="text-amber-400" />
+                {/* Background image with dark gradient overlay for optimal legibility */}
+                <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+                  <Image
+                    src="/images/about/engineering-facility.webp"
+                    alt=""
+                    fill
+                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 100vw"
+                    className="object-cover object-center opacity-15 mix-blend-luminosity group-hover:opacity-25 group-hover:scale-105 transition-all duration-500 ease-out"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F182A] via-[#0F182A]/85 to-[#0F182A]/60" />
+                  <div className="absolute inset-0 bg-cyan-950/20 mix-blend-color" />
                 </div>
-                <h3 className="mt-2 text-sm font-bold uppercase text-white group-hover:text-cyan-300 transition-colors">
-                  Speed & Precision
-                </h3>
-                <p className="mt-1 text-xs text-slate-400 leading-snug">
-                  Express 24-48h licensing approvals & prompt emergency maintenance response.
-                </p>
+
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-black uppercase tracking-wider text-cyan-400 bg-cyan-400/10 px-2 py-0.5 rounded-md">
+                      01
+                    </span>
+                    <Zap size={16} className="text-amber-400" />
+                  </div>
+                  <h3 className="mt-2 text-sm font-bold uppercase text-white group-hover:text-cyan-300 transition-colors">
+                    Speed & Precision
+                  </h3>
+                  <p className="mt-1 text-xs text-slate-300 leading-snug">
+                    Express 24-48h licensing approvals & prompt emergency maintenance response.
+                  </p>
+                </div>
               </motion.div>
 
               {/* Pillar 2: Standard Excellence / Quality */}
@@ -111,20 +126,35 @@ export function WireframeAbout() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="rounded-2xl border border-white/10 bg-[#0F182A] p-4 transition-all hover:border-cyan-400/40 hover:-translate-y-1 group"
+                className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0F182A] p-4 transition-all hover:border-cyan-400/50 hover:-translate-y-1 group shadow-lg"
               >
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-black uppercase tracking-wider text-cyan-400 bg-cyan-400/10 px-2 py-0.5 rounded-md">
-                    02
-                  </span>
-                  <ShieldCheck size={16} className="text-cyan-400" />
+                {/* Background image with dark gradient overlay */}
+                <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+                  <Image
+                    src="/images/about/doha-corporate.webp"
+                    alt=""
+                    fill
+                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 100vw"
+                    className="object-cover object-center opacity-15 mix-blend-luminosity group-hover:opacity-25 group-hover:scale-105 transition-all duration-500 ease-out"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F182A] via-[#0F182A]/85 to-[#0F182A]/60" />
+                  <div className="absolute inset-0 bg-cyan-950/20 mix-blend-color" />
                 </div>
-                <h3 className="mt-2 text-sm font-bold uppercase text-white group-hover:text-cyan-300 transition-colors">
-                  Ministry Standard
-                </h3>
-                <p className="mt-1 text-xs text-slate-400 leading-snug">
-                  100% compliant with MOCI regulations, Qatar Labour laws, and Baladiya standards.
-                </p>
+
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-black uppercase tracking-wider text-cyan-400 bg-cyan-400/10 px-2 py-0.5 rounded-md">
+                      02
+                    </span>
+                    <ShieldCheck size={16} className="text-cyan-400" />
+                  </div>
+                  <h3 className="mt-2 text-sm font-bold uppercase text-white group-hover:text-cyan-300 transition-colors">
+                    Ministry Standard
+                  </h3>
+                  <p className="mt-1 text-xs text-slate-300 leading-snug">
+                    100% compliant with MOCI regulations, Qatar Labour laws, and Baladiya standards.
+                  </p>
+                </div>
               </motion.div>
 
               {/* Pillar 3: Accessibility / Network */}
@@ -133,20 +163,35 @@ export function WireframeAbout() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="rounded-2xl border border-white/10 bg-[#0F182A] p-4 transition-all hover:border-cyan-400/40 hover:-translate-y-1 group"
+                className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0F182A] p-4 transition-all hover:border-cyan-400/50 hover:-translate-y-1 group shadow-lg"
               >
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-black uppercase tracking-wider text-cyan-400 bg-cyan-400/10 px-2 py-0.5 rounded-md">
-                    03
-                  </span>
-                  <Clock size={16} className="text-emerald-400" />
+                {/* Background image with dark gradient overlay */}
+                <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+                  <Image
+                    src="/images/about/trading-hub.webp"
+                    alt=""
+                    fill
+                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 100vw"
+                    className="object-cover object-center opacity-15 mix-blend-luminosity group-hover:opacity-25 group-hover:scale-105 transition-all duration-500 ease-out"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F182A] via-[#0F182A]/85 to-[#0F182A]/60" />
+                  <div className="absolute inset-0 bg-cyan-950/20 mix-blend-color" />
                 </div>
-                <h3 className="mt-2 text-sm font-bold uppercase text-white group-hover:text-cyan-300 transition-colors">
-                  Doha Wide Hubs
-                </h3>
-                <p className="mt-1 text-xs text-slate-400 leading-snug">
-                  Two full-service physical offices in Ain Khalid & Bin Mahmoud with 24/7 on-call teams.
-                </p>
+
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-black uppercase tracking-wider text-cyan-400 bg-cyan-400/10 px-2 py-0.5 rounded-md">
+                      03
+                    </span>
+                    <Clock size={16} className="text-emerald-400" />
+                  </div>
+                  <h3 className="mt-2 text-sm font-bold uppercase text-white group-hover:text-cyan-300 transition-colors">
+                    Doha Wide Hubs
+                  </h3>
+                  <p className="mt-1 text-xs text-slate-300 leading-snug">
+                    Two full-service physical offices in Ain Khalid & Bin Mahmoud with 24/7 on-call teams.
+                  </p>
+                </div>
               </motion.div>
             </div>
 

@@ -196,12 +196,9 @@ export function WireframeVisionMission() {
           {/* Section Header */}
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-5">
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[11px] font-black uppercase tracking-[0.2em] text-cyan-300">
-                <span className="size-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                <span>Pathas Group Ecosystem</span>
-              </div>
+
               <h3 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-black text-white uppercase tracking-tight">
-                Our Sister Concern Companies
+                Our Sister <br /> Concern Companies
               </h3>
             </div>
             <p className="text-xs sm:text-sm text-slate-400 max-w-md sm:text-right">

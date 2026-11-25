@@ -215,10 +215,9 @@ export function WireframeGallery() {
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 sm:gap-4">
                 <div>
                   <h2 className="mt-1.5 sm:mt-2 text-xl sm:text-3xl lg:text-4xl font-black tracking-tight text-white uppercase leading-tight">
-                    Specialized Corporate &amp; Industrial Capabilities
+                    Specialized Corporate &amp;
+                    <br /> Industrial Capabilities
                   </h2>
-                  <br />
-                  <br />
                 </div>
 
                 {/* Progress Indicators & View Mode Toggle */}

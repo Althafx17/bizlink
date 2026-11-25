@@ -11,8 +11,10 @@ import {
   CheckCircle2,
   ChevronRight,
   Clock,
+  Cog,
   ExternalLink,
   FileText,
+  FlaskConical,
   Handshake,
   HelpCircle,
   Keyboard,
@@ -26,9 +28,13 @@ import {
   Phone,
   Share2,
   ShieldCheck,
+  ShoppingBag,
+  ShoppingBasket,
   ShoppingCart,
   Sparkles,
+  Store,
   TrendingUp,
+  Truck,
   Users,
   Video,
 } from "lucide-react";
@@ -74,6 +80,19 @@ function getSubServiceIcon(id: string) {
       return <Share2 className="size-5 text-cyan-400" />;
     case "digital-retainer-packages":
       return <Layers className="size-5 text-cyan-400" />;
+    // Division 03: Trading & Supply
+    case "general-wholesale-trading":
+      return <ShoppingBasket className="size-5 text-cyan-400" />;
+    case "bulk-procurement-cargo":
+      return <Truck className="size-5 text-cyan-400" />;
+    case "department-lifestyle":
+      return <ShoppingBag className="size-5 text-cyan-400" />;
+    case "perfumes-fragrances":
+      return <FlaskConical className="size-5 text-cyan-400" />;
+    case "vehicle-spare-parts":
+      return <Cog className="size-5 text-cyan-400" />;
+    case "hypermarket-supply":
+      return <Store className="size-5 text-cyan-400" />;
     default:
       return <Sparkles className="size-5 text-cyan-400" />;
   }
@@ -285,6 +304,12 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                       <span className="block">Grow Your Brand,</span>
                       <span className="block text-cyan-300 mt-0.5">With BizLink</span>
                     </span>
+                  ) : service.id === "trading-supply" ? (
+                    <span className="block text-xs sm:text-sm font-black text-white leading-tight">
+                      <span className="block">Quality Products.</span>
+                      <span className="block text-cyan-300 mt-0.5">Reliable Supply</span>
+                      <span className="block text-white/90 text-[10px] mt-0.5 font-bold tracking-wide">Business Excellence</span>
+                    </span>
                   ) : (
                     <span className="block text-xs sm:text-sm font-black text-white leading-tight">
                       {service.highlight}
@@ -396,6 +421,18 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                 </Link>
               ))}
             </div>
+
+            {/* Our Commitment Card matching official Page 05 layout */}
+            {service.id === "trading-supply" && service.brochureCommitment && (
+              <div className="mt-7 rounded-2xl bg-[#0056B3]/60 border border-cyan-400/40 p-5 sm:p-6 backdrop-blur-xl shadow-xl">
+                <span className="inline-block text-xs font-black uppercase tracking-wider text-cyan-300 mb-1.5">
+                  Our Commitment
+                </span>
+                <p className="text-xs sm:text-sm text-slate-100 leading-relaxed font-medium">
+                  {service.brochureCommitment}
+                </p>
+              </div>
+            )}
 
             {/* Footer Citation matching brochure */}
             <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-300">

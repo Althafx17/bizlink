@@ -408,13 +408,13 @@ export const services: readonly ServiceDivision[] = [
     anchor: "trading",
     title: "Trading & Supply Solutions",
     name: "Trading & Supply",
-    tagline: "Quality Products. Reliable Supply. Business Excellence.",
-    highlight: "Our Commitment to Supply Chain Excellence",
+    tagline: "Quality Products. Reliable Supply, Business Excellence.",
+    highlight: "Quality Products. Reliable Supply, Business Excellence.",
     description: "Wholesale Distribution, Procurement & Fragrances",
     imageCard: "/images/services/trading-supply-card.webp",
     brochureMainImage: "/images/services/brochure/trading-supply-main.webp",
     iconName: "truck",
-    brochurePage: "Page 05",
+    brochurePage: "www.bizlinkqatar.com 05",
     brochureIntro:
       "BizLink provides diverse trading and supply solutions to meet the requirements of retailers, wholesalers, businesses and commercial organizations across Qatar. Our trading operations focus on product variety, dependable sourcing, efficient procurement and flexible supply solutions.",
     brochureCommitment:
@@ -422,13 +422,12 @@ export const services: readonly ServiceDivision[] = [
     whatsappMessage:
       "Hello BizLink Qatar, I would like to inquire about your Trading & Supply Solutions, wholesale procurement, or Made-in-Qatar luxury perfumes.",
     items: [
-      "General Trading, Retail & Commercial Supply",
-      "Corporate, Department Store & Lifestyle Supplies",
-      "Industrial Supplies & Safety Equipment Distribution",
-      "Building Materials & Construction Hardware",
-      "Bulk Procurement, Logistics & International Cargo Handling",
-      "Vehicle Spare Parts & Fleet Components Supply",
-      "Made-in-Qatar Luxury Perfumes (6ml – 50ml) & Blending",
+      "General, Retail & Wholesale Trading",
+      "Bulk Procurement & Cargo Services",
+      "Department Store & Lifestyle Products",
+      "Own Brand Perfumes & Fragrances",
+      "Vehicle Spare Parts",
+      "Retail, Wholesale & Hypermarket Supply",
     ],
     subServices: [
       {
@@ -448,36 +447,6 @@ export const services: readonly ServiceDivision[] = [
         badge: "High Volume",
       },
       {
-        id: "department-lifestyle",
-        title: "Department Store & Lifestyle Products",
-        tagline: "Curated Retail Goods & Consumer Merchandise",
-        description:
-          "End-to-end supply chain for hypermarkets, department stores, and lifestyle boutiques. We curate and deliver high-demand consumer goods—including home accessories, personal lifestyle products, giftware, and seasonal merchandise—packaged with full barcode compliance and shelf-ready presentation.",
-        deliverables: [
-          "Curated lifestyle catalog aligned with Qatar consumer demand",
-          "Shelf-ready packaging, bilingual labeling, and barcode application",
-          "Consignment and direct wholesale procurement arrangements",
-          "Seasonal holiday and Ramadan retail merchandise collections",
-          "Quality inspection and damaged-goods replacement guarantees",
-        ],
-        compliance: "Qatar Standards and Metrology Conformity",
-      },
-      {
-        id: "vehicle-spare-parts",
-        title: "Vehicle Spare Parts",
-        tagline: "Commercial Fleet Components & Mechanical Spares",
-        description:
-          "Specialized sourcing of certified OEM and quality aftermarket automotive replacement parts for transport companies, limousine operators, delivery fleets, and repair centers. We stock critical maintenance components—including brake pads, suspension parts, filters, batteries, and synthetic lubricants.",
-        deliverables: [
-          "OEM-certified and ISO-compliant aftermarket replacement parts",
-          "Commercial fleet maintenance supply contracts with volume discounts",
-          "Express same-day delivery for emergency vehicle breakdown parts",
-          "Battery and lubricant bulk supply for industrial transport hubs",
-          "Parts compatibility verification by certified automotive specialists",
-        ],
-        compliance: "Automotive Safety & Metrology Standards",
-      },
-      {
         id: "bulk-procurement-cargo",
         title: "Bulk Procurement & Cargo Services",
         tagline: "International Sourcing, Sea/Air Freight & Customs",
@@ -494,8 +463,23 @@ export const services: readonly ServiceDivision[] = [
         badge: "Global Network",
       },
       {
+        id: "department-lifestyle",
+        title: "Department Store & Lifestyle Products",
+        tagline: "Curated Retail Goods & Consumer Merchandise",
+        description:
+          "End-to-end supply chain for hypermarkets, department stores, and lifestyle boutiques. We curate and deliver high-demand consumer goods—including home accessories, personal lifestyle products, giftware, and seasonal merchandise—packaged with full barcode compliance and shelf-ready presentation.",
+        deliverables: [
+          "Curated lifestyle catalog aligned with Qatar consumer demand",
+          "Shelf-ready packaging, bilingual labeling, and barcode application",
+          "Consignment and direct wholesale procurement arrangements",
+          "Seasonal holiday and Ramadan retail merchandise collections",
+          "Quality inspection and damaged-goods replacement guarantees",
+        ],
+        compliance: "Qatar Standards and Metrology Conformity",
+      },
+      {
         id: "perfumes-fragrances",
-        title: "Own-Brand Perfumes & Fragrances",
+        title: "Own Brand Perfumes & Fragrances",
         tagline: "Made in Qatar Luxury Scents (6ml – 50ml)",
         description:
           "Artisanal perfume creation, custom fragrance blending, and private-label bottling manufactured locally in Qatar. From concentrated Oriental attar oils (6ml / 12ml) to luxury French-style Eau de Parfum sprays (50ml / 100ml). Featuring premium olfactory notes of aged Cambodian oud, amber, Taif rose, musk, and bergamot.",
@@ -508,6 +492,21 @@ export const services: readonly ServiceDivision[] = [
         ],
         compliance: "IFRA (International Fragrance Association) & MOCI Approved",
         badge: "Crafted in Qatar",
+      },
+      {
+        id: "vehicle-spare-parts",
+        title: "Vehicle Spare Parts",
+        tagline: "Commercial Fleet Components & Mechanical Spares",
+        description:
+          "Specialized sourcing of certified OEM and quality aftermarket automotive replacement parts for transport companies, limousine operators, delivery fleets, and repair centers. We stock critical maintenance components—including brake pads, suspension parts, filters, batteries, and synthetic lubricants.",
+        deliverables: [
+          "OEM-certified and ISO-compliant aftermarket replacement parts",
+          "Commercial fleet maintenance supply contracts with volume discounts",
+          "Express same-day delivery for emergency vehicle breakdown parts",
+          "Battery and lubricant bulk supply for industrial transport hubs",
+          "Parts compatibility verification by certified automotive specialists",
+        ],
+        compliance: "Automotive Safety & Metrology Standards",
       },
       {
         id: "hypermarket-supply",

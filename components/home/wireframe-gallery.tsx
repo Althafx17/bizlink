@@ -208,7 +208,7 @@ export function WireframeGallery() {
           className="relative w-full"
         >
           {/* Pinned Viewport while scrolling through this section */}
-          <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden py-2 sm:py-3">
+          <div className="sticky top-0 h-screen flex flex-col justify-start overflow-hidden pt-6 pb-4 sm:pt-8 sm:pb-5">
             
             {/* Section Header with Scroll Sync Progress Bar & Active Division Pill */}
             <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8 mb-5 sm:mb-6 shrink-0">
@@ -261,12 +261,11 @@ export function WireframeGallery() {
                 className="flex gap-4 sm:gap-6 pl-4 sm:pl-8 lg:pl-16 pr-8 sm:pr-16 w-max select-none"
               >
                 {homeServices.map((service, idx) => {
-                  const ServiceIcon = service.icon;
                   const isActive = idx === activeDivisionIndex;
                   return (
                     <article
                       key={service.id}
-                      className={`group relative overflow-hidden rounded-3xl border bg-gradient-to-br from-white/[0.12] via-[#0b2138]/70 to-[#07131b]/90 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.6),inset_0_1px_2px_rgba(255,255,255,0.3)] transition-all duration-300 flex flex-col justify-between w-[300px] sm:w-[380px] lg:w-[420px] min-h-[460px] sm:min-h-[490px] lg:min-h-[515px] shrink-0 p-5 sm:p-6 ${
+                      className={`group relative overflow-hidden rounded-3xl border bg-gradient-to-br from-white/[0.12] via-[#0b2138]/70 to-[#07131b]/90 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.6),inset_0_1px_2px_rgba(255,255,255,0.3)] transition-all duration-300 flex flex-col justify-between w-[300px] sm:w-[380px] lg:w-[420px] min-h-[460px] sm:min-h-[490px] lg:min-h-[515px] shrink-0 p-5 pb-6 sm:p-6 sm:pb-7 ${
                         isActive
                           ? "border-cyan-400/70 shadow-[0_25px_60px_rgba(0,180,255,0.25)] ring-1 ring-cyan-400/40"
                           : "border-white/20 hover:border-cyan-400/50"
@@ -282,7 +281,6 @@ export function WireframeGallery() {
                             sizes="(min-width: 1024px) 420px, 320px"
                             className="object-cover object-[center_30%] transition-transform duration-700 ease-out group-hover:scale-105"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-[#07131b]/80 via-transparent to-transparent pointer-events-none" />
                         </Link>
 
                         {/* Title & Description */}
@@ -295,7 +293,7 @@ export function WireframeGallery() {
                               {service.title}
                             </h3>
                           </Link>
-                          <p className="mt-2 text-xs text-slate-300 line-clamp-2 leading-relaxed">
+                          <p className="mt-2 text-xs text-slate-300 leading-relaxed">
                             {service.description}
                           </p>
 
@@ -304,7 +302,7 @@ export function WireframeGallery() {
                             {service.points.map((pt, pIdx) => (
                               <li key={pIdx} className="flex items-start gap-1.5">
                                 <CheckCircle2 className="h-3.5 w-3.5 text-cyan-400 shrink-0 mt-0.5" />
-                                <span className="line-clamp-1">{pt}</span>
+                                <span>{pt}</span>
                               </li>
                             ))}
                           </ul>
@@ -328,7 +326,7 @@ export function WireframeGallery() {
             </div>
 
             {/* Interactive Division Navigation Tabs at Bottom of Sticky Frame */}
-            <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8 mt-4 sm:mt-5 shrink-0 flex items-center justify-center gap-1.5 sm:gap-2.5">
+            <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8 mt-5 sm:mt-6 shrink-0 flex items-center justify-center gap-1.5 sm:gap-2.5">
               {homeServices.map((service, index) => {
                 const isActive = index === activeDivisionIndex;
                 return (
@@ -378,7 +376,6 @@ export function WireframeGallery() {
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {homeServices.map((service, idx) => {
-              const ServiceIcon = service.icon;
               const isLead = idx === 0;
               return (
                 <div
@@ -398,7 +395,6 @@ export function WireframeGallery() {
                         className="object-cover object-[center_30%] transition-transform duration-700 group-hover/img:scale-105"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0c1f2b] via-[#0c1f2b]/30 to-transparent" />
                     </Link>
 
                     <div className="mt-5">

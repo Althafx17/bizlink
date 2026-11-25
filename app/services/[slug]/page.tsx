@@ -37,10 +37,13 @@ import {
   Truck,
   Users,
   Video,
+  Zap,
+  LayoutGrid,
 } from "lucide-react";
 import { services, type ServiceDivision } from "@/content/services";
 import { company } from "@/content/company";
 import { MobileBottomActionDock } from "@/components/brochure-sections";
+import { FacilityCardsAutoScroll } from "@/components/services/facility-cards-auto-scroll";
 
 interface ServicePageProps {
   params: Promise<{
@@ -93,6 +96,19 @@ function getSubServiceIcon(id: string) {
       return <Cog className="size-5 text-cyan-400" />;
     case "hypermarket-supply":
       return <Store className="size-5 text-cyan-400" />;
+    // Division 04: Facility Management & Maintenance
+    case "facility-hospitality-management":
+      return <Building2 className="size-5 text-cyan-400" />;
+    case "cleaning-pest-control":
+      return <Sparkles className="size-5 text-cyan-400" />;
+    case "gypsum-glass-partitions":
+      return <Layers className="size-5 text-cyan-400" />;
+    case "electrical-plumbing":
+      return <Zap className="size-5 text-cyan-400" />;
+    case "floor-tiling-polishing":
+      return <LayoutGrid className="size-5 text-cyan-400" />;
+    case "property-maintenance-amc":
+      return <Calendar className="size-5 text-cyan-400" />;
     default:
       return <Sparkles className="size-5 text-cyan-400" />;
   }
@@ -310,6 +326,12 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                       <span className="block text-cyan-300 mt-0.5">Reliable Supply</span>
                       <span className="block text-white/90 text-[10px] mt-0.5 font-bold tracking-wide">Business Excellence</span>
                     </span>
+                  ) : service.id === "facility-maintenance" ? (
+                    <span className="block text-xs sm:text-sm font-black text-white leading-tight">
+                      <span className="block">Maintaining Spaces.</span>
+                      <span className="block text-cyan-300 mt-0.5">Enhancing Environments.</span>
+                      <span className="block text-white/90 text-[10px] mt-0.5 font-bold tracking-wide">Complete Property Care</span>
+                    </span>
                   ) : (
                     <span className="block text-xs sm:text-sm font-black text-white leading-tight">
                       {service.highlight}
@@ -338,6 +360,15 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
           </div>
         </div>
       </section>
+
+      {/* 2.5 SIGNATURE FACILITY SERVICE CARDS SHOWCASE (Auto-scrolled with website scroll matching official brochure Page 06) */}
+      {service.id === "facility-maintenance" && (
+        <section className="py-2 sm:py-4">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <FacilityCardsAutoScroll />
+          </div>
+        </section>
+      )}
 
       {/* 3. KEY METRICS & TRUST PILLARS BAR (Luminous Glassmorphic Bar) */}
       <section className="py-6 border-y border-white/15 bg-gradient-to-r from-white/[0.06] via-white/[0.02] to-white/[0.06] backdrop-blur-2xl shadow-inner">
@@ -431,6 +462,23 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                 <p className="text-xs sm:text-sm text-slate-100 leading-relaxed font-medium">
                   {service.brochureCommitment}
                 </p>
+              </div>
+            )}
+
+            {/* Complete Property Care Box (Matching official Page 06 layout) */}
+            {service.id === "facility-maintenance" && service.brochureCommitment && (
+              <div className="mt-7 rounded-2xl bg-[#0056B3]/60 border border-cyan-400/40 p-5 sm:p-6 backdrop-blur-xl shadow-xl flex items-start gap-4">
+                <div className="size-12 rounded-xl bg-cyan-400/20 border border-cyan-300/40 flex items-center justify-center shrink-0 text-cyan-300">
+                  <Building2 className="size-6" />
+                </div>
+                <div>
+                  <span className="inline-block text-sm font-black uppercase tracking-wider text-cyan-300 mb-1">
+                    Complete Property Care
+                  </span>
+                  <p className="text-xs sm:text-sm text-slate-100 leading-relaxed font-medium">
+                    {service.brochureCommitment}
+                  </p>
+                </div>
               </div>
             )}
 

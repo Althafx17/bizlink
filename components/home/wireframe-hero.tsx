@@ -235,9 +235,9 @@ export function WireframeHero() {
                 {/* Bottom Brand Title & Credentials */}
                 <div className="pt-2.5 border-t border-white/10 sm:mb-10">
                   <div className="flex items-baseline justify-between">
-                    <h3 className="text-xs sm:text-sm font-black text-white uppercase tracking-wider">
+                    <p className="text-xs sm:text-sm font-black text-white uppercase tracking-wider">
                       BIZLINK
-                    </h3>
+                    </p>
                     <span className="text-[9px] font-bold text-cyan-300">
                       Pathas Group
                     </span>

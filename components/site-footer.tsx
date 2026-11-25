@@ -25,7 +25,7 @@ export function SiteFooter() {
           <div className="lg:col-span-5">
             <Link
               href="/"
-              aria-label="BizLink Qatar Home"
+              aria-label="BizLink Qatar Home - Trading & Contracting Services WLL"
               className="inline-flex items-center gap-3 group"
             >
               <span className="flex size-12 items-center justify-center rounded-2xl bg-white p-2 shadow-md">

@@ -33,4 +33,16 @@ export const localBusiness = {
   hasMap: "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(branches[1].mapsQuery),
 };
 
-export const publicPaths = ["/", "/about", "/services", "/contact", "/privacy"];
+export const publicPaths = [
+  "/",
+  "/about",
+  "/company-profile",
+  "/services",
+  "/services/business-corporate",
+  "/services/digital-creative",
+  "/services/trading-supply",
+  "/services/facility-maintenance",
+  "/services/automotive",
+  "/contact",
+  "/privacy",
+];

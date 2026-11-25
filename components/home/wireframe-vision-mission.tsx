@@ -233,22 +233,19 @@ export function WireframeVisionMission() {
                   <div className="absolute inset-0 bg-cyan-950/20 mix-blend-color" />
                 </div>
 
-                {/* Card Content Top: Sector Badge & Since Badge */}
+                {/* Card Content Top: Since Badge (Redundant category span removed) */}
                 <div className="relative z-10">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-cyan-300 bg-cyan-400/15 border border-cyan-400/25 px-2.5 py-1 rounded-full">
-                      {sister.category}
-                    </span>
-                    {sister.since && (
+                  {sister.since && (
+                    <div className="flex items-center justify-end">
                       <span className="text-[10px] font-black uppercase tracking-wider text-amber-300 bg-amber-400/10 border border-amber-400/20 px-2 py-0.5 rounded-md">
                         {sister.since}
                       </span>
-                    )}
-                  </div>
+                    </div>
+                  )}
 
-                  {/* High-Contrast White Glass Logo Container */}
-                  <div className="my-5 relative w-full h-24 rounded-2xl bg-white/95 backdrop-blur-md border border-white/50 p-3 shadow-md flex items-center justify-center overflow-hidden group-hover:shadow-cyan-500/20 transition-shadow">
-                    <div className="relative w-full h-full max-h-16">
+                  {/* High-Contrast White Glass Logo Container with 144px Height */}
+                  <div className="my-5 relative w-full h-36 rounded-2xl bg-white/95 backdrop-blur-md border border-white/50 p-3 shadow-md flex items-center justify-center overflow-hidden group-hover:shadow-cyan-500/20 transition-shadow">
+                    <div className="relative w-full h-full max-h-24">
                       <Image
                         src={sister.logo}
                         alt={sister.name}

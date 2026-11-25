@@ -233,18 +233,15 @@ export function WireframeVisionMission() {
                   <div className="absolute inset-0 bg-cyan-950/20 mix-blend-color" />
                 </div>
 
-                {/* Card Content Top: Since Badge (Redundant category span removed) */}
+                {/* Card Content Top: White Glass Logo Container with Absolute Since Badge Overlay */}
                 <div className="relative z-10">
-                  {sister.since && (
-                    <div className="flex items-center justify-end">
-                      <span className="text-[10px] font-black uppercase tracking-wider text-amber-300 bg-amber-400/10 border border-amber-400/20 px-2 py-0.5 rounded-md">
+                  {/* High-Contrast White Glass Logo Container with 144px Height */}
+                  <div className="mb-5 relative w-full h-36 rounded-2xl bg-white/95 backdrop-blur-md border border-white/50 p-3 shadow-md flex items-center justify-center overflow-hidden group-hover:shadow-cyan-500/20 transition-shadow">
+                    {sister.since && (
+                      <span className="absolute top-2.5 right-2.5 z-20 inline-flex items-center text-[10px] font-black uppercase tracking-wider text-amber-900 bg-amber-100/90 border border-amber-300/80 px-2.5 py-0.5 rounded-md shadow-xs backdrop-blur-sm">
                         {sister.since}
                       </span>
-                    </div>
-                  )}
-
-                  {/* High-Contrast White Glass Logo Container with 144px Height */}
-                  <div className="my-5 relative w-full h-36 rounded-2xl bg-white/95 backdrop-blur-md border border-white/50 p-3 shadow-md flex items-center justify-center overflow-hidden group-hover:shadow-cyan-500/20 transition-shadow">
+                    )}
                     <div className="relative w-full h-full max-h-24">
                       <Image
                         src={sister.logo}

@@ -26,7 +26,7 @@ export function WireframeAbout() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 flex justify-center"
           >
-            <div className="relative w-full max-w-[440px] aspect-[4/3] sm:aspect-[4/3] lg:aspect-[4/5] rounded-3xl overflow-hidden border border-white/15 bg-[#0F1E38] shadow-2xl">
+            <div className="relative w-full max-w-full sm:max-w-[480px] lg:max-w-none aspect-[4/3] sm:aspect-[4/3] lg:aspect-[4/5] rounded-3xl overflow-hidden border border-white/15 bg-[#0F1E38] shadow-2xl">
               <motion.div
                 animate={{ scale: [1, 1.07, 1] }}
                 transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}

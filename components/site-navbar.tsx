@@ -62,11 +62,11 @@ export function SiteNavbar() {
         }`}
     >
       <header
-        className={`site-header-glass pointer-events-auto relative flex items-center transition-none md:transition-all md:duration-500 md:ease-[cubic-bezier(0.16,1,0.3,1)] w-full max-w-full box-border rounded-none min-h-[60px] py-2 px-4 border-b border-white/10 bg-[#070B14]/95 backdrop-blur-xl shadow-md ${isScrolled
-            ? "md:w-[calc(100%-1.5rem)] md:sm:w-[calc(100%-3rem)] md:max-w-6xl md:rounded-full md:bg-[#070B14]/85 md:border md:border-white/20 md:shadow-[0_8px_32px_rgba(0,0,0,0.6)] md:backdrop-blur-xl md:min-h-[66px] md:py-2 md:px-6"
+        className={`site-header-glass pointer-events-auto relative flex items-center transition-none md:transition-all md:duration-500 md:ease-[cubic-bezier(0.16,1,0.3,1)] w-full max-w-full box-border rounded-none min-h-[60px] py-2 px-4 border-b border-white/10 bg-[#070B14]/95 backdrop-blur-xl shadow-md min-w-0 overflow-hidden md:overflow-visible ${isScrolled
+            ? "md:w-[calc(100%-1.5rem)] lg:w-[calc(100%-3rem)] md:max-w-6xl md:rounded-full md:bg-[#070B14]/85 md:border md:border-white/20 md:shadow-[0_8px_32px_rgba(0,0,0,0.6)] md:backdrop-blur-xl md:min-h-[66px] md:py-2 md:px-6"
             : mobileMenuOpen
-              ? "md:w-[calc(100%-1rem)] md:sm:w-[calc(100%-3rem)] md:max-w-[98rem] md:mt-4 md:rounded-2xl md:bg-[#070B14]/75 md:border md:border-white/20 md:shadow-[0_8px_32px_rgba(0,0,0,0.4)] md:min-h-[78px] md:py-3.5 md:px-8 lg:md:px-12"
-              : "md:w-[calc(100%-1rem)] md:sm:w-[calc(100%-3rem)] md:max-w-[98rem] md:mt-4 md:rounded-2xl md:bg-[#070B14]/50 md:border md:border-white/15 md:shadow-[0_8px_32px_rgba(0,0,0,0.3)] md:min-h-[78px] md:py-4 md:px-8 lg:md:px-12"
+              ? "md:w-[calc(100%-1rem)] lg:w-[calc(100%-3rem)] md:max-w-[98rem] md:mt-4 md:rounded-2xl md:bg-[#070B14]/75 md:border md:border-white/20 md:shadow-[0_8px_32px_rgba(0,0,0,0.4)] md:min-h-[78px] md:py-3.5 md:px-8 lg:px-12"
+              : "md:w-[calc(100%-1rem)] lg:w-[calc(100%-3rem)] md:max-w-[98rem] md:mt-4 md:rounded-2xl md:bg-[#070B14]/50 md:border md:border-white/15 md:shadow-[0_8px_32px_rgba(0,0,0,0.3)] md:min-h-[78px] md:py-4 md:px-8 lg:px-12"
           }`}
       >
         <div className="mx-auto flex items-center justify-between w-full max-w-7xl min-w-0 gap-2">

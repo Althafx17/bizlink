@@ -102,12 +102,12 @@ export function ServicesHeroPresentation() {
     <section
       id="services-presentation"
       aria-label="Our Service Solutions & Divisions"
-      className="relative w-full max-w-full bg-[#000E24] pt-24 sm:pt-28 pb-16 sm:pb-24 overflow-hidden border-b border-white/10"
+      className="relative w-full max-w-full bg-[#000E24] pt-24 sm:pt-28 pb-16 sm:pb-24 overflow-clip border-b border-white/10"
     >
       {/* Ambient website blue & sapphire background glow */}
       <div className="pointer-events-none absolute inset-0 z-0 opacity-40 overflow-hidden">
-        <div className="absolute -top-32 -left-32 size-[320px] sm:size-[500px] rounded-full bg-[#0056B3]/25 blur-[100px] sm:blur-[140px]" />
-        <div className="absolute top-1/2 -right-32 size-[320px] sm:size-[550px] rounded-full bg-[#00B4FF]/20 blur-[100px] sm:blur-[150px]" />
+        <div className="absolute -top-32 -left-32 size-[260px] sm:size-[500px] rounded-full bg-[#0056B3]/25 blur-[90px] sm:blur-[140px]" />
+        <div className="absolute top-1/2 right-0 translate-x-1/3 size-[260px] sm:size-[550px] rounded-full bg-[#00B4FF]/20 blur-[90px] sm:blur-[150px]" />
         <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-[#000E24] to-transparent" />
       </div>
 
@@ -117,8 +117,8 @@ export function ServicesHeroPresentation() {
           
           {/* Subtle Ambient Radial Lighting */}
           <div className="pointer-events-none absolute inset-0 overflow-hidden">
-            <div className="absolute -top-40 -left-40 size-[320px] sm:size-[500px] rounded-full bg-cyan-400/15 blur-[100px] sm:blur-[140px]" />
-            <div className="absolute -bottom-40 -right-40 size-[320px] sm:size-[500px] rounded-full bg-sky-500/15 blur-[100px] sm:blur-[150px]" />
+            <div className="absolute -top-40 -left-40 size-[260px] sm:size-[500px] rounded-full bg-cyan-400/15 blur-[90px] sm:blur-[140px]" />
+            <div className="absolute -bottom-40 right-0 translate-x-1/3 size-[260px] sm:size-[500px] rounded-full bg-sky-500/15 blur-[90px] sm:blur-[150px]" />
           </div>
 
           {/* Top Header Row matching the typography & fonts of other website pages */}
@@ -258,19 +258,19 @@ export function ServicesHeroPresentation() {
             </div>
 
             {/* Mobile / Tablet Horizontal Scrollable Showcase */}
-            <div className="md:hidden flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 no-scrollbar w-full max-w-full">
+            <div className="md:hidden flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 no-scrollbar w-full max-w-full box-border">
               {serviceDivisions.map((division) => (
                 <div
                   key={division.id}
-                  className="snap-center shrink-0 relative w-[260px] h-[340px] rounded-2xl overflow-hidden border border-cyan-400/40 p-4 flex flex-col justify-between shadow-xl bg-[#001438]"
+                  className="snap-center shrink-0 relative w-[calc(100vw-5rem)] max-w-[280px] h-[340px] rounded-2xl overflow-hidden border border-cyan-400/40 p-4 flex flex-col justify-between shadow-xl bg-[#001438] box-border"
                 >
-                  <div className="absolute inset-0 z-0">
+                  <div className="absolute inset-0 z-0 overflow-hidden">
                     <Image
                       src={division.image}
                       alt={division.name}
                       fill
-                      sizes="260px"
-                      className="object-cover object-[center_30%]"
+                      sizes="280px"
+                      className="object-cover object-center"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#000E24] via-[#000E24]/65 to-transparent" />
                   </div>

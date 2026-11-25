@@ -115,7 +115,7 @@ export function WireframePricing() {
 
           {/* Order 1 on Mobile, Col 5 on Desktop: Large Portrait Showcase Image Card */}
           <div className="order-1 lg:order-2 lg:col-span-5 flex justify-center">
-            <div className="relative w-full max-w-[440px] aspect-[4/5] rounded-3xl overflow-hidden border border-white/15 bg-[#0F1E38] shadow-2xl">
+            <div className="relative w-full max-w-full sm:max-w-[460px] aspect-[4/5] rounded-3xl overflow-hidden border border-white/15 bg-[#0F1E38] shadow-2xl">
               <Image
                 src="/images/about/engineering-facility.webp"
                 alt="BizLink Operational Engineering Doha"

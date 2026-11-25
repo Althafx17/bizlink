@@ -158,8 +158,8 @@ export function WireframeHero() {
           </motion.div>
 
           {/* Right Column: Semicircle Arch Background with Parallax and Ken Burns Breathing */}
-          <div className="lg:col-span-6 xl:col-span-6 flex justify-center lg:justify-end items-center relative">
-            <div className="relative w-full max-w-[440px] sm:max-w-[540px] lg:max-w-[600px] xl:max-w-[660px] h-[480px] sm:h-[540px] lg:h-[600px] xl:h-[640px] flex items-end justify-start select-none">
+          <div className="lg:col-span-6 xl:col-span-6 flex justify-center lg:justify-end items-center relative w-full max-w-full">
+            <div className="relative w-full max-w-full sm:max-w-[540px] lg:max-w-[600px] xl:max-w-[660px] h-[440px] sm:h-[540px] lg:h-[600px] xl:h-[640px] flex items-end justify-start select-none">
 
               {/* 1. Semicircle Arch / Mobile Rounded Showcase with Video and Parallax */}
               <motion.div

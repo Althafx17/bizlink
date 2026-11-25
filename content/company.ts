@@ -11,9 +11,9 @@ export const company = {
   subTagline: "One Roof. Multiple Solutions. One Trusted Partner.",
   intro:
     "Biz Link Trading and Contracting Services WLL provides comprehensive enterprise and personal solutions across Business & Corporate, Digital & Creative, Trading & Supply, Facility Management, and Automotive Care in Qatar.",
-  aboutSubhead: "Your Trusted Partner for Integrated Business Solutions in Qatar",
+  aboutSubhead: "Your Trusted Partner for Integrated Business Solutions in Qatar, UAE, and Global Markets",
   about:
-    "BizLink Trading and Contracting Services W.L.L. is a diversified service provider in Qatar, offering business consultancy, trading, facility management, automotive and digital solutions. Part of Pathas Group of Companies, with operations across India, Qatar, UAE and China, we bring diverse expertise and reliable services under one roof.",
+    "BizLink Trading and Contracting Services W.L.L. is a diversified service provider in Qatar uae, offering business consultancy, trading, facility management, automotive and digital solutions. Part of Pathas Group of Companies, with operations across India, Qatar, UAE and China, we bring diverse expertise and reliable services under one roof.",
   aboutParagraph2:
     "Since 2010, we have been committed to simplifying business operations and delivering quality products and professional solutions to individuals and organizations.",
   email: "info@bizlinkqatar.com",

@@ -257,9 +257,8 @@ export function WireframeGallery() {
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0c1f2b] via-[#0c1f2b]/30 to-transparent" />
-                    <div className="absolute top-3 left-3 flex items-center gap-1.5 rounded-full bg-[#07131b]/90 px-3 py-1 text-xs font-semibold text-cyan-300 backdrop-blur-sm border border-cyan-400/30">
-                      <prevItem.icon className="h-3.5 w-3.5 text-cyan-400" />
-                      <span>{prevItem.category}</span>
+                    <div className="absolute top-3 left-3 flex items-center">
+                      <prevItem.icon className="h-4 w-4 text-cyan-300 drop-shadow-md" />
                     </div>
                   </div>
 
@@ -320,17 +319,15 @@ export function WireframeGallery() {
                       />
                     </motion.div>
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0e2738] via-transparent to-black/20 pointer-events-none" />
-                    <div className="absolute top-3 left-3 flex items-center gap-2 rounded-full border border-cyan-400/50 bg-[#07131b]/95 px-3.5 py-1 text-xs font-bold text-cyan-300 backdrop-blur-md shadow-md">
-                      <currentItem.icon className="h-4 w-4 text-cyan-400" />
-                      <span>{currentItem.category} • {currentItem.badge}</span>
+                    {/* Top-left icon with cleared container styling & redundant span badges removed */}
+                    <div className="absolute top-3 left-3 flex items-center">
+                      <currentItem.icon className="h-5 w-5 text-cyan-300 drop-shadow-[0_2px_8px_rgba(0,180,255,0.8)]" />
                     </div>
                   </div>
 
-                  <div className="mt-6">
-                    <div className="text-xs font-bold tracking-wider uppercase text-cyan-400">
-                      Active Spotlight
-                    </div>
-                    <h3 className="mt-1 text-2xl font-bold tracking-tight text-white sm:text-3xl">
+                  <div className="mt-4">
+                    {/* Primary Heading with Enhanced Typography & Gradient Text */}
+                    <h3 className="mt-[2.5rem] text-3xl sm:text-4xl lg:text-[3.5rem] lg:leading-[1.12] font-black tracking-[0.02em] bg-gradient-to-r from-white via-white to-[#cffafe] bg-clip-text text-transparent drop-shadow-md">
                       {currentItem.title}
                     </h3>
                     <p className="mt-3 text-sm leading-relaxed text-slate-200">
@@ -380,9 +377,8 @@ export function WireframeGallery() {
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0c1f2b] via-[#0c1f2b]/30 to-transparent" />
-                    <div className="absolute top-3 right-3 flex items-center gap-1.5 rounded-full bg-[#07131b]/90 px-3 py-1 text-xs font-semibold text-cyan-300 backdrop-blur-sm border border-cyan-400/30">
-                      <nextItem.icon className="h-3.5 w-3.5 text-cyan-400" />
-                      <span>{nextItem.category}</span>
+                    <div className="absolute top-3 right-3 flex items-center">
+                      <nextItem.icon className="h-4 w-4 text-cyan-300 drop-shadow-md" />
                     </div>
                   </div>
 
@@ -468,9 +464,8 @@ export function WireframeGallery() {
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0c1f2b] via-[#0c1f2b]/30 to-transparent" />
-                      <div className="absolute top-3 left-3 flex items-center gap-1.5 rounded-full bg-[#07131b]/90 px-3 py-1 text-xs font-semibold text-cyan-300 backdrop-blur-sm border border-cyan-400/30">
-                        <ServiceIcon className="h-3.5 w-3.5 text-cyan-400" />
-                        <span>{service.category}</span>
+                      <div className="absolute top-3 left-3 flex items-center">
+                        <ServiceIcon className="h-4 w-4 text-cyan-300 drop-shadow-md" />
                       </div>
                     </div>
 

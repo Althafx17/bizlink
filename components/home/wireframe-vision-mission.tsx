@@ -258,11 +258,6 @@ export function WireframeVisionMission() {
 
                   {/* Company Titles */}
                   <div>
-                    {sister.arabicName && (
-                      <p className="text-right text-xs font-bold text-amber-400/90 font-arabic mb-1">
-                        {sister.arabicName}
-                      </p>
-                    )}
                     <h4 className="text-base sm:text-lg font-black uppercase text-white group-hover:text-cyan-300 transition-colors">
                       {sister.name}
                     </h4>

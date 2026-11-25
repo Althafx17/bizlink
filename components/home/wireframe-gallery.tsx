@@ -224,9 +224,9 @@ export function WireframeGallery() {
                 {/* Progress Indicators & View Mode Toggle */}
                 <div className="flex items-center gap-3 sm:gap-4 self-start md:self-end">
                   {/* Active Division Chip */}
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/30 bg-cyan-950/60 px-3 py-1 text-[11px] font-bold text-cyan-300 backdrop-blur-md">
+                  {/* <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/30 bg-cyan-950/60 px-3 py-1 text-[11px] font-bold text-cyan-300 backdrop-blur-md">
                     <span>Division {homeServices[activeDivisionIndex].id} of 05</span>
-                  </span>
+                  </span> */}
 
                   {/* Synchronized Scroll Progress Bar */}
                   <div className="flex items-center gap-2">

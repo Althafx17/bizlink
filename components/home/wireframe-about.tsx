@@ -89,7 +89,7 @@ export function WireframeAbout() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0F182A] p-4 transition-all hover:border-cyan-400/50 hover:-translate-y-1 group shadow-lg"
+                className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0F182A] p-4 transition-colors hover:border-cyan-400/50 group shadow-lg"
               >
                 {/* Background image with dark gradient overlay for optimal legibility */}
                 <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -98,7 +98,7 @@ export function WireframeAbout() {
                     alt=""
                     fill
                     sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 100vw"
-                    className="object-cover object-center opacity-15 mix-blend-luminosity group-hover:opacity-25 group-hover:scale-105 transition-all duration-500 ease-out"
+                    className="object-cover object-center opacity-15 mix-blend-luminosity group-hover:opacity-25 transition-opacity duration-300 ease-out"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0F182A] via-[#0F182A]/85 to-[#0F182A]/60" />
                   <div className="absolute inset-0 bg-cyan-950/20 mix-blend-color" />
@@ -126,7 +126,7 @@ export function WireframeAbout() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0F182A] p-4 transition-all hover:border-cyan-400/50 hover:-translate-y-1 group shadow-lg"
+                className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0F182A] p-4 transition-colors hover:border-cyan-400/50 group shadow-lg"
               >
                 {/* Background image with dark gradient overlay */}
                 <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -135,7 +135,7 @@ export function WireframeAbout() {
                     alt=""
                     fill
                     sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 100vw"
-                    className="object-cover object-center opacity-15 mix-blend-luminosity group-hover:opacity-25 group-hover:scale-105 transition-all duration-500 ease-out"
+                    className="object-cover object-center opacity-15 mix-blend-luminosity group-hover:opacity-25 transition-opacity duration-300 ease-out"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0F182A] via-[#0F182A]/85 to-[#0F182A]/60" />
                   <div className="absolute inset-0 bg-cyan-950/20 mix-blend-color" />
@@ -163,7 +163,7 @@ export function WireframeAbout() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0F182A] p-4 transition-all hover:border-cyan-400/50 hover:-translate-y-1 group shadow-lg"
+                className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0F182A] p-4 transition-colors hover:border-cyan-400/50 group shadow-lg"
               >
                 {/* Background image with dark gradient overlay */}
                 <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -172,7 +172,7 @@ export function WireframeAbout() {
                     alt=""
                     fill
                     sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 100vw"
-                    className="object-cover object-center opacity-15 mix-blend-luminosity group-hover:opacity-25 group-hover:scale-105 transition-all duration-500 ease-out"
+                    className="object-cover object-center opacity-15 mix-blend-luminosity group-hover:opacity-25 transition-opacity duration-300 ease-out"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0F182A] via-[#0F182A]/85 to-[#0F182A]/60" />
                   <div className="absolute inset-0 bg-cyan-950/20 mix-blend-color" />

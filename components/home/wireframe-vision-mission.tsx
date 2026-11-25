@@ -42,16 +42,12 @@ export function WireframeVisionMission() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="relative overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-br from-[#0F1E38] via-[#0C172B] to-[#080F1E] p-6 sm:p-8 shadow-2xl flex flex-col justify-between group hover:border-cyan-400/40 transition-all hover:-translate-y-1"
+            className="relative overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-br from-[#0F1E38] via-[#0C172B] to-[#080F1E] p-6 sm:p-8 shadow-2xl flex flex-col justify-between group hover:border-cyan-400/40 transition-colors"
           >
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
-              {/* 3D Character with Vision */}
+              {/* 3D Character with Vision (Stabilized, No Looping/Hover Movement) */}
               <div className="shrink-0 flex items-center justify-center">
-                <motion.div
-                  animate={{ y: [-4, 4, -4], rotate: [-1, 1, -1] }}
-                  transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-                  className="relative size-28 sm:size-32 rounded-2xl bg-white border border-cyan-400/30 p-2 flex items-center justify-center shadow-lg overflow-hidden group-hover:scale-105 transition-transform"
-                >
+                <div className="relative size-28 sm:size-32 rounded-2xl bg-white border border-cyan-400/30 p-2 flex items-center justify-center shadow-lg overflow-hidden">
                   <Image
                     src="/images/vision and mission.jpg"
                     alt="Our Vision"
@@ -59,7 +55,7 @@ export function WireframeVisionMission() {
                     height={130}
                     className="size-full object-contain drop-shadow-md"
                   />
-                </motion.div>
+                </div>
               </div>
 
               {/* Text */}
@@ -88,16 +84,12 @@ export function WireframeVisionMission() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.8, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
-            className="relative overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-br from-[#0F1E38] via-[#0C172B] to-[#080F1E] p-6 sm:p-8 shadow-2xl flex flex-col justify-between group hover:border-amber-400/40 transition-all hover:-translate-y-1"
+            className="relative overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-br from-[#0F1E38] via-[#0C172B] to-[#080F1E] p-6 sm:p-8 shadow-2xl flex flex-col justify-between group hover:border-amber-400/40 transition-colors"
           >
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
-              {/* 3D Bullseye Target */}
+              {/* 3D Bullseye Target (Stabilized, No Looping/Hover Movement) */}
               <div className="shrink-0 flex items-center justify-center">
-                <motion.div
-                  animate={{ scale: [0.96, 1.04, 0.96], rotate: [-2, 2, -2] }}
-                  transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut" }}
-                  className="relative size-28 sm:size-32 rounded-2xl bg-white border border-amber-400/30 p-2 flex items-center justify-center shadow-lg overflow-hidden group-hover:scale-105 transition-transform"
-                >
+                <div className="relative size-28 sm:size-32 rounded-2xl bg-white border border-amber-400/30 p-2 flex items-center justify-center shadow-lg overflow-hidden">
                   <Image
                     src="/images/mission.png"
                     alt="Our Mission 3D Bullseye Target"
@@ -105,7 +97,7 @@ export function WireframeVisionMission() {
                     height={130}
                     className="size-full object-contain drop-shadow-md"
                   />
-                </motion.div>
+                </div>
               </div>
 
               {/* Text */}

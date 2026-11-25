@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -384,11 +384,31 @@ export function InteractiveServicesShowcase({ detailed = false }: { detailed?: b
       ? services
       : services.filter((s) => s.id === selectedDivision);
 
-  const INITIAL_VISIBLE_COUNT = 4;
-  const visibleCatalogCards = isExpanded
-    ? filteredCatalogCards
-    : filteredCatalogCards.slice(0, INITIAL_VISIBLE_COUNT);
-  const hasMoreCards = filteredCatalogCards.length > INITIAL_VISIBLE_COUNT;
+  // Sticky Horizontal Scroll Synchronization for Desktop
+  const horizontalSectionRef = useRef<HTMLDivElement | null>(null);
+  const cardsTrackRef = useRef<HTMLDivElement | null>(null);
+  const [maxScrollX, setMaxScrollX] = useState<number>(0);
+
+  useEffect(() => {
+    const calculateScrollDistance = () => {
+      if (cardsTrackRef.current) {
+        const trackWidth = cardsTrackRef.current.scrollWidth;
+        const clientWidth = window.innerWidth;
+        setMaxScrollX(Math.max(0, trackWidth - clientWidth + 120));
+      }
+    };
+
+    calculateScrollDistance();
+    window.addEventListener("resize", calculateScrollDistance);
+    return () => window.removeEventListener("resize", calculateScrollDistance);
+  }, [filteredCatalogCards]);
+
+  const { scrollYProgress } = useScroll({
+    target: horizontalSectionRef,
+    offset: ["start start", "end end"],
+  });
+
+  const x = useTransform(scrollYProgress, [0, 1], [0, -maxScrollX]);
 
   // Top 3 Queue for the right stacked cards in Spotlight
   const otherDivisions = services
@@ -729,138 +749,265 @@ export function InteractiveServicesShowcase({ detailed = false }: { detailed?: b
         </div>
 
         {/* ============================================================== */}
-        {/* 3. SIGNATURE 2-COLUMN SERVICE GRID WITH HOVER SPEC DRAWER (00:06 - 00:14) */}
+        {/* 3. SIGNATURE STICKY SCROLL HORIZONTAL SHOWCASE (Framer Motion Sync) */}
         {/* ============================================================== */}
         {viewMode === "catalog" ? (
           <div className="w-full max-w-full min-w-0">
-            <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch w-full max-w-full min-w-0">
-              {visibleCatalogCards.map((service) => (
-                <article
-                  key={service.id}
-                  className="group relative overflow-hidden rounded-3xl border border-white/15 bg-[#0F254B] shadow-2xl transition-all duration-300 hover:border-cyan-400/50 hover:shadow-[0_12px_40px_rgba(0,180,255,0.2)] flex flex-col justify-end w-full max-w-full min-w-0 aspect-auto sm:aspect-[16/10] min-h-[380px] sm:min-h-[420px]"
-                >
-                  {/* Background Image with Zoom on Hover (Woodland signature effect) */}
-                  <div className="absolute inset-0 z-0 overflow-hidden">
-                    <Image
-                      src={service.image}
-                      alt={service.title}
-                      fill
-                      sizes="(min-width: 768px) 50vw, 100vw"
-                      className="object-cover object-[center_35%] transition-transform duration-700 ease-out group-hover:scale-105"
-                    />
-                    {/* Deepening dark overlay on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#071426] via-[#071426]/75 to-[#071426]/20 group-hover:via-[#071426]/85 transition-colors duration-300" />
-                    <div className="absolute inset-0 bg-[#071426]/25 group-hover:bg-[#071426]/40 transition-colors duration-300" />
-                  </div>
-
-                  {/* Top Corner Badge Row */}
-                  <div className="absolute top-4 left-4 right-4 z-10 flex items-center justify-between">
-                    <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/30 bg-[#071426]/85 px-3 py-1 text-[11px] font-bold text-cyan-300 backdrop-blur-md shadow-md">
-                      <span className="size-1.5 rounded-full bg-cyan-400" />
-                      {service.divisionName}
+            {/* Desktop: Sticky Horizontal Scroll Track Synchronized with Vertical Scroll */}
+            <div
+              ref={horizontalSectionRef}
+              style={{
+                height: `${Math.max(160, Math.min(300, filteredCatalogCards.length * 28))}vh`,
+              }}
+              className="hidden md:block relative -mx-4 sm:-mx-6 lg:-mx-8 my-8"
+            >
+              <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
+                {/* Horizontal Header / Progress Indicators */}
+                <div className="mx-auto max-w-7xl w-full px-6 lg:px-8 mb-5 flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <span className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-950/60 px-3.5 py-1 text-xs font-extrabold uppercase tracking-wider text-cyan-300 backdrop-blur-md">
+                      <span className="size-2 rounded-full bg-cyan-400 animate-pulse" />
+                      <span>Interactive Service Showcase</span>
                     </span>
-
-                    <span className="inline-flex items-center gap-1 rounded-full border border-white/20 bg-white/10 px-2.5 py-1 text-[10px] font-bold text-slate-200 backdrop-blur-md">
-                      <Clock size={11} className="text-amber-400" />
-                      {service.turnaround}
+                    <span className="text-xs text-slate-300 font-medium hidden sm:inline">
+                      Showing {filteredCatalogCards.length} verified solutions across Qatar · Scroll down to slide
                     </span>
                   </div>
 
-                  {/* Main Visible Content */}
-                  <div className="relative z-10 p-5 sm:p-7 flex flex-col justify-end">
-                    <p className="text-xs font-extrabold uppercase tracking-widest text-cyan-400 drop-shadow-sm">
-                      {service.categoryTag}
-                    </p>
-
-                    <h3 className="mt-1 text-xl sm:text-2xl font-black text-white leading-snug drop-shadow-md group-hover:text-cyan-200 transition-colors">
-                      {service.title}
-                    </h3>
-
-                    <p className="mt-1 text-xs text-slate-300 line-clamp-1 drop-shadow-sm">
-                      {service.subtitle}
-                    </p>
-
-                    {/* ============================================================== */}
-                    {/* SIGNATURE HOVER DRAWER: Slides up on desktop, static on mobile (00:13) */}
-                    {/* ============================================================== */}
-                    <div className="mt-4 pt-3 border-t border-white/15 transition-all duration-300 ease-out md:translate-y-2 md:opacity-90 md:group-hover:translate-y-0 md:group-hover:opacity-100">
-                      {/* 3-Column Specification Tray (Exact Woodland metadata bar) */}
-                      <div className="grid grid-cols-3 gap-2 rounded-2xl border border-white/15 bg-[#071426]/90 backdrop-blur-xl p-2.5 text-center shadow-lg">
-                        <div className="border-r border-white/10 px-1">
-                          <span className="block text-[9px] font-extrabold uppercase tracking-wider text-slate-400">
-                            {service.specs.label1}
-                          </span>
-                          <span className="block text-xs font-black text-white truncate mt-0.5">
-                            {service.specs.val1}
-                          </span>
-                        </div>
-                        <div className="border-r border-white/10 px-1">
-                          <span className="block text-[9px] font-extrabold uppercase tracking-wider text-slate-400">
-                            {service.specs.label2}
-                          </span>
-                          <span className="block text-xs font-black text-cyan-300 truncate mt-0.5">
-                            {service.specs.val2}
-                          </span>
-                        </div>
-                        <div className="px-1">
-                          <span className="block text-[9px] font-extrabold uppercase tracking-wider text-slate-400">
-                            {service.specs.label3}
-                          </span>
-                          <span className="block text-xs font-black text-amber-300 truncate mt-0.5">
-                            {service.specs.val3}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Interactive Action Row inside Drawer */}
-                      <div className="mt-3 flex items-center justify-between gap-3">
-                        <Link
-                          href={`/contact?service=${service.id}`}
-                          className="inline-flex flex-1 min-h-[40px] items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-[#0056B3] to-[#0088CE] px-4 py-2 text-xs font-bold text-white shadow-md hover:from-[#004088] hover:to-[#0077D7] transition-all"
-                        >
-                          <span>Inquire Service</span>
-                          <ArrowUpRight size={14} />
-                        </Link>
-
-                        <a
-                          href={`https://wa.me/97450091006?text=${encodeURIComponent(
-                            service.whatsappMessage
-                          )}`}
-                          target="_blank"
-                          rel="noreferrer"
-                          aria-label={`WhatsApp for ${service.title}`}
-                          className="inline-flex size-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white hover:bg-emerald-500/20 hover:border-emerald-400 transition-colors shrink-0"
-                        >
-                          <MessageCircle size={18} className="text-[#25D366]" />
-                        </a>
-                      </div>
+                  {/* Synchronized Scroll Progress Bar */}
+                  <div className="flex items-center gap-3">
+                    <span className="text-[11px] font-mono font-bold text-cyan-400 uppercase tracking-widest hidden lg:inline">
+                      Scroll Sync
+                    </span>
+                    <div className="w-32 h-1.5 rounded-full bg-white/10 overflow-hidden">
+                      <motion.div
+                        style={{ scaleX: scrollYProgress, transformOrigin: "left" }}
+                        className="h-full bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 shadow-[0_0_8px_rgba(34,211,238,0.8)]"
+                      />
                     </div>
                   </div>
-                </article>
-              ))}
+                </div>
+
+                {/* Horizontal Motion Track with all Cards */}
+                <motion.div
+                  ref={cardsTrackRef}
+                  style={{ x }}
+                  className="flex gap-6 lg:gap-8 pl-6 sm:pl-10 lg:pl-16 pr-12 w-max"
+                >
+                  {filteredCatalogCards.map((service) => (
+                    <article
+                      key={service.id}
+                      className="group relative overflow-hidden rounded-3xl border border-white/15 bg-[#0F254B] shadow-2xl transition-all duration-300 hover:border-cyan-400/50 hover:shadow-[0_12px_40px_rgba(0,180,255,0.2)] flex flex-col justify-end w-[360px] lg:w-[440px] xl:w-[460px] h-[480px] sm:h-[520px] shrink-0 select-none"
+                    >
+                      {/* Background Image with Zoom on Hover */}
+                      <div className="absolute inset-0 z-0 overflow-hidden">
+                        <Image
+                          src={service.image}
+                          alt={service.title}
+                          fill
+                          sizes="(min-width: 1024px) 460px, 360px"
+                          className="object-cover object-[center_35%] transition-transform duration-700 ease-out group-hover:scale-105"
+                        />
+                        {/* Deepening dark overlay on hover */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#071426] via-[#071426]/75 to-[#071426]/20 group-hover:via-[#071426]/85 transition-colors duration-300" />
+                        <div className="absolute inset-0 bg-[#071426]/25 group-hover:bg-[#071426]/40 transition-colors duration-300" />
+                      </div>
+
+                      {/* Top Corner Badge Row */}
+                      <div className="absolute top-4 left-4 right-4 z-10 flex items-center justify-between">
+                        <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/30 bg-[#071426]/85 px-3 py-1 text-[11px] font-bold text-cyan-300 backdrop-blur-md shadow-md">
+                          <span className="size-1.5 rounded-full bg-cyan-400" />
+                          {service.divisionName}
+                        </span>
+
+                        <span className="inline-flex items-center gap-1 rounded-full border border-white/20 bg-white/10 px-2.5 py-1 text-[10px] font-bold text-slate-200 backdrop-blur-md">
+                          <Clock size={11} className="text-amber-400" />
+                          {service.turnaround}
+                        </span>
+                      </div>
+
+                      {/* Main Visible Content */}
+                      <div className="relative z-10 p-5 sm:p-7 flex flex-col justify-end">
+                        <p className="text-xs font-extrabold uppercase tracking-widest text-cyan-400 drop-shadow-sm">
+                          {service.categoryTag}
+                        </p>
+
+                        <h3 className="mt-1 text-xl sm:text-2xl font-black text-white leading-snug drop-shadow-md group-hover:text-cyan-200 transition-colors">
+                          {service.title}
+                        </h3>
+
+                        <p className="mt-1 text-xs text-slate-300 line-clamp-1 drop-shadow-sm">
+                          {service.subtitle}
+                        </p>
+
+                        {/* 3-Column Specification Tray */}
+                        <div className="mt-4 pt-3 border-t border-white/15">
+                          <div className="grid grid-cols-3 gap-2 rounded-2xl border border-white/15 bg-[#071426]/90 backdrop-blur-xl p-2.5 text-center shadow-lg">
+                            <div className="border-r border-white/10 px-1">
+                              <span className="block text-[9px] font-extrabold uppercase tracking-wider text-slate-400">
+                                {service.specs.label1}
+                              </span>
+                              <span className="block text-xs font-black text-white truncate mt-0.5">
+                                {service.specs.val1}
+                              </span>
+                            </div>
+                            <div className="border-r border-white/10 px-1">
+                              <span className="block text-[9px] font-extrabold uppercase tracking-wider text-slate-400">
+                                {service.specs.label2}
+                              </span>
+                              <span className="block text-xs font-black text-cyan-300 truncate mt-0.5">
+                                {service.specs.val2}
+                              </span>
+                            </div>
+                            <div className="px-1">
+                              <span className="block text-[9px] font-extrabold uppercase tracking-wider text-slate-400">
+                                {service.specs.label3}
+                              </span>
+                              <span className="block text-xs font-black text-amber-300 truncate mt-0.5">
+                                {service.specs.val3}
+                              </span>
+                            </div>
+                          </div>
+
+                          {/* Action Row */}
+                          <div className="mt-3 flex items-center justify-between gap-3">
+                            <Link
+                              href={`/contact?service=${service.id}`}
+                              className="inline-flex flex-1 min-h-[40px] items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-[#0056B3] to-[#0088CE] px-4 py-2 text-xs font-bold text-white shadow-md hover:from-[#004088] hover:to-[#0077D7] transition-all"
+                            >
+                              <span>Inquire Service</span>
+                              <ArrowUpRight size={14} />
+                            </Link>
+
+                            <a
+                              href={`https://wa.me/97450091006?text=${encodeURIComponent(
+                                service.whatsappMessage
+                              )}`}
+                              target="_blank"
+                              rel="noreferrer"
+                              aria-label={`WhatsApp for ${service.title}`}
+                              className="inline-flex size-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white hover:bg-emerald-500/20 hover:border-emerald-400 transition-colors shrink-0"
+                            >
+                              <MessageCircle size={18} className="text-[#25D366]" />
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+                  ))}
+                </motion.div>
+              </div>
             </div>
 
-            {/* View More / Show Less Pagination Toggle */}
-            {hasMoreCards && (
-              <div className="mt-10 flex justify-center">
-                <button
-                  type="button"
-                  onClick={() => setIsExpanded((prev) => !prev)}
-                  className="inline-flex min-h-[46px] items-center gap-2.5 rounded-full px-7 py-3 text-sm font-bold bg-[#00B4FF] hover:bg-[#0096D6] text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
-                >
-                  <span>
-                    {isExpanded
-                      ? "Show Less"
-                      : `View More (${filteredCatalogCards.length - INITIAL_VISIBLE_COUNT} More Solutions)`}
-                  </span>
-                  <ArrowRight
-                    size={16}
-                    className={`transition-transform duration-300 ${isExpanded ? "-rotate-90" : "rotate-90"
-                      }`}
-                  />
-                </button>
+            {/* Mobile / Tablet: Native Touch-Scrollable Horizontal Track with Snap */}
+            <div className="md:hidden mt-8 w-full -mx-4 px-4 overflow-hidden">
+              <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 pt-2 no-scrollbar w-full">
+                {filteredCatalogCards.map((service) => (
+                  <article
+                    key={service.id}
+                    className="snap-center group relative overflow-hidden rounded-3xl border border-white/15 bg-[#0F254B] shadow-2xl flex flex-col justify-end w-[290px] sm:w-[330px] min-h-[440px] shrink-0 select-none"
+                  >
+                    {/* Background Image */}
+                    <div className="absolute inset-0 z-0 overflow-hidden">
+                      <Image
+                        src={service.image}
+                        alt={service.title}
+                        fill
+                        sizes="300px"
+                        className="object-cover object-[center_35%]"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#071426] via-[#071426]/75 to-[#071426]/20" />
+                      <div className="absolute inset-0 bg-[#071426]/25" />
+                    </div>
+
+                    {/* Top Corner Badge Row */}
+                    <div className="absolute top-3 left-3 right-3 z-10 flex items-center justify-between">
+                      <span className="inline-flex items-center gap-1 rounded-full border border-cyan-400/30 bg-[#071426]/85 px-2.5 py-0.5 text-[10px] font-bold text-cyan-300 backdrop-blur-md">
+                        <span className="size-1.5 rounded-full bg-cyan-400" />
+                        {service.divisionName}
+                      </span>
+
+                      <span className="inline-flex items-center gap-1 rounded-full border border-white/20 bg-white/10 px-2 py-0.5 text-[9px] font-bold text-slate-200 backdrop-blur-md">
+                        <Clock size={10} className="text-amber-400" />
+                        {service.turnaround}
+                      </span>
+                    </div>
+
+                    {/* Main Visible Content */}
+                    <div className="relative z-10 p-4 flex flex-col justify-end">
+                      <p className="text-[11px] font-extrabold uppercase tracking-widest text-cyan-400">
+                        {service.categoryTag}
+                      </p>
+
+                      <h3 className="mt-1 text-base font-black text-white leading-snug">
+                        {service.title}
+                      </h3>
+
+                      <p className="mt-1 text-[11px] text-slate-300 line-clamp-1">
+                        {service.subtitle}
+                      </p>
+
+                      {/* 3-Column Specification Tray */}
+                      <div className="mt-3 pt-2.5 border-t border-white/15">
+                        <div className="grid grid-cols-3 gap-1 rounded-xl border border-white/15 bg-[#071426]/90 p-2 text-center shadow-md">
+                          <div className="border-r border-white/10 px-0.5">
+                            <span className="block text-[8px] font-extrabold uppercase tracking-wider text-slate-400">
+                              {service.specs.label1}
+                            </span>
+                            <span className="block text-[10px] font-black text-white truncate mt-0.5">
+                              {service.specs.val1}
+                            </span>
+                          </div>
+                          <div className="border-r border-white/10 px-0.5">
+                            <span className="block text-[8px] font-extrabold uppercase tracking-wider text-slate-400">
+                              {service.specs.label2}
+                            </span>
+                            <span className="block text-[10px] font-black text-cyan-300 truncate mt-0.5">
+                              {service.specs.val2}
+                            </span>
+                          </div>
+                          <div className="px-0.5">
+                            <span className="block text-[8px] font-extrabold uppercase tracking-wider text-slate-400">
+                              {service.specs.label3}
+                            </span>
+                            <span className="block text-[10px] font-black text-amber-300 truncate mt-0.5">
+                              {service.specs.val3}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Action Row */}
+                        <div className="mt-2.5 flex items-center justify-between gap-2">
+                          <Link
+                            href={`/contact?service=${service.id}`}
+                            className="inline-flex flex-1 min-h-[36px] items-center justify-center gap-1 rounded-full bg-gradient-to-r from-[#0056B3] to-[#0088CE] px-3 py-1.5 text-[11px] font-bold text-white shadow-sm"
+                          >
+                            <span>Inquire</span>
+                            <ArrowUpRight size={12} />
+                          </Link>
+
+                          <a
+                            href={`https://wa.me/97450091006?text=${encodeURIComponent(
+                              service.whatsappMessage
+                            )}`}
+                            target="_blank"
+                            rel="noreferrer"
+                            aria-label={`WhatsApp for ${service.title}`}
+                            className="inline-flex size-9 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white hover:bg-emerald-500/20 hover:border-emerald-400 transition-colors shrink-0"
+                          >
+                            <MessageCircle size={16} className="text-[#25D366]" />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                ))}
               </div>
-            )}
+              <div className="flex items-center justify-center gap-1.5 text-center text-[11px] font-semibold text-slate-400 mt-1">
+                <ArrowRight size={13} className="text-cyan-400 animate-pulse" />
+                <span>Swipe horizontally to view all {filteredCatalogCards.length} services</span>
+              </div>
+            </div>
           </div>
         ) : (
           /* ============================================================== */

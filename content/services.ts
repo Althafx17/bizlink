@@ -245,8 +245,8 @@ export const services: readonly ServiceDivision[] = [
     tagline: "Building Brands. Connecting Audiences. Growing Businesses.",
     highlight: "Grow Your Brand, With BizLink",
     description: "Digital Marketing, Web Development & Brand Identity",
-    imageCard: "/images/services/biz link digitial services.jpg",
-    brochureMainImage: "/images/services/brochure/digital-creative-main.webp",
+    imageCard: "/images/services/bizlink digital service.jpg",
+    brochureMainImage: "/images/services/bizlink digital service.jpg",
     iconName: "monitor",
     brochurePage: "Page 04",
     brochureIntro:

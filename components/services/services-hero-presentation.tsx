@@ -38,7 +38,7 @@ const serviceDivisions: DivisionCard[] = [
     number: "02",
     name: "Digital & Creative",
     tagline: "Custom Web Applications, Branding & Digital Marketing",
-    image: "/images/services/brochure/digital-creative-main.webp",
+    image: "/images/services/bizlink digital service.jpg",
     accent: "#818cf8",
     servicesCount: 7,
     anchor: "/services/digital-creative",

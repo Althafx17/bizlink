@@ -104,7 +104,7 @@ export const catalogServices: readonly CatalogServiceItem[] = [
     title: "Digital Marketing, SEO & High-Impact Ads",
     subtitle: "Full-Funnel Meta, Google, TikTok & Qualified Lead Generation",
     categoryTag: "Growth Marketing",
-    image: "/images/services/biz link digitial services.jpg",
+    image: "/images/services/bizlink digital service.jpg",
     engagementType: "Monthly Package",
     turnaround: "Weekly / Monthly",
     specs: {

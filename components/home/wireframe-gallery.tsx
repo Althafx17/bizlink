@@ -63,7 +63,7 @@ const homeServices: ServiceDivisionItem[] = [
     ],
     ctaText: "View Details & Scope",
     ctaHref: "/services/digital-creative",
-    image: "/images/services/brochure/digital-creative-main.webp",
+    image: "/images/services/bizlink digital service.jpg",
     icon: Cpu,
   },
   {

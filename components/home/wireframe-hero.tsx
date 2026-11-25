@@ -229,7 +229,7 @@ export function WireframeHero() {
                 </div>
 
                 {/* Bottom Brand Title & Credentials */}
-                <div className="pt-2.5 border-t border-white/10">
+                <div className="pt-2.5 border-t border-white/10 sm:mb-10">
                   <div className="flex items-baseline justify-between">
                     <h3 className="text-xs sm:text-sm font-black text-white uppercase tracking-wider">
                       BIZLINK

@@ -47,9 +47,9 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: `if (location.pathname === '/' && matchMedia('(prefers-reduced-motion: no-preference)').matches) document.documentElement.dataset.homeMotion = 'pending';` }} />
       </head>
       <body className={inter.className}>
-        <a className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-[#071426] focus:p-3" href="#main-content">
+        {/* <a className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-[#071426] focus:p-3" href="#main-content">
           Skip to content
-        </a>
+        </a> */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness) }} />
         {analyticsEnabled && (
           <>

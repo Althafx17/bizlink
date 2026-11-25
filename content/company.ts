@@ -13,7 +13,7 @@ export const company = {
     "Biz Link Trading and Contracting Services WLL provides comprehensive enterprise and personal solutions across Business & Corporate, Digital & Creative, Trading & Supply, Facility Management, and Automotive Care in Qatar.",
   aboutSubhead: "Your Trusted Partner for Integrated Business Solutions in Qatar, UAE, and Global Markets",
   about:
-    "BizLink Trading and Contracting Services W.L.L. is a diversified service provider in Qatar uae, offering business consultancy, trading, facility management, automotive and digital solutions. Part of Pathas Group of Companies, with operations across India, Qatar, UAE and China, we bring diverse expertise and reliable services under one roof.",
+    "BizLink Trading and Contracting Services W.L.L. is a diversified service provider in Qatar UAE and other parts of the world , offering business consultancy, trading, facility management, automotive and digital solutions. Part of Pathas Group of Companies, with operations across India, Qatar, UAE and China, we bring diverse expertise and reliable services under one roof.",
   aboutParagraph2:
     "Since 2010, we have been committed to simplifying business operations and delivering quality products and professional solutions to individuals and organizations.",
   email: "info@bizlinkqatar.com",
@@ -83,6 +83,9 @@ export const sisterConcerns = [
     location: "SAFARI MALL, ABU HAMOUR, DOHA QATAR",
     category: "Fashion & Lifestyle Retail",
     badgeColor: "from-amber-500 to-orange-600",
+    image: "/images/sister-companies/pathas-gallery-bg.webp",
+    logo: "/images/sister-companies/pathas-gallery-logo.png",
+    description: "Premium fashion, designer garments, and lifestyle apparel showroom serving Qatar since 2010.",
   },
   {
     name: "aapco Limousine W.L.L",
@@ -92,15 +95,21 @@ export const sisterConcerns = [
     location: "SOUQ NAIF, EAST INDUSTRIAL ROAD, AIN KHALID, DOHA QATAR",
     category: "Luxury Mobility & Limousine",
     badgeColor: "from-orange-500 to-red-600",
+    image: "/images/sister-companies/aapco-limousine-bg.webp",
+    logo: "/images/sister-companies/aapco-limousine-logo.png",
+    description: "VIP executive chauffeur, luxury fleet mobility, and corporate transfer solutions across Qatar.",
   },
   {
-    name: "PATHAS IMPORTS & EXPORTS",
+    name: "PATHAS IMPORTS & SERVICES",
     arabicName: "",
     tagline: "GLOBAL SOURCING & TRADE",
     since: "SINCE 2010",
     location: "SOUQ NAIF, EAST INDUSTRIAL ROAD, AIN KHALID, DOHA QATAR",
     category: "Import, Export & Logistics",
     badgeColor: "from-blue-600 to-cyan-600",
+    image: "/images/sister-companies/pathas-imports-bg.webp",
+    logo: "/images/sister-companies/pathas-imports-logo.png",
+    description: "International trading, global procurement, cargo logistics, and supply distribution network.",
   },
 ] as const;
 

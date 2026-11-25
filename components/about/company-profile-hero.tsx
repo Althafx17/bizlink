@@ -34,14 +34,12 @@ export function CompanyProfileHero({
       </div>
 
       {/* 2. Top-Right "PRESENTATION" & Bottom-Right "○ ○ ○ ○" matching reference design */}
-      <div className="absolute top-24 sm:top-28 right-6 sm:right-10 z-20 flex items-center gap-3">
-        <span className="text-xs sm:text-sm font-black tracking-[0.28em] uppercase text-white/90 drop-shadow-md">
-          PRESENTATION
-        </span>
+      {/* <div className="absolute top-24 sm:top-28 right-6 sm:right-10 z-20 flex items-center gap-3"> */}
+        
         <div className="flex items-center gap-1.5">
           <span className="size-2 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.9)] animate-pulse" />
         </div>
-      </div>
+      
 
       <div className="absolute bottom-8 right-6 sm:right-10 z-20 hidden sm:flex items-center gap-2 text-white/60">
         <span className="size-2 rounded-full border border-white/60" />

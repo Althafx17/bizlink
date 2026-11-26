@@ -36,8 +36,8 @@ export const showcaseServices: readonly ShowcaseService[] = [
       "PRO & Government Visas",
       "WPS Payroll Support",
     ],
-    bgImage: "/images/services/business and cooperate.jpg",
-    cardImage: "/images/services/business and cooperate.jpg",
+    bgImage: "/images/services/sub service/Business & Corporate Solutions.jpg",
+    cardImage: "/images/services/sub service/Business & Corporate Solutions.jpg",
     link: "/services#business-corporate",
   },
   {
@@ -93,8 +93,8 @@ export const showcaseServices: readonly ShowcaseService[] = [
       "Windshield Replacement",
       "Fleet Maintenance Support",
     ],
-    bgImage: "/images/services/automotive-card.webp",
-    cardImage: "/images/services/automotive-card.webp",
+    bgImage: "/images/services/sub service/AUTOMOBILE AND SERVICES.png",
+    cardImage: "/images/services/sub service/AUTOMOBILE AND SERVICES.png",
     link: "/services#automotive",
   },
   {
@@ -112,8 +112,8 @@ export const showcaseServices: readonly ShowcaseService[] = [
       "Digital Marketing & SEO",
       "Corporate IT & Cloud Setup",
     ],
-    bgImage: "/images/about/philosophy-detail.webp",
-    cardImage: "/images/about/doha-corporate.webp",
+    bgImage: "/images/services/sub service/Digital & Creative Solutions 2.jpg",
+    cardImage: "/images/services/sub service/Digital & Creative Solutions 1.jpg",
     link: "/services#digital-creative",
   },
 ] as const;

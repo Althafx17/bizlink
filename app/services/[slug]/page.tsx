@@ -48,8 +48,9 @@ import {
 } from "lucide-react";
 import { services, type ServiceDivision } from "@/content/services";
 import { company } from "@/content/company";
-import { MobileBottomActionDock } from "@/components/brochure-sections";
+import { MobileBottomActionDock } from "@/components/shared/marketing-sections";
 import { FacilityCardsAutoScroll } from "@/components/services/facility-cards-auto-scroll";
+import { SubServiceDetailCard } from "@/components/services/sub-service-detail-card";
 
 interface ServicePageProps {
   params: Promise<{
@@ -229,19 +230,19 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
               
               {/* Division Badge & Brochure Page Citation */}
               <div className="flex flex-wrap items-center gap-3">
-                <span className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3.5 py-1 text-xs font-black uppercase tracking-[0.2em] text-cyan-300">
-                  <span className="size-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                  <span>Division {service.number} · {service.brochurePage}</span>
-                </span>
                 <span className="rounded-full border border-amber-400/30 bg-amber-400/10 px-3 py-1 text-[11px] font-extrabold uppercase tracking-wider text-amber-300">
-                  Official Brochure Section
+                  Operational Excellence · Service Details
                 </span>
               </div>
 
               {/* Headline */}
               <h1 className="text-3xl sm:text-5xl lg:text-5xl font-black text-white uppercase tracking-tight leading-[1.1]">
-                {service.title}
+                {service.name}
               </h1>
+
+              <p className="text-base sm:text-lg font-bold text-cyan-300">
+                {service.title}
+              </p>
 
               {/* Tagline & Highlight */}
               <div className="space-y-2">
@@ -255,7 +256,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
 
               {/* Full Brochure Narrative Paragraph */}
               <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-                {service.brochureIntro}
+                Structured {service.name.toLowerCase()} delivery in Qatar, with clear scope, accountable coordination, and dependable follow-through.
               </p>
 
               {/* Brochure Commitment Callout Box */}
@@ -264,7 +265,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                   <ShieldCheck size={20} className="text-cyan-400 shrink-0 mt-0.5" />
                   <div>
                     <span className="text-[11px] font-black uppercase tracking-wider text-cyan-300 block mb-1">
-                      Our Brochure Commitment
+                      Our Commitment
                     </span>
                     <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                       {service.brochureCommitment}
@@ -308,7 +309,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
 
             {/* Right Column: Main Image from Brochure with Luxury Frame */}
             <div className="lg:col-span-5 relative">
-              <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3] rounded-3xl overflow-hidden border border-cyan-400/40 bg-[#0F254B] shadow-2xl shadow-cyan-950/60 group">
+              <div className={`relative w-full ${service.id === "automotive" ? "aspect-[3/2] bg-black" : "aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3] bg-[#0F254B]"} rounded-3xl overflow-hidden border border-cyan-400/40 shadow-2xl shadow-cyan-950/60 group`}>
                 
                 {/* Official Brochure Image */}
                 <Image
@@ -317,7 +318,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                   fill
                   priority
                   sizes="(min-width: 1024px) 500px, 100vw"
-                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                  className={`${service.id === "automotive" ? "object-contain bg-black" : "object-cover object-center"} group-hover:scale-105 transition-transform duration-700 ease-out`}
                 />
 
                 {/* Gradient Overlays for High-Contrast Presentation */}
@@ -366,7 +367,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                 <div className="absolute bottom-4 left-4 right-4 z-10 flex items-center justify-between text-xs backdrop-blur-md bg-[#070B14]/80 border border-white/15 rounded-2xl p-3">
                   <div>
                     <span className="text-[10px] uppercase font-bold text-cyan-300 block">
-                      OFFICIAL BROCHURE ASSET
+                      SERVICE VISUAL
                     </span>
                     <span className="text-white font-black text-sm">
                       {service.name}
@@ -444,15 +445,17 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
           
           {/* "Our Services" Brochure Card */}
           <div className="relative rounded-3xl border border-cyan-400/40 bg-gradient-to-br from-white/[0.08] via-[#0B1B36]/90 to-[#071426] p-6 sm:p-10 shadow-2xl backdrop-blur-2xl ring-1 ring-white/10">
-            {/* Header Capsule matching brochure */}
-            <div className="inline-flex items-center gap-2 rounded-full bg-[#0056B3] border border-cyan-400/40 px-5 py-2 text-sm sm:text-base font-black text-white uppercase tracking-wider shadow-lg shadow-cyan-500/20 mb-6 sm:mb-8">
-              <Sparkles className="size-4 text-cyan-300" />
-              <span>Our Services</span>
+            {/* Centered section heading without decorative capsule styling */}
+            <div className="flex w-full justify-center mb-6 sm:mb-8">
+              <div className="inline-flex items-center gap-2 px-5 py-2 text-sm sm:text-base font-black text-cyan-300 uppercase tracking-wider">
+                <Sparkles className="size-4" />
+                <span>Our Services</span>
+              </div>
             </div>
 
             {/* 2-Column Grid of 8 Services */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4.5">
-              {service.subServices.map((sub) => (
+              {service.subServices.slice(0, 4).map((sub) => (
                 <Link
                   key={sub.id}
                   href={`#${sub.id}`}
@@ -475,6 +478,35 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                 </Link>
               ))}
             </div>
+            {service.subServices.length > 4 && (
+              <details className="group/view-more mt-5">
+                <summary className="mx-auto inline-flex cursor-pointer list-none items-center gap-2 rounded-full border border-cyan-400/35 bg-cyan-400/10 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-cyan-300 hover:bg-cyan-400/20 hover:text-white transition-colors">
+                  <span className="group-open/view-more:hidden">View More Services</span>
+                  <span className="hidden group-open/view-more:inline">View Less Services</span>
+                  <ChevronRight size={15} className="transition-transform group-open/view-more:rotate-90" />
+                </summary>
+                <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4.5">
+                  {service.subServices.slice(4).map((sub) => (
+                    <Link
+                      key={sub.id}
+                      href={`#${sub.id}`}
+                      className="group flex items-center justify-between p-4 sm:p-4.5 rounded-2xl border border-white/10 bg-white/[0.04] hover:bg-white/[0.08] hover:border-cyan-400/50 hover:shadow-lg hover:shadow-cyan-500/10 transition-all duration-300 cursor-pointer"
+                    >
+                      <div className="flex items-center gap-3.5 sm:gap-4 min-w-0">
+                        <span className="flex size-11 items-center justify-center rounded-xl bg-cyan-950/70 border border-cyan-400/30 text-cyan-300 group-hover:scale-105 group-hover:bg-cyan-500 group-hover:text-slate-950 transition-all shrink-0">
+                          {getSubServiceIcon(sub.id)}
+                        </span>
+                        <div className="min-w-0">
+                          <h4 className="text-sm sm:text-base font-bold text-white group-hover:text-cyan-300 transition-colors leading-snug">{sub.title}</h4>
+                          <p className="text-[11px] text-slate-400 truncate mt-0.5">{sub.tagline}</p>
+                        </div>
+                      </div>
+                      <ChevronRight size={18} className="text-white/40 group-hover:text-cyan-400 group-hover:translate-x-1 transition-transform shrink-0 ml-2" />
+                    </Link>
+                  ))}
+                </div>
+              </details>
+            )}
 
             {/* Our Commitment Card matching official Page 05 layout */}
             {service.id === "trading-supply" && service.brochureCommitment && (
@@ -553,89 +585,42 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
               </h2>
             </div>
             <p className="text-xs sm:text-sm text-slate-400 max-w-md sm:text-right">
-              Detailed technical and commercial breakdown sourced from the official BizLink company brochure and documentation.
+              Detailed technical and commercial breakdown sourced from BizLink company documentation.
             </p>
           </div>
 
           {/* Sub-Services Grid: Every Sub-Service Displayed in a Rich Glassmorphism Card */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            {service.subServices.map((sub, idx) => (
-              <article
+            {service.subServices.slice(0, 4).map((sub, idx) => (
+              <SubServiceDetailCard
                 key={sub.id}
-                id={sub.id}
-                className="group relative overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-white/[0.1] via-[#0F182A]/70 to-[#070B14]/85 backdrop-blur-2xl p-6 sm:p-8 shadow-[0_16px_40px_rgba(0,0,0,0.5),inset_0_1px_2px_rgba(255,255,255,0.25)] hover:border-cyan-400/60 hover:shadow-[0_20px_50px_rgba(0,180,255,0.25)] transition-all duration-300 flex flex-col justify-between"
-              >
-                {/* Subtle Ambient Background Tint */}
-                <div className="absolute top-0 right-0 -mr-16 -mt-16 size-48 rounded-full bg-cyan-500/10 blur-3xl pointer-events-none group-hover:bg-cyan-500/20 transition-all" />
-
-                <div>
-                  {/* Top Badge & Number */}
-                  <div className="flex items-center justify-between gap-2 mb-4">
-                    <span className="flex size-9 items-center justify-center rounded-xl bg-cyan-400/15 border border-cyan-400/30 text-xs font-black text-cyan-300">
-                      {String(idx + 1).padStart(2, "0")}
-                    </span>
-                    {sub.badge && (
-                      <span className="text-[10px] font-black uppercase tracking-wider text-amber-300 bg-amber-400/10 border border-amber-400/25 px-2.5 py-0.5 rounded-md">
-                        {sub.badge}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Sub-Service Title & Tagline */}
-                  <h3 className="text-lg sm:text-xl font-black uppercase text-white group-hover:text-cyan-300 transition-colors">
-                    {sub.title}
-                  </h3>
-                  <p className="text-xs font-bold text-cyan-300 mt-1 uppercase tracking-wider">
-                    {sub.tagline}
-                  </p>
-
-                  {/* Detailed Description */}
-                  <p className="mt-4 text-xs sm:text-sm text-slate-300 leading-relaxed">
-                    {sub.description}
-                  </p>
-
-                  {/* Deliverables & Inclusions Checklist */}
-                  <div className="mt-6 pt-5 border-t border-white/10 space-y-2.5">
-                    <span className="text-[11px] font-black uppercase tracking-wider text-slate-400 block mb-2">
-                      Key Deliverables &amp; Inclusions:
-                    </span>
-                    {sub.deliverables.map((item, itemIdx) => (
-                      <div key={itemIdx} className="flex items-start gap-2.5 text-xs text-slate-200">
-                        <CheckCircle2 size={15} className="text-cyan-400 shrink-0 mt-0.5" />
-                        <span className="leading-snug">{item}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                </div>
-
-                {/* Footer: Regulatory Compliance & Inquire Action */}
-                <div className="mt-6 pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-                  {sub.compliance ? (
-                    <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-emerald-400">
-                      <ShieldCheck size={14} />
-                      <span>{sub.compliance}</span>
-                    </span>
-                  ) : (
-                    <span className="text-[11px] text-slate-400">Direct Delivery in Doha</span>
-                  )}
-
-                  <a
-                    href={`https://wa.me/${company.whatsappNumber}?text=${encodeURIComponent(
-                      `Hello BizLink Qatar, I am interested in your ${sub.title} under ${service.title}.`
-                    )}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1 font-bold text-cyan-300 hover:text-white transition-colors w-fit"
-                  >
-                    <span>Inquire via WhatsApp</span>
-                    <ArrowRight size={13} />
-                  </a>
-                </div>
-
-              </article>
+                sub={sub}
+                index={idx}
+                serviceTitle={service.title}
+                whatsappNumber={company.whatsappNumber}
+              />
             ))}
           </div>
+          {service.subServices.length > 4 && (
+            <details className="group/view-more mt-6">
+              <summary className="mx-auto inline-flex cursor-pointer list-none items-center gap-2 rounded-full border border-cyan-400/35 bg-cyan-400/10 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-cyan-300 hover:bg-cyan-400/20 hover:text-white transition-colors">
+                <span className="group-open/view-more:hidden">View More Sub-Services</span>
+                <span className="hidden group-open/view-more:inline">View Less Sub-Services</span>
+                <ChevronRight size={15} className="transition-transform group-open/view-more:rotate-90" />
+              </summary>
+              <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                {service.subServices.slice(4).map((sub, idx) => (
+                  <SubServiceDetailCard
+                    key={sub.id}
+                    sub={sub}
+                    index={idx + 4}
+                    serviceTitle={service.title}
+                    whatsappNumber={company.whatsappNumber}
+                  />
+                ))}
+              </div>
+            </details>
+          )}
 
         </div>
       </section>
@@ -692,7 +677,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
           </div>
 
           <div className="space-y-4">
-            {service.faqs.map((faq, idx) => (
+            {service.faqs.slice(0, 5).map((faq, idx) => (
               <div
                 key={idx}
                 className="rounded-2xl border border-white/10 bg-[#0F182A]/80 p-5 sm:p-6 backdrop-blur-md"
@@ -710,6 +695,31 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                 </div>
               </div>
             ))}
+            {service.faqs.length > 5 && (
+              <details className="group/view-more pt-1">
+                <summary className="mx-auto inline-flex cursor-pointer list-none items-center gap-2 rounded-full border border-cyan-400/35 bg-cyan-400/10 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-cyan-300 hover:bg-cyan-400/20 hover:text-white transition-colors">
+                  <span className="group-open/view-more:hidden">View More FAQs</span>
+                  <span className="hidden group-open/view-more:inline">View Less FAQs</span>
+                  <ChevronRight size={15} className="transition-transform group-open/view-more:rotate-90" />
+                </summary>
+                <div className="mt-4 space-y-4">
+                  {service.faqs.slice(5).map((faq, idx) => (
+                    <div
+                      key={idx + 5}
+                      className="rounded-2xl border border-white/10 bg-[#0F182A]/80 p-5 sm:p-6 backdrop-blur-md"
+                    >
+                      <div className="flex items-start gap-3">
+                        <HelpCircle size={18} className="text-cyan-400 shrink-0 mt-0.5" />
+                        <div>
+                          <h3 className="text-sm sm:text-base font-bold text-white">{faq.question}</h3>
+                          <p className="mt-2 text-xs sm:text-sm text-slate-300 leading-relaxed">{faq.answer}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </details>
+            )}
           </div>
 
         </div>

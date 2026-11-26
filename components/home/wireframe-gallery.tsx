@@ -46,7 +46,7 @@ const homeServices: ServiceDivisionItem[] = [
     ],
     ctaText: "View Details & Scope",
     ctaHref: "/services/business-corporate",
-    image: "/images/services/brochure/business-corporate-main.webp",
+    image: "/images/services/sub service/Business & Corporate Solution-main.jpg",
     icon: Building2,
   },
   {
@@ -63,7 +63,7 @@ const homeServices: ServiceDivisionItem[] = [
     ],
     ctaText: "View Details & Scope",
     ctaHref: "/services/digital-creative",
-    image: "/images/services/bizlink digital service.jpg",
+    image: "/images/services/sub service/Digital & Creative Solutions 1.jpg",
     icon: Cpu,
   },
   {
@@ -114,7 +114,7 @@ const homeServices: ServiceDivisionItem[] = [
     ],
     ctaText: "View Details & Scope",
     ctaHref: "/services/automotive",
-    image: "/images/services/brochure/automotive-main.webp",
+    image: "/images/services/sub service/AUTOMOBILE AND SERVICES.png",
     icon: Car,
   },
 ];
@@ -193,7 +193,7 @@ export function WireframeGallery() {
       className="relative bg-[#000E24] text-white w-full max-w-full overflow-visible"
     >
       {/* Ambient multi-spectral radiant aurora glow mesh */}
-      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+      <div className="home-ambient-glow pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute -left-24 top-1/4 h-[500px] w-[500px] rounded-full bg-cyan-400/25 blur-[140px]" />
         <div className="absolute -right-24 top-1/3 h-[520px] w-[520px] rounded-full bg-violet-600/25 blur-[150px]" />
         <div className="absolute left-1/3 bottom-10 h-[450px] w-[450px] rounded-full bg-blue-500/20 blur-[130px]" />

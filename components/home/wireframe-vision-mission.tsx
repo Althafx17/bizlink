@@ -185,97 +185,89 @@ export function WireframeVisionMission() {
           </div>
         </motion.div>
 
-        {/* Our Sister Concern Companies Section */}
+      </div>
+    </section>
+  );
+}
+
+export function SisterConcernCompanies() {
+  return (
+    <section
+      id="sister-concerns"
+      aria-label="Our Sister Concern Companies"
+      className="relative overflow-hidden bg-[#070B14] py-16 sm:py-24 text-white"
+    >
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -left-24 top-1/4 size-[400px] rounded-full bg-cyan-500/10 blur-[130px] sm:size-[600px]" />
+        <div className="absolute -right-24 bottom-0 size-[420px] rounded-full bg-violet-600/10 blur-[140px] sm:size-[620px]" />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-7xl space-y-6 px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 35 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.8, delay: 0.25 }}
-          className="space-y-6 pt-6"
+          transition={{ duration: 0.8 }}
+          className="flex flex-col gap-4 border-b border-white/10 pb-5 sm:flex-row sm:items-end sm:justify-between"
         >
-          {/* Section Header */}
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-5">
-            <div>
-
-              <h3 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-black text-white uppercase tracking-tight">
-                Our Sister <br /> Concern Companies
-              </h3>
-            </div>
-            <p className="text-xs sm:text-sm text-slate-400 max-w-md sm:text-right">
-              Synergistic multi-sector excellence across luxury fashion, VIP mobility, and international trade in Qatar.
-            </p>
-          </div>
-
-          {/* 3 Sister Concern Company Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {sisterConcerns.map((sister, idx) => (
-              <motion.article
-                key={sister.name}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 * (idx + 1) }}
-                className="group relative overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-white/[0.1] via-[#0d1c33]/70 to-[#070B14]/85 backdrop-blur-2xl p-6 shadow-[0_16px_40px_rgba(0,0,0,0.5),inset_0_1px_2px_rgba(255,255,255,0.25)] transition-all duration-300 hover:border-cyan-400/60 hover:shadow-[0_20px_50px_rgba(0,180,255,0.25)] flex flex-col justify-between min-h-[380px]"
-              >
-                {/* Background Image with Dark Gradient Overlays */}
-                <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-                  <Image
-                    src={sister.image}
-                    alt={sister.name}
-                    fill
-                    sizes="(min-width: 1024px) 33vw, 100vw"
-                    className="object-cover object-center opacity-45 group-hover:opacity-65 group-hover:scale-105 transition-all duration-700 ease-out"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#070B14] via-[#0F182A]/85 to-[#0F182A]/45" />
-                  <div className="absolute inset-0 bg-cyan-950/15 mix-blend-color" />
-                </div>
-
-                {/* Card Content Top: White Glass Logo Container with Absolute Since Badge Overlay */}
-                <div className="relative z-10">
-                  {/* High-Contrast White Glass Logo Container with 144px Height */}
-                  <div className="mb-5 relative w-full h-36 rounded-2xl bg-white/95 backdrop-blur-md border border-white/50 p-3 shadow-md flex items-center justify-center overflow-hidden group-hover:shadow-cyan-500/20 transition-shadow">
-                    {sister.since && (
-                      <span className="absolute top-2.5 right-2.5 z-20 inline-flex items-center text-[10px] font-black uppercase tracking-wider text-amber-900 bg-amber-100/90 border border-amber-300/80 px-2.5 py-0.5 rounded-md shadow-xs backdrop-blur-sm">
-                        {sister.since}
-                      </span>
-                    )}
-                    <div className="relative w-full h-full max-h-24">
-                      <Image
-                        src={sister.logo}
-                        alt={sister.name}
-                        fill
-                        sizes="260px"
-                        className="object-contain"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Company Titles */}
-                  <div>
-                    <h4 className="text-base sm:text-lg font-black uppercase text-white group-hover:text-cyan-300 transition-colors">
-                      {sister.name}
-                    </h4>
-                    <p className="text-xs font-bold text-cyan-300 tracking-wider uppercase mt-1">
-                      {sister.tagline}
-                    </p>
-                    <p className="mt-2.5 text-xs text-slate-300 leading-relaxed">
-                      {sister.description}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Card Footer: Location Pill with MapPin Icon */}
-                <div className="relative z-10 mt-6 pt-4 border-t border-white/10">
-                  <div className="flex items-start gap-2 rounded-xl bg-white/[0.05] border border-white/10 p-2.5 text-[11px] font-medium text-slate-300">
-                    <MapPin size={14} className="text-cyan-400 shrink-0 mt-0.5" />
-                    <span className="leading-tight">{sister.location}</span>
-                  </div>
-                </div>
-              </motion.article>
-            ))}
-          </div>
+          <h2 className="text-2xl font-black uppercase tracking-tight text-white sm:text-3xl lg:text-4xl">
+            Our Sister <br /> Concern Companies
+          </h2>
+          <p className="max-w-md text-xs text-slate-400 sm:text-right sm:text-sm">
+            Synergistic multi-sector excellence across luxury fashion, VIP mobility, and international trade in Qatar.
+          </p>
         </motion.div>
 
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          {sisterConcerns.map((sister, idx) => (
+            <motion.article
+              key={sister.name}
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 * (idx + 1) }}
+              className="group relative flex min-h-[380px] flex-col justify-between overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-white/[0.1] via-[#0d1c33]/70 to-[#070B14]/85 p-6 shadow-[0_16px_40px_rgba(0,0,0,0.5),inset_0_1px_2px_rgba(255,255,255,0.25)] backdrop-blur-2xl transition-all duration-300 hover:border-cyan-400/60 hover:shadow-[0_20px_50px_rgba(0,180,255,0.25)]"
+            >
+              <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+                <Image
+                  src={sister.image}
+                  alt={sister.name}
+                  fill
+                  sizes="(min-width: 1024px) 33vw, 100vw"
+                  className="object-cover object-center opacity-45 transition-all duration-700 ease-out group-hover:scale-105 group-hover:opacity-65"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#070B14] via-[#0F182A]/85 to-[#0F182A]/45" />
+                <div className="absolute inset-0 bg-cyan-950/15 mix-blend-color" />
+              </div>
+
+              <div className="relative z-10">
+                <div className="relative mb-5 flex h-36 w-full items-center justify-center overflow-hidden rounded-2xl border border-white/50 bg-white/95 p-3 shadow-md transition-shadow group-hover:shadow-cyan-500/20">
+                  {sister.since && (
+                    <span className="absolute right-2.5 top-2.5 z-20 inline-flex items-center rounded-md border border-amber-300/80 bg-amber-100/90 px-2.5 py-0.5 text-[10px] font-black uppercase tracking-wider text-amber-900 shadow-xs backdrop-blur-sm">
+                      {sister.since}
+                    </span>
+                  )}
+                  <div className="relative h-full max-h-24 w-full">
+                    <Image src={sister.logo} alt={sister.name} fill sizes="260px" className="object-contain" />
+                  </div>
+                </div>
+
+                <h3 className="text-base font-black uppercase text-white transition-colors group-hover:text-cyan-300 sm:text-lg">
+                  {sister.name}
+                </h3>
+                <p className="mt-1 text-xs font-bold uppercase tracking-wider text-cyan-300">{sister.tagline}</p>
+                <p className="mt-2.5 text-xs leading-relaxed text-slate-300">{sister.description}</p>
+              </div>
+
+              <div className="relative z-10 mt-6 border-t border-white/10 pt-4">
+                <div className="flex items-start gap-2 rounded-xl border border-white/10 bg-white/[0.05] p-2.5 text-[11px] font-medium text-slate-300">
+                  <MapPin size={14} className="mt-0.5 shrink-0 text-cyan-400" />
+                  <span className="leading-tight">{sister.location}</span>
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </div>
       </div>
     </section>
   );

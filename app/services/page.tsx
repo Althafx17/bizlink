@@ -5,7 +5,7 @@ import {
   ServicesDirectory,
   ContactBand,
   MobileBottomActionDock,
-} from "@/components/brochure-sections";
+} from "@/components/shared/marketing-sections";
 
 export const metadata = shareMetadata(
   "/services",

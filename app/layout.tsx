@@ -4,8 +4,8 @@ import Script from "next/script";
 import { siteUrl, localBusiness } from "@/lib/site";
 import type { ReactNode } from "react";
 import "./globals.css";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteNavbar } from "@/components/site-navbar";
+import { SiteFooter } from "@/components/layout/site-footer";
+import { SiteNavbar } from "@/components/layout/site-navbar";
 
 const inter = Inter({
   subsets: ["latin"],

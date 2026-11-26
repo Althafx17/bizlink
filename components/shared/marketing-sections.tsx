@@ -85,7 +85,7 @@ export function Image1CoverCard() {
         {/* High-Resolution Brochure Cover Artwork (Image 1) */}
         <Image
           src="/images/brochure_cover/cover_hero_card.webp"
-          alt="BizLink Brochure Cover - All Business Solutions Under One Roof"
+        alt="BizLink company profile cover - All Business Solutions Under One Roof"
           fill
           priority
           sizes="(max-width: 640px) 270px, (max-width: 1024px) 350px, 415px"
@@ -1184,7 +1184,7 @@ export function PageIntro({
     <div className="relative overflow-hidden bg-gradient-to-b from-[#0B1B36] to-[#071426] pt-28 sm:pt-32 pb-12 sm:pb-16 border-b border-white/10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
         <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-cyan-400">
-          BIZLINK QATAR · CORPORATE BROCHURE
+          BIZLINK QATAR · CORPORATE DETAILS
         </p>
         <h1 className="mt-2 text-3xl sm:text-5xl font-black tracking-tight text-white">
           {title}

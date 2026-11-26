@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import styles from "./landing-hero.module.css";
-import { HeroMedia } from "@/components/hero-media";
+import { HeroMedia } from "@/components/archive/shared/hero-media";
 
 const navigation = [
   { label: "Services", href: "/services" },

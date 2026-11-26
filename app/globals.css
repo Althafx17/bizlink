@@ -68,6 +68,86 @@
 }
 
 @layer components {
+  /* Shared visual language for active feature pages. */
+  .ui-section-eyebrow {
+    color: #22d3ee;
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 0.25em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .ui-section-title {
+    color: #ffffff;
+    font-weight: 900;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+  }
+
+  .ui-card {
+    border: 1px solid rgb(255 255 255 / 20%);
+    border-radius: 1.5rem;
+    background: linear-gradient(135deg, rgb(255 255 255 / 10%), rgb(15 24 42 / 70%) 55%, rgb(7 11 20 / 85%));
+    box-shadow: 0 16px 40px rgb(0 0 0 / 50%), inset 0 1px 2px rgb(255 255 255 / 25%);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .ui-card:hover {
+    border-color: rgb(34 211 238 / 60%);
+    box-shadow: 0 20px 50px rgb(0 180 255 / 25%);
+  }
+
+  .ui-button-primary {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    background: linear-gradient(90deg, #0056b3, #0088ce, #00b4ff);
+    padding: 0.625rem 1.5rem;
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 700;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .ui-button-primary:hover {
+    box-shadow: 0 0 25px rgb(0 180 255 / 35%);
+    transform: scale(1.02);
+  }
+
+  .ui-button-secondary {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 1px solid rgb(255 255 255 / 20%);
+    border-radius: 9999px;
+    background: rgb(255 255 255 / 7%);
+    padding: 0.625rem 1.5rem;
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 700;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .ui-button-secondary:hover {
+    border-color: rgb(34 211 238 / 60%);
+    background: rgb(255 255 255 / 15%);
+  }
+
+  /* Keep the atmospheric effect, but avoid large filtered layers on small Safari GPUs. */
+  @media (max-width: 767px) {
+    .home-ambient-glow > div {
+      filter: none;
+      opacity: 0.5;
+      background: rgba(8, 42, 78, 0.34) !important;
+    }
+  }
+
   .site-header-glass {
     -webkit-backdrop-filter: blur(12px) saturate(180%);
     backdrop-filter: blur(12px) saturate(180%);

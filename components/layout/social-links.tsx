@@ -18,9 +18,9 @@ function FacebookIcon({ size = 16 }: { size?: number }) {
 
 const icons = { Instagram: Camera, Threads: AtSign, TikTok: Music2, Facebook: FacebookIcon };
 
-export function SocialLinks() {
+export function SocialLinks({ featured = false }: { featured?: boolean }) {
   return (
-    <ul className="flex flex-wrap gap-2" aria-label="BizLink social media">
+    <ul className={featured ? "grid w-full grid-cols-2 gap-3 sm:grid-cols-4" : "flex flex-wrap gap-2"} aria-label="BizLink social media">
       {socialLinks.map(({ name, href }) => {
         const Icon = icons[name as keyof typeof icons] || FacebookIcon;
         return (
@@ -30,9 +30,13 @@ export function SocialLinks() {
               target="_blank"
               rel="noreferrer"
               aria-label={`Follow BizLink on ${name}`}
-              className="inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-lg border border-current/25 px-3 text-sm hover:underline focus-visible:outline-current transition-colors"
+              className={featured
+                ? "group inline-flex min-h-[76px] w-full flex-col items-center justify-center gap-2 rounded-2xl border border-cyan-400/20 bg-white/[0.07] px-4 py-3 text-sm font-bold text-sky-100 shadow-[inset_0_1px_1px_rgba(255,255,255,0.12)] transition-all hover:-translate-y-1 hover:border-cyan-300/70 hover:bg-cyan-400/15 hover:text-white hover:shadow-[0_12px_28px_rgba(0,180,255,0.2)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-300"
+                : "inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-lg border border-current/25 px-3 text-sm hover:underline focus-visible:outline-current transition-colors"}
             >
-              <Icon size={16} />
+              <span className={featured ? "flex size-9 items-center justify-center rounded-full bg-cyan-400/15 text-cyan-300 transition-colors group-hover:bg-cyan-300 group-hover:text-[#071426]" : undefined}>
+                <Icon size={featured ? 19 : 16} />
+              </span>
               <span>{name}</span>
             </a>
           </li>

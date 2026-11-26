@@ -21,7 +21,7 @@ const facilityServiceCards: ServiceCard[] = [
     title: "Facility & Hospitality Management",
     category: "Commercial Towers & Hotels",
     image: "/images/services/brochure/facility-guard-building.webp",
-    badge: "Official Brochure Card 01",
+    badge: "Service Detail Card 01",
     scope: "Turnkey supervision, security liaison & 24/7 helpdesk",
   },
   {
@@ -29,7 +29,7 @@ const facilityServiceCards: ServiceCard[] = [
     title: "Cleaning & Pest Control Services",
     category: "Sanitization & Disinfection",
     image: "/images/services/brochure/facility-pest-spray.webp",
-    badge: "Official Brochure Card 02",
+    badge: "Service Detail Card 02",
     scope: "Hospital-grade cleaning & municipality pest eradication",
   },
   {
@@ -37,7 +37,7 @@ const facilityServiceCards: ServiceCard[] = [
     title: "Gypsum Board & Glass Partition Works",
     category: "Interior Fit-Out & Drywall",
     image: "/images/services/brochure/facility-gypsum-installation.webp",
-    badge: "Official Brochure Card 03",
+    badge: "Service Detail Card 03",
     scope: "Acoustic drywall ceilings & demountable glass rooms",
   },
   {
@@ -123,7 +123,7 @@ export function FacilityCardsAutoScroll() {
             </span>
             <div>
               <span className="text-[11px] sm:text-xs font-black uppercase tracking-[0.2em] text-cyan-300 block">
-                Official Brochure Visual Showcase · Page 06
+                Facility Services Showcase · Page 06
               </span>
               <span className="text-white font-extrabold text-xs sm:text-sm">
                 Separate Service Cards · Auto-Scrolled with Website Scroll

@@ -34,20 +34,53 @@ const heroServiceVideos = [
   },
 ];
 
+// Mobile stays on one modest download instead of rotating through four videos.
+const mobileHeroVideo = heroServiceVideos[0];
+
 export function WireframeHero() {
   const sectionRef = useRef<HTMLElement>(null);
   const [currentVideoIdx, setCurrentVideoIdx] = useState(0);
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const handleVideoEnded = () => {
+    if (isMobile) {
+      const video = videoRef.current;
+      if (video) {
+        video.currentTime = 0;
+        void video.play().catch(() => undefined);
+      }
+      return;
+    }
     setCurrentVideoIdx((prev) => (prev + 1) % heroServiceVideos.length);
   };
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
+    const mobileQuery = window.matchMedia("(max-width: 767px)");
+    const syncMobileMode = () => setIsMobile(mobileQuery.matches);
+    syncMobileMode();
+    mobileQuery.addEventListener("change", syncMobileMode);
 
-    video.src = heroServiceVideos[currentVideoIdx].src;
+    return () => mobileQuery.removeEventListener("change", syncMobileMode);
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || isMobile === null) return;
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const selectedVideo = isMobile ? mobileHeroVideo : heroServiceVideos[currentVideoIdx];
+
+    if (reducedMotion.matches) {
+      video.pause();
+      video.removeAttribute("src");
+      video.load();
+      return;
+    }
+
+    // Set one source only. A src attribute plus a child <source> caused
+    // Safari to perform unnecessary source selection/decoding work.
+    video.src = selectedVideo.src;
     video.load();
     const playPromise = video.play();
     if (playPromise !== undefined) {
@@ -55,7 +88,27 @@ export function WireframeHero() {
         // Autoplay policy handled: video is muted and playsInline
       });
     }
-  }, [currentVideoIdx]);
+
+    const onMotionChange = () => {
+      if (reducedMotion.matches) {
+        video.pause();
+        video.removeAttribute("src");
+        video.load();
+      } else if (!video.src) {
+        video.src = selectedVideo.src;
+        video.load();
+        void video.play().catch(() => undefined);
+      }
+    };
+    reducedMotion.addEventListener("change", onMotionChange);
+
+    return () => {
+      reducedMotion.removeEventListener("change", onMotionChange);
+      video.pause();
+      video.removeAttribute("src");
+      video.load();
+    };
+  }, [currentVideoIdx, isMobile]);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -75,7 +128,7 @@ export function WireframeHero() {
       className="relative min-h-[92vh] lg:min-h-screen bg-[#070B14] pt-24 sm:pt-28 lg:pt-32 pb-14 sm:pb-20 flex flex-col justify-center overflow-hidden border-b border-white/10"
     >
       {/* Background ambient gradient glow with vibrant multi-spectral aurora orbs */}
-      <motion.div style={{ y: yParallaxGlow }} className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+      <motion.div style={{ y: yParallaxGlow }} className="home-ambient-glow absolute inset-0 z-0 pointer-events-none overflow-hidden">
         {/* Luminous Electric Cyan Orb */}
         <div className="absolute -top-32 -left-32 size-[360px] sm:size-[600px] rounded-full bg-gradient-to-br from-cyan-400/30 to-blue-600/20 blur-[110px] sm:blur-[150px]" />
         {/* Vibrant Royal Violet / Sapphire Glow */}
@@ -227,14 +280,13 @@ export function WireframeHero() {
                     autoPlay
                     muted
                     playsInline
+                    loop={isMobile === true}
                     onEnded={handleVideoEnded}
-                    src={heroServiceVideos[0].src}
                     poster="/images/about/luxury_boardroom_skyline.jpg"
+                    preload="none"
                     className="h-full w-full object-cover object-center scale-105 transition-opacity duration-700"
                     aria-label={`BizLink Hero Background - ${heroServiceVideos[currentVideoIdx].title}`}
-                  >
-                    <source src={heroServiceVideos[0].src} type="video/mp4" />
-                  </video>
+                  />
 
                   {/* Fallback & semantic image for accessibility & search indexing */}
                   <Image

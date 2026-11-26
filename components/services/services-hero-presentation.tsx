@@ -23,7 +23,7 @@ const serviceDivisions: DivisionCard[] = [
     number: "01",
     name: "Business & Corporate",
     tagline: "Corporate Licensing, PRO Services & 100% Foreign Ownership",
-    image: "/images/services/brochure/business-corporate-main.webp",
+    image: "/images/services/sub service/Business & Corporate Solutions.jpg",
     accent: "#38bdf8",
     servicesCount: 8,
     anchor: "/services/business-corporate",
@@ -38,7 +38,7 @@ const serviceDivisions: DivisionCard[] = [
     number: "02",
     name: "Digital & Creative",
     tagline: "Custom Web Applications, Branding & Digital Marketing",
-    image: "/images/services/bizlink digital service.jpg",
+    image: "/images/services/sub service/Digital & Creative Solutions 1.jpg",
     accent: "#818cf8",
     servicesCount: 7,
     anchor: "/services/digital-creative",
@@ -83,7 +83,7 @@ const serviceDivisions: DivisionCard[] = [
     number: "05",
     name: "Automotive Care",
     tagline: "Mobile Car Wash, Detailing & Fleet Maintenance",
-    image: "/images/services/brochure/automotive-main.webp",
+    image: "/images/services/sub service/AUTOMOBILE AND SERVICES.png",
     accent: "#f472b6",
     servicesCount: 6,
     anchor: "/services/automotive",
@@ -130,20 +130,20 @@ export function ServicesHeroPresentation() {
               {/* Eyebrow Badge matching website style */}
               <div className="inline-flex items-center gap-2 self-start rounded-full border border-cyan-400/30 bg-cyan-950/40 px-3.5 py-1 text-xs font-bold uppercase tracking-[0.2em] text-cyan-300 backdrop-blur-md shadow-sm">
                 <span className="size-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                Pathas Group · Doha, Qatar
+                Operational Excellence
               </div>
 
               {/* Main Headline: Bold, modern, clean editorial look matching other pages */}
               <h1 className="mt-4 text-3xl sm:text-5xl lg:text-[54px] xl:text-6xl font-black tracking-tight text-white uppercase leading-[1.08]">
-                Services &amp; <br className="hidden sm:inline" />
+                How We <br className="hidden sm:inline" />
                 <span className="bg-gradient-to-r from-cyan-300 via-sky-200 to-blue-400 bg-clip-text text-transparent">
-                  Solutions
+                  Deliver
                 </span>
               </h1>
 
               {/* Subtitle / Value Proposition: Clean sans-serif matching other pages */}
               <p className="mt-4 text-sm sm:text-base lg:text-lg text-slate-300 font-normal leading-relaxed max-w-2xl">
-                Integrated enterprise operations across Qatar, India, UAE, and China. 5 specialized divisions delivering 35+ verified corporate services.
+                Structured five-division delivery across Qatar, India, UAE, and China, ensuring accountability, compliance, and transparent service execution.
               </p>
             </div>
 

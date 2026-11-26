@@ -2,7 +2,7 @@ import { shareMetadata } from "@/lib/site";
 import { ContactHero } from "@/components/contact/contact-hero";
 import { ContactCardsSection } from "@/components/contact/contact-cards-section";
 import { ContactMapSection } from "@/components/contact/contact-map-section";
-import { WhyBizLink, MobileBottomActionDock } from "@/components/brochure-sections";
+import { WhyBizLink, MobileBottomActionDock } from "@/components/shared/marketing-sections";
 
 export const metadata = shareMetadata(
   "/contact",

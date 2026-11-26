@@ -1,11 +1,10 @@
 import { shareMetadata } from "@/lib/site";
 import { WireframeHero } from "@/components/home/wireframe-hero";
 import { WireframeAbout } from "@/components/home/wireframe-about";
-import { WireframeVisionMission } from "@/components/home/wireframe-vision-mission";
+import { SisterConcernCompanies, WireframeVisionMission } from "@/components/home/wireframe-vision-mission";
 import { WireframeGallery } from "@/components/home/wireframe-gallery";
-import { WireframePricing } from "@/components/home/wireframe-pricing";
 import { WireframeContacts } from "@/components/home/wireframe-contacts";
-import { MobileBottomActionDock } from "@/components/brochure-sections";
+import { MobileBottomActionDock } from "@/components/shared/marketing-sections";
 
 export const metadata = shareMetadata(
   "/",
@@ -28,15 +27,18 @@ export default function HomePage() {
       {/* 4. Services: 5 Core Operational Divisions */}
       <WireframeGallery />
 
+      {/* 5. Sister Concerns: Group companies positioned after the service divisions */}
+      <SisterConcernCompanies />
+
       {/* WireframeReviews (VERIFIED FEEDBACK): Hidden per user instruction */}
       {/* WireframeLoyalty (ENTERPRISE CONTRACTS): Hidden per user instruction */}
 
-      {/* 5. Pricing & Scope: Itemized List with Dotted Leaders & Portrait Showcase Card */}
+      {/* 6. Pricing & Scope: Itemized List with Dotted Leaders & Portrait Showcase Card */}
       {/* <WireframePricing /> */}
 
       {/* WireframeFaq (FAQ): Hidden per user instruction */}
 
-      {/* 6. Contacts & Location: Floating Card with Google Map Integration */}
+      {/* 7. Contacts & Location: Floating Card with Google Map Integration */}
       <WireframeContacts />
 
       {/* Mobile Sticky Action Dock for Instant WhatsApp & Calls */}

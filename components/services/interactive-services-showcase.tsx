@@ -56,7 +56,7 @@ export const catalogServices: readonly CatalogServiceItem[] = [
     title: "Company Formation & 100% Foreign Ownership",
     subtitle: "Commercial Registration (CR), Trade Licensing & MOCI Approvals",
     categoryTag: "Corporate & Legal Setup",
-    image: "/images/services/business and cooperate.jpg",
+    image: "/images/services/sub service/Business & Corporate Solutions.jpg",
     engagementType: "Express Setup",
     turnaround: "2-3 Days",
     specs: {
@@ -80,7 +80,7 @@ export const catalogServices: readonly CatalogServiceItem[] = [
     title: "Typing, PRO & Government Document Clearing",
     subtitle: "Visas, Labour Quota, Ministry Approvals & WPS Assistance",
     categoryTag: "Government Clearing",
-    image: "/images/about/doha-corporate.webp",
+    image: "/images/services/sub service/Business & Corporate Solutions.jpg",
     engagementType: "Express Setup",
     turnaround: "24-48 Hours",
     specs: {
@@ -104,7 +104,7 @@ export const catalogServices: readonly CatalogServiceItem[] = [
     title: "Digital Marketing, SEO & High-Impact Ads",
     subtitle: "Full-Funnel Meta, Google, TikTok & Qualified Lead Generation",
     categoryTag: "Growth Marketing",
-    image: "/images/services/bizlink digital service.jpg",
+    image: "/images/services/sub service/Digital & Creative Solutions 1.jpg",
     engagementType: "Monthly Package",
     turnaround: "Weekly / Monthly",
     specs: {
@@ -128,7 +128,7 @@ export const catalogServices: readonly CatalogServiceItem[] = [
     title: "Content Creation & Cinematic AI Video",
     subtitle: "Short-Form Reels, Corporate Media & AI Video Storytelling",
     categoryTag: "Media Production",
-    image: "/images/about/philosophy-detail.webp",
+    image: "/images/services/sub service/Digital & Creative Solutions 2.jpg",
     engagementType: "Monthly Package",
     turnaround: "3-5 Days",
     specs: {
@@ -152,7 +152,7 @@ export const catalogServices: readonly CatalogServiceItem[] = [
     title: "Website & E-Commerce Application Development",
     subtitle: "Next.js Platforms, Shopify, QPay Gateways & PWA Speed",
     categoryTag: "Web & Platforms",
-    image: "/images/about/interior-main.webp",
+    image: "/images/services/sub service/Digital & Creative Solutions 1.jpg",
     engagementType: "Express Setup",
     turnaround: "3-5 Days",
     specs: {
@@ -272,7 +272,7 @@ export const catalogServices: readonly CatalogServiceItem[] = [
     title: "Doorstep Mobile Car Wash & Premium Detailing",
     subtitle: "Steam Cleaning, Paint Protection, Interior Disinfection & Wax",
     categoryTag: "Mobile Automotive",
-    image: "/images/services/automotive-wash.jpg",
+    image: "/images/services/sub service/AUTOMOBILE AND SERVICES.png",
     engagementType: "Turnkey / Retail",
     turnaround: "Same-Day",
     specs: {
@@ -296,7 +296,7 @@ export const catalogServices: readonly CatalogServiceItem[] = [
     title: "Auto Glass Inspection & Windshield Replacement",
     subtitle: "OEM Certified Glass, Crack Repair & On-Site Installation",
     categoryTag: "Auto Glass Care",
-    image: "/images/services/automotive-detailing.jpg",
+    image: "/images/services/sub service/AUTOMOBILE AND SERVICES.png",
     engagementType: "Express Setup",
     turnaround: "Same-Day",
     specs: {
@@ -703,7 +703,7 @@ export function InteractiveServicesShowcase({ detailed = false }: { detailed?: b
                     }`}
                 >
                   <CheckCircle2 size={13} />
-                  <span>Brochure View</span>
+                  <span>Details View</span>
                 </button>
               </div>
             </div>
@@ -1063,7 +1063,7 @@ export function InteractiveServicesShowcase({ detailed = false }: { detailed?: b
                             Key Scope of Services:
                           </p>
                           <ul className="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
-                            {service.items.map((item) => (
+                            {service.items.slice(0, 5).map((item) => (
                               <li
                                 key={item}
                                 className="flex items-start gap-2 text-xs sm:text-sm text-slate-200"
@@ -1076,6 +1076,25 @@ export function InteractiveServicesShowcase({ detailed = false }: { detailed?: b
                                 <span className="leading-snug">{item}</span>
                               </li>
                             ))}
+                            {service.items.length > 5 && (
+                              <li className="col-span-full list-none pt-1">
+                                <details className="group/view-more">
+                                  <summary className="inline-flex cursor-pointer list-none items-center gap-1.5 text-xs font-bold text-cyan-300 hover:text-white">
+                                    <span className="group-open/view-more:hidden">View More Scope</span>
+                                    <span className="hidden group-open/view-more:inline">View Less Scope</span>
+                                    <ArrowRight size={12} className="transition-transform group-open/view-more:rotate-90" />
+                                  </summary>
+                                  <ul className="mt-2.5 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+                                    {service.items.slice(5).map((item) => (
+                                      <li key={item} className="flex items-start gap-2 text-xs sm:text-sm text-slate-200">
+                                        <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-cyan-400" aria-hidden="true" />
+                                        <span className="leading-snug">{item}</span>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </details>
+                              </li>
+                            )}
                           </ul>
                         </div>
                       </div>

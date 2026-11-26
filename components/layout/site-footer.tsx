@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { company, branches } from "@/content/company";
-import { SocialLinks } from "@/components/social-links";
+import { SocialLinks } from "@/components/layout/social-links";
 
 export function SiteFooter() {
   return (
@@ -20,6 +20,23 @@ export function SiteFooter() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 pb-8">
+        {/* Featured social media links above the footer content */}
+        <section
+          aria-labelledby="footer-social-heading"
+          className="mb-12 rounded-3xl border border-cyan-400/20 bg-gradient-to-r from-cyan-950/45 via-[#0d1c33]/80 to-indigo-950/45 p-5 shadow-[0_16px_45px_rgba(0,0,0,0.25),inset_0_1px_1px_rgba(255,255,255,0.12)] sm:p-7"
+        >
+          <div className="mb-5 text-center">
+            <p className="text-[10px] font-black uppercase tracking-[0.28em] text-cyan-300">Stay Connected</p>
+            <h2 id="footer-social-heading" className="mt-2 text-xl font-black text-white sm:text-2xl">
+              Follow BizLink Qatar
+            </h2>
+            <p className="mx-auto mt-2 max-w-xl text-xs leading-relaxed text-sky-100/70 sm:text-sm">
+              Follow our latest business updates, creative work, trading solutions, and service announcements.
+            </p>
+          </div>
+          <SocialLinks featured />
+        </section>
+
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           {/* Col 1: Brand & Identity */}
           <div className="lg:col-span-5">
@@ -157,14 +174,11 @@ export function SiteFooter() {
           BUSINESS & CORPORATE · DIGITAL & CREATIVE · TRADING & SUPPLY · FACILITY MANAGEMENT · AUTOMOTIVE CARE
         </div>
 
-        {/* Bottom Bar: Copyright & Social */}
+        {/* Bottom Bar: Copyright */}
         <div className="mt-6 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left text-xs text-sky-200/70">
           <p>
             © {new Date().getFullYear()} {company.name}. All rights reserved.
           </p>
-          <div className="flex items-center gap-3">
-            <SocialLinks />
-          </div>
         </div>
       </div>
     </footer>

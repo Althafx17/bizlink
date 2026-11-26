@@ -46,7 +46,7 @@ const homeServices: ServiceDivisionItem[] = [
     ],
     ctaText: "View Details & Scope",
     ctaHref: "/services/business-corporate",
-    image: "/images/services/sub service/Business & Corporate Solution-main.jpg",
+    image: "/images/services/brochure/business-corporate-main.jpg",
     icon: Building2,
   },
   {
@@ -169,22 +169,8 @@ export function WireframeGallery() {
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     const total = homeServices.length;
     const index = Math.min(total - 1, Math.max(0, Math.floor(latest * total)));
-    setActiveDivisionIndex(index);
+    setActiveDivisionIndex((previous) => (previous === index ? previous : index));
   });
-
-  // Scroll smoothly to a specific division when clicked
-  const scrollToDivision = (index: number) => {
-    if (!containerRef.current) return;
-    if (viewMode === "grid") {
-      setViewMode("scroll");
-    }
-    const rect = containerRef.current.getBoundingClientRect();
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    const sectionTop = rect.top + scrollTop;
-    const scrollableDistance = containerRef.current.offsetHeight - window.innerHeight;
-    const targetY = sectionTop + (index / (homeServices.length - 1)) * Math.max(0, scrollableDistance);
-    window.scrollTo({ top: targetY, behavior: "smooth" });
-  };
 
   return (
     <section
@@ -219,26 +205,8 @@ export function WireframeGallery() {
                   </h2>
                 </div>
 
-                {/* Progress Indicators & View Mode Toggle */}
+                {/* View Mode Toggle */}
                 <div className="flex items-center gap-3 sm:gap-4 self-start md:self-end">
-                  {/* Active Division Chip */}
-                  {/* <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/30 bg-cyan-950/60 px-3 py-1 text-[11px] font-bold text-cyan-300 backdrop-blur-md">
-                    <span>Division {homeServices[activeDivisionIndex].id} of 05</span>
-                  </span> */}
-
-                  {/* Synchronized Scroll Progress Bar */}
-                  <div className="flex items-center gap-2">
-                    <span className="text-[10px] font-mono font-bold text-cyan-400 uppercase tracking-widest hidden sm:inline">
-                      Scroll
-                    </span>
-                    <div className="w-24 sm:w-32 h-2 rounded-full bg-white/10 overflow-hidden p-0.5 border border-white/10">
-                      <motion.div
-                        style={{ scaleX: scrollYProgress, transformOrigin: "left" }}
-                        className="h-full rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 shadow-[0_0_8px_rgba(34,211,238,0.8)]"
-                      />
-                    </div>
-                  </div>
-
                   {/* Grid View Toggle */}
                   <button
                     type="button"
@@ -254,18 +222,18 @@ export function WireframeGallery() {
             </div>
 
             {/* Horizontal Cards Motion Track: Synchronously Slides from 1st to Last Card */}
-            <div className="w-full overflow-hidden">
+            <div className="w-full overflow-x-clip overflow-y-visible">
               <motion.div
                 ref={trackRef}
-                style={{ x }}
-                className="flex gap-4 sm:gap-6 pl-4 sm:pl-8 lg:pl-16 pr-8 sm:pr-16 w-max select-none"
+                style={{ x, willChange: "transform" }}
+                className="flex w-max transform-gpu select-none gap-4 pl-4 pr-8 sm:gap-6 sm:pl-8 sm:pr-16 lg:pl-16"
               >
                 {homeServices.map((service, idx) => {
                   const isActive = idx === activeDivisionIndex;
                   return (
                     <article
                       key={service.id}
-                      className={`group relative overflow-hidden rounded-3xl border bg-gradient-to-br from-white/[0.12] via-[#0b2138]/70 to-[#07131b]/90 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.6),inset_0_1px_2px_rgba(255,255,255,0.3)] transition-all duration-300 flex flex-col justify-between w-[300px] sm:w-[380px] lg:w-[420px] min-h-[460px] sm:min-h-[490px] lg:min-h-[515px] shrink-0 p-5 pb-6 sm:p-6 sm:pb-7 ${
+                      className={`group relative flex w-[300px] shrink-0 flex-col justify-between overflow-hidden rounded-3xl border bg-gradient-to-br from-white/[0.12] via-[#0b2138]/70 to-[#07131b]/90 p-5 pb-6 shadow-[0_20px_50px_rgba(0,0,0,0.6),inset_0_1px_2px_rgba(255,255,255,0.3)] transition-[border-color,box-shadow] duration-300 sm:w-[380px] sm:min-h-[490px] sm:p-6 sm:pb-7 lg:w-[420px] lg:min-h-[515px] ${
                         isActive
                           ? "border-cyan-400/70 shadow-[0_25px_60px_rgba(0,180,255,0.25)] ring-1 ring-cyan-400/40"
                           : "border-white/20 hover:border-cyan-400/50"
@@ -323,29 +291,6 @@ export function WireframeGallery() {
                   );
                 })}
               </motion.div>
-            </div>
-
-            {/* Interactive Division Navigation Tabs at Bottom of Sticky Frame */}
-            <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8 mt-5 sm:mt-6 shrink-0 flex items-center justify-center gap-1.5 sm:gap-2.5">
-              {homeServices.map((service, index) => {
-                const isActive = index === activeDivisionIndex;
-                return (
-                  <button
-                    key={service.id}
-                    type="button"
-                    onClick={() => scrollToDivision(index)}
-                    aria-label={`Scroll to ${service.title}`}
-                    className={`group flex items-center gap-2 rounded-full px-3 sm:px-4 py-1.5 text-xs font-semibold transition-all duration-300 cursor-pointer ${
-                      isActive
-                        ? "bg-cyan-500 text-slate-950 shadow-md shadow-cyan-500/40 scale-105"
-                        : "border border-white/10 bg-white/5 text-slate-400 hover:border-white/20 hover:text-white"
-                    }`}
-                  >
-                    <span>{service.id}</span>
-                    <span className="hidden md:inline">{service.badge}</span>
-                  </button>
-                );
-              })}
             </div>
 
           </div>

@@ -47,7 +47,7 @@ export const services: readonly ServiceDivision[] = [
     tagline: "Simplifying Business. Supporting Growth. Creating Opportunities.",
     highlight: "Your Business Journey, Made Simple WithUs",
     description: "Corporate Licensing, PRO Services & Compliance",
-    imageCard: "/images/services/sub service/Business-Corporate-main.jpg",
+    imageCard: "/images/services/brochure/business-corporate-main.jpg",
     brochureMainImage: "/images/services/brochure/business-corporate-main.jpg",
     iconName: "building",
     brochurePage: "www.bizlinkqatar.com 03",

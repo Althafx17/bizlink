@@ -144,14 +144,16 @@ export function WireframeHero() {
 
           {/* Left Column: Scaled for maximum mobile impact & readability */}
           <motion.div
-            initial={{ opacity: 0, y: 35 }}
+            // Keep the first-screen content visible in the server HTML; the
+            // entrance motion still runs after hydration without delaying LCP.
+            initial={{ opacity: 1, y: 35 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-6 xl:col-span-6 flex flex-col justify-center text-left"
           >
             {/* Top Eyebrow Status Badge - Content hidden with visibility: hidden preserving 38px layout flow */}
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 1, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               style={{ visibility: "hidden" }}
@@ -164,7 +166,7 @@ export function WireframeHero() {
 
             {/* Main Headline: Bold 44px mobile scale with tight 1.05 leading */}
             <motion.h1
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 1, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
               className="mt-6 text-[44px] leading-[1.05] sm:text-5xl lg:text-[54px] xl:text-[62px] font-black tracking-tight text-white uppercase sm:leading-[1.08]"
@@ -179,7 +181,7 @@ export function WireframeHero() {
 
             {/* Subtitle / Value Proposition: Relaxed 18px text-lg on mobile */}
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 1, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.28 }}
               className="mt-6 text-lg sm:text-base lg:text-lg text-slate-300 font-normal leading-relaxed max-w-xl"
@@ -189,7 +191,7 @@ export function WireframeHero() {
 
             {/* Primary Action Buttons: Full width on mobile for thumb reachability, flex-row on desktop */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 1, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.36 }}
               className="mt-10 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3.5"
@@ -223,7 +225,7 @@ export function WireframeHero() {
 
             {/* Quick Metrics Bar with Animated Number Counters */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 1, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.44 }}
               className="mt-12 pt-6 border-t border-white/10 grid grid-cols-3 gap-4 max-w-lg"

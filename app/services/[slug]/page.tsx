@@ -48,7 +48,7 @@ import {
 } from "lucide-react";
 import { services, type ServiceDivision } from "@/content/services";
 import { company } from "@/content/company";
-import { MobileBottomActionDock } from "@/components/brochure-sections";
+import { MobileBottomActionDock } from "@/components/shared/marketing-sections";
 import { FacilityCardsAutoScroll } from "@/components/services/facility-cards-auto-scroll";
 
 interface ServicePageProps {
@@ -227,13 +227,6 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
             {/* Left Column: Titles, Brochure Intro & CTAs */}
             <div className="lg:col-span-7 space-y-6">
               
-              {/* Division Badge & Brochure Page Citation */}
-              <div className="flex flex-wrap items-center gap-3">
-                <span className="rounded-full border border-amber-400/30 bg-amber-400/10 px-3 py-1 text-[11px] font-extrabold uppercase tracking-wider text-amber-300">
-                  {service.division}
-                </span>
-              </div>
-
               {/* Headline */}
               <h1 className="text-3xl sm:text-5xl lg:text-5xl font-black text-white uppercase tracking-tight leading-[1.1]">
                 {service.title}
@@ -542,10 +535,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                 Sub-Services &amp; Scope of Work
               </h2>
             </div>
-            {/* <p className="text-xs sm:text-sm text-slate-400 max-w-md sm:text-right">
-              Detailed technical and commercial breakdown sourced from the official BizLink company brochure and documentation.
-            </p>
-          </div> */}
+          </div>
 
           {/* Sub-Services Grid: Every Sub-Service Displayed in a Rich Glassmorphism Card */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">

@@ -214,8 +214,8 @@ export function WireframeGallery() {
             <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8 mb-5 sm:mb-6 shrink-0">
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 sm:gap-4">
                 <div>
-                  <h2 className="mt-1 sm:mt-1.5 text-xl sm:text-2xl lg:text-3xl font-black tracking-tight text-white uppercase leading-tight">
-                    Specialized Corporate &amp; Industrial Capabilities
+                  <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white uppercase leading-tight">
+                  OUR SERVICES
                   </h2>
                 </div>
 

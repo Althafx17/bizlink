@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
@@ -10,8 +10,7 @@ import {
   TrendingUp,
   Sparkles,
   Car,
-  ChevronLeft,
-  ChevronRight,
+  ArrowLeft,
   ArrowRight,
   CheckCircle2,
   Grid3X3,
@@ -129,6 +128,8 @@ export function WireframeGallery() {
 
   // Measure track scroll width vs window width for sticky horizontal progression
   useEffect(() => {
+    if (viewMode !== "scroll") return;
+
     const calculateScrollDistance = () => {
       if (trackRef.current) {
         const track = trackRef.current;
@@ -165,18 +166,34 @@ export function WireframeGallery() {
 
   const x = useTransform(scrollYProgress, [0, 1], [0, -maxScrollX]);
 
-  // Keep active division in sync with scroll position
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     const total = homeServices.length;
     const index = Math.min(total - 1, Math.max(0, Math.floor(latest * total)));
     setActiveDivisionIndex((previous) => (previous === index ? previous : index));
   });
 
+  // Scroll smoothly to a specific division when clicked (or via Prev/Next arrows)
+  const scrollToDivision = (index: number) => {
+    if (!containerRef.current) return;
+    if (viewMode === "grid") {
+      setViewMode("scroll");
+    }
+    const clampedIndex = Math.max(0, Math.min(homeServices.length - 1, index));
+    const rect = containerRef.current.getBoundingClientRect();
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const sectionTop = rect.top + scrollTop;
+    const scrollableDistance = containerRef.current.offsetHeight - window.innerHeight;
+    const targetY =
+      sectionTop +
+      (clampedIndex / (homeServices.length - 1)) * Math.max(0, scrollableDistance);
+    window.scrollTo({ top: targetY, behavior: "smooth" });
+  };
+
   return (
     <section
       id="services"
       aria-label="Our Service Solutions & Divisions"
-      className="relative bg-[#000E24] text-white w-full max-w-full overflow-visible"
+      className="relative w-full max-w-full overflow-visible bg-[#000E24] text-white [--services-gallery-top:4rem] md:[--services-gallery-top:5.5rem]"
     >
       {/* Ambient multi-spectral radiant aurora glow mesh */}
       <div className="home-ambient-glow pointer-events-none absolute inset-0 -z-10 overflow-hidden">
@@ -193,20 +210,53 @@ export function WireframeGallery() {
           style={{ height: "320vh" }}
           className="relative w-full"
         >
-          {/* Pinned Viewport while scrolling through this section */}
-          <div className="sticky top-0 h-screen flex flex-col justify-start overflow-hidden pt-6 pb-4 sm:pt-8 sm:pb-5">
-            
-            {/* Section Header with Scroll Sync Progress Bar & Active Division Pill */}
-            <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8 mb-5 sm:mb-6 shrink-0">
+          <div className="sticky top-[var(--services-gallery-top)] flex min-h-[calc(100dvh-var(--services-gallery-top))] flex-col justify-start overflow-hidden pt-2 pb-4 sm:pb-5">
+            {/* Stationary Sticky Heading + Reference Controls */}
+            <div className="relative z-10 mx-auto mb-4 sm:mb-5 w-full max-w-7xl shrink-0 px-4 sm:px-6 lg:px-8">
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 sm:gap-4">
                 <div>
-                  <h2 className="flex items-center justify-center text-4xl lg:text-5xl font-black tracking-tight text-white uppercase leading-tight">
-                  OUR SERVICES
+                  <h2 className="text-left text-4xl lg:text-5xl font-black tracking-tight text-white uppercase leading-tight">
+                    OUR SERVICES
                   </h2>
                 </div>
 
-                {/* View Mode Toggle */}
+                {/* Progress Bar, Reference Prev/Next Arrows & Grid Toggle */}
                 <div className="flex items-center gap-3 sm:gap-4 self-start md:self-end">
+                  {/* Synchronized Scroll Progress Bar */}
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-mono font-bold text-cyan-400 uppercase tracking-widest hidden sm:inline">
+                      Scroll
+                    </span>
+                    <div className="w-20 sm:w-28 h-2 rounded-full bg-white/10 overflow-hidden p-0.5 border border-white/10">
+                      <motion.div
+                        style={{ scaleX: scrollYProgress, transformOrigin: "left" }}
+                        className="h-full rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 shadow-[0_0_8px_rgba(34,211,238,0.8)]"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Reference Circular Prev / Next Navigation Buttons */}
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => scrollToDivision(activeDivisionIndex - 1)}
+                      disabled={activeDivisionIndex === 0}
+                      aria-label="Previous service division"
+                      className="flex size-9 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white/80 hover:bg-white/15 hover:text-white disabled:opacity-35 disabled:pointer-events-none transition-all cursor-pointer"
+                    >
+                      <ArrowLeft className="h-4 w-4" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => scrollToDivision(activeDivisionIndex + 1)}
+                      disabled={activeDivisionIndex === homeServices.length - 1}
+                      aria-label="Next service division"
+                      className="flex size-9 items-center justify-center rounded-full bg-cyan-500 text-slate-950 hover:bg-cyan-400 disabled:opacity-35 disabled:pointer-events-none transition-all shadow-md shadow-cyan-500/25 cursor-pointer"
+                    >
+                      <ArrowRight className="h-4 w-4" />
+                    </button>
+                  </div>
+
                   {/* Grid View Toggle */}
                   <button
                     type="button"
@@ -226,14 +276,14 @@ export function WireframeGallery() {
               <motion.div
                 ref={trackRef}
                 style={{ x, willChange: "transform" }}
-                className="flex w-max transform-gpu select-none gap-4 pl-4 pr-8 sm:gap-6 sm:pl-8 sm:pr-16 lg:pl-16"
+                className="relative flex w-max transform-gpu select-none gap-4 pl-4 pr-8 sm:gap-6 sm:pl-8 sm:pr-16 lg:pl-16"
               >
                 {homeServices.map((service, idx) => {
                   const isActive = idx === activeDivisionIndex;
                   return (
                     <article
                       key={service.id}
-                      className={`group relative flex w-[300px] shrink-0 flex-col justify-between overflow-hidden rounded-3xl border bg-gradient-to-br from-white/[0.12] via-[#0b2138]/70 to-[#07131b]/90 p-5 pb-6 shadow-[0_20px_50px_rgba(0,0,0,0.6),inset_0_1px_2px_rgba(255,255,255,0.3)] transition-[border-color,box-shadow] duration-300 sm:w-[380px] sm:min-h-[490px] sm:p-6 sm:pb-7 lg:w-[420px] lg:min-h-[515px] ${
+                      className={`group relative flex w-[300px] shrink-0 flex-col justify-between overflow-hidden rounded-3xl border bg-gradient-to-br from-white/[0.12] via-[#0b2138]/70 to-[#07131b]/90 p-5 pb-6 shadow-[0_20px_50px_rgba(0,0,0,0.6),inset_0_1px_2px_rgba(255,255,255,0.3)] transition-[border-color,box-shadow] duration-300 sm:w-[360px] sm:min-h-[450px] sm:p-5 sm:pb-6 lg:w-[400px] lg:min-h-[470px] ${
                         isActive
                           ? "border-cyan-400/70 shadow-[0_25px_60px_rgba(0,180,255,0.25)] ring-1 ring-cyan-400/40"
                           : "border-white/20 hover:border-cyan-400/50"
@@ -246,7 +296,7 @@ export function WireframeGallery() {
                             src={service.image}
                             alt={service.title}
                             fill
-                            sizes="(min-width: 1024px) 420px, 320px"
+                            sizes="(min-width: 1024px) 400px, 320px"
                             className="object-cover object-[center_30%] transition-transform duration-700 ease-out group-hover:scale-105"
                           />
                         </Link>
@@ -261,7 +311,7 @@ export function WireframeGallery() {
                               {service.title}
                             </h3>
                           </Link>
-                          <p className="mt-2 text-xs text-slate-300 leading-relaxed">
+                          <p className="mt-1.5 text-xs text-slate-300 leading-relaxed">
                             {service.description}
                           </p>
 
@@ -278,7 +328,7 @@ export function WireframeGallery() {
                       </div>
 
                       {/* CTA Button */}
-                      <div className="pt-3 border-t border-white/10 mt-2">
+                      <div className="pt-3 border-t border-white/10 mt-3">
                         <Link
                           href={service.ctaHref}
                           className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-teal-500 px-4 py-2.5 text-xs font-bold text-slate-950 shadow-md shadow-cyan-500/20 hover:from-cyan-400 hover:to-teal-400 transition-all active:scale-[0.98]"
@@ -291,6 +341,29 @@ export function WireframeGallery() {
                   );
                 })}
               </motion.div>
+            </div>
+
+            {/* Interactive Division Navigation Tabs at Bottom of Sticky Frame */}
+            <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8 mt-4 sm:mt-5 shrink-0 flex items-center justify-center gap-1.5 sm:gap-2.5">
+              {homeServices.map((service, index) => {
+                const isActive = index === activeDivisionIndex;
+                return (
+                  <button
+                    key={service.id}
+                    type="button"
+                    onClick={() => scrollToDivision(index)}
+                    aria-label={`Scroll to ${service.title}`}
+                    className={`group flex items-center gap-2 rounded-full px-3 sm:px-4 py-1.5 text-xs font-semibold transition-all duration-300 cursor-pointer ${
+                      isActive
+                        ? "bg-cyan-500 text-slate-950 shadow-md shadow-cyan-500/40 scale-105"
+                        : "border border-white/10 bg-white/5 text-slate-400 hover:border-white/20 hover:text-white"
+                    }`}
+                  >
+                    <span>{service.id}</span>
+                    <span className="hidden md:inline">{service.badge}</span>
+                  </button>
+                );
+              })}
             </div>
 
           </div>

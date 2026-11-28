@@ -157,7 +157,10 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
       {/* ═══════════════════════════════════════════════════════════════
           SECTION 01: HERO — Full-width image with H1 and CTA button
          ═══════════════════════════════════════════════════════════════ */}
-      <section className="relative min-h-[60vh] sm:min-h-[70vh] flex items-end overflow-hidden">
+      <section
+        aria-labelledby="service-hero-title"
+        className="relative min-h-[60vh] sm:min-h-[70vh] flex items-end overflow-hidden"
+      >
         {/* Full-width Background Image */}
         <Image
           src={service.brochureMainImage}
@@ -178,15 +181,15 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                 href="/services"
                 className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-[#070B14]/50 hover:bg-[#070B14]/70 px-4 py-2 text-xs sm:text-sm font-bold text-white backdrop-blur-md transition-all w-fit"
               >
-                <ArrowLeft size={16} className="text-cyan-400 group-hover:-translate-x-1 transition-transform" />
+                <ArrowLeft size={16} aria-hidden="true" className="text-cyan-400 group-hover:-translate-x-1 transition-transform" />
                 <span>All Services</span>
               </Link>
 
               <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-white/70">
                 <Link href="/" className="hover:text-white transition-colors">Home</Link>
-                <ChevronRight size={13} className="text-white/40" />
+                <ChevronRight size={13} aria-hidden="true" className="text-white/40" />
                 <Link href="/services" className="hover:text-white transition-colors">Services</Link>
-                <ChevronRight size={13} className="text-white/40" />
+                <ChevronRight size={13} aria-hidden="true" className="text-white/40" />
                 <span className="text-cyan-300 font-semibold">{service.name}</span>
               </nav>
             </div>
@@ -199,12 +202,15 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
             <div className="max-w-3xl space-y-5">
               <div className="flex flex-wrap items-center gap-3">
                 <span className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-cyan-300 backdrop-blur-md">
-                  <span className="size-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                  <span aria-hidden="true" className="size-1.5 rounded-full bg-cyan-400 animate-pulse" />
                   Division {service.number}
                 </span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight leading-[1.08]">
+              <h1
+                id="service-hero-title"
+                className="text-4xl sm:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight leading-[1.08]"
+              >
                 {service.title}
               </h1>
 
@@ -218,7 +224,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                 rel="noreferrer"
                 className="inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-[#0056B3] via-[#0088CE] to-[#00B4FF] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all"
               >
-                <MessageCircle size={18} className="text-[#25D366]" />
+                <MessageCircle size={18} aria-hidden="true" className="text-[#25D366]" />
                 <span>Get Free Consultation</span>
               </a>
             </div>
@@ -230,7 +236,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
       {/* ═══════════════════════════════════════════════════════════════
           SECTION 02: SERVICE OVERVIEW — Card with intro, image & tags
          ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-14 sm:py-20">
+      <section aria-labelledby="service-overview-heading" className="py-14 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-[#0F1D30]/90 via-[#0B1B36]/80 to-[#070B14]/90 p-6 sm:p-10 shadow-xl backdrop-blur-xl overflow-hidden">
 
@@ -241,7 +247,10 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                   <span className="text-xs font-black uppercase tracking-[0.2em] text-cyan-400">
                     Overview
                   </span>
-                  <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-tight">
+                  <h2
+                    id="service-overview-heading"
+                    className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-tight"
+                  >
                     {service.title}
                   </h2>
                   <p className="mt-1 text-sm font-semibold text-amber-400 uppercase tracking-wider">
@@ -354,7 +363,11 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
       {/* ═══════════════════════════════════════════════════════════════
           SECTION 05: WHY IT MATTERS — Sticky title left, stacked cards right
          ═══════════════════════════════════════════════════════════════ */}
-      <section id="sub-services" className="py-14 sm:py-20 bg-gradient-to-b from-[#070B14] to-[#091526]">
+      <section
+        id="sub-services"
+        aria-labelledby="sub-services-heading"
+        className="py-14 sm:py-20 bg-gradient-to-b from-[#070B14] to-[#091526]"
+      >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
 
@@ -363,7 +376,10 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
               <span className="text-xs font-black uppercase tracking-[0.2em] text-cyan-400">
                 Detailed Scope
               </span>
-              <h2 className="text-2xl sm:text-4xl font-black text-white leading-tight">
+              <h2
+                id="sub-services-heading"
+                className="text-2xl sm:text-4xl font-black text-white leading-tight"
+              >
                 Sub-Services &amp; Deliverables
               </h2>
               <p className="text-sm text-slate-300 leading-relaxed">

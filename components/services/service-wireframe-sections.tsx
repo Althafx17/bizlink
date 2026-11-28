@@ -37,7 +37,10 @@ export function ServicesIncludedSlider({
   };
 
   return (
-    <section className="py-14 sm:py-20 bg-gradient-to-b from-[#070B14] via-[#091526] to-[#070B14]">
+    <section
+      aria-labelledby="services-included-heading"
+      className="py-14 sm:py-20 bg-gradient-to-b from-[#070B14] via-[#091526] to-[#070B14]"
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header with Interactive Dot Indicators */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
@@ -45,7 +48,7 @@ export function ServicesIncludedSlider({
             <span className="text-xs font-black uppercase tracking-[0.2em] text-cyan-400">
               What&apos;s Included
             </span>
-            <h2 className="mt-2 text-2xl sm:text-4xl font-black text-white">
+            <h2 id="services-included-heading" className="mt-2 text-2xl sm:text-4xl font-black text-white">
               Services Included
             </h2>
           </div>
@@ -126,7 +129,7 @@ export function ProcessAccordionCard({
   const [openStep, setOpenStep] = useState<string>(process[0]?.step ?? "01");
 
   return (
-    <section className="py-14 sm:py-20">
+    <section aria-labelledby="service-process-heading" className="py-14 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl bg-[#0B1B36] border border-white/10 p-6 sm:p-10 lg:p-12 shadow-2xl overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
@@ -201,7 +204,7 @@ export function ProcessAccordionCard({
                 <span className="text-xs font-black uppercase tracking-[0.2em] text-cyan-400">
                   How We Work
                 </span>
-                <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-tight">
+                <h2 id="service-process-heading" className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-tight">
                   Our Process
                 </h2>
                 <p className="mt-2 text-sm text-slate-300">
@@ -231,13 +234,13 @@ export function ServiceFaqAccordion({ faqs }: { faqs: readonly FaqItem[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-14 sm:py-20">
+    <section aria-labelledby="service-faq-heading" className="py-14 sm:py-20">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-10">
         <div className="text-center space-y-2">
           <span className="text-xs font-black uppercase tracking-[0.2em] text-cyan-400">
             Common Questions
           </span>
-          <h2 className="text-2xl sm:text-4xl font-black text-white">
+          <h2 id="service-faq-heading" className="text-2xl sm:text-4xl font-black text-white">
             Frequently Asked Questions
           </h2>
         </div>

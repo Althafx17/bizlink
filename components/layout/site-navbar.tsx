@@ -4,13 +4,62 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowRight, Menu, Phone, X } from "lucide-react";
+import { ArrowRight, ChevronDown, Menu, Phone, X } from "lucide-react";
 
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Contact", href: "/contact" },
+interface NavSubLink {
+  label: string;
+  description: string;
+  href: string;
+}
+
+interface NavItem {
+  label: string;
+  href: string;
+  subLinks: NavSubLink[];
+}
+
+const navLinks: NavItem[] = [
+  {
+    label: "Home",
+    href: "/",
+    subLinks: [
+      { label: "Overview", description: "BizLink Qatar homepage", href: "/" },
+      { label: "About Us", description: "Who we are since 2010", href: "/#about" },
+      { label: "Vision & Mission", description: "Our purpose and values", href: "/#vision-mission" },
+      { label: "Our Services", description: "5 core business divisions", href: "/#services" },
+      { label: "Sister Concerns", description: "Pathas Group companies", href: "/#sister-companies" },
+    ],
+  },
+  {
+    label: "About",
+    href: "/about",
+    subLinks: [
+      { label: "Company Profile", description: "CR No. 206520 · Pathas Group", href: "/about" },
+      { label: "Why Partner With Us", description: "One roof accountability", href: "/about#why-title" },
+      { label: "Doha Offices", description: "Ain Khalid & Bin Mahmoud", href: "/about#offices-map" },
+      { label: "Interactive Profile", description: "Digital brochure overview", href: "/company-profile" },
+    ],
+  },
+  {
+    label: "Services",
+    href: "/services",
+    subLinks: [
+      { label: "All Services Directory", description: "35+ integrated solutions", href: "/services" },
+      { label: "01 · Business & Corporate", description: "Company formation, CR & PRO", href: "/services/business-corporate" },
+      { label: "02 · Digital & Creative", description: "SEO, web dev & AI video", href: "/services/digital-creative" },
+      { label: "03 · Trading & Supply", description: "Wholesale, cargo & perfumes", href: "/services/trading-supply" },
+      { label: "04 · Facility & Maintenance", description: "Cleaning, MEP & partitions", href: "/services/facility-maintenance" },
+      { label: "05 · Automotive Care", description: "Mobile wash & auto glass", href: "/services/automotive" },
+    ],
+  },
+  {
+    label: "Contact",
+    href: "/contact",
+    subLinks: [
+      { label: "Request a Quotation", description: "Get in touch with our team", href: "/contact" },
+      { label: "Visit Our Offices", description: "Doha locations & map", href: "/contact#offices-map" },
+    ],
+  },
 ];
 
 export function SiteNavbar() {
@@ -104,27 +153,61 @@ export function SiteNavbar() {
             </span>
           </Link>
 
-          {/* Center Nav Links - Desktop */}
+          {/* Center Nav Links - Desktop (with hover dropdowns) */}
           <nav aria-label="Main navigation" className="hidden md:flex items-center gap-1 lg:gap-2">
-            {navLinks.map(({ label, href }) => {
-              const isActive = pathname === href;
+            {navLinks.map(({ label, href, subLinks }) => {
+              const isActive =
+                href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
               return (
-                <Link
-                  key={href}
-                  href={href}
-                  className={`relative min-h-[44px] inline-flex items-center px-3.5 py-2 text-xs lg:text-sm font-semibold transition-all duration-300 ${isActive
-                      ? "text-cyan-300 font-bold"
-                      : "text-white/80 hover:text-white"
-                    }`}
-                >
-                  <span>{label}</span>
-                  {isActive && (
-                    <span
-                      className="absolute bottom-0 left-0 w-full h-[2px] rounded-none bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.9)]"
+                <div key={href} className="relative group">
+                  <Link
+                    href={href}
+                    className={`relative min-h-[44px] inline-flex items-center gap-1 px-3.5 py-2 text-xs lg:text-sm font-semibold transition-all duration-300 ${isActive
+                        ? "text-cyan-300 font-bold"
+                        : "text-white/80 hover:text-white"
+                      }`}
+                  >
+                    <span>{label}</span>
+                    <ChevronDown
+                      size={13}
                       aria-hidden="true"
+                      className="text-white/50 transition-transform duration-200 group-hover:rotate-180 group-hover:text-cyan-300 group-focus-within:rotate-180"
                     />
-                  )}
-                </Link>
+                    {isActive && (
+                      <span
+                        className="absolute bottom-0 left-0 w-full h-[2px] rounded-none bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.9)]"
+                        aria-hidden="true"
+                      />
+                    )}
+                  </Link>
+
+                  {/* Hover / Focus-Within Dropdown Panel (Desktop & Tablet only) */}
+                  <div className="pointer-events-none invisible opacity-0 translate-y-2 group-hover:pointer-events-auto group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:pointer-events-auto group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 transition-all duration-200 ease-out absolute left-0 top-full pt-2.5 z-50 w-72">
+                    <div className="rounded-2xl border border-white/15 bg-[#070B14]/95 p-2 shadow-2xl shadow-black/70 backdrop-blur-2xl ring-1 ring-white/10">
+                      {subLinks.map((sub) => (
+                        <Link
+                          key={sub.href + sub.label}
+                          href={sub.href}
+                          className="group/item flex items-center justify-between gap-3 rounded-xl px-3.5 py-2.5 transition-colors hover:bg-white/[0.08] focus-visible:outline-none focus-visible:bg-white/[0.08]"
+                        >
+                          <div className="min-w-0">
+                            <span className="block text-xs font-bold text-white group-hover/item:text-cyan-300 transition-colors truncate">
+                              {sub.label}
+                            </span>
+                            <span className="block text-[11px] text-slate-400 truncate mt-0.5">
+                              {sub.description}
+                            </span>
+                          </div>
+                          <ArrowRight
+                            size={13}
+                            aria-hidden="true"
+                            className="shrink-0 text-white/30 group-hover/item:text-cyan-400 group-hover/item:translate-x-0.5 transition-all"
+                          />
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               );
             })}
           </nav>

@@ -1,3 +1,6 @@
+const whatsappLabel = "+974 3000 3916";
+const whatsappNumber = whatsappLabel.replace(/\D/g, "");
+
 export const company = {
   name: "BIZ LINK TRADING AND CONTRACTING SERVICES WLL.",
   shortName: "BizLink Qatar",
@@ -19,11 +22,12 @@ export const company = {
   email: "info@bizlinkqatar.com",
   secondaryEmail: "bizlink.qatar@gmail.com",
   website: "www.bizlinkqatar.com",
-  whatsappNumber: "97450091006",
-  whatsappUrl: "https://wa.me/97450091006",
+  whatsappLabel,
+  whatsappNumber,
+  whatsappUrl: `https://wa.me/${whatsappNumber}`,
   landline: "+974 4412 1001",
   phones: [
-    { label: "+974 5009 1006", href: "tel:+97450091006", primary: true, note: "WhatsApp & Hotline" },
+    { label: "+974 5009 1006", href: "tel:+97450091006", primary: true, note: "Hotline" },
     { label: "+974 7766 1037", href: "tel:+97477661037", primary: false, note: "Sales & Support" },
     { label: "+974 7008 1001", href: "tel:+97470081001", primary: false, note: "Corporate Desk" },
     { label: "+974 30003 916", href: "tel:+97430003916", primary: false, note: "Services Team" },
@@ -118,16 +122,22 @@ export const reasons = [
     title: "Integrated Single Point of Contact",
     tagline: "One Roof Accountability",
     body: "Eliminate multiple fragmented vendors. Access 35+ professional corporate, facility, automotive, and creative services through a single trusted partner.",
+    image: "/images/about/luxury_boardroom_skyline.jpg",
+    stat: "35+ Services",
   },
   {
     title: "Complete Regulatory & WPS Compliance",
     tagline: "Full Qatar Legal Standing",
     body: "CR No. 206520 with direct liaison to Qatari ministries, MOFA, embassies, labor departments, and certified WPS wage protection systems.",
+    image: "/images/about/doha-corporate.webp",
+    stat: "100% Compliant",
   },
   {
     title: "Proven Regional Strength Since 2010",
     tagline: "Pathas Group Network",
     body: "Backed by the multi-country logistics, sourcing, and trade capabilities of Pathas Group of Companies across Qatar, India, UAE, and China.",
+    image: "/images/about/executive_handshake_bg.webp",
+    stat: "4 Global Hubs",
   },
 ] as const;
 

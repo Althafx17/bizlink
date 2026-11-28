@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
+  ArrowLeft,
   ArrowRight,
   ArrowUpRight,
   Award,
@@ -258,7 +259,7 @@ export function BrochureCover() {
               </Link>
 
               <a
-                href="https://wa.me/97450091006"
+                href={company.whatsappUrl}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex min-h-[46px] sm:min-h-[50px] items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-5 sm:px-6 py-3 text-xs sm:text-base font-bold text-white shadow-lg backdrop-blur-md transition-all duration-200 hover:bg-white/20 hover:border-cyan-300/60 active:scale-[0.98]"
@@ -800,51 +801,89 @@ export function ServicesDirectory({ detailed = false }: { detailed?: boolean }) 
 export function WhyBizLink() {
   return (
     <section
-      className="py-16 sm:py-20 bg-[#071426] border-b border-white/10"
+      className="py-16 sm:py-24 bg-[#070B14] border-b border-white/10"
       aria-labelledby="why-title"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto">
-          <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-cyan-400">
-            Enterprise Value
-          </p>
-          <h2 id="why-title" className="mt-2 text-2xl sm:text-4xl font-black text-white">
-            Why Partner With BizLink?
-          </h2>
-          <p className="mt-2 text-sm text-slate-300">
-            One partner, multiple solutions, endless possibilities. Here is why organizations across Qatar choose us.
-          </p>
-        </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-          {reasons.map((r, i) => (
-            <div
-              key={r.title}
-              className="flex flex-col rounded-3xl border border-white/10 bg-[#0F254B]/60 p-6 sm:p-8 shadow-md transition hover:border-cyan-400/40 hover:bg-[#143161]"
-            >
-              <div className="flex items-center gap-3">
-                <span className="flex size-10 items-center justify-center rounded-xl bg-cyan-400/15 text-cyan-300 font-black text-sm">
-                  0{i + 1}
-                </span>
-                <span className="text-[11px] font-bold uppercase tracking-wider text-cyan-400">
-                  {r.tagline}
-                </span>
-              </div>
-              <h3 className="mt-4 text-lg font-extrabold text-white leading-snug">
-                {r.title}
-              </h3>
-              <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-300">
-                {r.body}
-              </p>
+        {/* Layout: Title left, 3 image cards right — matching the Property Catalog reference */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+
+          {/* Left Column: Title & Description */}
+          <div className="lg:col-span-4 lg:sticky lg:top-24">
+            <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-cyan-400">
+              Enterprise Value
+            </p>
+            <h2 id="why-title" className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-[1.1]">
+              Why Partner<br className="hidden lg:block" /> With BizLink?
+            </h2>
+            <p className="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed">
+              One partner, multiple solutions, endless possibilities. Here is why organizations across Qatar choose us.
+            </p>
+
+            {/* Slogan Badge */}
+            <div className="mt-6">
+              <span className="inline-block rounded-full border border-cyan-400/30 bg-cyan-400/10 px-5 py-2 text-xs font-bold uppercase tracking-widest text-cyan-300">
+                {company.slogan}
+              </span>
             </div>
-          ))}
-        </div>
 
-        {/* Slogan Banner */}
-        <div className="mt-10 text-center">
-          <span className="inline-block rounded-full border border-cyan-400/30 bg-[#0F254B] px-6 py-2.5 text-xs font-black uppercase tracking-widest text-cyan-300 shadow-md">
-            {company.slogan}
-          </span>
+            {/* Nav arrows (desktop) */}
+            <div className="hidden lg:flex items-center gap-3 mt-8">
+              <span className="flex size-10 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white/60 hover:bg-white/10 hover:text-white transition-colors cursor-default">
+                <ArrowLeft size={18} />
+              </span>
+              <span className="flex size-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white hover:bg-white/15 transition-colors cursor-default">
+                <ArrowRight size={18} />
+              </span>
+            </div>
+          </div>
+
+          {/* Right Column: 3 Tall Image Cards */}
+          <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6">
+            {reasons.map((r, i) => (
+              <div key={r.title} className="group flex flex-col">
+                {/* Tall Image Card */}
+                <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 bg-[#0F182A] shadow-lg">
+                  <Image
+                    src={r.image}
+                    alt={r.title}
+                    fill
+                    sizes="(min-width: 1024px) 280px, (min-width: 640px) 33vw, 100vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                  {/* Gradient overlay for text contrast */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#070B14]/90 via-[#070B14]/20 to-transparent pointer-events-none" />
+
+                  {/* Stat badge inside card */}
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-[#070B14]/70 border border-white/15 px-3 py-1.5 text-[11px] font-bold text-cyan-300 backdrop-blur-md">
+                      <span className="size-1.5 rounded-full bg-cyan-400" />
+                      {r.stat}
+                    </span>
+                  </div>
+
+                  {/* Number badge */}
+                  <div className="absolute bottom-4 right-4 z-10">
+                    <span className="flex size-9 items-center justify-center rounded-xl bg-white/15 backdrop-blur-md text-xs font-black text-white border border-white/20">
+                      0{i + 1}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Caption Below */}
+                <div className="mt-4 space-y-1.5">
+                  <h3 className="text-base sm:text-lg font-bold text-white leading-snug group-hover:text-cyan-300 transition-colors">
+                    {r.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                    {r.body}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
       </div>
     </section>
@@ -1005,13 +1044,13 @@ export function ContactBand({ social = false }: { social?: boolean }) {
           {/* Primary Quick Action Badges */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
             <a
-              href="https://wa.me/97450091006"
+              href={company.whatsappUrl}
               target="_blank"
               rel="noreferrer"
               className="inline-flex min-h-[50px] items-center gap-2.5 rounded-full bg-[#25D366] px-6 py-3 text-xs sm:text-base font-extrabold text-white shadow-[0_0_20px_rgba(37,211,102,0.4)] transition hover:bg-[#20ba59] hover:scale-105 active:scale-95"
             >
               <MessageCircle size={18} aria-hidden="true" />
-              <span>WhatsApp: +974 5009 1006</span>
+              <span>WhatsApp: {company.whatsappLabel}</span>
             </a>
 
             <a
@@ -1043,8 +1082,8 @@ export function ContactBand({ social = false }: { social?: boolean }) {
                 <div className="mt-4 space-y-2.5">
                   <div className="flex items-center justify-between pb-2 border-b border-white/10">
                     <span className="text-xs text-slate-300 font-medium">WhatsApp Hotline:</span>
-                    <a href="tel:+97450091006" className="text-xs sm:text-sm font-bold text-white hover:text-cyan-300">
-                      +974 5009 1006
+                    <a href={company.whatsappUrl} target="_blank" rel="noreferrer" className="text-xs sm:text-sm font-bold text-white hover:text-cyan-300">
+                      {company.whatsappLabel}
                     </a>
                   </div>
                   <div className="flex items-center justify-between pb-2 border-b border-white/10">
@@ -1150,7 +1189,7 @@ export function ContactBand({ social = false }: { social?: boolean }) {
                 <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Follow Us:</p>
                 <p className="mt-0.5 text-xs font-black text-white">BizLink Services Qatar</p>
                 <div className="mt-2 flex flex-wrap gap-2 text-slate-300 text-xs">
-                  <a href="https://wa.me/97450091006" target="_blank" rel="noreferrer" className="hover:text-cyan-300">WhatsApp</a>
+                  <a href={company.whatsappUrl} target="_blank" rel="noreferrer" className="hover:text-cyan-300">WhatsApp</a>
                   <span>·</span>
                   <a href="https://www.facebook.com/share/1Ce1qEyQDQ/" target="_blank" rel="noreferrer" className="hover:text-cyan-300">Facebook</a>
                   <span>·</span>
@@ -1212,7 +1251,7 @@ export function MobileBottomActionDock() {
       </a>
 
       <a
-        href="https://wa.me/97450091006"
+        href={company.whatsappUrl}
         target="_blank"
         rel="noreferrer"
         className="flex-1 flex flex-col items-center justify-center min-h-[44px] rounded-xl bg-[#25D366]/20 py-1 text-[#25D366] active:bg-[#25D366]/30"

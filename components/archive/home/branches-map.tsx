@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ArrowUpRight, Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { company } from "@/content/company";
 
 const branches = [
   {
@@ -109,7 +110,7 @@ export function BranchesMap() {
             </span>
             <div>
               <p className="text-xs font-bold uppercase tracking-wider text-[#0B2C5F]">
-                Telephone &amp; WhatsApp
+                Telephone
               </p>
               <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm font-bold text-[#0B2C5F]">
                 <a href="tel:+97477661037" className="hover:text-[#0056B3]">
@@ -142,7 +143,7 @@ export function BranchesMap() {
 
         <div className="mt-6 flex flex-wrap items-center gap-3">
           <a
-            href="https://wa.me/97450091006"
+            href={company.whatsappUrl}
             target="_blank"
             rel="noreferrer"
             className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-[#0056B3] px-5 py-2.5 text-xs font-bold text-white shadow-md shadow-[#0056B3]/20 transition hover:bg-[#004088]"

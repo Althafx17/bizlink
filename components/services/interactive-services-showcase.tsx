@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { company } from "@/content/company";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -579,7 +580,7 @@ export function InteractiveServicesShowcase({ detailed = false }: { detailed?: b
                     </Link>
 
                     <a
-                      href={`https://wa.me/97450091006?text=${encodeURIComponent(
+                      href={`${company.whatsappUrl}?text=${encodeURIComponent(
                         `Hello BizLink Qatar, I am interested in ${activeSpotlight.title}`
                       )}`}
                       target="_blank"
@@ -879,7 +880,7 @@ export function InteractiveServicesShowcase({ detailed = false }: { detailed?: b
                             </Link>
 
                             <a
-                              href={`https://wa.me/97450091006?text=${encodeURIComponent(
+                              href={`${company.whatsappUrl}?text=${encodeURIComponent(
                                 service.whatsappMessage
                               )}`}
                               target="_blank"
@@ -986,7 +987,7 @@ export function InteractiveServicesShowcase({ detailed = false }: { detailed?: b
                           </Link>
 
                           <a
-                            href={`https://wa.me/97450091006?text=${encodeURIComponent(
+                            href={`${company.whatsappUrl}?text=${encodeURIComponent(
                               service.whatsappMessage
                             )}`}
                             target="_blank"
@@ -1118,7 +1119,7 @@ export function InteractiveServicesShowcase({ detailed = false }: { detailed?: b
                       </Link>
 
                       <a
-                        href="https://wa.me/97450091006"
+                        href={company.whatsappUrl}
                         target="_blank"
                         rel="noreferrer"
                         className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2.5 text-xs sm:text-sm font-bold text-white hover:bg-white/20"

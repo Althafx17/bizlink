@@ -44,7 +44,7 @@ export function WireframeFooter() {
             {/* Center: Social & Direct Contact Icons matching wireframe */}
             <div className="flex items-center gap-3">
               <a
-                href="https://wa.me/97450091006"
+                href={company.whatsappUrl}
                 target="_blank"
                 rel="noreferrer"
                 aria-label="WhatsApp"

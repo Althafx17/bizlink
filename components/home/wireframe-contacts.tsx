@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { branches } from "@/content/company";
+import { branches, company } from "@/content/company";
 import { Clock, Mail, MapPin, MessageCircle, Navigation, Phone } from "lucide-react";
 
 export function WireframeContacts() {
@@ -145,7 +145,7 @@ export function WireframeContacts() {
               </a>
 
               <a
-                href="https://wa.me/97450091006?text=Hello%20BizLink%2C%20I%20would%20like%20to%20visit%20your%20Doha%20office."
+                href={`${company.whatsappUrl}?text=Hello%20BizLink%2C%20I%20would%20like%20to%20visit%20your%20Doha%20office.`}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex min-h-[42px] items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold text-white hover:bg-white/20 transition-all"

@@ -9,7 +9,7 @@ import { MobileBottomActionDock } from "@/components/shared/marketing-sections";
 export const metadata = shareMetadata(
   "/",
   "Business Services in Doha, Qatar",
-  "Biz Link Trading and Contracting Services WLL. Integrated corporate, trading, facility maintenance, automotive care, and digital creative solutions in Qatar under Pathas Group of Companies.",
+  "BizLink Trading and Contracting Services WLL. Integrated corporate, trading, facility maintenance, automotive care, and digital creative solutions in Qatar under Pathas Group of Companies.",
 );
 
 export default function HomePage() {

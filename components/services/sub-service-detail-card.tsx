@@ -1,18 +1,17 @@
 import { ArrowRight, CheckCircle2, ShieldCheck } from "lucide-react";
+import { company } from "@/content/company";
 import type { SubService } from "@/content/services";
 
 interface SubServiceDetailCardProps {
   sub: SubService;
   index: number;
   serviceTitle: string;
-  whatsappNumber: string;
 }
 
 export function SubServiceDetailCard({
   sub,
   index,
   serviceTitle,
-  whatsappNumber,
 }: SubServiceDetailCardProps) {
   const visibleDeliverables = sub.deliverables.slice(0, 5);
   const additionalDeliverables = sub.deliverables.slice(5);
@@ -77,7 +76,7 @@ export function SubServiceDetailCard({
           <span className="text-[11px] text-slate-400">Direct Delivery in Doha</span>
         )}
         <a
-          href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Hello BizLink Qatar, I am interested in your ${sub.title} under ${serviceTitle}.`)}`}
+          href={`${company.whatsappUrl}?text=${encodeURIComponent(`Hello BizLink Qatar, I am interested in your ${sub.title} under ${serviceTitle}.`)}`}
           target="_blank"
           rel="noreferrer"
           className="inline-flex items-center gap-1 font-bold text-cyan-300 hover:text-white transition-colors w-fit"

@@ -42,7 +42,7 @@ export function CompanyOverview({
           <Title id="company-overview-title">About BizLink</Title>
           <p className={styles.subhead}>Trust | Integrity | Growth</p>
           <p className={styles.body}>
-            Biz Link Trading and Contracting Services WLL is a diversified and trusted business group operating in Qatar under PATHAS GROUP OF COMPANIES. Since 2010, we have focused on practical, reliable and customer-oriented solutions across multiple sectors.
+            BizLink Trading and Contracting Services WLL is a diversified and trusted business group operating in Qatar under PATHAS GROUP OF COMPANIES. Since 2010, we have focused on practical, reliable and customer-oriented solutions across multiple sectors.
           </p>
         </div>
         <div className={styles.threeColumns}>

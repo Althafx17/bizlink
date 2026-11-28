@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ChevronDown, HelpCircle } from "lucide-react";
+import { company } from "@/content/company";
 
 interface FaqItem {
   question: string;
@@ -123,7 +124,7 @@ export function WireframeFaq() {
         <div className="mt-8 text-center text-xs text-slate-400">
           Have an unlisted question?{" "}
           <a
-            href="https://wa.me/97450091006"
+            href={company.whatsappUrl}
             target="_blank"
             rel="noreferrer"
             className="text-cyan-400 font-bold hover:underline"

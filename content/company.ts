@@ -2,7 +2,7 @@ const whatsappLabel = "+974 3000 3916";
 const whatsappNumber = whatsappLabel.replace(/\D/g, "");
 
 export const company = {
-  name: "BIZ LINK TRADING AND CONTRACTING SERVICES WLL.",
+  name: "BIZLINK TRADING AND CONTRACTING SERVICES WLL.",
   shortName: "BizLink Qatar",
   registration: "CR No. 206520",
   postBox: "Post Box No. 13710",
@@ -13,7 +13,7 @@ export const company = {
   slogan: "ALL BUSINESS SOLUTIONS UNDER ONE ROOF",
   subTagline: "One Roof. Multiple Solutions. One Trusted Partner.",
   intro:
-    "Biz Link Trading and Contracting Services WLL provides comprehensive enterprise and personal solutions across Business & Corporate, Digital & Creative, Trading & Supply, Facility Management, and Automotive Care in Qatar.",
+    "BizLink Trading and Contracting Services WLL provides comprehensive enterprise and personal solutions across Business & Corporate, Digital & Creative, Trading & Supply, Facility Management, and Automotive Care in Qatar.",
   aboutSubhead: "Your Trusted Partner for Integrated Business Solutions in Qatar, UAE, and Global Markets",
   about:
     "BizLink Trading and Contracting Services W.L.L. is a diversified service provider in Qatar UAE and other parts of the world , offering business consultancy, trading, facility management, automotive and digital solutions. Part of Pathas Group of Companies, with operations across India, Qatar, UAE and China, we bring diverse expertise and reliable services under one roof.",

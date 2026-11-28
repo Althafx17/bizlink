@@ -102,7 +102,7 @@ export function CompanyProfileHero({
 
           {/* Subtitle & Value Proposition */}
           <p className="mt-5 text-xs sm:text-sm font-bold text-cyan-300 tracking-wider uppercase">
-            Biz Link Trading and Contracting Services WLL
+            BizLink Trading and Contracting Services WLL
           </p>
           <p className="mt-2 text-xs sm:text-sm text-slate-300 leading-relaxed max-w-lg">
             An established integrated enterprise under Pathas Group of Companies, delivering excellence across corporate operations, industrial supply, facility engineering, and digital systems.
@@ -131,7 +131,7 @@ export function CompanyProfileHero({
             </a>
 
             <a
-              href="https://wa.me/97450091006?text=Hello%20BizLink%20Qatar%2C%20please%20send%20me%20your%20Official%20Company%20Profile%20PDF."
+              href={`${company.whatsappUrl}?text=Hello%20BizLink%20Qatar%2C%20please%20send%20me%20your%20Official%20Company%20Profile%20PDF.`}
               target="_blank"
               rel="noreferrer"
               className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[0.08] hover:bg-white/15 px-5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-white backdrop-blur-md transition-all active:scale-[0.98]"

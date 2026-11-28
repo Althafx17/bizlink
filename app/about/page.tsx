@@ -10,7 +10,7 @@ import {
 export const metadata = shareMetadata(
   "/about",
   "Company Profile - BizLink Qatar",
-  "Official Company Profile of Biz Link Trading and Contracting Services WLL under Pathas Group of Companies. Our purpose, leadership, international corridors, and enterprise divisions in Qatar since 2010.",
+  "Official Company Profile of BizLink Trading and Contracting Services WLL under Pathas Group of Companies. Our purpose, leadership, international corridors, and enterprise divisions in Qatar since 2010.",
 );
 
 export default function AboutPage() {

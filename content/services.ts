@@ -773,8 +773,8 @@ export const services: readonly ServiceDivision[] = [
     tagline: "Professional Automotive Services, Delivered to Your Location.",
     highlight: "Your Car. Our Care. Your Location",
     description: "Mobile Car Wash, Detailing & Auto Glass Replacement",
-    imageCard: "/images/services/sub service/AUTOMOBILE AND SERVICES.png",
-    brochureMainImage: "/images/services/sub service/AUTOMOBILE AND SERVICES.png",
+    imageCard: "/images/services/automotive-card.webp",
+    brochureMainImage: "/images/services/brochure/automotive-main.webp",
     iconName: "car",
     brochurePage: "www.bizlinkqatar.com 07",
     brochureIntro:

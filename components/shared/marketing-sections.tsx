@@ -799,22 +799,54 @@ export function ServicesDirectory({ detailed = false }: { detailed?: boolean }) 
 }
 
 export function WhyBizLink() {
+  const [activeCard, setActiveCard] = useState(0);
+
+  const handlePrev = () => {
+    setActiveCard((prev) => (prev === 0 ? reasons.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setActiveCard((prev) => (prev === reasons.length - 1 ? 0 : prev + 1));
+  };
+
   return (
     <section
       className="py-16 sm:py-24 bg-[#070B14] border-b border-white/10"
       aria-labelledby="why-title"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Top Trust Strip matching Reference */}
+        <div className="pb-10 mb-12 border-b border-white/10 flex flex-wrap items-center justify-between gap-6 opacity-75">
+          {[
+            { label: "PATHAS GROUP", sub: "Since 2010" },
+            { label: "CR NO. 206520", sub: "MOCI Licensed" },
+            { label: "35+ SERVICES", sub: "Under One Roof" },
+            { label: "QATAR • UAE", sub: "INDIA • CHINA" },
+            { label: "ISO & WPS", sub: "100% Compliant" },
+          ].map((item) => (
+            <div key={item.label} className="flex items-center gap-2.5">
+              <span className="size-2 rounded-full bg-cyan-400/80" />
+              <div className="leading-tight">
+                <span className="block text-xs font-black tracking-wider text-white">
+                  {item.label}
+                </span>
+                <span className="block text-[10px] font-medium text-slate-400">
+                  {item.sub}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
 
         {/* Layout: Title left, 3 image cards right — matching the Property Catalog reference */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
 
           {/* Left Column: Title & Description */}
           <div className="lg:col-span-4 lg:sticky lg:top-24">
             <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-cyan-400">
               Enterprise Value
             </p>
-            <h2 id="why-title" className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-[1.1]">
+            <h2 id="why-title" className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-[1.08]">
               Why Partner<br className="hidden lg:block" /> With BizLink?
             </h2>
             <p className="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed">
@@ -827,61 +859,79 @@ export function WhyBizLink() {
                 {company.slogan}
               </span>
             </div>
-
-            {/* Nav arrows (desktop) */}
-            <div className="hidden lg:flex items-center gap-3 mt-8">
-              <span className="flex size-10 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white/60 hover:bg-white/10 hover:text-white transition-colors cursor-default">
-                <ArrowLeft size={18} />
-              </span>
-              <span className="flex size-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white hover:bg-white/15 transition-colors cursor-default">
-                <ArrowRight size={18} />
-              </span>
-            </div>
           </div>
 
-          {/* Right Column: 3 Tall Image Cards */}
-          <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6">
-            {reasons.map((r, i) => (
-              <div key={r.title} className="group flex flex-col">
-                {/* Tall Image Card */}
-                <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 bg-[#0F182A] shadow-lg">
-                  <Image
-                    src={r.image}
-                    alt={r.title}
-                    fill
-                    sizes="(min-width: 1024px) 280px, (min-width: 640px) 33vw, 100vw"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
-                  {/* Gradient overlay for text contrast */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#070B14]/90 via-[#070B14]/20 to-transparent pointer-events-none" />
+          {/* Right Column: 3 Tall Image Cards + Bottom-Right Nav Arrows */}
+          <div className="lg:col-span-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6">
+              {reasons.map((r, i) => {
+                const isActive = i === activeCard;
+                return (
+                  <div
+                    key={r.title}
+                    onClick={() => setActiveCard(i)}
+                    className="group flex flex-col cursor-pointer"
+                  >
+                    {/* Tall Image Card */}
+                    <div
+                      className={`relative aspect-[3/4] w-full overflow-hidden rounded-2xl sm:rounded-3xl border bg-[#0F182A] shadow-lg transition-all duration-300 ${
+                        isActive
+                          ? "border-cyan-400/60 ring-1 ring-cyan-400/30 shadow-[0_16px_40px_rgba(0,180,255,0.18)]"
+                          : "border-white/10 hover:border-white/25"
+                      }`}
+                    >
+                      <Image
+                        src={r.image}
+                        alt={r.title}
+                        fill
+                        sizes="(min-width: 1024px) 280px, (min-width: 640px) 33vw, 100vw"
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#070B14]/80 via-transparent to-transparent pointer-events-none" />
+                    </div>
 
-                  {/* Stat badge inside card */}
-                  <div className="absolute top-4 left-4 z-10">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-[#070B14]/70 border border-white/15 px-3 py-1.5 text-[11px] font-bold text-cyan-300 backdrop-blur-md">
-                      <span className="size-1.5 rounded-full bg-cyan-400" />
-                      {r.stat}
-                    </span>
+                    {/* Caption Below (Matching Property Catalog: Title + Stat/Description) */}
+                    <div className="mt-4 space-y-1">
+                      <div className="flex items-center justify-between gap-2">
+                        <h3
+                          className={`text-base sm:text-lg font-bold leading-snug transition-colors ${
+                            isActive ? "text-cyan-300" : "text-white group-hover:text-cyan-300"
+                          }`}
+                        >
+                          {r.title}
+                        </h3>
+                      </div>
+                      <p className="text-xs font-semibold text-cyan-400">
+                        {r.stat} · {r.tagline}
+                      </p>
+                      <p className="text-xs text-slate-400 leading-relaxed pt-1">
+                        {r.body}
+                      </p>
+                    </div>
                   </div>
+                );
+              })}
+            </div>
 
-                  {/* Number badge */}
-                  <div className="absolute bottom-4 right-4 z-10">
-                    <span className="flex size-9 items-center justify-center rounded-xl bg-white/15 backdrop-blur-md text-xs font-black text-white border border-white/20">
-                      0{i + 1}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Caption Below */}
-                <div className="mt-4 space-y-1.5">
-                  <h3 className="text-base sm:text-lg font-bold text-white leading-snug group-hover:text-cyan-300 transition-colors">
-                    {r.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                    {r.body}
-                  </p>
-                </div>
-              </div>
-            ))}
+            {/* Bottom-Right Circular Navigation Arrows matching Reference */}
+            <div className="flex items-center justify-end gap-3 mt-8">
+              <button
+                type="button"
+                onClick={handlePrev}
+                aria-label="Previous highlight"
+                className="flex size-10 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white/70 hover:bg-white/15 hover:text-white transition-all active:scale-95 cursor-pointer"
+              >
+                <ArrowLeft size={17} />
+              </button>
+              <button
+                type="button"
+                onClick={handleNext}
+                aria-label="Next highlight"
+                className="flex size-10 items-center justify-center rounded-full bg-cyan-500 text-slate-950 hover:bg-cyan-400 transition-all shadow-md shadow-cyan-500/25 active:scale-95 cursor-pointer"
+              >
+                <ArrowRight size={17} />
+              </button>
+            </div>
           </div>
 
         </div>

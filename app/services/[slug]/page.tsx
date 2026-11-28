@@ -51,6 +51,11 @@ import { services, type ServiceDivision } from "@/content/services";
 import { company } from "@/content/company";
 import { MobileBottomActionDock } from "@/components/shared/marketing-sections";
 import { FacilityCardsAutoScroll } from "@/components/services/facility-cards-auto-scroll";
+import {
+  ServicesIncludedSlider,
+  ProcessAccordionCard,
+  ServiceFaqAccordion,
+} from "@/components/services/service-wireframe-sections";
 
 interface ServicePageProps {
   params: Promise<{
@@ -141,6 +146,10 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
   const currentIndex = services.findIndex((s) => s.id === slug);
   const prevService = currentIndex > 0 ? services[currentIndex - 1] : services[services.length - 1];
   const nextService = currentIndex < services.length - 1 ? services[currentIndex + 1] : services[0];
+
+  const subServiceIcons = Object.fromEntries(
+    service.subServices.map((sub) => [sub.id, getSubServiceIcon(sub.id)])
+  );
 
   return (
     <main id="main-content" className="min-h-screen bg-[#070B14] pb-24 md:pb-16 text-white selection:bg-cyan-500 selection:text-white">
@@ -240,9 +249,20 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                   </p>
                 </div>
 
-                <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-                  {service.brochureIntro}
-                </p>
+                <div className="flex flex-col sm:flex-row items-start gap-5">
+                  <div className="relative w-24 h-24 sm:w-28 sm:h-28 shrink-0 rounded-2xl overflow-hidden border border-white/15 shadow-md">
+                    <Image
+                      src={service.brochureMainImage}
+                      alt={`${service.name} overview`}
+                      fill
+                      sizes="112px"
+                      className="object-cover"
+                    />
+                  </div>
+                  <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+                    {service.brochureIntro}
+                  </p>
+                </div>
 
                 {/* Commitment callout */}
                 <div className="rounded-2xl border border-cyan-400/20 bg-cyan-950/30 p-4 sm:p-5">
@@ -314,267 +334,132 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
       {/* ═══════════════════════════════════════════════════════════════
           SECTION 03: SERVICES INCLUDED — Title, dots, slider of cards
          ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-14 sm:py-20 bg-gradient-to-b from-[#070B14] via-[#091526] to-[#070B14]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
-          {/* Section Header */}
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
-            <div>
-              <span className="text-xs font-black uppercase tracking-[0.2em] text-cyan-400">
-                What&apos;s Included
-              </span>
-              <h2 className="mt-2 text-2xl sm:text-4xl font-black text-white">
-                Our Services
-              </h2>
-            </div>
-            {/* Dot indicators */}
-            <div className="flex items-center gap-1.5">
-              {service.subServices.slice(0, 6).map((_, i) => (
-                <span key={i} className={`size-2 rounded-full ${i === 0 ? "bg-cyan-400" : "bg-white/20"}`} />
-              ))}
-            </div>
-          </div>
-
-          {/* Horizontal scrolling cards */}
-          <div className="overflow-x-auto pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide">
-            <div className="flex gap-5 w-max">
-              {service.subServices.map((sub) => (
-                <Link
-                  key={sub.id}
-                  href={`#${sub.id}`}
-                  className="group w-[260px] sm:w-[300px] shrink-0 rounded-2xl border border-white/10 bg-[#0F182A]/80 overflow-hidden hover:border-cyan-400/50 transition-all shadow-lg"
-                >
-                  {/* Card image placeholder with icon */}
-                  <div className="relative h-40 sm:h-48 bg-gradient-to-br from-[#0B1B36] via-[#0F254B] to-[#0B1B36] flex items-center justify-center">
-                    <span className="flex size-16 items-center justify-center rounded-2xl bg-cyan-400/15 border border-cyan-400/30 text-cyan-300 group-hover:scale-110 transition-transform">
-                      {getSubServiceIcon(sub.id)}
-                    </span>
-                    {sub.badge && (
-                      <span className="absolute top-3 right-3 text-[10px] font-bold uppercase tracking-wider text-amber-300 bg-amber-400/10 border border-amber-400/25 px-2 py-0.5 rounded-md">
-                        {sub.badge}
-                      </span>
-                    )}
-                  </div>
-                  {/* Card caption */}
-                  <div className="p-4 sm:p-5">
-                    <h4 className="text-sm sm:text-base font-bold text-white group-hover:text-cyan-300 transition-colors leading-snug">
-                      {sub.title}
-                    </h4>
-                    <p className="mt-1.5 text-[11px] sm:text-xs text-slate-400 line-clamp-2 leading-relaxed">
-                      {sub.tagline}
-                    </p>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-
-        </div>
-      </section>
+      <ServicesIncludedSlider
+        subServices={service.subServices}
+        icons={subServiceIcons}
+      />
 
 
       {/* ═══════════════════════════════════════════════════════════════
           SECTION 04: PROCESS — Dark card, accordion steps left, image right
          ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-14 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-3xl bg-[#0B1B36] border border-white/10 p-6 sm:p-10 shadow-xl overflow-hidden">
-
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-
-              {/* Left: Title + Accordion Steps */}
-              <div className="lg:col-span-7 space-y-6">
-                <div>
-                  <span className="text-xs font-black uppercase tracking-[0.2em] text-cyan-400">
-                    How We Work
-                  </span>
-                  <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-tight">
-                    Our Process
-                  </h2>
-                  <p className="mt-2 text-sm text-slate-300">
-                    Structured workflow ensuring accountability, compliance, and transparent delivery.
-                  </p>
-                </div>
-
-                <div className="space-y-4">
-                  {service.process.map((p, idx) => (
-                    <div
-                      key={p.step}
-                      className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 hover:border-cyan-400/40 hover:bg-white/[0.07] transition-all group"
-                    >
-                      <div className="flex items-start gap-4">
-                        <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-cyan-400/15 border border-cyan-400/30 text-sm font-black text-cyan-300">
-                          {p.step}
-                        </span>
-                        <div>
-                          <h3 className="text-base font-bold text-white group-hover:text-cyan-300 transition-colors">
-                            {p.title}
-                          </h3>
-                          <p className="mt-1.5 text-xs sm:text-sm text-slate-300 leading-relaxed">
-                            {p.description}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Right: Image */}
-              <div className="lg:col-span-5 relative">
-                <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden border border-white/15 shadow-xl">
-                  <Image
-                    src={service.brochureMainImage}
-                    alt={`${service.title} Process`}
-                    fill
-                    sizes="(min-width: 1024px) 500px, 100vw"
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B1B36]/80 via-transparent to-transparent" />
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </section>
+      <ProcessAccordionCard
+        title={service.name}
+        image={service.brochureMainImage}
+        process={service.process}
+        whatsappUrl={`${company.whatsappUrl}?text=${encodeURIComponent(service.whatsappMessage)}`}
+      />
 
 
       {/* ═══════════════════════════════════════════════════════════════
-          SECTION 05: WHY IT MATTERS — Sub-services detail + side images
+          SECTION 05: WHY IT MATTERS — Sticky title left, stacked cards right
          ═══════════════════════════════════════════════════════════════ */}
       <section id="sub-services" className="py-14 sm:py-20 bg-gradient-to-b from-[#070B14] to-[#091526]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
 
-          <div className="text-center max-w-3xl mx-auto">
-            <span className="text-xs font-black uppercase tracking-[0.2em] text-cyan-400">
-              Detailed Scope
-            </span>
-            <h2 className="mt-2 text-2xl sm:text-4xl font-black text-white">
-              Sub-Services & Deliverables
-            </h2>
-            <p className="mt-2 text-sm text-slate-300">
-              Every service comes with clearly defined deliverables, compliance standards, and direct WhatsApp inquiry.
-            </p>
-          </div>
+            {/* Left Sticky Title & Summary */}
+            <div className="lg:col-span-4 lg:sticky lg:top-24 space-y-4">
+              <span className="text-xs font-black uppercase tracking-[0.2em] text-cyan-400">
+                Detailed Scope
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-black text-white leading-tight">
+                Sub-Services &amp; Deliverables
+              </h2>
+              <p className="text-sm text-slate-300 leading-relaxed">
+                Every service comes with clearly defined deliverables, compliance standards, and direct WhatsApp inquiry.
+              </p>
+              <div className="pt-2">
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold text-cyan-300">
+                  {service.subServices.length} Specialized Capabilities
+                </span>
+              </div>
+            </div>
 
-          {/* Sub-services list */}
-          <div className="space-y-6">
-            {service.subServices.map((sub, idx) => (
-              <article
-                key={sub.id}
-                id={sub.id}
-                className="group rounded-3xl border border-white/10 bg-[#0F182A]/80 p-6 sm:p-8 hover:border-cyan-400/40 transition-all shadow-lg backdrop-blur-md"
-              >
-                <div className="flex items-center justify-between gap-3 mb-5">
-                  <div className="flex items-center gap-3">
-                    <span className="flex size-10 items-center justify-center rounded-xl bg-cyan-400/15 border border-cyan-400/30 text-xs font-black text-cyan-300">
-                      {String(idx + 1).padStart(2, "0")}
-                    </span>
-                    {sub.badge && (
-                      <span className="text-[10px] font-black uppercase tracking-wider text-amber-300 bg-amber-400/10 border border-amber-400/25 px-2.5 py-0.5 rounded-md">
-                        {sub.badge}
+            {/* Right Stacked Cards */}
+            <div className="lg:col-span-8 space-y-6">
+              {service.subServices.map((sub, idx) => (
+                <article
+                  key={sub.id}
+                  id={sub.id}
+                  className="group rounded-3xl border border-white/10 bg-[#0F182A]/80 p-6 sm:p-8 hover:border-cyan-400/40 transition-all shadow-lg backdrop-blur-md"
+                >
+                  <div className="flex items-center justify-between gap-3 mb-5">
+                    <div className="flex items-center gap-3">
+                      <span className="flex size-10 items-center justify-center rounded-xl bg-cyan-400/15 border border-cyan-400/30 text-xs font-black text-cyan-300">
+                        {String(idx + 1).padStart(2, "0")}
                       </span>
-                    )}
-                  </div>
-                  <span className="flex size-11 items-center justify-center rounded-xl bg-cyan-950/70 border border-cyan-400/30 text-cyan-300">
-                    {getSubServiceIcon(sub.id)}
-                  </span>
-                </div>
-
-                <h3 className="text-lg sm:text-xl font-black text-white group-hover:text-cyan-300 transition-colors">
-                  {sub.title}
-                </h3>
-                <p className="text-xs font-bold text-cyan-300 mt-1 uppercase tracking-wider">
-                  {sub.tagline}
-                </p>
-
-                <p className="mt-4 text-xs sm:text-sm text-slate-300 leading-relaxed">
-                  {sub.description}
-                </p>
-
-                {/* Deliverables */}
-                <div className="mt-5 pt-4 border-t border-white/10 space-y-2.5">
-                  <span className="text-[11px] font-black uppercase tracking-wider text-slate-400 block mb-2">
-                    Key Deliverables:
-                  </span>
-                  {sub.deliverables.map((item, itemIdx) => (
-                    <div key={itemIdx} className="flex items-start gap-2.5 text-xs text-slate-200">
-                      <CheckCircle2 size={15} className="text-cyan-400 shrink-0 mt-0.5" />
-                      <span className="leading-snug">{item}</span>
+                      {sub.badge && (
+                        <span className="text-[10px] font-black uppercase tracking-wider text-amber-300 bg-amber-400/10 border border-amber-400/25 px-2.5 py-0.5 rounded-md">
+                          {sub.badge}
+                        </span>
+                      )}
                     </div>
-                  ))}
-                </div>
-
-                {/* Footer */}
-                <div className="mt-5 pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-                  {sub.compliance ? (
-                    <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-emerald-400">
-                      <ShieldCheck size={14} />
-                      <span>{sub.compliance}</span>
+                    <span className="flex size-11 items-center justify-center rounded-xl bg-cyan-950/70 border border-cyan-400/30 text-cyan-300">
+                      {getSubServiceIcon(sub.id)}
                     </span>
-                  ) : (
-                    <span className="text-[11px] text-slate-400">Direct Delivery in Doha</span>
-                  )}
+                  </div>
 
-                  <a
-                    href={`${company.whatsappUrl}?text=${encodeURIComponent(
-                      `Hello BizLink Qatar, I am interested in your ${sub.title} under ${service.title}.`
-                    )}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1 font-bold text-cyan-300 hover:text-white transition-colors w-fit"
-                  >
-                    <span>Inquire via WhatsApp</span>
-                    <ArrowRight size={13} />
-                  </a>
-                </div>
-              </article>
-            ))}
+                  <h3 className="text-lg sm:text-xl font-black text-white group-hover:text-cyan-300 transition-colors">
+                    {sub.title}
+                  </h3>
+                  <p className="text-xs font-bold text-cyan-300 mt-1 uppercase tracking-wider">
+                    {sub.tagline}
+                  </p>
+
+                  <p className="mt-4 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    {sub.description}
+                  </p>
+
+                  {/* Deliverables */}
+                  <div className="mt-5 pt-4 border-t border-white/10 space-y-2.5">
+                    <span className="text-[11px] font-black uppercase tracking-wider text-slate-400 block mb-2">
+                      Key Deliverables:
+                    </span>
+                    {sub.deliverables.map((item, itemIdx) => (
+                      <div key={itemIdx} className="flex items-start gap-2.5 text-xs text-slate-200">
+                        <CheckCircle2 size={15} className="text-cyan-400 shrink-0 mt-0.5" />
+                        <span className="leading-snug">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Footer */}
+                  <div className="mt-5 pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+                    {sub.compliance ? (
+                      <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-emerald-400">
+                        <ShieldCheck size={14} />
+                        <span>{sub.compliance}</span>
+                      </span>
+                    ) : (
+                      <span className="text-[11px] text-slate-400">Direct Delivery in Doha</span>
+                    )}
+
+                    <a
+                      href={`${company.whatsappUrl}?text=${encodeURIComponent(
+                        `Hello BizLink Qatar, I am interested in your ${sub.title} under ${service.title}.`
+                      )}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1 font-bold text-cyan-300 hover:text-white transition-colors w-fit"
+                    >
+                      <span>Inquire via WhatsApp</span>
+                      <ArrowRight size={13} />
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+
           </div>
-
         </div>
       </section>
 
 
       {/* ═══════════════════════════════════════════════════════════════
-          SECTION 06: FAQ — Centered title, accordion rows
+          SECTION 06: FAQ — Centered title, interactive accordion rows
          ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-14 sm:py-20">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-10">
-
-          <div className="text-center space-y-2">
-            <span className="text-xs font-black uppercase tracking-[0.2em] text-cyan-400">
-              Common Questions
-            </span>
-            <h2 className="text-2xl sm:text-4xl font-black text-white">
-              Frequently Asked Questions
-            </h2>
-          </div>
-
-          <div className="space-y-4">
-            {service.faqs.map((faq, idx) => (
-              <div
-                key={idx}
-                className="rounded-2xl border border-white/10 bg-[#0F182A]/80 p-5 sm:p-6 backdrop-blur-md hover:border-cyan-400/30 transition-colors"
-              >
-                <div className="flex items-start gap-3">
-                  <HelpCircle size={18} className="text-cyan-400 shrink-0 mt-0.5" />
-                  <div>
-                    <h3 className="text-sm sm:text-base font-bold text-white">
-                      {faq.question}
-                    </h3>
-                    <p className="mt-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
-                      {faq.answer}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
+      <ServiceFaqAccordion faqs={service.faqs} />
 
 
       {/* ═══════════════════════════════════════════════════════════════

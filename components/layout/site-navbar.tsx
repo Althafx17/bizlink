@@ -74,7 +74,7 @@ export function SiteNavbar() {
           <Link
             href="/"
             className="group flex items-center gap-3 transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0056B3] rounded-full min-h-[44px] min-w-[44px]"
-            aria-label="BizLink Qatar Home"
+            aria-label="BizLink QATAR"
             data-navbar-brand
           >
             <span

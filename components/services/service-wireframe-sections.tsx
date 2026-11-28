@@ -58,14 +58,21 @@ export function ServicesIncludedSlider({
               <button
                 key={sub.id}
                 type="button"
+                role="tab"
+                aria-selected={i === activeIndex}
                 onClick={() => scrollToCard(i)}
                 aria-label={`Go to ${sub.title}`}
-                className={`h-2.5 rounded-full transition-all cursor-pointer ${
-                  i === activeIndex
-                    ? "w-7 bg-cyan-400"
-                    : "w-2.5 bg-white/20 hover:bg-white/40"
-                }`}
-              />
+                className="flex min-h-6 min-w-6 items-center justify-center p-1 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-full"
+              >
+                <span
+                  aria-hidden="true"
+                  className={`block h-2.5 rounded-full transition-all ${
+                    i === activeIndex
+                      ? "w-7 bg-cyan-400"
+                      : "w-2.5 bg-white/20 hover:bg-white/40"
+                  }`}
+                />
+              </button>
             ))}
           </div>
         </div>
@@ -99,9 +106,9 @@ export function ServicesIncludedSlider({
                 </div>
 
                 <div className="p-4 sm:p-5">
-                  <h4 className="text-sm sm:text-base font-bold text-white group-hover:text-cyan-300 transition-colors leading-snug">
+                  <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-cyan-300 transition-colors leading-snug">
                     {sub.title}
-                  </h4>
+                  </h3>
                   <p className="mt-1.5 text-[11px] sm:text-xs text-slate-400 line-clamp-2 leading-relaxed">
                     {sub.tagline}
                   </p>

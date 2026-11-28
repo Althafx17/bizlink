@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowRight, ChevronDown, Menu, Phone, X } from "lucide-react";
+import { services } from "@/content/services";
 
 interface NavSubLink {
   label: string;
@@ -17,6 +18,10 @@ interface NavItem {
   href: string;
   subLinks: NavSubLink[];
 }
+
+const uniqueServices = Array.from(
+  new Map(services.map((s) => [s.id, s])).values()
+);
 
 const navLinks: NavItem[] = [
   {
@@ -43,14 +48,11 @@ const navLinks: NavItem[] = [
   {
     label: "Services",
     href: "/services",
-    subLinks: [
-      { label: "All Services Directory", description: "35+ integrated solutions", href: "/services" },
-      { label: "01 · Business & Corporate", description: "Company formation, CR & PRO", href: "/services/business-corporate" },
-      { label: "02 · Digital & Creative", description: "SEO, web dev & AI video", href: "/services/digital-creative" },
-      { label: "03 · Trading & Supply", description: "Wholesale, cargo & perfumes", href: "/services/trading-supply" },
-      { label: "04 · Facility & Maintenance", description: "Cleaning, MEP & partitions", href: "/services/facility-maintenance" },
-      { label: "05 · Automotive Care", description: "Mobile wash & auto glass", href: "/services/automotive" },
-    ],
+    subLinks: uniqueServices.map((service) => ({
+      label: `${service.number} · ${service.name}`,
+      description: service.description,
+      href: `/services/${service.id}`,
+    })),
   },
   {
     label: "Contact",
@@ -67,6 +69,27 @@ export function SiteNavbar() {
   const isHome = pathname === "/";
   const [hasScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const headerRef = useRef<HTMLElement | null>(null);
+
+  // Publish exact rendered navbar bottom offset as --site-navbar-height
+  useEffect(() => {
+    const syncNavbarHeight = () => {
+      const header = headerRef.current;
+      if (!header) return;
+      const rect = header.getBoundingClientRect();
+      const totalBottom = Math.ceil(rect.bottom);
+      document.documentElement.style.setProperty("--site-navbar-height", `${totalBottom}px`);
+    };
+
+    syncNavbarHeight();
+    const observer = new ResizeObserver(syncNavbarHeight);
+    if (headerRef.current) observer.observe(headerRef.current);
+    window.addEventListener("resize", syncNavbarHeight, { passive: true });
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", syncNavbarHeight);
+    };
+  }, [pathname, hasScrolled]);
 
   useEffect(() => {
     let ticking = false;
@@ -111,6 +134,7 @@ export function SiteNavbar() {
         }`}
     >
       <header
+        ref={headerRef}
         className={`site-header-glass pointer-events-auto relative flex items-center transition-none md:transition-all md:duration-500 md:ease-[cubic-bezier(0.16,1,0.3,1)] w-full max-w-full box-border rounded-none min-h-[60px] py-2 px-4 border-b border-white/10 bg-[#070B14]/95 backdrop-blur-xl shadow-md min-w-0 overflow-visible ${isScrolled
             ? "md:w-[calc(100%-1.5rem)] lg:w-[calc(100%-3rem)] md:max-w-6xl md:rounded-full md:bg-[#070B14]/85 md:border md:border-white/20 md:shadow-[0_8px_32px_rgba(0,0,0,0.6)] md:backdrop-blur-xl md:min-h-[66px] md:py-2 md:px-6"
             : mobileMenuOpen

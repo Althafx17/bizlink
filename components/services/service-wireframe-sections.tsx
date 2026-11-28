@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, Plus, Minus, ArrowRight } from "lucide-react";
+import { ChevronDown, Plus, Minus, ArrowLeft, ArrowRight } from "lucide-react";
 import type { ServiceDivision } from "@/content/services";
 
 interface ProcessItem {
@@ -19,21 +19,43 @@ interface FaqItem {
 
 export function ServicesIncludedSlider({
   subServices,
-  icons,
 }: {
   subServices: readonly ServiceDivision["subServices"][number][];
-  icons: Record<string, React.ReactNode>;
+  icons?: Record<string, React.ReactNode>;
 }) {
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
   const scrollToCard = (idx: number) => {
-    setActiveIndex(idx);
-    if (!trackRef.current) return;
-    const card = trackRef.current.children[idx] as HTMLElement | undefined;
-    if (card) {
-      card.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+    const clamped = Math.max(0, Math.min(subServices.length - 1, idx));
+    setActiveIndex(clamped);
+    const container = scrollContainerRef.current;
+    const card = trackRef.current?.children[clamped] as HTMLElement | undefined;
+    if (container && card) {
+      container.scrollTo({
+        left: card.offsetLeft,
+        behavior: "smooth",
+      });
     }
+  };
+
+  const handleScroll = () => {
+    const container = scrollContainerRef.current;
+    const track = trackRef.current;
+    if (!container || !track) return;
+    const cards = Array.from(track.children) as HTMLElement[];
+    const scrollLeft = container.scrollLeft;
+    let closestIdx = 0;
+    let minDiff = Infinity;
+    cards.forEach((card, idx) => {
+      const diff = Math.abs(card.offsetLeft - scrollLeft);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestIdx = idx;
+      }
+    });
+    setActiveIndex(closestIdx);
   };
 
   return (
@@ -42,7 +64,7 @@ export function ServicesIncludedSlider({
       className="py-14 sm:py-20 bg-gradient-to-b from-[#070B14] via-[#091526] to-[#070B14]"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section Header with Interactive Dot Indicators */}
+        {/* Section Header with Carousel Controls & Pagination Dots */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
           <div>
             <span className="text-xs font-black uppercase tracking-[0.2em] text-cyan-400">
@@ -53,53 +75,87 @@ export function ServicesIncludedSlider({
             </h2>
           </div>
 
-          <div className="flex items-center gap-2" role="tablist" aria-label="Service slides">
-            {subServices.map((sub, i) => (
+          <div className="flex items-center gap-4">
+            {/* Carousel Pagination Dots */}
+            <div className="flex items-center gap-2" role="tablist" aria-label="Service slides">
+              {subServices.map((sub, i) => (
+                <button
+                  key={sub.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={i === activeIndex}
+                  onClick={() => scrollToCard(i)}
+                  aria-label={`Go to ${sub.title}`}
+                  className="flex min-h-6 min-w-6 items-center justify-center p-1 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-full"
+                >
+                  <span
+                    aria-hidden="true"
+                    className={`block h-2.5 rounded-full transition-all ${
+                      i === activeIndex
+                        ? "w-7 bg-cyan-400"
+                        : "w-2.5 bg-white/20 hover:bg-white/40"
+                    }`}
+                  />
+                </button>
+              ))}
+            </div>
+
+            {/* Left / Right Carousel Arrow Controls */}
+            <div className="flex items-center gap-2">
               <button
-                key={sub.id}
                 type="button"
-                role="tab"
-                aria-selected={i === activeIndex}
-                onClick={() => scrollToCard(i)}
-                aria-label={`Go to ${sub.title}`}
-                className="flex min-h-6 min-w-6 items-center justify-center p-1 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-full"
+                onClick={() => scrollToCard(activeIndex - 1)}
+                disabled={activeIndex === 0}
+                aria-label="Previous service"
+                className="flex size-10 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white/80 hover:bg-white/15 hover:text-white disabled:opacity-35 disabled:pointer-events-none transition-all cursor-pointer"
               >
-                <span
-                  aria-hidden="true"
-                  className={`block h-2.5 rounded-full transition-all ${
-                    i === activeIndex
-                      ? "w-7 bg-cyan-400"
-                      : "w-2.5 bg-white/20 hover:bg-white/40"
-                  }`}
-                />
+                <ArrowLeft size={16} aria-hidden="true" />
               </button>
-            ))}
+              <button
+                type="button"
+                onClick={() => scrollToCard(activeIndex + 1)}
+                disabled={activeIndex === subServices.length - 1}
+                aria-label="Next service"
+                className="flex size-10 items-center justify-center rounded-full bg-cyan-500 text-slate-950 hover:bg-cyan-400 disabled:opacity-35 disabled:pointer-events-none transition-all shadow-md shadow-cyan-500/25 cursor-pointer"
+              >
+                <ArrowRight size={16} aria-hidden="true" />
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* Horizontal Slider of Cards with Captions */}
-        <div className="overflow-x-auto pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide">
-          <div ref={trackRef} className="flex gap-5 w-max">
+        {/* Snap-Scroll Carousel Track (No Visible Scrollbar, Touch-Swipe Enabled) */}
+        <div
+          ref={scrollContainerRef}
+          onScroll={handleScroll}
+          className="overflow-x-auto snap-x snap-mandatory touch-pan-x pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        >
+          <div ref={trackRef} className="relative flex gap-5 w-max">
             {subServices.map((sub, idx) => (
               <Link
                 key={sub.id}
                 href={`#${sub.id}`}
                 onMouseEnter={() => setActiveIndex(idx)}
-                className={`group w-[260px] sm:w-[300px] shrink-0 rounded-2xl border overflow-hidden transition-all shadow-lg ${
+                className={`group w-[270px] sm:w-[310px] shrink-0 snap-start rounded-2xl border overflow-hidden transition-all shadow-lg ${
                   idx === activeIndex
                     ? "border-cyan-400/60 bg-[#0F1E36]"
                     : "border-white/10 bg-[#0F182A]/80 hover:border-cyan-400/40"
                 }`}
               >
-                <div className="relative h-40 sm:h-48 bg-gradient-to-br from-[#0B1B36] via-[#0F254B] to-[#0B1B36] flex items-center justify-center">
-                  <span className="flex size-16 items-center justify-center rounded-2xl bg-cyan-400/15 border border-cyan-400/30 text-cyan-300 group-hover:scale-110 transition-transform">
-                    {icons[sub.id]}
-                  </span>
-                  <span className="absolute top-3 left-3 text-[11px] font-mono font-bold text-white/40">
+                <div className="relative h-44 sm:h-52 w-full overflow-hidden bg-[#0B1B36]">
+                  <Image
+                    src={sub.image}
+                    alt={sub.title}
+                    fill
+                    sizes="(min-width: 640px) 310px, 270px"
+                    className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F182A]/80 via-transparent to-black/25 pointer-events-none" />
+                  <span className="absolute top-3 left-3 rounded-md bg-[#070B14]/70 border border-white/15 px-2 py-0.5 text-[11px] font-mono font-bold text-white/90 backdrop-blur-md">
                     {String(idx + 1).padStart(2, "0")}
                   </span>
                   {sub.badge && (
-                    <span className="absolute top-3 right-3 text-[10px] font-bold uppercase tracking-wider text-amber-300 bg-amber-400/10 border border-amber-400/25 px-2 py-0.5 rounded-md">
+                    <span className="absolute top-3 right-3 text-[10px] font-bold uppercase tracking-wider text-amber-300 bg-[#070B14]/75 border border-amber-400/35 px-2 py-0.5 rounded-md backdrop-blur-md">
                       {sub.badge}
                     </span>
                   )}

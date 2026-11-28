@@ -50,7 +50,6 @@ import {
 import { services, type ServiceDivision } from "@/content/services";
 import { company } from "@/content/company";
 import { MobileBottomActionDock } from "@/components/shared/marketing-sections";
-import { FacilityCardsAutoScroll } from "@/components/services/facility-cards-auto-scroll";
 import {
   ServicesIncludedSlider,
   ProcessAccordionCard,
@@ -159,7 +158,8 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
          ═══════════════════════════════════════════════════════════════ */}
       <section
         aria-labelledby="service-hero-title"
-        className="relative min-h-[60vh] sm:min-h-[70vh] flex items-end overflow-hidden"
+        style={{ paddingTop: "var(--site-navbar-height, 96px)" }}
+        className="relative min-h-[64vh] sm:min-h-[72vh] flex flex-col justify-between overflow-hidden"
       >
         {/* Full-width Background Image */}
         <Image
@@ -171,10 +171,10 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
           className="object-cover object-center"
         />
         {/* Dark gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#070B14] via-[#070B14]/60 to-[#070B14]/20 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#070B14] via-[#070B14]/65 to-[#070B14]/35 pointer-events-none" />
 
-        {/* Breadcrumb bar at top */}
-        <div className="absolute top-0 inset-x-0 z-20 pt-6 sm:pt-8">
+        {/* Breadcrumb bar in normal flow below dynamic navbar height */}
+        <div className="relative z-20 pt-4 sm:pt-6">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <Link
@@ -197,7 +197,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         </div>
 
         {/* Hero content at bottom */}
-        <div className="relative z-10 w-full pb-12 sm:pb-16">
+        <div className="relative z-10 w-full pt-8 pb-12 sm:pb-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl space-y-5">
               <div className="flex flex-wrap items-center gap-3">
@@ -329,24 +329,9 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
 
 
       {/* ═══════════════════════════════════════════════════════════════
-          SECTION 2.5: FACILITY CARDS (only for facility-maintenance)
+          SECTION 03: SERVICES INCLUDED — Carousel with unique photos
          ═══════════════════════════════════════════════════════════════ */}
-      {service.id === "facility-maintenance" && (
-        <section className="py-2 sm:py-4">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <FacilityCardsAutoScroll />
-          </div>
-        </section>
-      )}
-
-
-      {/* ═══════════════════════════════════════════════════════════════
-          SECTION 03: SERVICES INCLUDED — Title, dots, slider of cards
-         ═══════════════════════════════════════════════════════════════ */}
-      <ServicesIncludedSlider
-        subServices={service.subServices}
-        icons={subServiceIcons}
-      />
+      <ServicesIncludedSlider subServices={service.subServices} />
 
 
       {/* ═══════════════════════════════════════════════════════════════

@@ -2,6 +2,7 @@ export interface SubService {
   id: string;
   title: string;
   tagline: string;
+  image: string;
   description: string;
   deliverables: string[];
   compliance?: string;
@@ -47,7 +48,7 @@ export const services: readonly ServiceDivision[] = [
     tagline: "Simplifying Business. Supporting Growth. Creating Opportunities.",
     highlight: "Your Business Journey, Made Simple WithUs",
     description: "Corporate Licensing, PRO Services & Compliance",
-    imageCard: "/images/services/brochure/business-corporate-main.jpg",
+    imageCard: "/images/services/business and cooperate.jpg",
     brochureMainImage: "/images/services/brochure/business-corporate-main.jpg",
     iconName: "building",
     brochurePage: "www.bizlinkqatar.com 03",
@@ -72,6 +73,7 @@ export const services: readonly ServiceDivision[] = [
         id: "company-formation",
         title: "Business Consulting & Company Formation",
         tagline: "100% Foreign Ownership & LLC Incorporation",
+        image: "/images/about/luxury_boardroom_skyline.jpg",
         description:
           "Comprehensive corporate structuring under Qatar Foreign Investment Law No. 1 of 2019. We advise on optimal legal vehicles—Limited Liability Companies (W.L.L./LLC), Sole Proprietorships, Branch of Foreign Companies, Trade Representative Offices, and Free Zone entities (QFZ, QFC, Manateq). From initial feasibility and trade name reservation to drafting Articles of Association (AOA) authenticated at the Ministry of Justice.",
         deliverables: [
@@ -88,6 +90,7 @@ export const services: readonly ServiceDivision[] = [
         id: "cr-licensing",
         title: "CR, Licensing & Government Services",
         tagline: "Commercial Registration & Municipality Licensing",
+        image: "/images/about/doha-corporate.webp",
         description:
           "End-to-end processing of statutory permits required to trade legally in Qatar. We secure the Commercial Registration (Sijil Tijari), Municipal Trade License (Ruksa Tijariya from Baladiya), Civil Defense inspection approval (QCDD), commercial signage permits, and sector-specific approvals from the Ministry of Public Health or Ministry of Education.",
         deliverables: [
@@ -103,6 +106,7 @@ export const services: readonly ServiceDivision[] = [
         id: "qatari-sponsorship",
         title: "Qatari Sponsor Arrangements",
         tagline: "Corporate Nominee & Secure Local Partnerships",
+        image: "/images/about/executive_handshake_expanded.webp",
         description:
           "For commercial activities requiring local participation, BizLink arranges vetted, reputable Qatari individual and corporate partners. We implement robust, legally binding side agreements and powers of attorney (POA) drafted by certified legal counsel to guarantee that day-to-day operational control, management authority, and 100% financial profits remain securely with the investor.",
         deliverables: [
@@ -118,6 +122,7 @@ export const services: readonly ServiceDivision[] = [
         id: "typing-pro-services",
         title: "Typing, PRO & Documentation Services",
         tagline: "Government Liaison at Bin Mahmoud & Ain Khalid Desks",
+        image: "/images/services/bizlink professional.jpg",
         description:
           "Full-spectrum Public Relations Officer (PRO) operations handled by our licensed government liaison teams. Operating from our Ain Khalid Head Office and Bin Mahmoud Typing Centre, we process work residency permits, family visas, labour contract submissions on the Ministry of Labour portal, Hamad Health Cards, medical commission appointments, and CID fingerprinting clearances.",
         deliverables: [
@@ -134,6 +139,7 @@ export const services: readonly ServiceDivision[] = [
         id: "translation-attestation",
         title: "Translation & Attestation",
         tagline: "Ministry of Foreign Affairs & Consular Legalization",
+        image: "/images/services/sub-services/translation-attestation.jpg",
         description:
           "Sworn, certified legal translations in Arabic, English, French, Hindi, and Urdu recognized by all Qatar ministries, courts, and embassies. We manage the complete attestation chain for foreign personal and corporate documents—including educational degrees, marriage certificates, board resolutions, certificates of incumbency, and powers of attorney.",
         deliverables: [
@@ -149,6 +155,7 @@ export const services: readonly ServiceDivision[] = [
         id: "bank-wps-assistance",
         title: "Bank Account & WPS Assistance",
         tagline: "Wage Protection System & Corporate Banking",
+        image: "/images/services/service boss bizlink.jpg",
         description:
           "Direct assistance navigating Qatar's stringent corporate banking compliance. We compile and vet comprehensive Know-Your-Customer (KYC) dossiers for corporate account opening at premier institutions including QNB, Commercial Bank, and Doha Bank. Furthermore, we configure and maintain monthly Wage Protection System (WPS) compliance via validated Salary Information File (SIF) generation.",
         deliverables: [
@@ -164,6 +171,7 @@ export const services: readonly ServiceDivision[] = [
         id: "auditing-bookkeeping",
         title: "Auditing & Bookkeeping",
         tagline: "General Tax Authority (GTA) & Dhareeba Compliance",
+        image: "/images/services/sub-services/auditing-bookkeeping.jpg",
         description:
           "Certified financial record keeping, monthly management accounts, VAT readiness, and tax return filing with Qatar's General Tax Authority (GTA) via the Dhareeba digital tax portal. We partner with licensed Qatari audit firms to deliver annual audited financial statements compliant with International Financial Reporting Standards (IFRS).",
         deliverables: [
@@ -179,6 +187,7 @@ export const services: readonly ServiceDivision[] = [
         id: "ecommerce-setup",
         title: "E-Commerce & Online Business Setup",
         tagline: "Digital Commercial Licensing & Merchant Payment Gateways",
+        image: "/images/services/sub-services/ecommerce-setup.jpg",
         description:
           "Specialized licensing pathways for online storefronts, digital service apps, and marketplace platforms operating in Qatar. We obtain the required MOCI e-commerce commercial activity approvals, draft bilingual terms of service compliant with Qatar Consumer Protection laws, and coordinate merchant integration with Qatar payment gateways (SkipCash, Dibsy, QNB E-Gateway).",
         deliverables: [
@@ -245,8 +254,8 @@ export const services: readonly ServiceDivision[] = [
     tagline: "Building Brands. Connecting Audiences. Growing Businesses.",
     highlight: "Grow Your Brand, With BizLink",
     description: "Digital Marketing, Web Development & Brand Identity",
-    imageCard: "/images/services/sub service/Digital & Creative Solutions 1.jpg",
-    brochureMainImage: "/images/services/sub service/Digital & Creative Solutions 1.jpg",
+    imageCard: "/images/services/bizlink digital service.jpg",
+    brochureMainImage: "/images/services/brochure/digital-creative-main.webp",
     iconName: "monitor",
     brochurePage: "www.bizlinkqatar.com 04",
     brochureIntro:
@@ -268,6 +277,7 @@ export const services: readonly ServiceDivision[] = [
         id: "digital-marketing-seo",
         title: "Digital Marketing & SEO",
         tagline: "Google Rankings & High-ROI Performance Campaigns",
+        image: "/images/services/sub service/DEGITAL MARKETING.jpg",
         description:
           "Targeted search engine optimization and digital ad campaigns designed for the Qatar and GCC markets. We optimize your web infrastructure for local bilingual searches (Arabic and English), dominate Google Map Pack results, and run high-conversion Google Ads (Search, Display, Performance Max) that generate verified commercial sales inquiries.",
         deliverables: [
@@ -284,6 +294,7 @@ export const services: readonly ServiceDivision[] = [
         id: "content-ai-video",
         title: "Content Creation & Ai Video",
         tagline: "4K Commercial Video Production & Motion Graphics",
+        image: "/images/services/sub service/Digital & Creative Solutions 1.jpg",
         description:
           "Cinematic commercial storytelling that stops the scroll. Our creative media team produces 4K promotional brand videos, on-site industrial photography, corporate boardroom shoots, product showcases, and dynamic motion graphics. Enhanced with generative AI video techniques for rapid turnaround and creative effects.",
         deliverables: [
@@ -299,6 +310,7 @@ export const services: readonly ServiceDivision[] = [
         id: "web-ecommerce-development",
         title: "Website & E Commerce Development",
         tagline: "Ultra-Fast Modern Web Applications & E-Stores",
+        image: "/images/services/sub service/Digital & Creative Solutions 2.jpg",
         description:
           "Custom enterprise web architecture engineered for speed, mobile responsiveness, and high conversion. Built using industry-leading modern stacks including Next.js, React, Tailwind CSS, and headless commerce. Featuring lightning-fast server-rendered performance, bank-grade SSL security, and seamless Qatari payment gateway integrations.",
         deliverables: [
@@ -315,6 +327,7 @@ export const services: readonly ServiceDivision[] = [
         id: "branding-graphic-design",
         title: "Branding & Graphic Design",
         tagline: "Corporate Identity Systems & Packaging",
+        image: "/images/services/biz link digitial services.jpg",
         description:
           "Comprehensive brand development that positions your business ahead of competitors. We create unforgettable logo marks, cohesive visual identities, brand typography, color palettes, luxury business cards, company profiles, vehicle fleet wraps, and retail packaging that commands prestige.",
         deliverables: [
@@ -330,6 +343,7 @@ export const services: readonly ServiceDivision[] = [
         id: "social-media-management",
         title: "Social Media Management",
         tagline: "Strategic Presence on Instagram, TikTok & LinkedIn",
+        image: "/images/services/sub-services/social-media-management.jpg",
         description:
           "Full-funnel organic and paid social management designed to build authentic authority in Qatar. We craft tailored monthly content calendars, write engaging culturally tuned copy in Arabic and English, manage active community interactions, and deploy hyper-targeted ads across Instagram, TikTok, LinkedIn, and Facebook.",
         deliverables: [
@@ -345,6 +359,7 @@ export const services: readonly ServiceDivision[] = [
         id: "digital-retainer-packages",
         title: "Weekly & Monthly Digital Packages",
         tagline: "Continuous Growth & Dedicated Account Management",
+        image: "/images/about/philosophy-detail.webp",
         description:
           "Turnkey digital department retainers for growing businesses in Qatar. We bundle ongoing website maintenance, weekly SEO updates, continuous social media publishing, periodic video shoots, and executive strategic reviews into one predictable, cost-effective monthly investment.",
         deliverables: [
@@ -434,6 +449,7 @@ export const services: readonly ServiceDivision[] = [
         id: "general-wholesale-trading",
         title: "General, Retail & Wholesale Trading",
         tagline: "High-Volume Commodity & Commercial Distribution",
+        image: "/images/about/trading-hub.webp",
         description:
           "Large-scale wholesale procurement and supply across fast-moving consumer goods (FMCG), institutional provisions, and commercial merchandise. Direct relationships with tier-1 manufacturers in India, UAE, and China allow us to deliver superior volume pricing, consistent batch quality, and scheduled warehouse replenishment across Qatar.",
         deliverables: [
@@ -450,6 +466,7 @@ export const services: readonly ServiceDivision[] = [
         id: "bulk-procurement-cargo",
         title: "Bulk Procurement & Cargo Services",
         tagline: "International Sourcing, Sea/Air Freight & Customs",
+        image: "/images/services/trading and supplay video image.jpg",
         description:
           "Global freight forwarding and procurement operations linking Qatar with key trade hubs in China, India, and the UAE. We manage full-container load (FCL), less-than-container load (LCL), air cargo handling, customs inspection, tariff classification, and final bonded delivery to your warehouse door.",
         deliverables: [
@@ -466,6 +483,7 @@ export const services: readonly ServiceDivision[] = [
         id: "department-lifestyle",
         title: "Department Store & Lifestyle Products",
         tagline: "Curated Retail Goods & Consumer Merchandise",
+        image: "/images/sister-companies/pathas-gallery-bg.webp",
         description:
           "End-to-end supply chain for hypermarkets, department stores, and lifestyle boutiques. We curate and deliver high-demand consumer goods—including home accessories, personal lifestyle products, giftware, and seasonal merchandise—packaged with full barcode compliance and shelf-ready presentation.",
         deliverables: [
@@ -481,6 +499,7 @@ export const services: readonly ServiceDivision[] = [
         id: "perfumes-fragrances",
         title: "Own Brand Perfumes & Fragrances",
         tagline: "Made in Qatar Luxury Scents (6ml – 50ml)",
+        image: "/images/services/brochure/trading-fragrances.webp",
         description:
           "Artisanal perfume creation, custom fragrance blending, and private-label bottling manufactured locally in Qatar. From concentrated Oriental attar oils (6ml / 12ml) to luxury French-style Eau de Parfum sprays (50ml / 100ml). Featuring premium olfactory notes of aged Cambodian oud, amber, Taif rose, musk, and bergamot.",
         deliverables: [
@@ -497,6 +516,7 @@ export const services: readonly ServiceDivision[] = [
         id: "vehicle-spare-parts",
         title: "Vehicle Spare Parts",
         tagline: "Commercial Fleet Components & Mechanical Spares",
+        image: "/images/sister-companies/pathas-imports-bg.webp",
         description:
           "Specialized sourcing of certified OEM and quality aftermarket automotive replacement parts for transport companies, limousine operators, delivery fleets, and repair centers. We stock critical maintenance components—including brake pads, suspension parts, filters, batteries, and synthetic lubricants.",
         deliverables: [
@@ -512,6 +532,7 @@ export const services: readonly ServiceDivision[] = [
         id: "hypermarket-supply",
         title: "Retail, Wholesale & Hypermarket Supply",
         tagline: "Distribution to Leading Qatari Supermarkets",
+        image: "/images/services/sub-services/hypermarket-supply.jpg",
         description:
           "Established distribution pathways supplying major retail chains, hypermarkets (Lulu, Carrefour, Safari Mall, Al Meera), and regional trade distributors. We handle vendor registration, inventory staging, promotional displays, and fast-moving replenishment schedules.",
         deliverables: [
@@ -585,7 +606,7 @@ export const services: readonly ServiceDivision[] = [
     brochureIntro:
       "BizLink offers comprehensive facility management, maintenance and property improvement services for residential, commercial and hospitality environments. Our services are designed to maintain functional, clean, safe and well-organized spaces while helping clients protect their property investments.",
     brochureCommitment:
-      "We focus on quality sourcing, competitive supply solutions and dependable business relationships to support the evolving needs of our customers.",
+      "We deliver reliable, municipality-compliant property care, preventive maintenance, and rapid-response technical support to protect your residential, commercial, and hospitality assets.",
     whatsappMessage:
       "Hello BizLink Qatar, I would like to inquire about Facility Management, commercial cleaning, MEP maintenance, or an Annual Maintenance Contract (AMC).",
     items: [
@@ -602,6 +623,7 @@ export const services: readonly ServiceDivision[] = [
         id: "facility-hospitality-management",
         title: "Facility & Hospitality Management",
         tagline: "Turnkey Property Care for Towers, Compounds & Hotels",
+        image: "/images/services/brochure/facility-guard-building.webp",
         description:
           "Comprehensive physical asset management for commercial towers, corporate headquarters, luxury residential compounds, and hospitality venues in Qatar. We integrate on-site facility supervision, preventative maintenance schedules, vendor oversight, energy efficiency monitoring, and emergency response teams.",
         deliverables: [
@@ -618,6 +640,7 @@ export const services: readonly ServiceDivision[] = [
         id: "cleaning-pest-control",
         title: "Cleaning & Pest Control Services",
         tagline: "Hospital-Grade Sanitization & Pest Eradication",
+        image: "/images/services/brochure/facility-pest-spray.webp",
         description:
           "Professional commercial cleaning and integrated pest management (IPM) for corporate offices, banks, retail centers, restaurants, and residential villas. Our trained crews use non-toxic, eco-friendly chemicals and hospital-grade disinfection equipment to eliminate dust, pathogens, and pest infestations.",
         deliverables: [
@@ -634,6 +657,7 @@ export const services: readonly ServiceDivision[] = [
         id: "gypsum-glass-partitions",
         title: "Gypsum Board & Glass Partition Works",
         tagline: "Architectural Interior Fit-Outs & Acoustic Demountables",
+        image: "/images/services/brochure/facility-gypsum-installation.webp",
         description:
           "High-precision interior architectural improvements for modern workplaces. We design, fabricate, and install decorative gypsum false ceilings, drywall acoustic partitions, frameless tempered glass meeting rooms, aluminum-framed demountable office cubicles, and contemporary interior wall paneling.",
         deliverables: [
@@ -649,6 +673,7 @@ export const services: readonly ServiceDivision[] = [
         id: "electrical-plumbing",
         title: "Electrical & Plumbing Works",
         tagline: "Kahramaa-Compliant Power & Water Engineering",
+        image: "/images/services/brochure/facility-plumbing-mep.webp",
         description:
           "Full MEP (Mechanical, Electrical, Plumbing) diagnostic, repair, and installation services. Our licensed technicians resolve power phase imbalances, circuit overloads, LED lighting retrofits, distribution board (DB) repairs, drainage blockages, water pump malfunctions, and plumbing pipeline replacements.",
         deliverables: [
@@ -664,6 +689,7 @@ export const services: readonly ServiceDivision[] = [
         id: "floor-tiling-polishing",
         title: "Floor Tiling & Polishing",
         tagline: "Diamond Marble Restoration & Industrial Epoxy",
+        image: "/images/about/interior-main.webp",
         description:
           "Expert floor installation, grout restoration, and diamond crystallizing treatments for marble, granite, porcelain, terrazzo, and ceramic tiles. We also apply heavy-duty epoxy coatings for industrial warehouses, basement parking garages, and commercial kitchen environments.",
         deliverables: [
@@ -679,6 +705,7 @@ export const services: readonly ServiceDivision[] = [
         id: "property-maintenance-amc",
         title: "General Property Maintenance & AMC",
         tagline: "Annual Maintenance Contracts with Guaranteed SLAs",
+        image: "/images/about/engineering-facility.webp",
         description:
           "Proactive Annual Maintenance Contracts (AMC) designed to preserve property value and prevent costly emergency breakdowns. AMC clients enjoy scheduled monthly HVAC inspections, electrical/plumbing testing, 24/7 emergency priority dispatch, and reduced spare parts pricing across Doha.",
         deliverables: [
@@ -768,6 +795,7 @@ export const services: readonly ServiceDivision[] = [
         id: "mobile-car-wash",
         title: "Mobile Car Wash & Detailing",
         tagline: "Doorstep Scratch-Free Wash Anywhere in Doha",
+        image: "/images/services/automotive-wash.jpg",
         description:
           "On-demand mobile car wash service delivered directly to your villa, corporate office, or underground parking space. Our fully equipped mobile vans feature onboard deionized spot-free water tanks, silent generators, high-pressure foam cannons, and premium pH-balanced automotive shampoos that protect your paint against harsh desert dust.",
         deliverables: [
@@ -784,6 +812,7 @@ export const services: readonly ServiceDivision[] = [
         id: "windshield-replacement",
         title: "Windshield Replacement",
         tagline: "Certified OEM-Grade Glass Installation",
+        image: "/images/services/sub-services/windshield-replacement.jpg",
         description:
           "Complete glass replacement for cracked, shattered, or severely pitted front windshields, rear screens, door windows, and panoramic sunroofs. We install certified OEM-equivalent automotive glass utilizing rapid-cure urethane adhesives that meet strict international crash safety standards and ADAS safety camera calibration.",
         deliverables: [
@@ -800,6 +829,7 @@ export const services: readonly ServiceDivision[] = [
         id: "car-detailing-interior",
         title: "Car Detailing & Interior Cleaning",
         tagline: "Deep Steam Shampooing, Leather Care & Sanitization",
+        image: "/images/services/sub service/automotive-detailing.jpg",
         description:
           "Intensive interior rejuvenation and exterior machine paint correction. We perform hot-water thermal steam extraction on fabric seats, carpets, and floor mats; pH-balanced cleaning and conditioning for luxury leather upholstery; AC vent ozone disinfection; and multi-stage orbital machine polishing to eliminate swirl marks and paint haze.",
         deliverables: [
@@ -816,6 +846,7 @@ export const services: readonly ServiceDivision[] = [
         id: "onsite-auto-glass",
         title: "On-Site Auto Glass Services",
         tagline: "We Come to Your Home, Office, or Breakdown Location",
+        image: "/images/services/sub service/AUTOMOBILE AND SERVICES.png",
         description:
           "Eliminate the danger of driving with impaired visibility or shattered glass. Our specialized auto glass mobile units travel directly to your location anywhere across Doha, Al Rayyan, Al Wakrah, and Lusail, completing mobile replacements and repairs with zero towing required.",
         deliverables: [
@@ -831,6 +862,7 @@ export const services: readonly ServiceDivision[] = [
         id: "auto-glass-repair",
         title: "Auto Glass Inspection & Repair",
         tagline: "Windshield Chip & Crack Optical Resin Repair",
+        image: "/images/services/sub-services/auto-glass-repair.jpg",
         description:
           "Mobile windshield repair powered by Prime Glass technology. Minor stone chips, starbursts, and hairline cracks up to 6 inches are repaired on-site using vacuum-pressure optical resin injection. This restores 95%+ optical clarity and structural windshield integrity, preventing costly full windshield replacement and passing annual vehicle inspection.",
         deliverables: [
@@ -846,6 +878,7 @@ export const services: readonly ServiceDivision[] = [
         id: "corporate-fleet-care",
         title: "Corporate Fleet Washing & Maintenance",
         tagline: "Scheduled Maintenance for Limousines & Commercial Vans",
+        image: "/images/sister-companies/aapco-limousine-bg.webp",
         description:
           "Comprehensive recurring car care contracts for corporate car rental fleets, limousine operators (including sister concern aapco Limousine), government agencies, and commercial logistics vans. Our mobile wash teams operate overnight or during scheduled fleet downtime to ensure pristine brand appearance every morning.",
         deliverables: [

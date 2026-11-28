@@ -125,7 +125,7 @@ export function WireframeHero() {
       ref={sectionRef}
       id="hero"
       aria-label="BizLink Qatar Hero"
-      className="relative min-h-[92vh] lg:min-h-screen bg-[#070B14] pt-24 sm:pt-28 lg:pt-32 pb-14 sm:pb-20 flex flex-col justify-center overflow-hidden border-b border-white/10"
+      className="relative min-h-[92vh] lg:min-h-screen bg-[#070B14] pt-12 sm:pt-28 lg:pt-32 pb-14 sm:pb-20 flex flex-col justify-center overflow-hidden border-b border-white/10"
     >
       {/* Background ambient gradient glow with vibrant multi-spectral aurora orbs */}
       <motion.div style={{ y: yParallaxGlow }} className="home-ambient-glow absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -230,7 +230,7 @@ export function WireframeHero() {
               transition={{ duration: 0.8, delay: 0.44 }}
               className="mt-12 pt-6 border-t border-white/10 grid grid-cols-3 gap-4 max-w-lg"
             >
-              <div>
+              <div className="flex flex-col items-center text-center">
                 <AnimatedCounter
                   value={15}
                   suffix="+"
@@ -241,18 +241,18 @@ export function WireframeHero() {
                   Years Exp
                 </span>
               </div>
-              <div>
+              <div className="flex flex-col items-center text-center">
                 <AnimatedCounter
-                  value={1000}
+                  value={10_000}
                   suffix="+"
                   duration={2.2}
-                  className="block text-[28px] sm:text-2xl font-black text-cyan-300 leading-tight"
+                  className="block whitespace-nowrap text-[clamp(1.125rem,6vw,1.75rem)] sm:text-2xl font-black text-cyan-300 leading-tight"
                 />
                 <span className="block text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">
                   Clients in Qatar
                 </span>
               </div>
-              <div>
+              <div className="flex flex-col items-center text-center">
                 <AnimatedCounter
                   value={4}
                   suffix=" Hubs"
@@ -268,7 +268,7 @@ export function WireframeHero() {
 
           {/* Right Column: Semicircle Arch Background with Parallax and Ken Burns Breathing */}
           <div className="lg:col-span-6 xl:col-span-6 flex justify-center lg:justify-end items-center relative w-full max-w-full">
-            <div className="relative w-full max-w-full sm:max-w-[540px] lg:max-w-[600px] xl:max-w-[660px] h-[440px] sm:h-[540px] lg:h-[600px] xl:h-[640px] flex items-end justify-start select-none">
+            <div className="relative w-full max-w-full sm:max-w-[540px] lg:max-w-[600px] xl:max-w-[660px] h-[clamp(440px,95vw,540px)] sm:h-[540px] lg:h-[600px] xl:h-[640px] flex items-end justify-start select-none">
 
               {/* 1. Square Curved Edged Showcase with Continuous Video Playlist and Parallax */}
               <motion.div
@@ -338,10 +338,10 @@ export function WireframeHero() {
               </motion.div>
 
               {/* 2. Floating BizLink Logo Card at the Bottom Left Corner with opposing Parallax & Luminous Glassmorphism */}
-              <div className="relative top-[25px] sm:top-0 -mb-[20px] sm:mb-4 ml-3 sm:ml-0 z-20 w-[40%] sm:w-[50%] lg:w-[50%] origin-bottom-left scale-90 sm:scale-100">
+              <div className="relative top-[25px] sm:top-0 -mb-[20px] sm:mb-4 ml-3 sm:ml-0 z-20 w-3/5 sm:w-1/2">
                 <motion.div
                   style={{ y: yParallaxCard }}
-                  className="w-full rounded-2xl sm:rounded-3xl border border-white/30 bg-gradient-to-br from-white/[0.14] via-[#0b1c36]/70 to-[#070B14]/85 backdrop-blur-2xl p-3 sm:p-5 shadow-[0_25px_60px_rgba(0,0,0,0.7),inset_0_1px_2px_rgba(255,255,255,0.35),0_0_35px_rgba(0,210,255,0.25)] transition-all duration-500 hover:scale-[1.03] hover:border-cyan-400/70 group"
+                  className="w-full origin-bottom-left scale-120 sm:scale-100 rounded-2xl sm:rounded-3xl border border-white/30 bg-gradient-to-br from-white/[0.14] via-[#0b1c36]/70 to-[#070B14]/85 backdrop-blur-2xl p-3 sm:p-5 shadow-[0_25px_60px_rgba(0,0,0,0.7),inset_0_1px_2px_rgba(255,255,255,0.35),0_0_35px_rgba(0,210,255,0.25)] transition-[scale,border-color] duration-500 hover:scale-[1.23] sm:hover:scale-[1.03] hover:border-cyan-400/70 group"
                 >
                   {/* Center 3D BizLink Logo */}
                   <div className="relative w-full aspect-[641/460] my-2 sm:my-3 flex items-center justify-center">

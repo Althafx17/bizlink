@@ -161,29 +161,26 @@ export function ServicesHeroSection() {
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="space-y-2.5">
                 {services.map((division, idx) => {
                   const theme = divisionColorThemes[idx % divisionColorThemes.length];
-                  const isSpanFull = idx === services.length - 1;
                   return (
                     <a
                       key={division.id}
                       href={`#division-${division.id}`}
-                      className={`group flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-[#0F1B30]/75 p-4 hover:border-cyan-400/45 hover:bg-[#132440] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 min-h-[68px] ${
-                        isSpanFull ? "sm:col-span-2" : ""
-                      }`}
+                      className="group flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-[#0F1B30]/75 px-4 py-3 hover:border-cyan-400/45 hover:bg-[#132440] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 min-h-[56px]"
                     >
-                      <div className="flex items-center gap-3 min-w-0">
+                      <div className="flex items-center gap-3.5 min-w-0">
                         <span
-                          className={`flex size-10 shrink-0 items-center justify-center rounded-xl border ${theme.iconBox}`}
+                          className={`flex size-9 shrink-0 items-center justify-center rounded-xl border ${theme.iconBox}`}
                         >
-                          {renderDivisionIcon(division.iconName, "size-5")}
+                          {renderDivisionIcon(division.iconName, "size-4")}
                         </span>
                         <div className="min-w-0">
                           <span className={`block text-[10px] font-mono font-bold ${theme.accentText}`}>
                             DIVISION {division.number}
                           </span>
-                          <span className="block text-sm font-bold text-white truncate group-hover:text-cyan-200 transition-colors">
+                          <span className="block text-sm font-bold text-white leading-snug group-hover:text-cyan-200 transition-colors">
                             {division.title}
                           </span>
                         </div>

@@ -105,6 +105,8 @@ export function CompleteServiceDirectory() {
               className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
             />
             <input
+              id="service-directory-search"
+              name="q"
               type="search"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
